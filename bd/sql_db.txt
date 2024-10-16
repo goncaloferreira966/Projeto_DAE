@@ -1,0 +1,77 @@
+ Table user {
+  username varchar(255) [pk, increment]
+  password varchar(255) [not null]
+  name varchar(255) [not null]
+  email varchar(255) [unique, not null]
+  phone int(9) [unique, not null]
+  birth date [not null]
+  genre char [not null]
+ }
+
+ Table client {
+  username varchar(255) [ref: > user.username]
+  nif int(9) [unique, not null]
+  postal_code varchar(8) [not null]
+  coutry varchar(255) [not null]
+  city varchar(255) [not null]
+  address varchar(255) [not null]
+  orders list [ref: > order.id]
+ }
+
+ Table administrator {
+  username varchar(255) [ref: > user.username]
+ }
+
+ Table Maneger {
+  username varchar(255) [ref: > user.username]
+ }
+
+ Table order {
+  id int [pk, increment]
+  volume list [ref: > volume.id]
+  purchase_date date [not null]
+  delivery_date date []
+
+ }
+
+ Table volume {
+  id int [pk, increment]
+  sensor list [ref: > Sensor.id]
+  products list [ref: > Product.id]
+ }
+
+ Table Sensor {
+  id int [pk, increment]
+  type varchar(255) [not null]
+  current_value int
+  history vector
+  busy bool
+  expedition bool
+ }
+
+ Table Product {
+  id int [pk, increment]
+  name varchar(255) [not null]
+  image varchar(255) [not null]
+  description varchar(255) [not null]
+  quantity int [not null]
+  state bool [not null] 
+  restriction list [ref: > Restriction.id]
+ }
+
+ Table Restriction {
+  id int [pk, increment]
+  type varchar(255) [not null]
+  max_value int
+  min_value int
+ }
+
+ Table Warehouse {
+  id int [pk, increment]
+  name varchar(255) [not null]
+  products list [not null, ref: > Product.id]
+  postal_code varchar(8) [not null]
+  coutry varchar(255) [not null]
+  city varchar(255) [not null]
+  address varchar(255) [not null]
+ }
