@@ -7,7 +7,7 @@
     <groupId>pt.ipleiria.estg.ei.ei.dae</groupId>
     <artifactId>wedelivery</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>academics</name>
+    <name>wedelivery</name>
     <packaging>war</packaging>
 
     <properties>

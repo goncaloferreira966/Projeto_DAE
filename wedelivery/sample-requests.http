@@ -1,9 +1,9 @@
 ### Get All Students
-GET http://localhost:8080/academics/api/student
+GET http://localhost:8080/wedelivery/api/student
 Accept: application/json
 
 ### Create A New Student
-POST http://localhost:8080/academics/api/student
+POST http://localhost:8080/wedelivery/api/student
 Content-Type: application/json
 
 {
@@ -15,11 +15,11 @@ Content-Type: application/json
 }
 
 ### Get All Courses
-GET http://localhost:8080/academics/api/course
+GET http://localhost:8080/wedelivery/api/course
 Accept: application/json
 
 ### Create A New Course
-POST http://localhost:8080/academics/api/course
+POST http://localhost:8080/wedelivery/api/course
 Content-Type: application/json
 
 {
@@ -28,10 +28,10 @@ Content-Type: application/json
 }
 
 ### Get a student
-GET http://localhost:8080/academics/api/student/Goncalo
+GET http://localhost:8080/wedelivery/api/student/Goncalo
 Accept: application/json
 
 ### Get a student subjects
-GET http://localhost:8080/academics/api/student/Goncalo/subjects
+GET http://localhost:8080/wedelivery/api/student/Goncalo/subjects
 Accept: application/json
 
