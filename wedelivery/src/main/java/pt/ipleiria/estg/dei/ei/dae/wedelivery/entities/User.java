@@ -2,12 +2,10 @@ package pt.ipleiria.estg.dei.ei.dae.wedelivery.entities;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
-
 import java.io.Serializable;
 
 @Entity
 @Table(name = "users")
-
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class User implements Serializable{
     @Id

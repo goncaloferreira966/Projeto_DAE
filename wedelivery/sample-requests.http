@@ -1,9 +1,9 @@
-### Get All Students
-GET http://localhost:8080/wedelivery/api/student
+### Get All clients
+GET http://localhost:8080/wedelivery/api/client
 Accept: application/json
 
-### Create A New Student
-POST http://localhost:8080/wedelivery/api/student
+### Create A New client
+POST http://localhost:8080/wedelivery/api/client
 Content-Type: application/json
 
 {
@@ -27,11 +27,11 @@ Content-Type: application/json
   "name": "Curso das Fadas"
 }
 
-### Get a student
-GET http://localhost:8080/wedelivery/api/student/Goncalo
+### Get a client
+GET http://localhost:8080/wedelivery/api/client/Goncalo
 Accept: application/json
 
-### Get a student subjects
-GET http://localhost:8080/wedelivery/api/student/Goncalo/subjects
+### Get a client subjects
+GET http://localhost:8080/wedelivery/api/client/Goncalo/subjects
 Accept: application/json
 
