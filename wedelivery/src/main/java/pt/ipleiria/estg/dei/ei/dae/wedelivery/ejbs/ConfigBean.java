@@ -20,9 +20,9 @@ public class ConfigBean {
         clientBean.create("Guilherme", "password", "Guilherme", "guilherme@gmail.com");
         clientBean.create( "Cristiano", "password", "Papai Cris", "cr7@gmail.com");
 
-        administratorBean.create("goncalosantos@gmail.com", "Gonçalo Estefácio", "olasoufixe", "oioioioioioi");
-        administratorBean.create("1goncalosantos@gmail.com", "1Gonçalo Estefácio", "1olasoufixe", "1oioioioioioi");
-        administratorBean.create("2goncalosantos@gmail.com", "2Gonçalo Estefácio", "2olasoufixe", "2oioioioioioi");
+        administratorBean.create("Goncalo@gmail.com", "Goncalo Ferreira", "password", "GoncaloF00");
+        administratorBean.create("Dinis@gmail.com", "Dinis Roxo", "password", "DinisRX");
+        administratorBean.create("Gui@gmail.com", "Guilherme Cruz", "password", "Gui0000");
 
         managerBean.create("rui@mgmail.pt", "Rui", "Rui", "Rui");
     }

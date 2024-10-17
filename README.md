@@ -10,7 +10,7 @@ Esta API permite responder a todo o tipo de Pedidos necessários ao negócio da 
 ---
 
 #### Base URL
-#### `Localhost:8080/wedelivery/api`
+#### `http://Localhost:8080/wedelivery/api`
 
 ---
 
@@ -29,11 +29,43 @@ Autentica um User e retorna um token JWT.
 - **Body**:
   ```json
   {
-    "email": "usuario@example.com",
-    "password": "senha"
+    "email": "user@example.com",
+    "password": "password"
+  }
+- **Response**:
+  ```json
+  {
+  "token": "jwt_token",
+  "expires_in": 3600
   }
 
+### 2. **Administradores**
 
+#### `GET /administrators`
+
+Um Administrador consulta a listagem de todos os Administradores Registados.
+
+- **URL**: `/administrators`
+- **Método**: `GET`
+- **Headers**: 
+  - `Content-Type`: `application/json`
+- **Response**:
+  ```json
+  {
+    {
+      "email":"Dinis@gmail.com",
+      "name":"Dinis Roxo",
+      "password":"password",
+      "username":"DinisRX"
+    },
+    {
+      "email":"Goncalo@gmail.com",
+      "name":"Goncalo Ferreira",
+      "password":"password",
+      "username":"GoncaloF00"
+      }
+    }
+  
 ---
 ### `Powered By`
 #### Gonçalo Ferreira `2222051`
