@@ -11,6 +11,9 @@ public class ConfigBean {
     private ClientBean clientBean;
     @EJB
     private AdministratorBean administratorBean;
+    @EJB
+    private ManagerBean managerBean;
+
     @PostConstruct
     public void populateDB() {
         clientBean.create("Goncalo", "password", "Gonçalo", "goncalo@gmail.com");
@@ -21,5 +24,6 @@ public class ConfigBean {
         administratorBean.create("1goncalosantos@gmail.com", "1Gonçalo Estefácio", "1olasoufixe", "1oioioioioioi");
         administratorBean.create("2goncalosantos@gmail.com", "2Gonçalo Estefácio", "2olasoufixe", "2oioioioioioi");
 
+        managerBean.create("rui@mgmail.pt", "Rui", "Rui", "Rui");
     }
 }
