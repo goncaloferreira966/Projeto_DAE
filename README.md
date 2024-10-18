@@ -41,7 +41,6 @@ Um User inicia sessão e recebe, para sua segurança, um token JWT.
     "token": "jwt_token",
     "expires_in": 3600
   }
-
 <br />
 <br />
 
@@ -78,7 +77,7 @@ Um Administrador consulta a listagem de todos os Administradores Registados.
 
 Um Administrador consulta o perfil de um Administrador.
 
-- **URL**: `/administrators`
+- **URL**: `/administrators/{username}`
 - **Método**: `GET`
 - **Headers**: 
   - `Content-Type`: `application/json`
@@ -96,7 +95,6 @@ Um Administrador consulta o perfil de um Administrador.
     "password":"password",
     "username":"DinisRX"
   }
-
 <br />
 <br />
 
@@ -131,7 +129,7 @@ Um Administrador consulta a listagem de todos os Gestores Registados.
 
 Um Administrador consulta o perfil de um Gestor.
 
-- **URL**: `/managers`
+- **URL**: `/managers/{username}`
 - **Método**: `GET`
 - **Headers**: 
   - `Content-Type`: `application/json`
@@ -152,6 +150,153 @@ Um Administrador consulta o perfil de um Gestor.
 <br />
 <br />
 
+### 4. **Clientes**
+#### `GET /clients`
+Um Administrador consulta a listagem de todos os Clientes Registados.
+
+- **URL**: `/clients`
+- **Método**: `GET`
+- **Headers**: 
+  - `Content-Type`: `application/json`
+- **Response**:
+  ```json
+  {
+   {
+      "address": "Rua das Igrejas",
+      "city": "Leiria",
+      "country": "PT",
+      "email": "guilherme@gmail.com",
+      "name": "Guilherme",
+      "nif": 123123124,
+      "password": "password",
+      "postalCode": "2565-834",
+      "username": "Guilherme"
+    },
+    {
+      "address": "Rua das Igrejas",
+      "city": "Leiria",
+      "country": "PT",
+      "email": "cr7@gmail.com",
+      "name": "Papai Cris",
+      "nif": 123123125,
+      "password": "password",
+      "postalCode": "2565-834",
+      "username": "Cristiano"
+    }
+  }
+<br />
+
+#### `GET /clients/{username}`
+
+Um Administrador consulta o perfil de um Cliente.
+
+- **URL**: `/clients/{username}`
+- **Método**: `GET`
+- **Headers**: 
+  - `Content-Type`: `application/json`
+
+- **Body**:
+  ```json
+  {
+    "username": "Goncalo"
+  }
+- **Response**:
+  ```json
+  {
+    "address": "Rua das Igrejas",
+    "city": "Leiria",
+    "country": "PT",
+    "email": "goncalo@gmail.com",
+    "name": "Gonçalo",
+    "nif": 123123123,
+    "password": "password",
+    "postalCode": "2565-834",
+    "username": "Goncalo"
+  }
+<br />
+<br />
+
+
+### 5. **Encomendas**
+#### `GET /orders`
+Um Gestor consulta a listagem de todos as Encomendas efetuadas.
+
+- **URL**: `/orders`
+- **Método**: `GET`
+- **Headers**: 
+  - `Content-Type`: `application/json`
+- **Response**:
+  ```json
+  {
+   {
+      "code": 1,
+      "deliveryDate": "2024-10-18T13:38:32.822Z[UTC]",
+      "purchaseDate": "2024-10-18T13:38:32.822Z[UTC]",
+      "username": "Guilherme"
+    },
+    {
+      "code": 2,
+      "deliveryDate": "2024-10-18T13:38:32.823Z[UTC]",
+      "purchaseDate": "2024-10-18T13:38:32.823Z[UTC]",
+      "username": "Guilherme"
+    },
+    {
+      "code": 3,
+      "deliveryDate": "2024-10-18T13:38:32.823Z[UTC]",
+      "purchaseDate": "2024-10-18T13:38:32.823Z[UTC]",
+      "username": "Goncalo"
+    }
+  }
+<br />
+
+#### `GET /orders/{code}`
+
+Um Gestor consulta uma Encomenda efetuada. Este método pode também ser usado por um Cliente que deseje consultar uma Encomenda efetuada por si. 
+
+- **URL**: `/orders/{code}`
+- **Método**: `GET`
+- **Headers**: 
+  - `Content-Type`: `application/json`
+
+- **Body**:
+  ```json
+  {
+    "code": "1"
+  }
+- **Response**:
+  ```json
+  {
+    "code": 1,
+    "deliveryDate": "2024-10-18T13:38:32.822Z[UTC]",
+    "purchaseDate": "2024-10-18T13:38:32.822Z[UTC]",
+    "username": "Guilherme"
+  }
+<br />
+
+#### `GET /orders/client/{username}`
+
+Um Cliente consulta todas as suas encomendas realizadas
+
+- **URL**: `/orders/client/{username}`
+- **Método**: `GET`
+- **Headers**: 
+  - `Content-Type`: `application/json`
+
+- **Body**:
+  ```json
+  {
+    "username": "Goncalo"
+  }
+- **Response**:
+  ```json
+  {
+    "code": 3,
+    "deliveryDate": "2024-10-18T13:38:32.823Z[UTC]",
+    "purchaseDate": "2024-10-18T13:38:32.823Z[UTC]",
+    "username": "Goncalo"
+  }
+<br />
+
 ---
 ### `Powered By`
 #### `2222051` Gonçalo Ferreira 
@@ -161,7 +306,7 @@ Um Administrador consulta o perfil de um Gestor.
 ---
 
 ### `Cliente`
-#### Professor João Ferreira
+#### `Professor` João Ferreira
 
 
 ---

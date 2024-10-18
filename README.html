@@ -63,7 +63,6 @@
   <span class="token property">"token"</span><span class="token operator">:</span> <span class="token string">"jwt_token"</span><span class="token punctuation">,</span>
   <span class="token property">"expires_in"</span><span class="token operator">:</span> <span class="token number">3600</span>
 <span class="token punctuation">}</span>
-
 </code></pre></li>
 </ul>
 <br>
@@ -101,7 +100,7 @@
 <p>Um Administrador consulta o perfil de um Administrador.</p>
 <ul>
 <li>
-<p><strong>URL</strong>: <code>/administrators</code></p>
+<p><strong>URL</strong>: <code>/administrators/{username}</code></p>
 </li>
 <li>
 <p><strong>Método</strong>: <code>GET</code></p>
@@ -126,7 +125,6 @@
   <span class="token property">"password"</span><span class="token operator">:</span><span class="token string">"password"</span><span class="token punctuation">,</span>
   <span class="token property">"username"</span><span class="token operator">:</span><span class="token string">"DinisRX"</span>
 <span class="token punctuation">}</span>
-
 </code></pre></li>
 </ul>
 <br>
@@ -163,7 +161,7 @@
 <p>Um Administrador consulta o perfil de um Gestor.</p>
 <ul>
 <li>
-<p><strong>URL</strong>: <code>/managers</code></p>
+<p><strong>URL</strong>: <code>/managers/{username}</code></p>
 </li>
 <li>
 <p><strong>Método</strong>: <code>GET</code></p>
@@ -192,6 +190,180 @@
 </ul>
 <br>
 <br>
+<h3 id="4-clientes">4. <strong>Clientes</strong> </h3>
+<h4 id="get-clients"><code>GET /clients</code> </h4>
+<p>Um Administrador consulta a listagem de todos os Clientes Registados.</p>
+<ul>
+<li><strong>URL</strong>: <code>/clients</code></li>
+<li><strong>Método</strong>: <code>GET</code></li>
+<li><strong>Headers</strong>:
+<ul>
+<li><code>Content-Type</code>: <code>application/json</code></li>
+</ul>
+</li>
+<li><strong>Response</strong>:<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+ <span class="token punctuation">{</span>
+    <span class="token property">"address"</span><span class="token operator">:</span> <span class="token string">"Rua das Igrejas"</span><span class="token punctuation">,</span>
+    <span class="token property">"city"</span><span class="token operator">:</span> <span class="token string">"Leiria"</span><span class="token punctuation">,</span>
+    <span class="token property">"country"</span><span class="token operator">:</span> <span class="token string">"PT"</span><span class="token punctuation">,</span>
+    <span class="token property">"email"</span><span class="token operator">:</span> <span class="token string">"guilherme@gmail.com"</span><span class="token punctuation">,</span>
+    <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Guilherme"</span><span class="token punctuation">,</span>
+    <span class="token property">"nif"</span><span class="token operator">:</span> <span class="token number">123123124</span><span class="token punctuation">,</span>
+    <span class="token property">"password"</span><span class="token operator">:</span> <span class="token string">"password"</span><span class="token punctuation">,</span>
+    <span class="token property">"postalCode"</span><span class="token operator">:</span> <span class="token string">"2565-834"</span><span class="token punctuation">,</span>
+    <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"Guilherme"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    <span class="token property">"address"</span><span class="token operator">:</span> <span class="token string">"Rua das Igrejas"</span><span class="token punctuation">,</span>
+    <span class="token property">"city"</span><span class="token operator">:</span> <span class="token string">"Leiria"</span><span class="token punctuation">,</span>
+    <span class="token property">"country"</span><span class="token operator">:</span> <span class="token string">"PT"</span><span class="token punctuation">,</span>
+    <span class="token property">"email"</span><span class="token operator">:</span> <span class="token string">"cr7@gmail.com"</span><span class="token punctuation">,</span>
+    <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Papai Cris"</span><span class="token punctuation">,</span>
+    <span class="token property">"nif"</span><span class="token operator">:</span> <span class="token number">123123125</span><span class="token punctuation">,</span>
+    <span class="token property">"password"</span><span class="token operator">:</span> <span class="token string">"password"</span><span class="token punctuation">,</span>
+    <span class="token property">"postalCode"</span><span class="token operator">:</span> <span class="token string">"2565-834"</span><span class="token punctuation">,</span>
+    <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"Cristiano"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+</ul>
+<br>
+<h4><code>GET /clients/{username}</code></h4>
+<p>Um Administrador consulta o perfil de um Cliente.</p>
+<ul>
+<li>
+<p><strong>URL</strong>: <code>/clients/{username}</code></p>
+</li>
+<li>
+<p><strong>Método</strong>: <code>GET</code></p>
+</li>
+<li>
+<p><strong>Headers</strong>:</p>
+<ul>
+<li><code>Content-Type</code>: <code>application/json</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Body</strong>:</p>
+<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"Goncalo"</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+<li>
+<p><strong>Response</strong>:</p>
+<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"address"</span><span class="token operator">:</span> <span class="token string">"Rua das Igrejas"</span><span class="token punctuation">,</span>
+  <span class="token property">"city"</span><span class="token operator">:</span> <span class="token string">"Leiria"</span><span class="token punctuation">,</span>
+  <span class="token property">"country"</span><span class="token operator">:</span> <span class="token string">"PT"</span><span class="token punctuation">,</span>
+  <span class="token property">"email"</span><span class="token operator">:</span> <span class="token string">"goncalo@gmail.com"</span><span class="token punctuation">,</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Gonçalo"</span><span class="token punctuation">,</span>
+  <span class="token property">"nif"</span><span class="token operator">:</span> <span class="token number">123123123</span><span class="token punctuation">,</span>
+  <span class="token property">"password"</span><span class="token operator">:</span> <span class="token string">"password"</span><span class="token punctuation">,</span>
+  <span class="token property">"postalCode"</span><span class="token operator">:</span> <span class="token string">"2565-834"</span><span class="token punctuation">,</span>
+  <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"Goncalo"</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+</ul>
+<br>
+<br>
+<h3>5. <strong>Encomendas</strong></h3>
+<h4><code>GET /orders</code></h4>
+<p>Um Gestor consulta a listagem de todos as Encomendas efetuadas.</p>
+<ul>
+<li><strong>URL</strong>: <code>/orders</code></li>
+<li><strong>Método</strong>: <code>GET</code></li>
+<li><strong>Headers</strong>:
+<ul>
+<li><code>Content-Type</code>: <code>application/json</code></li>
+</ul>
+</li>
+<li><strong>Response</strong>:<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+ <span class="token punctuation">{</span>
+    <span class="token property">"code"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token property">"deliveryDate"</span><span class="token operator">:</span> <span class="token string">"2024-10-18T13:38:32.822Z[UTC]"</span><span class="token punctuation">,</span>
+    <span class="token property">"purchaseDate"</span><span class="token operator">:</span> <span class="token string">"2024-10-18T13:38:32.822Z[UTC]"</span><span class="token punctuation">,</span>
+    <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"Guilherme"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    <span class="token property">"code"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token property">"deliveryDate"</span><span class="token operator">:</span> <span class="token string">"2024-10-18T13:38:32.823Z[UTC]"</span><span class="token punctuation">,</span>
+    <span class="token property">"purchaseDate"</span><span class="token operator">:</span> <span class="token string">"2024-10-18T13:38:32.823Z[UTC]"</span><span class="token punctuation">,</span>
+    <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"Guilherme"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    <span class="token property">"code"</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+    <span class="token property">"deliveryDate"</span><span class="token operator">:</span> <span class="token string">"2024-10-18T13:38:32.823Z[UTC]"</span><span class="token punctuation">,</span>
+    <span class="token property">"purchaseDate"</span><span class="token operator">:</span> <span class="token string">"2024-10-18T13:38:32.823Z[UTC]"</span><span class="token punctuation">,</span>
+    <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"Goncalo"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+</ul>
+<br>
+<h4 id="get-orderscode"><code>GET /orders/{code}</code> </h4>
+<p>Um Gestor consulta uma Encomenda efetuada. Este método pode também ser usado por um Cliente que deseje consultar uma Encomenda efetuada por si.</p>
+<ul>
+<li>
+<p><strong>URL</strong>: <code>/orders/{code}</code></p>
+</li>
+<li>
+<p><strong>Método</strong>: <code>GET</code></p>
+</li>
+<li>
+<p><strong>Headers</strong>:</p>
+<ul>
+<li><code>Content-Type</code>: <code>application/json</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Body</strong>:</p>
+<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"1"</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+<li>
+<p><strong>Response</strong>:</p>
+<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"code"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+  <span class="token property">"deliveryDate"</span><span class="token operator">:</span> <span class="token string">"2024-10-18T13:38:32.822Z[UTC]"</span><span class="token punctuation">,</span>
+  <span class="token property">"purchaseDate"</span><span class="token operator">:</span> <span class="token string">"2024-10-18T13:38:32.822Z[UTC]"</span><span class="token punctuation">,</span>
+  <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"Guilherme"</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+</ul>
+<br>
+<h4 id="get-ordersclientusername"><code>GET /orders/client/{username}</code> </h4>
+<p>Um Cliente consulta todas as suas encomendas realizadas</p>
+<ul>
+<li>
+<p><strong>URL</strong>: <code>/orders/client/{username}</code></p>
+</li>
+<li>
+<p><strong>Método</strong>: <code>GET</code></p>
+</li>
+<li>
+<p><strong>Headers</strong>:</p>
+<ul>
+<li><code>Content-Type</code>: <code>application/json</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Body</strong>:</p>
+<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"Goncalo"</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+<li>
+<p><strong>Response</strong>:</p>
+<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"code"</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+  <span class="token property">"deliveryDate"</span><span class="token operator">:</span> <span class="token string">"2024-10-18T13:38:32.823Z[UTC]"</span><span class="token punctuation">,</span>
+  <span class="token property">"purchaseDate"</span><span class="token operator">:</span> <span class="token string">"2024-10-18T13:38:32.823Z[UTC]"</span><span class="token punctuation">,</span>
+  <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"Goncalo"</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+</ul>
+<br>
 <hr>
 <h3 id="powered-by"><code>Powered By</code> </h3>
 <h4 id="2222051-gonçalo-ferreira"><code>2222051</code> Gonçalo Ferreira </h4>
@@ -199,7 +371,7 @@
 <h4 id="2222313-dinis-roxo"><code>2222313</code> Dinis Roxo </h4>
 <hr>
 <h3 id="cliente"><code>Cliente</code> </h3>
-<h4 id="professor-joão-ferreira">Professor João Ferreira </h4>
+<h4 id="professor-joão-ferreira"><code>Professor</code> João Ferreira </h4>
 <hr>
 <p><img src="img/github.png" alt="Imagem Esquerda"></p>
 
