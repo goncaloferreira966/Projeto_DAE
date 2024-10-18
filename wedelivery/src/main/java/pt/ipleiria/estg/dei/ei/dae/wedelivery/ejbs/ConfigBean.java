@@ -5,6 +5,7 @@ import jakarta.ejb.Singleton;
 import jakarta.ejb.Startup;
 
 import java.util.Date;
+import java.util.UUID;
 
 @Singleton
 @Startup
@@ -31,8 +32,11 @@ public class ConfigBean {
 
         managerBean.create("rui@mgmail.pt", "Rui", "Rui", "Rui");
 
-        orderBean.create(1, new Date(), new Date(), "Guilherme");
-        orderBean.create(2, new Date(), new Date(), "Guilherme");
-        orderBean.create(3, new Date(), new Date(), "Goncalo");
+
+        orderBean.create(Math.abs(UUID.randomUUID().hashCode()), new Date(), new Date(), "Guilherme");
+        orderBean.create(Math.abs(UUID.randomUUID().hashCode()), new Date(), new Date(), "Guilherme");
+        orderBean.create(Math.abs(UUID.randomUUID().hashCode()), new Date(), new Date(), "Goncalo");
+        orderBean.create(Math.abs(UUID.randomUUID().hashCode()), new Date(), new Date(), "Goncalo");
+        orderBean.create(Math.abs(UUID.randomUUID().hashCode()), new Date(), new Date(), "Goncalo");
     }
 }
