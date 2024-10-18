@@ -12,7 +12,7 @@ public class ClientBean {
     private EntityManager entityManager;
 
     public void create(String username, String password, String name, String email, int nif, String postalCode, String country, String city, String address) {
-        var client = new Client(email, name, password, username, nif, postalCode, country, city, address);
+        var client = new Client(email, name, password, username, nif, postalCode, city, country, address);
         entityManager.persist(client);
     }
 
