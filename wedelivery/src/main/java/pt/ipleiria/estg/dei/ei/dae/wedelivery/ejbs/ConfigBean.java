@@ -3,6 +3,9 @@ import jakarta.annotation.PostConstruct;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Singleton;
 import jakarta.ejb.Startup;
+
+import java.util.Date;
+
 @Singleton
 @Startup
 public class ConfigBean {
@@ -13,6 +16,8 @@ public class ConfigBean {
     private AdministratorBean administratorBean;
     @EJB
     private ManagerBean managerBean;
+    @EJB
+    private OrderBean orderBean;
 
     @PostConstruct
     public void populateDB() {
@@ -25,5 +30,9 @@ public class ConfigBean {
         administratorBean.create("Gui@gmail.com", "Guilherme Cruz", "password", "Gui0000");
 
         managerBean.create("rui@mgmail.pt", "Rui", "Rui", "Rui");
+
+        orderBean.create(1, new Date(), new Date(), "Guilherme");
+        orderBean.create(2, new Date(), new Date(), "Guilherme");
+        orderBean.create(3, new Date(), new Date(), "Goncalo");
     }
 }
