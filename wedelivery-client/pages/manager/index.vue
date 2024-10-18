@@ -51,7 +51,7 @@
           <div class="col-lg-4 col-md-6 mb-4" v-for="order in filteredOrders" :key="order.code">
             <div class="card border-secondary">
               <div class="card-header bg-secondary text-white">
-                Order #{{ order.code }}
+                Order #{{ order.code }}  
               </div>
               <div class="card-body">
                 <p><strong>Username:</strong> {{ order.username }}</p>
