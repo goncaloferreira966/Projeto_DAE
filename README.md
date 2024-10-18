@@ -19,8 +19,6 @@ Esta API permite responder a todo o tipo de Pedidos necessários ao negócio da 
 ## Endpoints
 
 ### 1. **Autenticação**
-<br />
-
 #### `POST /auth/login`
 
 Um User inicia sessão e recebe, para sua segurança, um token JWT.
@@ -42,11 +40,8 @@ Um User inicia sessão e recebe, para sua segurança, um token JWT.
     "expires_in": 3600
   }
 <br />
-<br />
 
 ### 2. **Administradores**
-<br />
-
 #### `GET /administrators`
 
 Um Administrador consulta a listagem de todos os Administradores Registados.
@@ -95,7 +90,6 @@ Um Administrador consulta o perfil de um Administrador.
     "password":"password",
     "username":"DinisRX"
   }
-<br />
 <br />
 
 ### 3. **Gestores**
@@ -147,7 +141,6 @@ Um Administrador consulta o perfil de um Gestor.
     "password":"password",
     "username":"RuiM100"
   }
-<br />
 <br />
 
 ### 4. **Clientes**
@@ -214,8 +207,6 @@ Um Administrador consulta o perfil de um Cliente.
     "username": "Goncalo"
   }
 <br />
-<br />
-
 
 ### 5. **Encomendas**
 #### `GET /orders`
