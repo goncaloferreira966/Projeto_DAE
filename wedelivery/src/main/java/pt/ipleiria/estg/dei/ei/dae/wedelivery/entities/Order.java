@@ -8,6 +8,10 @@ import java.util.Date;
         @NamedQuery(
                 name = "getAllOrders",
                 query = "SELECT o FROM Order o" // JPQL
+        ),
+        @NamedQuery(
+                name = "getAllOrdersByClient",
+                query = "SELECT o FROM Order o WHERE o.client.username = :username"
         )
 })
 @Table(name = "orders")

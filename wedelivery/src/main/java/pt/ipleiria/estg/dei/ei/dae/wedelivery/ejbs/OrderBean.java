@@ -27,6 +27,12 @@ public class OrderBean {
         return entityManager.createNamedQuery("getAllOrders", Order.class).getResultList();
     }
 
+    public List<Order> findOrdersByClientId(String username) {
+        return entityManager.createNamedQuery("getAllOrdersByClient", Order.class)
+                .setParameter("username", username)
+                .getResultList();
+    }
+
     public Order find(long code) {
         var order = entityManager.find(Order.class, code);
         if (order == null) {
