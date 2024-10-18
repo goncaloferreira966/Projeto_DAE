@@ -10,15 +10,25 @@ public class ClientDTO implements Serializable {
     private String password;
     private String name;
     private String email;
+    private int nif;
+    private String postalCode;
+    private String city;
+    private String country;
+    private String address;
 
     public ClientDTO() {
     }
 
-    public ClientDTO(String username, String password, String name, String email) {
+    public ClientDTO(String username, String password, String name, String email, int nif, String postalCode, String city, String country, String address) {
         this.username = username;
         this.password = password;
         this.name = name;
         this.email = email;
+        this.nif = nif;
+        this.postalCode = postalCode;
+        this.city = city;
+        this.country = country;
+        this.address = address;
     }
 
     // Converts an entity  to a DTO client class
@@ -27,7 +37,12 @@ public class ClientDTO implements Serializable {
                 client.getUsername(),
                 client.getPassword(),
                 client.getName(),
-                client.getEmail()
+                client.getEmail(),
+                client.getNif(),
+                client.getPostalCode(),
+                client.getCity(),
+                client.getCountry(),
+                client.getAddress()
         );
     }
 
@@ -52,6 +67,26 @@ public class ClientDTO implements Serializable {
         return email;
     }
 
+    public int getNif() {
+        return nif;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
     public void setUsername(String username) {
         this.username = username;
     }
@@ -68,5 +103,23 @@ public class ClientDTO implements Serializable {
         this.email = email;
     }
 
+    public void setNif(int nif) {
+        this.nif = nif;
+    }
 
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 }

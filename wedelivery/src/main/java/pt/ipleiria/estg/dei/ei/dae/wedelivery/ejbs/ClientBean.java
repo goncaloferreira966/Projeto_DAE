@@ -11,8 +11,8 @@ public class ClientBean {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public void create(String username, String password, String name, String email) {
-        var client = new Client(username, password, name, email);
+    public void create(String username, String password, String name, String email, int nif, String postalCode, String country, String city, String address) {
+        var client = new Client(email, name, password, username, nif, postalCode, country, city, address);
         entityManager.persist(client);
     }
 

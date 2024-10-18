@@ -16,9 +16,9 @@ public class ConfigBean {
 
     @PostConstruct
     public void populateDB() {
-        clientBean.create("Goncalo", "password", "Gonçalo", "goncalo@gmail.com");
-        clientBean.create("Guilherme", "password", "Guilherme", "guilherme@gmail.com");
-        clientBean.create( "Cristiano", "password", "Papai Cris", "cr7@gmail.com");
+        clientBean.create("Goncalo", "password", "Gonçalo", "goncalo@gmail.com", 123123123, "2565-834", "PT", "Leiria", "Rua das Igrejas");
+        clientBean.create("Guilherme", "password", "Guilherme", "guilherme@gmail.com" ,123123124, "2565-834", "PT", "Leiria", "Rua das Igrejas");
+        clientBean.create( "Cristiano", "password", "Papai Cris", "cr7@gmail.com", 123123125, "2565-834", "PT", "Leiria", "Rua das Igrejas");
 
         administratorBean.create("Goncalo@gmail.com", "Goncalo Ferreira", "password", "GoncaloF00");
         administratorBean.create("Dinis@gmail.com", "Dinis Roxo", "password", "DinisRX");

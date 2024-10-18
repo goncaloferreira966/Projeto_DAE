@@ -6,7 +6,6 @@ import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.ClientBean;
 import jakarta.ejb.EJB;
 import jakarta.ws.rs.core.MediaType;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Client;
-
 import java.util.List;
 
 @Path("clients") // relative url web path for this service
@@ -36,7 +35,12 @@ public class ClientService {
                 clientDTO.getUsername(),
                 clientDTO.getPassword(),
                 clientDTO.getName(),
-                clientDTO.getEmail()
+                clientDTO.getEmail(),
+                clientDTO.getNif(),
+                clientDTO.getPostalCode(),
+                clientDTO.getCountry(),
+                clientDTO.getCity(),
+                clientDTO.getAddress()
         );
         Client newClient = clientBean.find(clientDTO.getUsername());
         return Response.status(Response.Status.CREATED)
