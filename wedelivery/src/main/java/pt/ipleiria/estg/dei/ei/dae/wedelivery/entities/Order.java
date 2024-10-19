@@ -15,6 +15,10 @@ import java.util.List;
         @NamedQuery(
                 name = "getAllOrdersByClient",
                 query = "SELECT o FROM Order o WHERE o.client.username = :username"
+        ),
+        @NamedQuery(
+            name = "getAllOrdersByOperator",
+            query = "SELECT o FROM Order o WHERE o.operator.username = :username"
         )
 })
 @Table(name = "orders")
@@ -34,21 +38,43 @@ public class Order implements Serializable {
             )
     )
     private Client client;
+    @ManyToOne
+    @JoinTable(
+            name = "order_operator",
+            joinColumns = @JoinColumn(
+                    name = "order_code",
+                    referencedColumnName = "code"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "operator_username",
+                    referencedColumnName = "username"
+            )
+    )
+    private Operator operator;
     private Date purchaseDate;
     private Date deliveryDate;
     @NotNull
     private String state;
 
-    public Order(Date deliveryDate, Date purchaseDate, Client client, long code, String state) {
+    public Order(Date deliveryDate, Date purchaseDate, Client client, Operator operator , long code, String state) {
         this.deliveryDate = deliveryDate;
         this.purchaseDate = purchaseDate;
         this.client = client;
         this.code = code;
         this.state = state;
+        this.operator = operator;
     }
 
     public Order() {
 
+    }
+
+    public Operator getOperator() {
+        return operator;
+    }
+
+    public void setOperator(Operator operator) {
+        this.operator = operator;
     }
 
     public long getCode() {

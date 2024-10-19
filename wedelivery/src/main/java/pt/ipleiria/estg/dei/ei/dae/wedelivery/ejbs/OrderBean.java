@@ -16,9 +16,14 @@ public class OrderBean {
     @EJB
     private ClientBean clientBean;
 
-    public void create(long code, Date deliveryDate, Date purchaseDate, String username, String state) {
+    @EJB
+    private OperatorBean operatorBean;
+
+
+    public void create(long code, Date deliveryDate, Date purchaseDate, String username, String usernameOperator, String state) {
         var client = clientBean.find(username);
-        var order = new Order(deliveryDate, purchaseDate, client, code, state);
+        var operator = operatorBean.find(usernameOperator);
+        var order = new Order(deliveryDate, purchaseDate, client, operator, code, state);
         entityManager.persist(order);
     }
 
@@ -29,6 +34,12 @@ public class OrderBean {
 
     public List<Order> findOrdersByClientId(String username) {
         return entityManager.createNamedQuery("getAllOrdersByClient", Order.class)
+                .setParameter("username", username)
+                .getResultList();
+    }
+
+    public List<Order> findOrdersByOperatorId(String username) {
+        return entityManager.createNamedQuery("getAllOrdersByOperator", Order.class)
                 .setParameter("username", username)
                 .getResultList();
     }

@@ -224,21 +224,24 @@ Um Gestor consulta a listagem de todos as Encomendas efetuadas.
       "deliveryDate": "2024-10-18T13:38:32.822Z[UTC]",
       "purchaseDate": "2024-10-18T13:38:32.822Z[UTC]",
       "username": "Guilherme",
-      "state": "In Distribution"
+      "state": "In Distribution",
+      "usernameOperator": "DinisRX"
     },
     {
       "code": 2,
       "deliveryDate": "2024-10-18T13:38:32.823Z[UTC]",
       "purchaseDate": "2024-10-18T13:38:32.823Z[UTC]",
       "username": "Guilherme",
-      "state": "In Distribution"
+      "state": "In Distribution",
+      "usernameOperator": "DinisRX"
     },
     {
       "code": 3,
       "deliveryDate": "2024-10-18T13:38:32.823Z[UTC]",
       "purchaseDate": "2024-10-18T13:38:32.823Z[UTC]",
       "username": "Goncalo",
-      "state": "In Distribution"
+      "state": "In Distribution",
+      "usernameOperator": "DinisRX"
     }
   }
 <br />
@@ -264,7 +267,8 @@ Um Gestor consulta uma Encomenda efetuada. Este método pode também ser usado p
     "deliveryDate": "2024-10-18T13:38:32.822Z[UTC]",
     "purchaseDate": "2024-10-18T13:38:32.822Z[UTC]",
     "username": "Guilherme",
-    "state": "In Distribution"
+    "state": "In Distribution",
+    "usernameOperator": "DinisRX"
   }
 <br />
 
@@ -289,7 +293,34 @@ Um Cliente consulta todas as suas encomendas realizadas
     "deliveryDate": "2024-10-18T13:38:32.823Z[UTC]",
     "purchaseDate": "2024-10-18T13:38:32.823Z[UTC]",
     "username": "Goncalo",
-    "state": "In Distribution"
+    "state": "In Distribution",
+    "usernameOperator": "DinisRX"
+  }
+<br />
+
+#### `GET /orders/operator/{username}`
+
+Um Operador consulta todas as encomendas a si associadas.
+
+- **URL**: `/orders/operator/{username}`
+- **Método**: `GET`
+- **Headers**: 
+  - `Content-Type`: `application/json`
+
+- **Body**:
+  ```json
+  {
+    "username": "DinisRX"
+  }
+- **Response**:
+  ```json
+  {
+    "code": 3,
+    "deliveryDate": "2024-10-18T13:38:32.823Z[UTC]",
+    "purchaseDate": "2024-10-18T13:38:32.823Z[UTC]",
+    "username": "Goncalo",
+    "state": "In Distribution",
+    "usernameOperator": "DinisRX"
   }
 <br />
 
