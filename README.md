@@ -41,7 +41,7 @@ Um User inicia sessão e recebe, para sua segurança, um token JWT.
   }
 <br />
 
-### 2. **Administradores**
+### 2. **Operadores**
 #### `GET /operators`
 
 Um Administrador consulta a listagem de todos os Operadores Registados.
