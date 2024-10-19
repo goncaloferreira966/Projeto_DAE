@@ -1,5 +1,7 @@
 package pt.ipleiria.estg.dei.ei.dae.wedelivery.entities;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -34,12 +36,15 @@ public class Order implements Serializable {
     private Client client;
     private Date purchaseDate;
     private Date deliveryDate;
+    @NotNull
+    private String state;
 
-    public Order(Date deliveryDate, Date purchaseDate, Client client, long code) {
+    public Order(Date deliveryDate, Date purchaseDate, Client client, long code, String state) {
         this.deliveryDate = deliveryDate;
         this.purchaseDate = purchaseDate;
         this.client = client;
         this.code = code;
+        this.state = state;
     }
 
     public Order() {
@@ -52,6 +57,14 @@ public class Order implements Serializable {
 
     public Client getClient() {
         return client;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     public Date getPurchaseDate() {

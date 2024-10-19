@@ -223,19 +223,22 @@ Um Gestor consulta a listagem de todos as Encomendas efetuadas.
       "code": 1,
       "deliveryDate": "2024-10-18T13:38:32.822Z[UTC]",
       "purchaseDate": "2024-10-18T13:38:32.822Z[UTC]",
-      "username": "Guilherme"
+      "username": "Guilherme",
+      "state": "In Distribution"
     },
     {
       "code": 2,
       "deliveryDate": "2024-10-18T13:38:32.823Z[UTC]",
       "purchaseDate": "2024-10-18T13:38:32.823Z[UTC]",
-      "username": "Guilherme"
+      "username": "Guilherme",
+      "state": "In Distribution"
     },
     {
       "code": 3,
       "deliveryDate": "2024-10-18T13:38:32.823Z[UTC]",
       "purchaseDate": "2024-10-18T13:38:32.823Z[UTC]",
-      "username": "Goncalo"
+      "username": "Goncalo",
+      "state": "In Distribution"
     }
   }
 <br />
@@ -260,7 +263,8 @@ Um Gestor consulta uma Encomenda efetuada. Este método pode também ser usado p
     "code": 1,
     "deliveryDate": "2024-10-18T13:38:32.822Z[UTC]",
     "purchaseDate": "2024-10-18T13:38:32.822Z[UTC]",
-    "username": "Guilherme"
+    "username": "Guilherme",
+    "state": "In Distribution"
   }
 <br />
 
@@ -284,7 +288,8 @@ Um Cliente consulta todas as suas encomendas realizadas
     "code": 3,
     "deliveryDate": "2024-10-18T13:38:32.823Z[UTC]",
     "purchaseDate": "2024-10-18T13:38:32.823Z[UTC]",
-    "username": "Goncalo"
+    "username": "Goncalo",
+    "state": "In Distribution"
   }
 <br />
 

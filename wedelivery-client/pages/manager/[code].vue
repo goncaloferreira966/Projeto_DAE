@@ -36,12 +36,14 @@
             <tr>
               <th>Code</th>
               <th>Purchase Date</th>
+              <th>State</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>{{ order.code }}</td>
               <td>{{ order.purchaseDate }}</td>
+              <td>{{ order.state }}</td>
             </tr>
           </tbody>
         </table>

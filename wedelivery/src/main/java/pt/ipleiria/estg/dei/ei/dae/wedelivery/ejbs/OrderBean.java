@@ -16,9 +16,9 @@ public class OrderBean {
     @EJB
     private ClientBean clientBean;
 
-    public void create(long code, Date deliveryDate, Date purchaseDate, String username) {
+    public void create(long code, Date deliveryDate, Date purchaseDate, String username, String state) {
         var client = clientBean.find(username);
-        var order = new Order(deliveryDate, purchaseDate, client, code);
+        var order = new Order(deliveryDate, purchaseDate, client, code, state);
         entityManager.persist(order);
     }
 

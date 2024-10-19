@@ -3,7 +3,6 @@ import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Operator;
-
 import java.util.List;
 
 @Stateless
@@ -24,7 +23,7 @@ public class OperatorBean {
     public Operator find(String username) {
         var admin = entityManager.find(Operator.class, username);
         if (admin == null) {
-            throw new RuntimeException("admin " + username + " not found");
+            throw new RuntimeException("operator " + username + " not found");
         }
         return admin;
     }

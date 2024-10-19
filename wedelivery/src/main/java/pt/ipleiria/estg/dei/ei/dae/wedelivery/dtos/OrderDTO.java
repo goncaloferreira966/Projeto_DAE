@@ -10,12 +10,14 @@ public class OrderDTO implements Serializable {
     private String username;
     private Date purchaseDate;
     private Date deliveryDate;
+    private String state;
 
-    public OrderDTO(long code, String username, Date purchaseDate, Date deliveryDate) {
+    public OrderDTO(long code, String username, Date purchaseDate, Date deliveryDate, String state) {
         this.code = code;
         this.username = username;
         this.purchaseDate = purchaseDate;
         this.deliveryDate = deliveryDate;
+        this.state = state;
     }
 
     public OrderDTO() {
@@ -27,13 +29,22 @@ public class OrderDTO implements Serializable {
                 order.getCode(),
                 order.getClient().getUsername(),
                 order.getPurchaseDate(),
-                order.getDeliveryDate()
+                order.getDeliveryDate(),
+                order.getState()
         );
     }
 
     // converts an entire list of entities into a list of DTOs
     public static List<OrderDTO> from(List<Order> orders) {
         return orders.stream().map(OrderDTO::from).collect(Collectors.toList());
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     public long getCode() {
