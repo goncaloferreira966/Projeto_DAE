@@ -14,7 +14,7 @@ public class ConfigBean {
     @EJB
     private ClientBean clientBean;
     @EJB
-    private AdministratorBean administratorBean;
+    private OperatorBean operatorBean;
     @EJB
     private ManagerBean managerBean;
     @EJB
@@ -26,9 +26,9 @@ public class ConfigBean {
         clientBean.create("Guilherme", "password", "Guilherme", "guilherme@gmail.com" ,123123124, "2565-834", "PT", "Leiria", "Rua das Igrejas");
         clientBean.create( "Cristiano", "password", "Papai Cris", "cr7@gmail.com", 123123125, "2565-834", "PT", "Leiria", "Rua das Igrejas");
 
-        administratorBean.create("Goncalo@gmail.com", "Goncalo Ferreira", "password", "GoncaloF00");
-        administratorBean.create("Dinis@gmail.com", "Dinis Roxo", "password", "DinisRX");
-        administratorBean.create("Gui@gmail.com", "Guilherme Cruz", "password", "Gui0000");
+        operatorBean.create("Goncalo@gmail.com", "Goncalo Ferreira", "password", "GoncaloF00");
+        operatorBean.create("Dinis@gmail.com", "Dinis Roxo", "password", "DinisRX");
+        operatorBean.create("Gui@gmail.com", "Guilherme Cruz", "password", "Gui0000");
 
         managerBean.create("rui@mgmail.pt", "Rui", "Rui", "Rui");
 

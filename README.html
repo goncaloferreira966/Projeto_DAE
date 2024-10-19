@@ -43,7 +43,6 @@
 <hr>
 <h2 id="endpoints">Endpoints </h2>
 <h3 id="1-autenticação">1. <strong>Autenticação</strong> </h3>
-<br>
 <h4 id="post-authlogin"><code>POST /auth/login</code> </h4>
 <p>Um User inicia sessão e recebe, para sua segurança, um token JWT.</p>
 <ul>
@@ -66,13 +65,11 @@
 </code></pre></li>
 </ul>
 <br>
-<br>
 <h3 id="2-administradores">2. <strong>Administradores</strong> </h3>
-<br>
-<h4 id="get-administrators"><code>GET /administrators</code> </h4>
-<p>Um Administrador consulta a listagem de todos os Administradores Registados.</p>
+<h4 id="get-operators"><code>GET /operators</code> </h4>
+<p>Um Administrador consulta a listagem de todos os Operadores Registados.</p>
 <ul>
-<li><strong>URL</strong>: <code>/administrators</code></li>
+<li><strong>URL</strong>: <code>/operators</code></li>
 <li><strong>Método</strong>: <code>GET</code></li>
 <li><strong>Headers</strong>:
 <ul>
@@ -96,11 +93,11 @@
 </code></pre></li>
 </ul>
 <br>
-<h4><code>GET /administrators/{username}</code></h4>
-<p>Um Administrador consulta o perfil de um Administrador.</p>
+<h4><code>GET /operators/{username}</code></h4>
+<p>Um Administrador consulta o perfil de um Operador.</p>
 <ul>
 <li>
-<p><strong>URL</strong>: <code>/administrators/{username}</code></p>
+<p><strong>URL</strong>: <code>/operators/{username}</code></p>
 </li>
 <li>
 <p><strong>Método</strong>: <code>GET</code></p>
@@ -127,7 +124,6 @@
 <span class="token punctuation">}</span>
 </code></pre></li>
 </ul>
-<br>
 <br>
 <h3>3. <strong>Gestores</strong></h3>
 <h4><code>GET /managers</code></h4>
@@ -188,7 +184,6 @@
 <span class="token punctuation">}</span>
 </code></pre></li>
 </ul>
-<br>
 <br>
 <h3 id="4-clientes">4. <strong>Clientes</strong> </h3>
 <h4 id="get-clients"><code>GET /clients</code> </h4>
@@ -264,7 +259,6 @@
 <span class="token punctuation">}</span>
 </code></pre></li>
 </ul>
-<br>
 <br>
 <h3>5. <strong>Encomendas</strong></h3>
 <h4><code>GET /orders</code></h4>

@@ -3,43 +3,43 @@ import jakarta.ejb.EJB;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.AdministratorDTO;
-import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.AdministratorBean;
-import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Administrator;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.OperatorDTO;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.OperatorBean;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Operator;
 import java.util.List;
 
-@Path("administrators") // relative url web path for this service
+@Path("operators") // relative url web path for this service
 @Produces({MediaType.APPLICATION_JSON}) // injects header “Content-Type: application/json”
 @Consumes({MediaType.APPLICATION_JSON}) // injects header “Accept: application/json”
-public class AdministratorService {
+public class OperatorService {
     @EJB
-    private AdministratorBean administratorBean;
+    private OperatorBean administratorBean;
 
     @GET // means: to call this endpoint, we need to use the HTTP GET method
     @Path("/") // means: the relative url path is “/api/clients/”
-    public List<AdministratorDTO> getAllAdministrators() {
-        return AdministratorDTO.from(administratorBean.findAll());
+    public List<OperatorDTO> getAllOperators() {
+        return OperatorDTO.from(administratorBean.findAll());
     }
 
     @GET
     @Path("{username}")
-    public Response getAdministrator(@PathParam("username") String username) {
+    public Response getOperator(@PathParam("username") String username) {
         var admin = administratorBean.find(username);
-        return Response.ok(AdministratorDTO.from(admin)).build();
+        return Response.ok(OperatorDTO.from(admin)).build();
     }
 
     @POST
     @Path("/")
-    public Response createNewAdministrator (AdministratorDTO administratorDTO) {
+    public Response createNewOperator (OperatorDTO administratorDTO) {
         administratorBean.create(
                 administratorDTO.getUsername(),
                 administratorDTO.getPassword(),
                 administratorDTO.getName(),
                 administratorDTO.getEmail()
         );
-        Administrator newAdministrator = administratorBean.find(administratorDTO.getUsername());
+        Operator newOperator = administratorBean.find(administratorDTO.getUsername());
         return Response.status(Response.Status.CREATED)
-                .entity(AdministratorDTO.from(newAdministrator))
+                .entity(OperatorDTO.from(newOperator))
                 .build();
     }
 }

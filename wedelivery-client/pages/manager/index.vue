@@ -56,7 +56,6 @@
               <div class="card-body">
                 <p><strong>Username:</strong> {{ order.username }}</p>
                 <p><strong>Purchase Date:</strong> {{ order.purchaseDate }}</p>
-                <p><strong>Delivery Date:</strong> {{ order.deliveryDate }}</p>
                 <nuxt-link :to="`/manager/${order.code}`" class="btn btn-dark btn-block btn-sm">View Details</nuxt-link>
               </div>
             </div>

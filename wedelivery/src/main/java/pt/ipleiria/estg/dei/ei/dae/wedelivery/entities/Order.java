@@ -2,6 +2,7 @@ package pt.ipleiria.estg.dei.ei.dae.wedelivery.entities;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @NamedQueries({

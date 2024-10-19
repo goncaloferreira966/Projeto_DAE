@@ -42,11 +42,11 @@ Um User inicia sessão e recebe, para sua segurança, um token JWT.
 <br />
 
 ### 2. **Administradores**
-#### `GET /administrators`
+#### `GET /operators`
 
-Um Administrador consulta a listagem de todos os Administradores Registados.
+Um Administrador consulta a listagem de todos os Operadores Registados.
 
-- **URL**: `/administrators`
+- **URL**: `/operators`
 - **Método**: `GET`
 - **Headers**: 
   - `Content-Type`: `application/json`
@@ -68,11 +68,11 @@ Um Administrador consulta a listagem de todos os Administradores Registados.
   }
 <br />
 
-#### `GET /administrators/{username}`
+#### `GET /operators/{username}`
 
-Um Administrador consulta o perfil de um Administrador.
+Um Administrador consulta o perfil de um Operador.
 
-- **URL**: `/administrators/{username}`
+- **URL**: `/operators/{username}`
 - **Método**: `GET`
 - **Headers**: 
   - `Content-Type`: `application/json`

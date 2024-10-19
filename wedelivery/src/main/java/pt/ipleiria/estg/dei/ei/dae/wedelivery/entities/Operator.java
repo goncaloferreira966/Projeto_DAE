@@ -7,14 +7,14 @@ import java.io.Serializable;
 @Entity
 @NamedQueries({
         @NamedQuery(
-                name = "getAllAdministrators",
-                query = "SELECT a FROM Administrator a ORDER BY a.name" // JPQL
+                name = "getAllOperators",
+                query = "SELECT a FROM Operator a ORDER BY a.name" // JPQL
         )
 })
-public class Administrator extends User implements Serializable {
-    public Administrator(String email, String name, String password, String username) {
+public class Operator extends User implements Serializable {
+    public Operator(String email, String name, String password, String username) {
         super(email, name, password, username);
     }
-    public Administrator() {
+    public Operator() {
     }
 }

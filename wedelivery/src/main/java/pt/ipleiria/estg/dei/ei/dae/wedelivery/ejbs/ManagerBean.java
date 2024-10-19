@@ -2,7 +2,6 @@ package pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Administrator;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Manager;
 
 import java.util.List;
