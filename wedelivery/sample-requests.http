@@ -2,6 +2,19 @@
 GET http://localhost:8080/wedelivery/api/clients
 Accept: application/json
 
+### Get All managers
+GET http://localhost:8080/wedelivery/api/managers
+Accept: application/json
+
+### Get All operators
+GET http://localhost:8080/wedelivery/api/operators
+Accept: application/json
+
+### Get All orders
+GET http://localhost:8080/wedelivery/api/orders
+Accept: application/json
+
+
 ### Create A New client
 POST http://localhost:8080/wedelivery/api/clients
 Content-Type: application/json
@@ -39,5 +52,18 @@ Content-Type: application/json
   "name": "Ana",
   "username": "Ana",
   "password": "password"
+}
+
+### Create A New order
+POST http://localhost:8080/wedelivery/api/orders
+Content-Type: application/json
+
+{
+  "code": 1930548778,
+  "deliveryDate": "2024-10-20T23:02:22.383Z[UTC]",
+  "purchaseDate": "2024-10-20T23:02:22.383Z[UTC]",
+  "state": "Pending",
+  "username": "Guilherme",
+  "usernameOperator": "DinisRX"
 }
 

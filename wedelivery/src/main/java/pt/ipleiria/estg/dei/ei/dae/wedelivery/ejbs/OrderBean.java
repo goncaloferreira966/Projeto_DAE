@@ -19,7 +19,6 @@ public class OrderBean {
     @EJB
     private OperatorBean operatorBean;
 
-
     public void create(long code, Date deliveryDate, Date purchaseDate, String username, String usernameOperator, String state) {
         var client = clientBean.find(username);
         var operator = operatorBean.find(usernameOperator);

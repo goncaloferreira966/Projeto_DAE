@@ -125,6 +125,32 @@
 </code></pre></li>
 </ul>
 <br>
+<h4><code>POST /operators</code></h4>
+<p>Um Operador efetua o registo na plataforma do sistema.</p>
+<ul>
+<li><strong>URL</strong>: <code>/operators</code></li>
+<li><strong>Método</strong>: <code>POST</code></li>
+<li><strong>Headers</strong>:
+<ul>
+<li><code>Content-Type</code>: <code>application/json</code></li>
+</ul>
+</li>
+<li><strong>Body</strong>:<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"email"</span><span class="token operator">:</span> <span class="token string">"ana@mail.com"</span><span class="token punctuation">,</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Ana"</span><span class="token punctuation">,</span>
+  <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"Ana"</span><span class="token punctuation">,</span>
+  <span class="token property">"password"</span><span class="token operator">:</span> <span class="token string">"password"</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+<li><strong>Response</strong>:<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"email"</span><span class="token operator">:</span> <span class="token string">"ana@mail.com"</span><span class="token punctuation">,</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Ana"</span><span class="token punctuation">,</span>
+  <span class="token property">"password"</span><span class="token operator">:</span> <span class="token string">"password"</span><span class="token punctuation">,</span>
+  <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"Ana"</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+</ul>
+<br>
 <h3>3. <strong>Gestores</strong></h3>
 <h4><code>GET /managers</code></h4>
 <p>Um Administrador consulta a listagem de todos os Gestores Registados.</p>
@@ -181,6 +207,32 @@
   <span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"Rui Manager"</span><span class="token punctuation">,</span>
   <span class="token property">"password"</span><span class="token operator">:</span><span class="token string">"password"</span><span class="token punctuation">,</span>
   <span class="token property">"username"</span><span class="token operator">:</span><span class="token string">"RuiM100"</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+</ul>
+<br>
+<h4 id="post-managers"><code>POST /managers</code> </h4>
+<p>Um Gestor efetua o registo na plataforma do sistema.</p>
+<ul>
+<li><strong>URL</strong>: <code>/managers</code></li>
+<li><strong>Método</strong>: <code>POST</code></li>
+<li><strong>Headers</strong>:
+<ul>
+<li><code>Content-Type</code>: <code>application/json</code></li>
+</ul>
+</li>
+<li><strong>Body</strong>:<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"email"</span><span class="token operator">:</span> <span class="token string">"margarida@mail.com"</span><span class="token punctuation">,</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Margarida"</span><span class="token punctuation">,</span>
+  <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"Margarida"</span><span class="token punctuation">,</span>
+  <span class="token property">"password"</span><span class="token operator">:</span> <span class="token string">"password"</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+<li><strong>Response</strong>:<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"email"</span><span class="token operator">:</span> <span class="token string">"margarida@mail.com"</span><span class="token punctuation">,</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Margarida"</span><span class="token punctuation">,</span>
+  <span class="token property">"password"</span><span class="token operator">:</span> <span class="token string">"password"</span><span class="token punctuation">,</span>
+  <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"Margarida"</span>
 <span class="token punctuation">}</span>
 </code></pre></li>
 </ul>
@@ -256,6 +308,43 @@
   <span class="token property">"password"</span><span class="token operator">:</span> <span class="token string">"password"</span><span class="token punctuation">,</span>
   <span class="token property">"postalCode"</span><span class="token operator">:</span> <span class="token string">"2565-834"</span><span class="token punctuation">,</span>
   <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"Goncalo"</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+</ul>
+<br>
+<h4><code>POST /clients</code></h4>
+<p>Um Cliente efetua o registo na plataforma do sistema.</p>
+<ul>
+<li><strong>URL</strong>: <code>/clients</code></li>
+<li><strong>Método</strong>: <code>POST</code></li>
+<li><strong>Headers</strong>:
+<ul>
+<li><code>Content-Type</code>: <code>application/json</code></li>
+</ul>
+</li>
+<li><strong>Body</strong>:<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"john"</span><span class="token punctuation">,</span>
+  <span class="token property">"email"</span><span class="token operator">:</span> <span class="token string">"johndoe@mail.com"</span><span class="token punctuation">,</span>
+  <span class="token property">"password"</span><span class="token operator">:</span> <span class="token string">"jd"</span><span class="token punctuation">,</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"John Doe"</span><span class="token punctuation">,</span>
+  <span class="token property">"courseCode"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+  <span class="token property">"nif"</span><span class="token operator">:</span> <span class="token number">444555666</span><span class="token punctuation">,</span>
+  <span class="token property">"postalCode"</span><span class="token operator">:</span> <span class="token string">"2565-834"</span><span class="token punctuation">,</span>
+  <span class="token property">"country"</span><span class="token operator">:</span> <span class="token string">"PT"</span><span class="token punctuation">,</span>
+  <span class="token property">"city"</span><span class="token operator">:</span> <span class="token string">"Leiria"</span><span class="token punctuation">,</span>
+  <span class="token property">"address"</span><span class="token operator">:</span> <span class="token string">"Rua x"</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+<li><strong>Response</strong>:<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"address"</span><span class="token operator">:</span> <span class="token string">"Rua x"</span><span class="token punctuation">,</span>
+  <span class="token property">"city"</span><span class="token operator">:</span> <span class="token string">"Leiria"</span><span class="token punctuation">,</span>
+  <span class="token property">"country"</span><span class="token operator">:</span> <span class="token string">"PT"</span><span class="token punctuation">,</span>
+  <span class="token property">"email"</span><span class="token operator">:</span> <span class="token string">"johndoe@mail.com"</span><span class="token punctuation">,</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"John Doe"</span><span class="token punctuation">,</span>
+  <span class="token property">"nif"</span><span class="token operator">:</span> <span class="token number">444555666</span><span class="token punctuation">,</span>
+  <span class="token property">"password"</span><span class="token operator">:</span> <span class="token string">"jd"</span><span class="token punctuation">,</span>
+  <span class="token property">"postalCode"</span><span class="token operator">:</span> <span class="token string">"2565-834"</span><span class="token punctuation">,</span>
+  <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"john"</span>
 <span class="token punctuation">}</span>
 </code></pre></li>
 </ul>
@@ -397,6 +486,36 @@
   <span class="token property">"purchaseDate"</span><span class="token operator">:</span> <span class="token string">"2024-10-18T13:38:32.823Z[UTC]"</span><span class="token punctuation">,</span>
   <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"Goncalo"</span><span class="token punctuation">,</span>
   <span class="token property">"state"</span><span class="token operator">:</span> <span class="token string">"In Distribution"</span><span class="token punctuation">,</span>
+  <span class="token property">"usernameOperator"</span><span class="token operator">:</span> <span class="token string">"DinisRX"</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+</ul>
+<br>
+<h4 id="post-orders"><code>POST /orders</code> </h4>
+<p>Um Cliente efetua uma Encomenda e a mesma é criada em sistema.</p>
+<ul>
+<li><strong>URL</strong>: <code>/orders</code></li>
+<li><strong>Método</strong>: <code>POST</code></li>
+<li><strong>Headers</strong>:
+<ul>
+<li><code>Content-Type</code>: <code>application/json</code></li>
+</ul>
+</li>
+<li><strong>Body</strong>:<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"code"</span><span class="token operator">:</span> <span class="token number">1930548778</span><span class="token punctuation">,</span>
+  <span class="token property">"deliveryDate"</span><span class="token operator">:</span> <span class="token string">"2024-10-20T23:02:22.383Z[UTC]"</span><span class="token punctuation">,</span>
+  <span class="token property">"purchaseDate"</span><span class="token operator">:</span> <span class="token string">"2024-10-20T23:02:22.383Z[UTC]"</span><span class="token punctuation">,</span>
+  <span class="token property">"state"</span><span class="token operator">:</span> <span class="token string">"Pending"</span><span class="token punctuation">,</span>
+  <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"Guilherme"</span><span class="token punctuation">,</span>
+  <span class="token property">"usernameOperator"</span><span class="token operator">:</span> <span class="token string">"DinisRX"</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+<li><strong>Response</strong>:<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"code"</span><span class="token operator">:</span> <span class="token number">1930548778</span><span class="token punctuation">,</span>
+  <span class="token property">"deliveryDate"</span><span class="token operator">:</span> <span class="token string">"2024-10-20T23:02:22.383Z[UTC]"</span><span class="token punctuation">,</span>
+  <span class="token property">"purchaseDate"</span><span class="token operator">:</span> <span class="token string">"2024-10-20T23:02:22.383Z[UTC]"</span><span class="token punctuation">,</span>
+  <span class="token property">"state"</span><span class="token operator">:</span> <span class="token string">"Pending"</span><span class="token punctuation">,</span>
+  <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"Guilherme"</span><span class="token punctuation">,</span>
   <span class="token property">"usernameOperator"</span><span class="token operator">:</span> <span class="token string">"DinisRX"</span>
 <span class="token punctuation">}</span>
 </code></pre></li>

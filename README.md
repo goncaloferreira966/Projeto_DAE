@@ -410,6 +410,35 @@ Um Operador consulta todas as encomendas a si associadas.
   }
 <br />
 
+#### `POST /orders`
+Um Cliente efetua uma Encomenda e a mesma é criada em sistema.
+
+- **URL**: `/orders`
+- **Método**: `POST`
+- **Headers**: 
+  - `Content-Type`: `application/json`
+- **Body**:
+  ```json
+  {
+    "code": 1930548778,
+    "deliveryDate": "2024-10-20T23:02:22.383Z[UTC]",
+    "purchaseDate": "2024-10-20T23:02:22.383Z[UTC]",
+    "state": "Pending",
+    "username": "Guilherme",
+    "usernameOperator": "DinisRX"
+  }
+- **Response**:
+  ```json
+  {
+    "code": 1930548778,
+    "deliveryDate": "2024-10-20T23:02:22.383Z[UTC]",
+    "purchaseDate": "2024-10-20T23:02:22.383Z[UTC]",
+    "state": "Pending",
+    "username": "Guilherme",
+    "usernameOperator": "DinisRX"
+  }
+<br />
+
 ---
 ### `Powered By`
 #### `2222051` Gonçalo Ferreira 

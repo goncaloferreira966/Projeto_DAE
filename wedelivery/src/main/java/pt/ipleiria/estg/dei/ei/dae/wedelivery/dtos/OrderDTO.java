@@ -13,7 +13,7 @@ public class OrderDTO implements Serializable {
     private String state;
     private String usernameOperator;
 
-    public OrderDTO(long code, String username, Date purchaseDate, Date deliveryDate, String state, String usernameOperator) {
+    public OrderDTO(long code, Date deliveryDate, Date purchaseDate, String username, String usernameOperator, String state) {
         this.code = code;
         this.username = username;
         this.purchaseDate = purchaseDate;
@@ -29,11 +29,11 @@ public class OrderDTO implements Serializable {
     public static OrderDTO from(Order order) {
         return new OrderDTO(
                 order.getCode(),
-                order.getClient().getUsername(),
-                order.getPurchaseDate(),
                 order.getDeliveryDate(),
-                order.getState(),
-                order.getOperator().getUsername()
+                order.getPurchaseDate(),
+                order.getClient().getUsername(),
+                order.getOperator().getUsername(),
+                order.getState()
         );
     }
 
