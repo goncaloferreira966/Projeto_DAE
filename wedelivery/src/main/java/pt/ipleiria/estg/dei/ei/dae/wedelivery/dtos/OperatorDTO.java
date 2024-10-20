@@ -14,7 +14,7 @@ public class OperatorDTO implements Serializable {
     public OperatorDTO() {
     }
 
-    public OperatorDTO(String username, String password, String name, String email) {
+    public OperatorDTO(String email, String name, String password, String username) {
         this.username = username;
         this.password = password;
         this.name = name;
@@ -24,10 +24,10 @@ public class OperatorDTO implements Serializable {
     // Converts an entity  to a DTO client class
     public static OperatorDTO from(Operator operator) {
         return new OperatorDTO(
-                operator.getUsername(),
-                operator.getPassword(),
+                operator.getEmail(),
                 operator.getName(),
-                operator.getEmail()
+                operator.getPassword(),
+                operator.getUsername()
         );
     }
 

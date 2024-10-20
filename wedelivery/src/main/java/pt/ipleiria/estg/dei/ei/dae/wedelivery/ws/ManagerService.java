@@ -33,10 +33,10 @@ public class ManagerService {
     @Path("/")
     public Response createNewManager (ManagerDTO managerDTO) {
         managerBean.create(
-                managerDTO.getUsername(),
-                managerDTO.getPassword(),
+                managerDTO.getEmail(),
                 managerDTO.getName(),
-                managerDTO.getEmail()
+                managerDTO.getPassword(),
+                managerDTO.getUsername()
         );
         Manager newManager = managerBean.find(managerDTO.getUsername());
         return Response.status(Response.Status.CREATED)

@@ -92,6 +92,31 @@ Um Administrador consulta o perfil de um Operador.
   }
 <br />
 
+#### `POST /operators`
+Um Operador efetua o registo na plataforma do sistema.
+
+- **URL**: `/operators`
+- **Método**: `POST`
+- **Headers**: 
+  - `Content-Type`: `application/json`
+- **Body**:
+  ```json
+  {
+    "email": "ana@mail.com",
+    "name": "Ana",
+    "username": "Ana",
+    "password": "password"
+  }
+- **Response**:
+  ```json
+  {
+    "email": "ana@mail.com",
+    "name": "Ana",
+    "password": "password",
+    "username": "Ana"
+  }
+<br />
+
 ### 3. **Gestores**
 #### `GET /managers`
 
@@ -140,6 +165,31 @@ Um Administrador consulta o perfil de um Gestor.
     "name":"Rui Manager",
     "password":"password",
     "username":"RuiM100"
+  }
+<br />
+
+#### `POST /managers`
+Um Gestor efetua o registo na plataforma do sistema.
+
+- **URL**: `/managers`
+- **Método**: `POST`
+- **Headers**: 
+  - `Content-Type`: `application/json`
+- **Body**:
+  ```json
+  {
+    "email": "margarida@mail.com",
+    "name": "Margarida",
+    "username": "Margarida",
+    "password": "password"
+  }
+- **Response**:
+  ```json
+  {
+    "email": "margarida@mail.com",
+    "name": "Margarida",
+    "password": "password",
+    "username": "Margarida"
   }
 <br />
 
@@ -205,6 +255,42 @@ Um Administrador consulta o perfil de um Cliente.
     "password": "password",
     "postalCode": "2565-834",
     "username": "Goncalo"
+  }
+<br />
+
+#### `POST /clients`
+Um Cliente efetua o registo na plataforma do sistema.
+
+- **URL**: `/clients`
+- **Método**: `POST`
+- **Headers**: 
+  - `Content-Type`: `application/json`
+- **Body**:
+  ```json
+  {
+    "username": "john",
+    "email": "johndoe@mail.com",
+    "password": "jd",
+    "name": "John Doe",
+    "courseCode": 1,
+    "nif": 444555666,
+    "postalCode": "2565-834",
+    "country": "PT",
+    "city": "Leiria",
+    "address": "Rua x"
+  }
+- **Response**:
+  ```json
+  {
+    "address": "Rua x",
+    "city": "Leiria",
+    "country": "PT",
+    "email": "johndoe@mail.com",
+    "name": "John Doe",
+    "nif": 444555666,
+    "password": "jd",
+    "postalCode": "2565-834",
+    "username": "john"
   }
 <br />
 

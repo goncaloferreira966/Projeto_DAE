@@ -15,7 +15,7 @@ public class ManagerDTO implements Serializable {
     public ManagerDTO() {
     }
 
-    public ManagerDTO(String username, String password, String name, String email) {
+    public ManagerDTO(String email, String name, String password, String username) {
         this.username = username;
         this.password = password;
         this.name = name;
@@ -25,10 +25,10 @@ public class ManagerDTO implements Serializable {
     // Converts an entity  to a DTO client class
     public static ManagerDTO from(Manager manager) {
         return new ManagerDTO(
-                manager.getUsername(),
-                manager.getPassword(),
+                manager.getEmail(),
                 manager.getName(),
-                manager.getEmail()
+                manager.getPassword(),
+                manager.getUsername()
         );
     }
 

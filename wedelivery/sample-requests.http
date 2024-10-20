@@ -1,37 +1,43 @@
 ### Get All clients
-GET http://localhost:8080/wedelivery/api/client
+GET http://localhost:8080/wedelivery/api/clients
 Accept: application/json
 
 ### Create A New client
-POST http://localhost:8080/wedelivery/api/client
+POST http://localhost:8080/wedelivery/api/clients
 Content-Type: application/json
 
 {
-  "email": "johndoe@mail.com",
-  "name": "John Doe",
   "username": "john",
+  "email": "johndoe@mail.com",
   "password": "jd",
-  "courseCode": 1
+  "name": "John Doe",
+  "courseCode": 1,
+  "nif": 444555666,
+  "postalCode": "2565-834",
+  "country": "PT",
+  "city": "Leiria",
+  "address": "Rua x"
 }
 
-### Get All Courses
-GET http://localhost:8080/wedelivery/api/course
-Accept: application/json
-
-### Create A New Course
-POST http://localhost:8080/wedelivery/api/course
+### Create A New manager
+POST http://localhost:8080/wedelivery/api/managers
 Content-Type: application/json
 
 {
-  "course_code": "23",
-  "name": "Curso das Fadas"
+  "email": "margarida@mail.com",
+  "name": "Margarida",
+  "username": "Margarida",
+  "password": "password"
 }
 
-### Get a client
-GET http://localhost:8080/wedelivery/api/client/Goncalo
-Accept: application/json
+### Create A New manager
+POST http://localhost:8080/wedelivery/api/operators
+Content-Type: application/json
 
-### Get a client subjects
-GET http://localhost:8080/wedelivery/api/client/Goncalo/subjects
-Accept: application/json
+{
+  "email": "ana@mail.com",
+  "name": "Ana",
+  "username": "Ana",
+  "password": "password"
+}
 

@@ -30,14 +30,14 @@ public class OperatorService {
 
     @POST
     @Path("/")
-    public Response createNewOperator (OperatorDTO administratorDTO) {
+    public Response createNewOperator (OperatorDTO operatorDTO) {
         administratorBean.create(
-                administratorDTO.getUsername(),
-                administratorDTO.getPassword(),
-                administratorDTO.getName(),
-                administratorDTO.getEmail()
+                operatorDTO.getEmail(),
+                operatorDTO.getName(),
+                operatorDTO.getPassword(),
+                operatorDTO.getUsername()
         );
-        Operator newOperator = administratorBean.find(administratorDTO.getUsername());
+        Operator newOperator = administratorBean.find(operatorDTO.getUsername());
         return Response.status(Response.Status.CREATED)
                 .entity(OperatorDTO.from(newOperator))
                 .build();
