@@ -4,6 +4,7 @@ import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 import org.hibernate.Hibernate;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Client;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Product;
@@ -41,11 +42,11 @@ public class ProductBean {
     }
 
     public List<Product> findByName(String name) {
-        var products = entityManager.find(Product.class, name);
-        if (products == null) {
-            throw new RuntimeException("product " + name + " not found");
-        }
-        return List.of(products);
+        TypedQuery<Product> query = entityManager.createNamedQuery("getProductByName", Product.class);
+
+        // Set the parameter with wildcards for LIKE
+        query.setParameter("name", "%" + name + "%");
+        return query.getResultList();
     }
 
 

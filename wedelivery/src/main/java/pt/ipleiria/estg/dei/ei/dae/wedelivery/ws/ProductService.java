@@ -39,5 +39,16 @@ public class ProductService {
         return Response.ok(productDTO).build();
     }
 
+    @GET
+    @Path("{name}")
+    public Response getProductByName(@PathParam("name") String name) {
+        List<Product> products = productBean.findByName(name);
+        if (products.isEmpty())
+            return Response.status(Response.Status.NOT_FOUND).build();
+
+        List<ProductDTO> productDTOs = ProductDTO.from(products);
+        return Response.ok(productDTOs).build();
+    }
+
 
 }

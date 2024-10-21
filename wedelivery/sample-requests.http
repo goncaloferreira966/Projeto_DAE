@@ -70,8 +70,8 @@ Content-Type: application/json
 ### Get All products --> Funcionou
 GET http://localhost:8080/wedelivery/api/products
 
-### Get Product by name
-GET http://localhost:8080/wedelivery/api/products/Sprite
+### Get Product by name return List of products --> Funcionou
+GET http://localhost:8080/wedelivery/api/products/S
 
 ### Get Product by id --> Funcuinou
 GET http://localhost:8080/wedelivery/api/products/1

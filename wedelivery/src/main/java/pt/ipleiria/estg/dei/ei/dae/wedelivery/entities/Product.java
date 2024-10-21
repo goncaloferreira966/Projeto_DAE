@@ -17,7 +17,7 @@ import java.util.List;
                 ),
             @NamedQuery(
                     name = "getProductByName",
-                    query = "SELECT p FROM Product p WHERE p.name = :name"
+                    query = "SELECT p FROM Product p WHERE p.name LIKE :name"
             )
         }
 )
