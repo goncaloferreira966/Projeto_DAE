@@ -7,6 +7,7 @@ import jakarta.persistence.PersistenceContext;
 import org.hibernate.Hibernate;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Client;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Product;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Warehouse;
 
 import java.util.List;
 
@@ -17,16 +18,17 @@ public class ProductBean {
 
     @EJB
     private WarehouseBean warehouseBean;
-    //(long id, String name, String description, double price, String image, int quantity,boolean available, boolean haveSensor)
-    public void create(long id, String name, String description, double price, String image, int quantity, boolean available, boolean haveSensor) {
-        var product = new Product(id, name, description, price, image, quantity, available, haveSensor);
+    //(long id, String name, String description, double price, String image, int quantity,boolean available, boolean haveSensor, warehouse warehouse)
+    public void create(long id, String name, String description, double price, String image, int quantity, boolean available, boolean haveSensor, String warehouseName) {
+        var warehouse = warehouseBean.find(warehouseName);
+        var product = new Product(id, name, description, price, image, quantity, available, haveSensor, warehouse);
         entityManager.persist(product);
     }
 
     public List<Product> findAll() {
         // remember, maps to: “SELECT s FROM product s ORDER BY s.name”
         var products = entityManager.createNamedQuery("getAllProducts", Product.class).getResultList();
-        products.forEach(product -> Hibernate.initialize(product.getWarehouse()));
+        //products.forEach(product -> Hibernate.initialize(product.getWarehouse()));
         return products;
     }
 
