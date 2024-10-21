@@ -43,31 +43,20 @@ public class ConfigBean {
         orderBean.create(Math.abs(UUID.randomUUID().hashCode()), new Date(), new Date(), "Goncalo","DinisRX","In distribuition");
         orderBean.create(Math.abs(UUID.randomUUID().hashCode()), new Date(), new Date(), "Goncalo","Gui0000","In distribuition");
 
-        productBean.create(1, "Coca-Cola", "Coca-Cola", 1.5, "coca-cola.jpg", 100, true, false);
-        productBean.create(2, "Pepsi", "Pepsi", 1.5, "pepsi.jpg", 100, true, false);
-        productBean.create(3, "Sprite", "Sprite", 1.5, "sprite.jpg", 100, true, false);
-        productBean.create(4, "Fanta", "Fanta", 1.5, "fanta.jpg", 100, true, false);
-        productBean.create(5, "7up", "7up", 1.5, "7up.jpg", 100, true, false);
-
         warehouseBean.create("Leiria", "Rua das Igrejas", "Leiria", "2565-834");
         warehouseBean.create("Lisboa", "Rua das Igrejas", "Lisboa", "2565-834");
         warehouseBean.create("Porto", "Rua das Igrejas", "Porto", "2565-834");
 
-        productBean.addProductToWarehouse("Leiria", 1);
-        productBean.addProductToWarehouse("Leiria", 2);
-        productBean.addProductToWarehouse("Leiria", 3);
-        productBean.addProductToWarehouse("Leiria", 4);
-        productBean.addProductToWarehouse("Leiria", 5);
-        productBean.addProductToWarehouse("Lisboa", 1);
-        productBean.addProductToWarehouse("Lisboa", 2);
-        productBean.addProductToWarehouse("Lisboa", 3);
-        productBean.addProductToWarehouse("Lisboa", 4);
-        productBean.addProductToWarehouse("Lisboa", 5);
-        productBean.addProductToWarehouse("Porto", 1);
-        productBean.addProductToWarehouse("Porto", 2);
-        productBean.addProductToWarehouse("Porto", 3);
-        productBean.addProductToWarehouse("Porto", 4);
-        productBean.addProductToWarehouse("Porto", 5);
+        productBean.create(1, "Coca-Cola", "Coca-Cola", 1.5, "coca-cola.jpg", 100, true, false, "Leiria");
+        productBean.create(2, "Pepsi", "Pepsi", 1.5, "pepsi.jpg", 100, true, false, "Leiria");
+        productBean.create(3, "Sprite", "Sprite", 1.5, "sprite.jpg", 100, true, false, "Leiria");
+        productBean.create(4, "Fanta", "Fanta", 1.5, "fanta.jpg", 100, true, false, "Leiria");
+        productBean.create(5, "7up", "7up", 1.5, "7up.jpg", 100, true, false, "Leiria");
+        productBean.create(6, "Sumol", "Sumol", 1.5, "sumol.jpg", 100, true, false, "Leiria");
+
+
+
+
 
     }
 }
