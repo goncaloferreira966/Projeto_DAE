@@ -67,3 +67,23 @@ Content-Type: application/json
   "usernameOperator": "DinisRX"
 }
 
+### Get All products --> Funcionou
+GET http://localhost:8080/wedelivery/api/products
+
+### Get Product by name
+GET http://localhost:8080/wedelivery/api/products/Sprite
+
+### Get Product by id --> Funcuinou
+GET http://localhost:8080/wedelivery/api/products/1
+Accept: application/json
+
+### Get All warehouses --> Funcionou
+GET http://localhost:8080/wedelivery/api/warehouses
+Accept: application/json
+
+### Get Warehouse by name --> Funcionou
+GET http://localhost:8080/wedelivery/api/warehouses/Leiria
+Accept: application/json
+
+### Get All products in a warehouse --> Funcionou
+GET http://localhost:8080/wedelivery/api/warehouses/Leiria/products
