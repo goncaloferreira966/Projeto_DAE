@@ -18,11 +18,12 @@ public class ProductDTO implements Serializable {
     private int quantity;
     private boolean available;
     private boolean haveSensor = false;
+    private String warehouseName;
 
     public ProductDTO() {
     }
 
-    public ProductDTO(long id, String name, String description, double price, String image, int quantity, boolean available, boolean haveSensor) {
+    public ProductDTO(long id, String name, String description, double price, String image, int quantity, boolean available, boolean haveSensor, String warehouseName) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -31,6 +32,7 @@ public class ProductDTO implements Serializable {
         this.quantity = quantity;
         this.available = available;
         this.haveSensor = haveSensor;
+        this.warehouseName = warehouseName;
     }
 
     public long getId() {return id;}
@@ -49,6 +51,8 @@ public class ProductDTO implements Serializable {
 
     public boolean getHaveSensor() {return haveSensor;}
 
+    public String getWarehouseName() {return warehouseName;}
+
 
     public static ProductDTO from(Product product) {
         return new ProductDTO(
@@ -59,7 +63,8 @@ public class ProductDTO implements Serializable {
                 product.getImage(),
                 product.getQuantity(),
                 product.isAvailable(),
-                product.getHaveSensor()
+                product.getHaveSensor(),
+                product.getWarehouse().getName()
         );
     }
 
