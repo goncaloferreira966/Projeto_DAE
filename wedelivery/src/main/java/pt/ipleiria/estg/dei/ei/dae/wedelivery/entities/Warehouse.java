@@ -27,18 +27,7 @@ public class Warehouse {
     private String city;
     @NotNull
     private String postalCode;
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "warehouse_product",
-            joinColumns = @JoinColumn(
-                    name = "warehouse_name",
-                    referencedColumnName = "name"
-            ),
-            inverseJoinColumns = @JoinColumn(
-                    name = "product_id",
-                    referencedColumnName = "id"
-            )
-    )
+    @OneToMany(mappedBy = "warehouse",fetch = FetchType.EAGER)
     private List<Product> products;
 
     public Warehouse() {
@@ -54,33 +43,29 @@ public class Warehouse {
     }
 
     public String getName() {return name;}
-    public @NotNull String getAddress() {return address;}
-    public @NotNull String getCity() {return city;}
-    public @NotNull String getPostalCode() {return postalCode;}
+    public String getAddress() {return address;}
+    public String getCity() {return city;}
+    public String getPostalCode() {return postalCode;}
     public List<Product> getProducts() {return products;}
 
 
     public void setName(String name) {this.name = name;}
-    public void setAddress(@NotNull String address) {this.address = address;}
-    public void setCity(@NotNull String city) {this.city = city;}
-    public void setPostalCode(@NotNull String postalCode) {this.postalCode = postalCode;}
+    public void setAddress(String address) {this.address = address;}
+    public void setCity(String city) {this.city = city;}
+    public void setPostalCode(String postalCode) {this.postalCode = postalCode;}
     public void setProducts(List<Product> products) {this.products = products;}
 
     public void addProduct(Product product) {
         if (!products.contains(product)) {
             products.add(product);
-            product.addWarehouse(this);
+            product.setWarehouse(this); // Atualiza o armazém do produto
         }
-
     }
+
     public void removeProduct(Product product) {
         if (products.contains(product)) {
             products.remove(product);
-            product.removeWarehouse(this);
+            product.setWarehouse(null); // Limpa a referência ao armazém no produto
         }
-
     }
-
-
-
 }
