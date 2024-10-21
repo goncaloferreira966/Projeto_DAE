@@ -40,7 +40,7 @@ public class ProductService {
     }
 
     @GET
-    @Path("{name}")
+    @Path("name/{name}")
     public Response getProductByName(@PathParam("name") String name) {
         List<Product> products = productBean.findByName(name);
         if (products.isEmpty())

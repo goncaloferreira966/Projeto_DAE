@@ -34,10 +34,7 @@ public class ProductBean {
     }
 
     public Product findById(long id) {
-        var product = entityManager.find(Product.class, id);
-        if (product == null) {
-            throw new RuntimeException("product " + id + " not found");
-        }
+        var product = entityManager.createNamedQuery("getProductById", Product.class).setParameter("id", id).getSingleResult();
         return product;
     }
 
@@ -63,10 +60,4 @@ public class ProductBean {
             entityManager.merge(product);
         }
     }
-    public Product findInWarehouse(long id){
-        var product = this.findById(id);
-        Hibernate.initialize(product.getWarehouse());
-        return product;
-    }
-
 }

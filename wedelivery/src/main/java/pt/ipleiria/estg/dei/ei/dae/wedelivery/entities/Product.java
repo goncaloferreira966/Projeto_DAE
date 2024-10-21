@@ -11,13 +11,17 @@ import java.util.List;
 @Table(name = "products")
 @NamedQueries(
         {
-                @NamedQuery(
-                        name = "getAllProducts",
-                        query = "SELECT p FROM Product p"
-                ),
+            @NamedQuery(
+                    name = "getAllProducts",
+                    query = "SELECT p FROM Product p"
+            ),
             @NamedQuery(
                     name = "getProductByName",
                     query = "SELECT p FROM Product p WHERE p.name LIKE :name"
+            ),
+            @NamedQuery(
+                    name = "getProductById",
+                    query = "SELECT p FROM Product p WHERE p.id =:id"
             )
         }
 )

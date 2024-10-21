@@ -71,10 +71,10 @@ Content-Type: application/json
 GET http://localhost:8080/wedelivery/api/products
 
 ### Get Product by name return List of products --> Funcionou
-GET http://localhost:8080/wedelivery/api/products/S
+GET http://localhost:8080/wedelivery/api/products/name/S
 
 ### Get Product by id --> Funcuinou
-GET http://localhost:8080/wedelivery/api/products/1
+GET http://localhost:8080/wedelivery/api/products/2
 Accept: application/json
 
 ### Get All warehouses --> Funcionou
