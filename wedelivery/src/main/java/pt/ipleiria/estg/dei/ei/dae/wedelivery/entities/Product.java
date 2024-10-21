@@ -37,16 +37,17 @@ public class Product {
     private boolean haveSensor = false;
 
 
-    @ManyToMany(mappedBy = "products")
-    private List<Warehouse> warehouses;
+
+    @ManyToOne
+    @JoinColumn(name = "warehouse_name", referencedColumnName = "name")
+    private Warehouse warehouse;
 
 
 
     public Product() {
-        warehouses = new LinkedList<>();
     }
 
-    public Product(long id, String name, String description, double price, String image, int quantity,boolean available, boolean haveSensor) {
+    public Product(long id, String name, String description, double price, String image, int quantity,boolean available, boolean haveSensor, Warehouse warehouse) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -55,7 +56,7 @@ public class Product {
         this.quantity = quantity;
         this.available = available;
         this.haveSensor = haveSensor;
-        this.warehouses = new LinkedList<>();
+        this.warehouse = warehouse;
     }
 
     public long getId() {return id;}
@@ -66,7 +67,7 @@ public class Product {
     public int getQuantity() {return quantity;}
     public boolean isAvailable() {return available;}
     public boolean getHaveSensor() {return haveSensor;}
-    public List<Warehouse> getWarehouse() {return warehouses;}
+    public Warehouse getWarehouse() {return warehouse;}
 
     public void setId(long id) {this.id = id;}
     public void setName(String name) {this.name = name;}
@@ -76,20 +77,26 @@ public class Product {
     public void setQuantity(int quantity) {this.quantity = quantity;}
     public void setAvailable(boolean available) {this.available = available;}
     public void setHaveSensor(boolean haveSensor) {this.haveSensor = haveSensor;}
-    public void setWarehouse(List<Warehouse> warehouse) {this.warehouses = warehouse;}
-
-
-
-    public void addWarehouse(Warehouse warehouse) {
-        if (!warehouses.contains(warehouse)) {
-          warehouses.add(warehouse);
-          warehouse.addProduct(this);
+    public void setWarehouse(Warehouse warehouse) {
+        if (this.warehouse != null) {
+            this.warehouse.removeProduct(this); // Remove do armazém atual
+        }
+        this.warehouse = warehouse;
+        if (warehouse != null) {
+            warehouse.addProduct(this); // Adiciona ao novo armazém
         }
     }
-    public void removeWarehouse(Warehouse warehouse) {
-        if (this.warehouses.contains(warehouse)) {
-            this.warehouses.remove(warehouse);
-            warehouse.removeProduct(this);
+
+        public void addWarehouse(Warehouse warehouse) {
+            if (!this.warehouse.equals(warehouse)) {
+                this.warehouse = warehouse;
+                warehouse.addProduct(this);
+            }
         }
+        public void removeWarehouse(Warehouse warehouse) {
+            if (this.warehouse.equals(warehouse)) {
+                this.warehouse = null;
+                warehouse.removeProduct(this);
+            }
     }
 }
