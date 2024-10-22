@@ -1,5 +1,4 @@
 package pt.ipleiria.estg.dei.ei.dae.wedelivery.ws;
-
 import jakarta.ejb.EJB;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
