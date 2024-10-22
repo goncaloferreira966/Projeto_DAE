@@ -18,6 +18,8 @@ import java.util.List;
 public class Volume {
     @Id
     private long id;
+    @Version
+    private int version;
     //private List<Sensor> sensors;
     //private List<Product> products;
 

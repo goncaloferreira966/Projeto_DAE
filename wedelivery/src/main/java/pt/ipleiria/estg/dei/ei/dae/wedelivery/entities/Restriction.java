@@ -20,6 +20,8 @@ public class Restriction {
     private String type;
     private int maxValue;
     private int minValue;
+    @Version
+    private int version;
 
     public Restriction() {
     }

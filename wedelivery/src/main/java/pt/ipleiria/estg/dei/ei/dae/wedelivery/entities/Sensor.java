@@ -24,6 +24,8 @@ public class Sensor {
     private boolean busy;
     @NotNull
     private boolean expedition;
+    @Version
+    private int version;
 
     public Sensor() {
     }

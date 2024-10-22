@@ -55,6 +55,8 @@ public class Order implements Serializable {
     private Date deliveryDate;
     @NotNull
     private String state;
+    @Version
+    private int version;
 
     public Order(Date deliveryDate, Date purchaseDate, Client client, Operator operator , long code, String state) {
         this.deliveryDate = deliveryDate;

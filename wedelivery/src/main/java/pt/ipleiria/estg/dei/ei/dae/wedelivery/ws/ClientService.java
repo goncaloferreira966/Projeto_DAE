@@ -8,6 +8,7 @@ import jakarta.ejb.EJB;
 import jakarta.ws.rs.core.MediaType;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.OrderBean;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Client;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityNotFoundException;
 
@@ -40,7 +41,7 @@ public class ClientService {
     @POST
     @Path("/")
     public Response createNewClient (ClientDTO clientDTO)
-        throws MyEntityExistsException, MyEntityNotFoundException {
+        throws MyEntityExistsException, MyEntityNotFoundException, MyConstraintViolationException {
         clientBean.create(
                 clientDTO.getUsername(),
                 clientDTO.getPassword(),

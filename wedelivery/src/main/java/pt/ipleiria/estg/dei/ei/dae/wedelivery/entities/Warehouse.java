@@ -29,6 +29,8 @@ public class Warehouse {
     private String postalCode;
     @OneToMany(mappedBy = "warehouse",fetch = FetchType.EAGER)
     private List<Product> products;
+    @Version
+    private int version;
 
     public Warehouse() {
         products = new LinkedList<>();

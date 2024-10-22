@@ -8,6 +8,7 @@ import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.OrderDTO;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.ManagerBean;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.OrderBean;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Manager;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityNotFoundException;
 
@@ -38,7 +39,7 @@ public class ManagerService {
     @POST
     @Path("/")
     public Response createNewManager (ManagerDTO managerDTO)
-            throws MyEntityExistsException, MyEntityNotFoundException {
+            throws MyEntityExistsException, MyEntityNotFoundException, MyConstraintViolationException {
         managerBean.create(
                 managerDTO.getEmail(),
                 managerDTO.getName(),

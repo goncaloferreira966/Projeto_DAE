@@ -6,6 +6,7 @@ import jakarta.ws.rs.core.Response;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.OperatorDTO;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.OperatorBean;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Operator;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityNotFoundException;
 
@@ -34,7 +35,7 @@ public class OperatorService {
     @POST
     @Path("/")
     public Response createNewOperator (OperatorDTO operatorDTO)
-            throws MyEntityExistsException, MyEntityNotFoundException {
+            throws MyEntityExistsException, MyEntityNotFoundException, MyConstraintViolationException {
         administratorBean.create(
                 operatorDTO.getEmail(),
                 operatorDTO.getName(),

@@ -2,6 +2,7 @@ package pt.ipleiria.estg.dei.ei.dae.wedelivery.entities;
 import jakarta.persistence.Entity;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.Version;
 
 import java.io.Serializable;
 

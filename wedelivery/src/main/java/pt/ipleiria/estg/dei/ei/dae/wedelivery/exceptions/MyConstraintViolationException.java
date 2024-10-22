@@ -12,8 +12,8 @@ public class MyConstraintViolationException extends Exception{
     private static String
     getConstraintViolationMessages(ConstraintViolationException e) {
         return e.getConstraintViolations()
-                    .stream()
-                    .map(ConstraintViolation::getMessage)
-                    .collect(Collectors.joining("; "));
+                .stream()
+                .map(ConstraintViolation::getMessage)
+                .collect(Collectors.joining("; "));
     }
 }

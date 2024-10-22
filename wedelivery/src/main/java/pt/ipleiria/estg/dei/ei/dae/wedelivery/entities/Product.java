@@ -39,13 +39,11 @@ public class Product {
     @NotNull
     private boolean available;
     private boolean haveSensor = false;
-
-
-
     @ManyToOne
     @JoinColumn(name = "warehouse_name", referencedColumnName = "name")
     private Warehouse warehouse;
-
+    @Version
+    private int version;
 
 
     public Product() {

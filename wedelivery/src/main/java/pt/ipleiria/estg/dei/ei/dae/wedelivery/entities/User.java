@@ -17,6 +17,8 @@ public class User implements Serializable{
     @Email
     @NotNull
     private String email;
+    @Version
+    private int version;
 
     public User(String email, String name, String password, String username) {
         this.email = email;
