@@ -41,7 +41,4 @@ public class WarehouseService {
         List<ProductDTO> productDTOs = ProductDTO.from(warehouse.getProducts());
         return Response.ok(productDTOs).build(); // Devolve lista de ProductDTOs
     }
-
-
-
 }

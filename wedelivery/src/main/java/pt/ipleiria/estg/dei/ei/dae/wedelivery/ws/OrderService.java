@@ -31,17 +31,6 @@ public class OrderService {
         return Response.ok(OrderDTO.from(order)).build();
     }
 
-    @GET
-    @Path("/client/{username}") // Define o caminho para incluir o ID do cliente
-    public List<OrderDTO> getOrdersByClient(@PathParam("username") String username) {
-        return OrderDTO.from(orderBean.findOrdersByClientId(username));
-    }
-
-    @GET
-    @Path("/operator/{username}") // Define o caminho para incluir o ID do cliente
-    public List<OrderDTO> getOrdersByOperator(@PathParam("username") String username) {
-        return OrderDTO.from(orderBean.findOrdersByOperatorId(username));
-    }
 
     @POST
     @Path("/")

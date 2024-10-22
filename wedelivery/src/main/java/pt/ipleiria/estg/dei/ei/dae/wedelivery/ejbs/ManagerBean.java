@@ -3,7 +3,6 @@ import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Manager;
-
 import java.util.List;
 
 @Stateless

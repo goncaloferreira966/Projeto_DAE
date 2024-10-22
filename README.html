@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
-      <link rel="stylesheet" href="file:///c:\Users\Dinis\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.14\crossnote\dependencies\katex\katex.min.css">
+      <link rel="stylesheet" href="file:////Users/goncaloferreira/.vscode/extensions/shd101wyy.markdown-preview-enhanced-0.8.14/crossnote/dependencies/katex/katex.min.css">
       
       
       
@@ -237,6 +237,40 @@
 </code></pre></li>
 </ul>
 <br>
+<h4 id="get-managersusernameorders"><code>GET /managers/{username}/orders</code> </h4>
+<p>Um Gestor consulta todas as encomendas a si associadas.</p>
+<ul>
+<li>
+<p><strong>URL</strong>: <code>/managers/{username}/orders</code></p>
+</li>
+<li>
+<p><strong>Método</strong>: <code>GET</code></p>
+</li>
+<li>
+<p><strong>Headers</strong>:</p>
+<ul>
+<li><code>Content-Type</code>: <code>application/json</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Body</strong>:</p>
+<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"DinisRX"</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+<li>
+<p><strong>Response</strong>:</p>
+<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"code"</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+  <span class="token property">"deliveryDate"</span><span class="token operator">:</span> <span class="token string">"2024-10-18T13:38:32.823Z[UTC]"</span><span class="token punctuation">,</span>
+  <span class="token property">"purchaseDate"</span><span class="token operator">:</span> <span class="token string">"2024-10-18T13:38:32.823Z[UTC]"</span><span class="token punctuation">,</span>
+  <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"Goncalo"</span><span class="token punctuation">,</span>
+  <span class="token property">"state"</span><span class="token operator">:</span> <span class="token string">"In Distribution"</span><span class="token punctuation">,</span>
+  <span class="token property">"usernameOperator"</span><span class="token operator">:</span> <span class="token string">"DinisRX"</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+</ul>
+<br>
 <h3 id="4-clientes">4. <strong>Clientes</strong> </h3>
 <h4 id="get-clients"><code>GET /clients</code> </h4>
 <p>Um Administrador consulta a listagem de todos os Clientes Registados.</p>
@@ -349,6 +383,40 @@
 </code></pre></li>
 </ul>
 <br>
+<h4><code>GET /clients/{username}/orders</code></h4>
+<p>Um Cliente consulta todas as suas encomendas realizadas</p>
+<ul>
+<li>
+<p><strong>URL</strong>: <code>/clients/{username}/orders</code></p>
+</li>
+<li>
+<p><strong>Método</strong>: <code>GET</code></p>
+</li>
+<li>
+<p><strong>Headers</strong>:</p>
+<ul>
+<li><code>Content-Type</code>: <code>application/json</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Body</strong>:</p>
+<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"Goncalo"</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+<li>
+<p><strong>Response</strong>:</p>
+<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"code"</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+  <span class="token property">"deliveryDate"</span><span class="token operator">:</span> <span class="token string">"2024-10-18T13:38:32.823Z[UTC]"</span><span class="token punctuation">,</span>
+  <span class="token property">"purchaseDate"</span><span class="token operator">:</span> <span class="token string">"2024-10-18T13:38:32.823Z[UTC]"</span><span class="token punctuation">,</span>
+  <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"Goncalo"</span><span class="token punctuation">,</span>
+  <span class="token property">"state"</span><span class="token operator">:</span> <span class="token string">"In Distribution"</span><span class="token punctuation">,</span>
+  <span class="token property">"usernameOperator"</span><span class="token operator">:</span> <span class="token string">"DinisRX"</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+</ul>
+<br>
 <h3>5. <strong>Encomendas</strong></h3>
 <h4><code>GET /orders</code></h4>
 <p>Um Gestor consulta a listagem de todos as Encomendas efetuadas.</p>
@@ -423,74 +491,6 @@
 </code></pre></li>
 </ul>
 <br>
-<h4 id="get-ordersclientusername"><code>GET /orders/client/{username}</code> </h4>
-<p>Um Cliente consulta todas as suas encomendas realizadas</p>
-<ul>
-<li>
-<p><strong>URL</strong>: <code>/orders/client/{username}</code></p>
-</li>
-<li>
-<p><strong>Método</strong>: <code>GET</code></p>
-</li>
-<li>
-<p><strong>Headers</strong>:</p>
-<ul>
-<li><code>Content-Type</code>: <code>application/json</code></li>
-</ul>
-</li>
-<li>
-<p><strong>Body</strong>:</p>
-<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
-  <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"Goncalo"</span>
-<span class="token punctuation">}</span>
-</code></pre></li>
-<li>
-<p><strong>Response</strong>:</p>
-<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
-  <span class="token property">"code"</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
-  <span class="token property">"deliveryDate"</span><span class="token operator">:</span> <span class="token string">"2024-10-18T13:38:32.823Z[UTC]"</span><span class="token punctuation">,</span>
-  <span class="token property">"purchaseDate"</span><span class="token operator">:</span> <span class="token string">"2024-10-18T13:38:32.823Z[UTC]"</span><span class="token punctuation">,</span>
-  <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"Goncalo"</span><span class="token punctuation">,</span>
-  <span class="token property">"state"</span><span class="token operator">:</span> <span class="token string">"In Distribution"</span><span class="token punctuation">,</span>
-  <span class="token property">"usernameOperator"</span><span class="token operator">:</span> <span class="token string">"DinisRX"</span>
-<span class="token punctuation">}</span>
-</code></pre></li>
-</ul>
-<br>
-<h4 id="get-ordersoperatorusername"><code>GET /orders/operator/{username}</code> </h4>
-<p>Um Operador consulta todas as encomendas a si associadas.</p>
-<ul>
-<li>
-<p><strong>URL</strong>: <code>/orders/operator/{username}</code></p>
-</li>
-<li>
-<p><strong>Método</strong>: <code>GET</code></p>
-</li>
-<li>
-<p><strong>Headers</strong>:</p>
-<ul>
-<li><code>Content-Type</code>: <code>application/json</code></li>
-</ul>
-</li>
-<li>
-<p><strong>Body</strong>:</p>
-<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
-  <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"DinisRX"</span>
-<span class="token punctuation">}</span>
-</code></pre></li>
-<li>
-<p><strong>Response</strong>:</p>
-<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
-  <span class="token property">"code"</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
-  <span class="token property">"deliveryDate"</span><span class="token operator">:</span> <span class="token string">"2024-10-18T13:38:32.823Z[UTC]"</span><span class="token punctuation">,</span>
-  <span class="token property">"purchaseDate"</span><span class="token operator">:</span> <span class="token string">"2024-10-18T13:38:32.823Z[UTC]"</span><span class="token punctuation">,</span>
-  <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"Goncalo"</span><span class="token punctuation">,</span>
-  <span class="token property">"state"</span><span class="token operator">:</span> <span class="token string">"In Distribution"</span><span class="token punctuation">,</span>
-  <span class="token property">"usernameOperator"</span><span class="token operator">:</span> <span class="token string">"DinisRX"</span>
-<span class="token punctuation">}</span>
-</code></pre></li>
-</ul>
-<br>
 <h4 id="post-orders"><code>POST /orders</code> </h4>
 <p>Um Cliente efetua uma Encomenda e a mesma é criada em sistema.</p>
 <ul>
@@ -521,12 +521,12 @@
 </code></pre></li>
 </ul>
 <br>
-<h3 id="6-e-commerce">6. <strong>E-Commerce</strong> </h3>
+<h3 id="6-products">6. <strong>Products</strong> </h3>
 <h4 id="get-products"><code>Get /products</code> </h4>
-<p>Vai buscar todos os produtos existentes</p>
+<p>Um utilizador consulta todos os produtos na página de e-commerce.</p>
 <ul>
 <li><strong>URL</strong>: <code>/products</code></li>
-<li><strong>Método</strong>: <code>POST</code></li>
+<li><strong>Método</strong>: <code>GET</code></li>
 <li><strong>Headers</strong>:
 <ul>
 <li><code>Content-Type</code>: <code>application/json</code></li>
@@ -561,16 +561,29 @@
 </ul>
 <br>
 <h4><code>Get /products/{id}</code></h4>
-<p>Vai buscar o produto com X id</p>
+<p>Um utilizador consulta um produto especifico.</p>
 <ul>
-<li><strong>URL</strong>: <code>/products/2</code></li>
-<li><strong>Método</strong>: <code>GET</code></li>
-<li><strong>Headers</strong>:
+<li>
+<p><strong>URL</strong>: <code>/products/{id}</code></p>
+</li>
+<li>
+<p><strong>Método</strong>: <code>GET</code></p>
+</li>
+<li>
+<p><strong>Headers</strong>:</p>
 <ul>
 <li><code>Content-Type</code>: <code>application/json</code></li>
 </ul>
 </li>
-<li><strong>Response</strong>:<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+<li>
+<p><strong>Body</strong>:</p>
+<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"id"</span><span class="token operator">:</span> <span class="token string">"2"</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+<li>
+<p><strong>Response</strong>:</p>
+<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
   <span class="token property">"available"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
   <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"Pepsi"</span><span class="token punctuation">,</span>
   <span class="token property">"haveSensor"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
@@ -584,16 +597,20 @@
 </code></pre></li>
 </ul>
 <br>
-<h4 id="get-productsnamename"><code>Get /products/name/{name}</code> </h4>
-<p>Vai buscar tosdos os produtos que contenham a palavra {name}</p>
+<h4><code>Get /products/name/{name}</code></h4>
+<p>Um utilizador consulta todos os produtos que contenham a palavra {name}.</p>
 <ul>
-<li><strong>URL</strong>: <code>/products/name/S</code></li>
+<li><strong>URL</strong>: <code>/products/name/{name}</code></li>
 <li><strong>Método</strong>: <code>GET</code></li>
 <li><strong>Headers</strong>:
 <ul>
 <li><code>Content-Type</code>: <code>application/json</code></li>
 </ul>
 </li>
+<li><strong>Body</strong>:<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Sprite"</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
 <li><strong>Response</strong>:<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">[</span>
   <span class="token punctuation">{</span>
     <span class="token property">"available"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
@@ -624,7 +641,7 @@
 <br>
 <h3>7. <strong>Warehouses</strong></h3>
 <h4><code>Get /warehouses</code></h4>
-<p>Vai buscar os Warehouses que existem</p>
+<p>Um utilizador consulta os warehouses existentes.</p>
 <ul>
 <li><strong>URL</strong>: <code>/warehouses</code></li>
 <li><strong>Método</strong>: <code>GET</code></li>
@@ -652,15 +669,19 @@
 </ul>
 <br>
 <h4 id="get-warehousesname"><code>Get /warehouses/{name}</code> </h4>
-<p>Vai buscar os Warehouses que existem</p>
+<p>Um utilizador conulta os dados de um warehouse especifico.</p>
 <ul>
-<li><strong>URL</strong>: <code>/warehouses/Leiria</code></li>
+<li><strong>URL</strong>: <code>/warehouses/{name}</code></li>
 <li><strong>Método</strong>: <code>GET</code></li>
 <li><strong>Headers</strong>:
 <ul>
 <li><code>Content-Type</code>: <code>application/json</code></li>
 </ul>
 </li>
+<li><strong>Body</strong>:<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Leiria"</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
 <li><strong>Response</strong>:<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
   <span class="token property">"address"</span><span class="token operator">:</span> <span class="token string">"Rua das Igrejas"</span><span class="token punctuation">,</span>
   <span class="token property">"city"</span><span class="token operator">:</span> <span class="token string">"Leiria"</span><span class="token punctuation">,</span>
@@ -670,16 +691,20 @@
 </code></pre></li>
 </ul>
 <br>
-<h4><code>Get /warehouses/{name}/products</code></h4>
-<p>Vai buscar todos os produtos que exitem no determindo warehouse</p>
+<h4 id="get-warehousesnameproducts"><code>Get /warehouses/{name}/products</code> </h4>
+<p>Um utilizador consulta todos os produtos que exitem num determindo warehouse.</p>
 <ul>
-<li><strong>URL</strong>: <code>/warehouses/Leiria/products</code></li>
+<li><strong>URL</strong>: <code>/warehouses/{name}/products</code></li>
 <li><strong>Método</strong>: <code>GET</code></li>
 <li><strong>Headers</strong>:
 <ul>
 <li><code>Content-Type</code>: <code>application/json</code></li>
 </ul>
 </li>
+<li><strong>Body</strong>:<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Leiria"</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
 <li><strong>Response</strong>:<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">[</span>
   <span class="token punctuation">{</span>
     <span class="token property">"available"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>

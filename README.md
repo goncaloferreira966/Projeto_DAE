@@ -193,6 +193,32 @@ Um Gestor efetua o registo na plataforma do sistema.
   }
 <br />
 
+#### `GET /managers/{username}/orders`
+
+Um Gestor consulta todas as encomendas a si associadas.
+
+- **URL**: `/managers/{username}/orders`
+- **Método**: `GET`
+- **Headers**: 
+  - `Content-Type`: `application/json`
+
+- **Body**:
+  ```json
+  {
+    "username": "DinisRX"
+  }
+- **Response**:
+  ```json
+  {
+    "code": 3,
+    "deliveryDate": "2024-10-18T13:38:32.823Z[UTC]",
+    "purchaseDate": "2024-10-18T13:38:32.823Z[UTC]",
+    "username": "Goncalo",
+    "state": "In Distribution",
+    "usernameOperator": "DinisRX"
+  }
+<br />
+
 ### 4. **Clientes**
 #### `GET /clients`
 Um Administrador consulta a listagem de todos os Clientes Registados.
@@ -294,6 +320,32 @@ Um Cliente efetua o registo na plataforma do sistema.
   }
 <br />
 
+#### `GET /clients/{username}/orders`
+
+Um Cliente consulta todas as suas encomendas realizadas
+
+- **URL**: `/clients/{username}/orders`
+- **Método**: `GET`
+- **Headers**: 
+  - `Content-Type`: `application/json`
+
+- **Body**:
+  ```json
+  {
+    "username": "Goncalo"
+  }
+- **Response**:
+  ```json
+  {
+    "code": 3,
+    "deliveryDate": "2024-10-18T13:38:32.823Z[UTC]",
+    "purchaseDate": "2024-10-18T13:38:32.823Z[UTC]",
+    "username": "Goncalo",
+    "state": "In Distribution",
+    "usernameOperator": "DinisRX"
+  }
+<br />
+
 ### 5. **Encomendas**
 #### `GET /orders`
 Um Gestor consulta a listagem de todos as Encomendas efetuadas.
@@ -358,58 +410,6 @@ Um Gestor consulta uma Encomenda efetuada. Este método pode também ser usado p
   }
 <br />
 
-#### `GET /orders/client/{username}`
-
-Um Cliente consulta todas as suas encomendas realizadas
-
-- **URL**: `/orders/client/{username}`
-- **Método**: `GET`
-- **Headers**: 
-  - `Content-Type`: `application/json`
-
-- **Body**:
-  ```json
-  {
-    "username": "Goncalo"
-  }
-- **Response**:
-  ```json
-  {
-    "code": 3,
-    "deliveryDate": "2024-10-18T13:38:32.823Z[UTC]",
-    "purchaseDate": "2024-10-18T13:38:32.823Z[UTC]",
-    "username": "Goncalo",
-    "state": "In Distribution",
-    "usernameOperator": "DinisRX"
-  }
-<br />
-
-#### `GET /orders/operator/{username}`
-
-Um Operador consulta todas as encomendas a si associadas.
-
-- **URL**: `/orders/operator/{username}`
-- **Método**: `GET`
-- **Headers**: 
-  - `Content-Type`: `application/json`
-
-- **Body**:
-  ```json
-  {
-    "username": "DinisRX"
-  }
-- **Response**:
-  ```json
-  {
-    "code": 3,
-    "deliveryDate": "2024-10-18T13:38:32.823Z[UTC]",
-    "purchaseDate": "2024-10-18T13:38:32.823Z[UTC]",
-    "username": "Goncalo",
-    "state": "In Distribution",
-    "usernameOperator": "DinisRX"
-  }
-<br />
-
 #### `POST /orders`
 Um Cliente efetua uma Encomenda e a mesma é criada em sistema.
 
@@ -441,9 +441,9 @@ Um Cliente efetua uma Encomenda e a mesma é criada em sistema.
 
 ### 6. **Products**
 #### `Get /products`
-Vai buscar todos os produtos existentes 
+Um utilizador consulta todos os produtos na página de e-commerce.
 - **URL**: `/products`
-- **Método**: `POST`
+- **Método**: `GET`
 - **Headers**: 
   - `Content-Type`: `application/json`
 - **Response**:
@@ -476,11 +476,17 @@ Vai buscar todos os produtos existentes
 <br />
 
 #### `Get /products/{id}`
-Vai buscar o produto com X id
-- **URL**: `/products/2`
+Um utilizador consulta um produto especifico.
+- **URL**: `/products/{id}`
 - **Método**: `GET`
 - **Headers**: 
   - `Content-Type`: `application/json`
+
+- **Body**:
+  ```json
+  {
+    "id": "2"
+  }
 - **Response**:
   ```json
   {
@@ -497,11 +503,16 @@ Vai buscar o produto com X id
 <br />
 
 #### `Get /products/name/{name}`
-Vai buscar tosdos os produtos que contenham a palavra {name}
-- **URL**: `/products/name/S`
+Um utilizador consulta todos os produtos que contenham a palavra {name}.
+- **URL**: `/products/name/{name}`
 - **Método**: `GET`
 - **Headers**: 
   - `Content-Type`: `application/json`
+- **Body**:
+  ```json
+  {
+    "name": "Sprite"
+  }
 - **Response**:
   ```json
   [
@@ -533,7 +544,7 @@ Vai buscar tosdos os produtos que contenham a palavra {name}
 
 ### 7. **Warehouses**
 #### `Get /warehouses`
-Vai buscar os Warehouses que existem
+Um utilizador consulta os warehouses existentes.
 - **URL**: `/warehouses`
 - **Método**: `GET`
 - **Headers**: 
@@ -558,11 +569,16 @@ Vai buscar os Warehouses que existem
 <br />
 
 #### `Get /warehouses/{name}`
-Vai buscar os Warehouses que existem
-- **URL**: `/warehouses/Leiria`
+Um utilizador conulta os dados de um warehouse especifico.
+- **URL**: `/warehouses/{name}`
 - **Método**: `GET`
 - **Headers**: 
   - `Content-Type`: `application/json`
+- **Body**:
+  ```json
+  {
+    "name": "Leiria"
+  }
 - **Response**:
   ```json
 
@@ -575,14 +591,18 @@ Vai buscar os Warehouses que existem
 <br />
 
 #### `Get /warehouses/{name}/products`
-Vai buscar todos os produtos que exitem no determindo warehouse
-- **URL**: `/warehouses/Leiria/products`
+Um utilizador consulta todos os produtos que exitem num determindo warehouse.
+- **URL**: `/warehouses/{name}/products`
 - **Método**: `GET`
 - **Headers**: 
   - `Content-Type`: `application/json`
+- **Body**:
+  ```json
+  {
+    "name": "Leiria"
+  }
 - **Response**:
   ```json
-  
   [
     {
       "available": true,
