@@ -5,10 +5,15 @@ import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
+import jakarta.validation.ConstraintViolationException;
 import org.hibernate.Hibernate;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Client;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Order;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Product;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Warehouse;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityNotFoundException;
 
 import java.util.List;
 
@@ -20,10 +25,23 @@ public class ProductBean {
     @EJB
     private WarehouseBean warehouseBean;
     //(long id, String name, String description, double price, String image, int quantity,boolean available, boolean haveSensor, warehouse warehouse)
-    public void create(long id, String name, String description, double price, String image, int quantity, boolean available, boolean haveSensor, String warehouseName) {
-        var warehouse = warehouseBean.find(warehouseName);
-        var product = new Product(id, name, description, price, image, quantity, available, haveSensor, warehouse);
-        entityManager.persist(product);
+    public void create(long id, String name, String description, double price, String image, int quantity, boolean available, boolean haveSensor, String warehouseName)
+            throws MyEntityNotFoundException, MyEntityExistsException,
+            MyConstraintViolationException
+    {
+
+        try {
+            var warehouse = warehouseBean.find(warehouseName);
+            var product = new Product(id, name, description, price, image, quantity, available, haveSensor, warehouse);
+            entityManager.persist(product);
+
+            entityManager.flush();
+        }
+        catch (ConstraintViolationException e) {
+            throw new MyConstraintViolationException(e);
+        }
+
+
     }
 
     public List<Product> findAll() {

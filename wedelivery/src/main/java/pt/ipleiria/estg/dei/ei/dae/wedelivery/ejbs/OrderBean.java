@@ -3,7 +3,12 @@ import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.validation.ConstraintViolationException;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Operator;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Order;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityNotFoundException;
 
 import java.util.Date;
 import java.util.List;
@@ -19,11 +24,20 @@ public class OrderBean {
     @EJB
     private OperatorBean operatorBean;
 
-    public void create(long code, Date deliveryDate, Date purchaseDate, String username, String usernameOperator, String state) {
-        var client = clientBean.find(username);
-        var operator = operatorBean.find(usernameOperator);
-        var order = new Order(deliveryDate, purchaseDate, client, operator, code, state);
-        entityManager.persist(order);
+    public void create(long code, Date deliveryDate, Date purchaseDate, String username, String usernameOperator, String state)
+            throws MyEntityNotFoundException, MyEntityExistsException,
+            MyConstraintViolationException
+    {
+        try {
+            var client = clientBean.find(username);
+            var operator = operatorBean.find(usernameOperator);
+            var order = new Order(deliveryDate, purchaseDate, client, operator, code, state);
+            entityManager.persist(order);
+            entityManager.flush();
+        }
+        catch (ConstraintViolationException e) {
+            throw new MyConstraintViolationException(e);
+        }
     }
 
     public List<Order> findAll() {

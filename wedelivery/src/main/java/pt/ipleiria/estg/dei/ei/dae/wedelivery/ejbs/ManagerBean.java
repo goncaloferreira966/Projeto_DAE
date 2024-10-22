@@ -3,8 +3,12 @@ import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
+import jakarta.validation.ConstraintViolationException;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Client;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Manager;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityNotFoundException;
 
 import java.util.List;
 
@@ -13,14 +17,25 @@ public class ManagerBean {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public void create(String email, String name, String password, String username) {
-        if (exists(username)) {
-            throw new MyEntityExistsException(
-                    "Client with username '" + username + "' already exists");
-        }
+    public void create(String email, String name, String password, String username)
+            throws MyEntityNotFoundException, MyEntityExistsException,
+            MyConstraintViolationException
+    {
 
-        var manager = new Manager(email, name, password, username);
-        entityManager.persist(manager);
+        try {
+            if (exists(username)) {
+                throw new MyEntityExistsException(
+                        "Client with username '" + username + "' already exists");
+            }
+
+            var manager = new Manager(email, name, password, username);
+            entityManager.persist(manager);
+
+            entityManager.flush();
+        }
+        catch (ConstraintViolationException e) {
+            throw new MyConstraintViolationException(e);
+        }
     }
 
     public List<Manager> findAll() {

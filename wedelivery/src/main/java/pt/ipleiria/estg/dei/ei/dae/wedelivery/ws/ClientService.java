@@ -8,6 +8,9 @@ import jakarta.ejb.EJB;
 import jakarta.ws.rs.core.MediaType;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.OrderBean;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Client;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityNotFoundException;
+
 import java.util.List;
 
 @Path("clients") // relative url web path for this service
@@ -36,7 +39,8 @@ public class ClientService {
 
     @POST
     @Path("/")
-    public Response createNewClient (ClientDTO clientDTO){
+    public Response createNewClient (ClientDTO clientDTO)
+        throws MyEntityExistsException, MyEntityNotFoundException {
         clientBean.create(
                 clientDTO.getUsername(),
                 clientDTO.getPassword(),

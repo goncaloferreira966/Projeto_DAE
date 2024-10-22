@@ -8,6 +8,8 @@ import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.OrderDTO;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.OrderBean;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Operator;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Order;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityNotFoundException;
 
 import java.util.List;
 
@@ -34,7 +36,8 @@ public class OrderService {
 
     @POST
     @Path("/")
-    public Response createNewOrder (OrderDTO orderDTO) {
+    public Response createNewOrder (OrderDTO orderDTO)
+            throws MyEntityExistsException, MyEntityNotFoundException {
         orderBean.create(
                 orderDTO.getCode(),
                 orderDTO.getPurchaseDate(),

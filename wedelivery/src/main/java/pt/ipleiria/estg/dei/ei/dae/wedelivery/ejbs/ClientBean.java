@@ -3,9 +3,12 @@ import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
+import jakarta.validation.ConstraintViolationException;
 import org.hibernate.Hibernate;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Client;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityNotFoundException;
 
 import java.util.List;
 
@@ -14,15 +17,23 @@ public class ClientBean {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public void create(String username, String password, String name, String email, int nif, String postalCode, String country, String city, String address) {
+    public void create(String username, String password, String name, String email, int nif, String postalCode, String country, String city, String address)
+            throws MyEntityNotFoundException, MyEntityExistsException,
+            MyConstraintViolationException {
+        try {
+            if (exists(username)) {
+                throw new MyEntityExistsException(
+                        "Client with username '" + username + "' already exists");
+            }
 
-        if (exists(username)) {
-            throw new MyEntityExistsException(
-                    "Client with username '" + username + "' already exists");
+            var client = new Client(email, name, password, username, nif, postalCode, city, country, address);
+            entityManager.persist(client);
+
+            entityManager.flush();
         }
-
-        var client = new Client(email, name, password, username, nif, postalCode, city, country, address);
-        entityManager.persist(client);
+        catch (ConstraintViolationException e) {
+            throw new MyConstraintViolationException(e);
+        }
     }
 
     public List<Client> findAll() {

@@ -6,6 +6,9 @@ import jakarta.ws.rs.core.Response;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.OperatorDTO;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.OperatorBean;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Operator;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityNotFoundException;
+
 import java.util.List;
 
 @Path("operators") // relative url web path for this service
@@ -30,7 +33,8 @@ public class OperatorService {
 
     @POST
     @Path("/")
-    public Response createNewOperator (OperatorDTO operatorDTO) {
+    public Response createNewOperator (OperatorDTO operatorDTO)
+            throws MyEntityExistsException, MyEntityNotFoundException {
         administratorBean.create(
                 operatorDTO.getEmail(),
                 operatorDTO.getName(),

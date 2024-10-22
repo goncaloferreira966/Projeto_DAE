@@ -6,6 +6,7 @@ import jakarta.ejb.Startup;
 
 import java.util.Date;
 import java.util.UUID;
+import java.util.logging.Logger;
 
 @Singleton
 @Startup
@@ -24,8 +25,12 @@ public class ConfigBean {
     @EJB
     private WarehouseBean warehouseBean;
 
+    private static final Logger logger = Logger.getLogger("ejbs.ConfigBean");
+
     @PostConstruct
     public void populateDB() {
+
+
 
         try {
             clientBean.create("Goncalo", "password", "Gonçalo", "goncalo@gmail.com", 123123123, "2565-834", "PT", "Leiria", "Rua das Igrejas");
@@ -60,12 +65,8 @@ public class ConfigBean {
             productBean.create(6, "Sumol", "Sumol", 1.5, "sumol.jpg", 100, true, false, "Leiria");
 
 
-
-
         } catch (Exception e) {
             System.err.println("Some exception happened while creating objects");
         }
-
-
     }
 }

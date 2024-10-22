@@ -4,8 +4,13 @@ import jakarta.ejb.EJBException;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.validation.ConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Product;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Volume;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Warehouse;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityNotFoundException;
 
 import java.util.List;
 
@@ -16,9 +21,19 @@ public class WarehouseBean {
     private EntityManager entityManager;
 
     //String name, String address, String city, String postalCode
-    public void create(String name, String address, String city, String postalCode) {
-        var warehouse = new Warehouse(name, address, city, postalCode);
-        entityManager.persist(warehouse);
+    public void create(String name, String address, String city, String postalCode)
+            throws MyEntityNotFoundException, MyEntityExistsException,
+            MyConstraintViolationException
+    {
+        try {
+            var warehouse = new Warehouse(name, address, city, postalCode);
+            entityManager.persist(warehouse);
+
+            entityManager.flush();
+        }
+        catch (ConstraintViolationException e) {
+            throw new MyConstraintViolationException(e);
+        }
     }
 
     public List<Warehouse> findAll() {
