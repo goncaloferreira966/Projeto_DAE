@@ -1,29 +1,37 @@
 package pt.ipleiria.estg.dei.ei.dae.wedelivery.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Table(name = "volumes")
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = "getAllVolumes",
+                        query = "SELECT v FROM Volume v"
+                )
+        }
+)
 @Entity
 public class Volume {
     @Id
     private long id;
-    private List<Sensor> sensors;
-    private List<Product> products;
+    //private List<Sensor> sensors;
+    //private List<Product> products;
 
     public Volume() {
-        this.sensors = new ArrayList<>();
-        this.products = new ArrayList<>();
+        //this.sensors = new ArrayList<>();
+        //this.products = new ArrayList<>();
     }
 
     public Volume(long id) {
         this.id = id;
-        this.sensors = new ArrayList<>();
-        this.products = new ArrayList<>();
+        //this.sensors = new ArrayList<>();
+        //this.products = new ArrayList<>();
     }
-
+/*
     public long getId() {
         return id;
     }
@@ -46,5 +54,5 @@ public class Volume {
 
     public void setProducts(List<Product> products) {
         this.products = products;
-    }
+    */
 }
