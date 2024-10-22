@@ -47,8 +47,8 @@ public class ConfigBean {
         warehouseBean.create("Lisboa", "Rua das Igrejas", "Lisboa", "2565-834");
         warehouseBean.create("Porto", "Rua das Igrejas", "Porto", "2565-834");
 
-        productBean.create(1, "Coca-Cola", "Coca-Cola", 1.5, "coca-cola.jpg", 100, true, false, "Leiria");
-        productBean.create(2, "Pepsi", "Pepsi", 1.5, "pepsi.jpg", 100, true, false, "Leiria");
+        productBean.create(1, "Coca-Cola", "Coca-Cola", 1.5, "coca-cola.jpg", 0, true, false, "Leiria");
+        productBean.create(2, "Pepsi", "Pepsi", 1.5, "pepsi.jpg", 2, true, false, "Leiria");
         productBean.create(3, "Sprite", "Sprite", 1.5, "sprite.jpg", 100, true, false, "Leiria");
         productBean.create(4, "Fanta", "Fanta", 1.5, "fanta.jpg", 100, true, false, "Leiria");
         productBean.create(5, "7up", "7up", 1.5, "7up.jpg", 100, true, false, "Leiria");

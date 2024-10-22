@@ -1,4 +1,5 @@
 <template>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <div class="container">
         <div v-if="messages.length" class="alert alert-danger mt-4">
             <ul>
@@ -8,8 +9,9 @@
 
         <div class="col-md-12 mt-5">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2>WeDelivery - Products</h2>
-                <button @click.prevent="refresh" class="btn btn-info">Refresh Data</button>
+                <h2><i class="bi bi-shop"></i> WeDelivery - Products</h2>
+                <button @click.prevent="refresh" class="btn btn-info"><i class="bi bi-arrow-clockwise"></i> Refresh
+                    Data</button>
             </div>
 
             <!-- Campo de Pesquisa -->
@@ -26,16 +28,40 @@
                             {{ product.name }}
                         </div>
                         <div class="card-body">
-                            <p><strong>Description:</strong> {{ product.description }}</p>
-                            <p><strong>Price:</strong> €{{ product.price.toFixed(2) }}</p>
-                            <p><strong>Available Quantity:</strong> {{ product.quantity }}</p>
-                            <button class="btn btn-primary" :disabled="!product.available"
-                                @click="addToCart(product.id)">
-                                {{ product.available ? 'Add to Cart' : 'Out of Stock' }}
-                            </button>
-                            <nuxt-link :to="`/e-commerce/${product.id}`"
-                                class="btn btn-secondary btn-block btn-sm mt-2">View Details</nuxt-link>
+                            <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Description:</strong> {{ product.description }}</p>
+                                <p><strong>Price:</strong> €{{ product.price.toFixed(2) }}</p>
+                                <p>
+                                    <span v-if="product.quantity === 0" class="text-danger">
+                                        <i class="bi bi-x-circle-fill"></i>
+                                        <strong> Stock ({{ product.quantity }})</strong>
+                                    </span>
+                                    <span v-else-if="product.quantity > 0 && product.quantity <= 5"
+                                        class="text-warning">
+                                        <i class="bi bi-exclamation-triangle-fill"></i>
+                                        <strong> Stock ({{ product.quantity }})</strong>
+                                    </span>
+                                    <span v-else class="text-success">
+                                        <i class="bi bi-check-circle-fill"></i>
+                                        <strong> Stock ({{ product.quantity }})</strong>
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="col-md-6">                            
+                                <img :src="`${config.public.URL}/images/${product.image}`" alt="Product Image"
+                                    class="img-fluid" />
+                            </div>
                         </div>
+                            <button style="float: right" class="btn btn-primary" :disabled="!product.quantity"
+                                @click="addToCart(product.id)">
+                                <i class="bi bi-bag-plus"></i>
+                                {{ product.quantity ? 'Add to Cart' : 'Out of Stock' }}
+                            </button>
+                            <nuxt-link style="float: left;" :to="`/e-commerce/${product.id}`"
+                                class="btn btn-dark btn-block"><i class="bi bi-eye-fill"></i> View Details</nuxt-link>
+                        </div>
+                    
                     </div>
                 </div>
             </div>
@@ -47,7 +73,7 @@
 import { ref, onMounted } from 'vue'
 import { useRuntimeConfig } from '#imports'
 definePageMeta({
-  layout: 'default'
+    layout: 'default'
 });
 const config = useRuntimeConfig()
 const apiUrl = `${config.public.API_URL}/products`

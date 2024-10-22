@@ -1,16 +1,10 @@
 <template>
   <!-- Navbar -->
 
-
-
   <div class="container mt-5">
-    <!-- Botão para voltar à lista de ordens -->
-    <div class="mb-4">
-      <nuxt-link to="/manager" class="btn btn-secondary">Back to Orders List</nuxt-link>
-    </div>
-
     <div v-if="order" class="card shadow-lg">
-      <div class="card-header bg-secondary text-white">
+      <div class="card-header bg-secondary text-white d-flex justify-content-between align-items-center">
+        <nuxt-link to="/manager" class="btn btn-light text-secondary">Back</nuxt-link>
         <h2 class="mb-0">Details of Order - {{ order.username }} ({{ order.code }})</h2>
       </div>
       <div class="card-body">
@@ -59,7 +53,7 @@
 
       </div>
       <div class="card-footer text-center">
-        <button @click.prevent="refresh" class="btn btn-info ml-2">Refresh Data</button>
+        <button @click.prevent="refresh" class="btn btn-info ml-2"><i class="bi bi-arrow-clockwise"></i> Refresh Data</button>
       </div>
     </div>
 

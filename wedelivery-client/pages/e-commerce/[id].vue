@@ -56,7 +56,7 @@
         </div>
       </div>
       <div class="card-footer text-center">
-        <button @click.prevent="refresh" class="btn btn-info ml-2">Refresh Data</button>
+        <button @click.prevent="refresh" class="btn btn-info ml-2"><i class="bi bi-arrow-clockwise"></i> Refresh Data</button>
       </div>
     </div>
   </div>

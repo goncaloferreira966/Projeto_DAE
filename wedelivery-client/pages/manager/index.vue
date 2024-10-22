@@ -1,4 +1,5 @@
 <template>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
   <div class="container">
     <div v-if="error" class="alert alert-danger mt-4">Error: {{ error.message }}</div>
     
@@ -12,8 +13,8 @@
       <div v-else>
         <!-- Cabeçalho da página -->
         <div class="d-flex justify-content-between align-items-center mb-4">
-          <h2>WeDelivery - Orders</h2>
-          <button @click.prevent="refresh" class="btn btn-info">Refresh Data</button>
+          <h2><i class="bi bi-box-seam"></i> WeDelivery - Orders</h2>
+          <button @click.prevent="refresh" class="btn btn-info"><i class="bi bi-arrow-clockwise"></i> Refresh Data</button>
         </div>
 
         <!-- Dropdown para filtragem por username -->
@@ -37,7 +38,7 @@
                 <p><strong>Username:</strong> {{ order.username }}</p>
                 <p><strong>Purchase Date:</strong> {{ order.purchaseDate }}</p>
                 <p><strong>State:</strong> {{ order.state }}</p>
-                <nuxt-link :to="`/manager/${order.code}`" class="btn btn-dark btn-block btn-sm">View Details</nuxt-link>
+                <nuxt-link :to="`/manager/${order.code}`" class="btn btn-dark btn-block"><i class="bi bi-eye-fill"></i> View Details</nuxt-link>
               </div>
             </div>
           </div>
