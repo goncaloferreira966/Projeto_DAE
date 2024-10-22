@@ -1,5 +1,4 @@
 <template>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
   <div class="container">
     <div v-if="error" class="alert alert-danger mt-4">Error: {{ error.message }}</div>
     
@@ -37,8 +36,12 @@
               <div class="card-body">
                 <p><strong>Username:</strong> {{ order.username }}</p>
                 <p><strong>Purchase Date:</strong> {{ order.purchaseDate }}</p>
-                <p><strong>State:</strong> {{ order.state }}</p>
-                <nuxt-link :to="`/manager/${order.code}`" class="btn btn-dark btn-block"><i class="bi bi-eye-fill"></i> View Details</nuxt-link>
+                <p><strong>State:</strong>
+                  <span :class="getStateClass(order.state)" class="badge" style="display: block; text-align: center;">
+                    {{ order.state }}
+                  </span>
+                </p>
+                <nuxt-link :to="`/manager/${order.code}`" class="btn btn-dark btn-block btn-sm"><i class="bi bi-eye-fill"></i> View Details</nuxt-link>
               </div>
             </div>
           </div>
@@ -78,10 +81,43 @@ const filteredOrders = computed(() => {
     order.username === selectedUsername.value
   );
 });
+
+// Function to get class based on state
+const getStateClass = (state) => {
+  switch (state) {
+    case 'In distribution':
+      return 'badge bg-light-blue'; // Azul claro para "In distribution"
+    case 'Pending':
+      return 'badge bg-warning'; // Cor de aviso para "Pending"
+    case 'Shipped':
+      return 'badge bg-blue'; // Cor para "Shipped"
+    case 'Delivered':
+      return 'badge bg-success'; // Cor de sucesso para "Delivered"
+    default:
+      return 'badge bg-secondary'; // Default
+  }
+};
 </script>
 
 <style scoped>
 .card {
   margin-top: 20px;
+}
+
+/* Cores das etiquetas */
+.bg-light-blue {
+  background-color: #ADD8E6; /* Azul claro */
+}
+
+.bg-warning {
+  background-color: #FFC107; /* Amarelo (Warning) */
+}
+
+.bg-blue {
+  background-color: #007BFF; /* Azul */
+}
+
+.bg-success {
+  background-color: #28A745; /* Verde (Sucesso) */
 }
 </style>

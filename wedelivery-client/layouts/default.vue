@@ -1,6 +1,7 @@
 <!-- layouts/default.vue -->
 <template>
   <div>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <Navbar />
     <main>
       <slot></slot> <!-- O conteúdo da página será renderizado aqui -->
