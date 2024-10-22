@@ -10,7 +10,7 @@ import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Restriction;
 
 import java.util.List;
 
-@Path("managers") // relative url web path for this service
+@Path("restrictions") // relative url web path for this service
 @Produces({MediaType.APPLICATION_JSON}) // injects header “Content-Type: application/json”
 @Consumes({MediaType.APPLICATION_JSON}) // injects header “Accept: application/json”
 public class RestrictionService {
