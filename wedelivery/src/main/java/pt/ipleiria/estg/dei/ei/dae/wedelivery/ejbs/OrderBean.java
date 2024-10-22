@@ -3,6 +3,7 @@ import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import jakarta.validation.ConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Operator;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Order;
@@ -29,6 +30,11 @@ public class OrderBean {
             MyConstraintViolationException
     {
         try {
+            if (exists(code)) {
+                throw new MyEntityExistsException(
+                        "order with code '" + code + "' already exists");
+            }
+
             var client = clientBean.find(username);
             var operator = operatorBean.find(usernameOperator);
             var order = new Order(deliveryDate, purchaseDate, client, operator, code, state);
@@ -63,5 +69,14 @@ public class OrderBean {
             throw new RuntimeException("order " + code + " not found");
         }
         return order;
+    }
+
+    public boolean exists(long code) {
+        Query query = entityManager.createQuery(
+                "SELECT COUNT(o.code) FROM Order o WHERE o.code = :code",
+                Long.class
+        );
+        query.setParameter("code", code);
+        return (Long)query.getSingleResult() > 0L;
     }
 }

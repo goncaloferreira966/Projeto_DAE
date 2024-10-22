@@ -4,6 +4,7 @@ import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import jakarta.validation.ConstraintViolationException;
 import org.hibernate.Hibernate;
@@ -31,6 +32,11 @@ public class ProductBean {
     {
 
         try {
+            if (exists(id)) {
+                throw new MyEntityExistsException(
+                        "product with id '" + id + "' already exists");
+            }
+
             var warehouse = warehouseBean.find(warehouseName);
             var product = new Product(id, name, description, price, image, quantity, available, haveSensor, warehouse);
             entityManager.persist(product);
@@ -77,5 +83,14 @@ public class ProductBean {
             entityManager.merge(warehouse);
             entityManager.merge(product);
         }
+    }
+
+    public boolean exists(long id) {
+        Query query = entityManager.createQuery(
+                "SELECT COUNT(p.id) FROM Product p WHERE p.id = :id",
+                Long.class
+        );
+        query.setParameter("id", id);
+        return (Long)query.getSingleResult() > 0L;
     }
 }

@@ -3,6 +3,7 @@ package pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import jakarta.validation.ConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Sensor;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Volume;
@@ -22,6 +23,11 @@ public class VolumeBean {
             MyConstraintViolationException
     {
         try {
+            if (exists(id)) {
+                throw new MyEntityExistsException(
+                        "volume with id '" + id + "' already exists");
+            }
+
             var volume = new Volume(id);
             entityManager.persist(volume);
 
@@ -43,5 +49,14 @@ public class VolumeBean {
             throw new RuntimeException("volume " + id + " not found");
         }
         return volume;
+    }
+
+    public boolean exists(long id) {
+        Query query = entityManager.createQuery(
+                "SELECT COUNT(v.id) FROM Volume v WHERE v.id = :id",
+                Long.class
+        );
+        query.setParameter("id", id);
+        return (Long)query.getSingleResult() > 0L;
     }
 }

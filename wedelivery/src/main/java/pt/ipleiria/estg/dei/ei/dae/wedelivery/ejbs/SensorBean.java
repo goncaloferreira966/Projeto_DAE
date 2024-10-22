@@ -3,6 +3,7 @@ package pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import jakarta.validation.ConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Restriction;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Sensor;
@@ -22,6 +23,11 @@ public class SensorBean {
             MyConstraintViolationException
     {
         try {
+            if (exists(id)) {
+                throw new MyEntityExistsException(
+                        "sensor with id '" + id + "' already exists");
+            }
+
             var sensor = new Sensor(id, type, currentValue, busy, expedition);
             entityManager.persist(sensor);
 
@@ -44,4 +50,14 @@ public class SensorBean {
         }
         return sensor;
     }
+
+    public boolean exists(long id) {
+        Query query = entityManager.createQuery(
+                "SELECT COUNT(s.id) FROM Sensor s WHERE s.id = :id",
+                Long.class
+        );
+        query.setParameter("id", id);
+        return (Long)query.getSingleResult() > 0L;
+    }
+
 }

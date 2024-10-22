@@ -4,6 +4,7 @@ import jakarta.ejb.EJBException;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import jakarta.validation.ConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Product;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Volume;
@@ -26,6 +27,11 @@ public class WarehouseBean {
             MyConstraintViolationException
     {
         try {
+            if (exists(name)) {
+                throw new MyEntityExistsException(
+                        "warehouse with name '" + name + "' already exists");
+            }
+
             var warehouse = new Warehouse(name, address, city, postalCode);
             entityManager.persist(warehouse);
 
@@ -53,7 +59,14 @@ public class WarehouseBean {
         return warehouse;
     }
 
-
+    public boolean exists(String name) {
+        Query query = entityManager.createQuery(
+                "SELECT COUNT(w.name) FROM Warehouse w WHERE w.name = :name",
+                Long.class
+        );
+        query.setParameter("name", name);
+        return (Long)query.getSingleResult() > 0L;
+    }
 
 
 }

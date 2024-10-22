@@ -3,6 +3,7 @@ package pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import jakarta.validation.ConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Product;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Restriction;
@@ -23,6 +24,11 @@ public class RestrictionBean {
     {
 
         try {
+            if (exists(id)) {
+                throw new MyEntityExistsException(
+                        "restriction with id '" + id + "' already exists");
+            }
+
             var restriction = new Restriction(id, type, maxValue, minValue);
             entityManager.persist(restriction);
 
@@ -44,5 +50,14 @@ public class RestrictionBean {
             throw new RuntimeException("restriction " + id + " not found");
         }
         return restriction;
+    }
+
+    public boolean exists(long id) {
+        Query query = entityManager.createQuery(
+                "SELECT COUNT(r.id) FROM Restriction r WHERE r.id = :id",
+                Long.class
+        );
+        query.setParameter("id", id);
+        return (Long)query.getSingleResult() > 0L;
     }
 }
