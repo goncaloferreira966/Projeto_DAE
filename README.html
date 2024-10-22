@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
-      <link rel="stylesheet" href="file:////Users/goncaloferreira/.vscode/extensions/shd101wyy.markdown-preview-enhanced-0.8.14/crossnote/dependencies/katex/katex.min.css">
+      <link rel="stylesheet" href="file:///c:\Users\Dinis\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.14\crossnote\dependencies\katex\katex.min.css">
       
       
       
@@ -518,6 +518,193 @@
   <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"Guilherme"</span><span class="token punctuation">,</span>
   <span class="token property">"usernameOperator"</span><span class="token operator">:</span> <span class="token string">"DinisRX"</span>
 <span class="token punctuation">}</span>
+</code></pre></li>
+</ul>
+<br>
+<h3 id="6-e-commerce">6. <strong>E-Commerce</strong> </h3>
+<h4 id="get-products"><code>Get /products</code> </h4>
+<p>Vai buscar todos os produtos existentes</p>
+<ul>
+<li><strong>URL</strong>: <code>/products</code></li>
+<li><strong>Método</strong>: <code>POST</code></li>
+<li><strong>Headers</strong>:
+<ul>
+<li><code>Content-Type</code>: <code>application/json</code></li>
+</ul>
+</li>
+<li><strong>Response</strong>:<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    <span class="token property">"available"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"Coca-Cola"</span><span class="token punctuation">,</span>
+    <span class="token property">"haveSensor"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token property">"image"</span><span class="token operator">:</span> <span class="token string">"coca-cola.jpg"</span><span class="token punctuation">,</span>
+    <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Coca-Cola"</span><span class="token punctuation">,</span>
+    <span class="token property">"price"</span><span class="token operator">:</span> <span class="token number">1.5</span><span class="token punctuation">,</span>
+    <span class="token property">"quantity"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token property">"warehouseName"</span><span class="token operator">:</span> <span class="token string">"Leiria"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  ...<span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    <span class="token property">"available"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"Sumol"</span><span class="token punctuation">,</span>
+    <span class="token property">"haveSensor"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
+    <span class="token property">"image"</span><span class="token operator">:</span> <span class="token string">"sumol.jpg"</span><span class="token punctuation">,</span>
+    <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Sumol"</span><span class="token punctuation">,</span>
+    <span class="token property">"price"</span><span class="token operator">:</span> <span class="token number">1.5</span><span class="token punctuation">,</span>
+    <span class="token property">"quantity"</span><span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
+    <span class="token property">"warehouseName"</span><span class="token operator">:</span> <span class="token string">"Leiria"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+</code></pre></li>
+</ul>
+<br>
+<h4><code>Get /products/{id}</code></h4>
+<p>Vai buscar o produto com X id</p>
+<ul>
+<li><strong>URL</strong>: <code>/products/2</code></li>
+<li><strong>Método</strong>: <code>GET</code></li>
+<li><strong>Headers</strong>:
+<ul>
+<li><code>Content-Type</code>: <code>application/json</code></li>
+</ul>
+</li>
+<li><strong>Response</strong>:<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"available"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"Pepsi"</span><span class="token punctuation">,</span>
+  <span class="token property">"haveSensor"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+  <span class="token property">"image"</span><span class="token operator">:</span> <span class="token string">"pepsi.jpg"</span><span class="token punctuation">,</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Pepsi"</span><span class="token punctuation">,</span>
+  <span class="token property">"price"</span><span class="token operator">:</span> <span class="token number">1.5</span><span class="token punctuation">,</span>
+  <span class="token property">"quantity"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+  <span class="token property">"warehouseName"</span><span class="token operator">:</span> <span class="token string">"Leiria"</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+</ul>
+<br>
+<h4 id="get-productsnamename"><code>Get /products/name/{name}</code> </h4>
+<p>Vai buscar tosdos os produtos que contenham a palavra {name}</p>
+<ul>
+<li><strong>URL</strong>: <code>/products/name/S</code></li>
+<li><strong>Método</strong>: <code>GET</code></li>
+<li><strong>Headers</strong>:
+<ul>
+<li><code>Content-Type</code>: <code>application/json</code></li>
+</ul>
+</li>
+<li><strong>Response</strong>:<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    <span class="token property">"available"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"Sprite"</span><span class="token punctuation">,</span>
+    <span class="token property">"haveSensor"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+    <span class="token property">"image"</span><span class="token operator">:</span> <span class="token string">"sprite.jpg"</span><span class="token punctuation">,</span>
+    <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Sprite"</span><span class="token punctuation">,</span>
+    <span class="token property">"price"</span><span class="token operator">:</span> <span class="token number">1.5</span><span class="token punctuation">,</span>
+    <span class="token property">"quantity"</span><span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
+    <span class="token property">"warehouseName"</span><span class="token operator">:</span> <span class="token string">"Leiria"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  ...<span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    <span class="token property">"available"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"Sumol"</span><span class="token punctuation">,</span>
+    <span class="token property">"haveSensor"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
+    <span class="token property">"image"</span><span class="token operator">:</span> <span class="token string">"sumol.jpg"</span><span class="token punctuation">,</span>
+    <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Sumol"</span><span class="token punctuation">,</span>
+    <span class="token property">"price"</span><span class="token operator">:</span> <span class="token number">1.5</span><span class="token punctuation">,</span>
+    <span class="token property">"quantity"</span><span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
+    <span class="token property">"warehouseName"</span><span class="token operator">:</span> <span class="token string">"Leiria"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+</code></pre></li>
+</ul>
+<br>
+<h3>7. <strong>Warehouses</strong></h3>
+<h4><code>Get /warehouses</code></h4>
+<p>Vai buscar os Warehouses que existem</p>
+<ul>
+<li><strong>URL</strong>: <code>/warehouses</code></li>
+<li><strong>Método</strong>: <code>GET</code></li>
+<li><strong>Headers</strong>:
+<ul>
+<li><code>Content-Type</code>: <code>application/json</code></li>
+</ul>
+</li>
+<li><strong>Response</strong>:<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    <span class="token property">"address"</span><span class="token operator">:</span> <span class="token string">"Rua das Igrejas"</span><span class="token punctuation">,</span>
+    <span class="token property">"city"</span><span class="token operator">:</span> <span class="token string">"Leiria"</span><span class="token punctuation">,</span>
+    <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Leiria"</span><span class="token punctuation">,</span>
+    <span class="token property">"postalCode"</span><span class="token operator">:</span> <span class="token string">"2565-834"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  ...<span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    <span class="token property">"address"</span><span class="token operator">:</span> <span class="token string">"Rua das Igrejas"</span><span class="token punctuation">,</span>
+    <span class="token property">"city"</span><span class="token operator">:</span> <span class="token string">"Porto"</span><span class="token punctuation">,</span>
+    <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Porto"</span><span class="token punctuation">,</span>
+    <span class="token property">"postalCode"</span><span class="token operator">:</span> <span class="token string">"2565-834"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+</code></pre></li>
+</ul>
+<br>
+<h4 id="get-warehousesname"><code>Get /warehouses/{name}</code> </h4>
+<p>Vai buscar os Warehouses que existem</p>
+<ul>
+<li><strong>URL</strong>: <code>/warehouses/Leiria</code></li>
+<li><strong>Método</strong>: <code>GET</code></li>
+<li><strong>Headers</strong>:
+<ul>
+<li><code>Content-Type</code>: <code>application/json</code></li>
+</ul>
+</li>
+<li><strong>Response</strong>:<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"address"</span><span class="token operator">:</span> <span class="token string">"Rua das Igrejas"</span><span class="token punctuation">,</span>
+  <span class="token property">"city"</span><span class="token operator">:</span> <span class="token string">"Leiria"</span><span class="token punctuation">,</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Leiria"</span><span class="token punctuation">,</span>
+  <span class="token property">"postalCode"</span><span class="token operator">:</span> <span class="token string">"2565-834"</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+</ul>
+<br>
+<h4><code>Get /warehouses/{name}/products</code></h4>
+<p>Vai buscar todos os produtos que exitem no determindo warehouse</p>
+<ul>
+<li><strong>URL</strong>: <code>/warehouses/Leiria/products</code></li>
+<li><strong>Método</strong>: <code>GET</code></li>
+<li><strong>Headers</strong>:
+<ul>
+<li><code>Content-Type</code>: <code>application/json</code></li>
+</ul>
+</li>
+<li><strong>Response</strong>:<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    <span class="token property">"available"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"Coca-Cola"</span><span class="token punctuation">,</span>
+    <span class="token property">"haveSensor"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token property">"image"</span><span class="token operator">:</span> <span class="token string">"coca-cola.jpg"</span><span class="token punctuation">,</span>
+    <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Coca-Cola"</span><span class="token punctuation">,</span>
+    <span class="token property">"price"</span><span class="token operator">:</span> <span class="token number">1.5</span><span class="token punctuation">,</span>
+    <span class="token property">"quantity"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token property">"warehouseName"</span><span class="token operator">:</span> <span class="token string">"Leiria"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  ...<span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    <span class="token property">"available"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"Sumol"</span><span class="token punctuation">,</span>
+    <span class="token property">"haveSensor"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
+    <span class="token property">"image"</span><span class="token operator">:</span> <span class="token string">"sumol.jpg"</span><span class="token punctuation">,</span>
+    <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Sumol"</span><span class="token punctuation">,</span>
+    <span class="token property">"price"</span><span class="token operator">:</span> <span class="token number">1.5</span><span class="token punctuation">,</span>
+    <span class="token property">"quantity"</span><span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
+    <span class="token property">"warehouseName"</span><span class="token operator">:</span> <span class="token string">"Leiria"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
 </code></pre></li>
 </ul>
 <br>
