@@ -439,7 +439,7 @@ Um Cliente efetua uma Encomenda e a mesma é criada em sistema.
   }
 <br />
 
-### 6. **E-Commerce**
+### 6. **Products**
 #### `Get /products`
 Vai buscar todos os produtos existentes 
 - **URL**: `/products`
