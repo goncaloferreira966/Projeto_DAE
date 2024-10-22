@@ -20,10 +20,6 @@
           <table class="table table-bordered">
             <tbody>
               <tr>
-                <th>ID</th>
-                <td>{{ product.id }}</td>
-              </tr>
-              <tr>
                 <th>Description</th>
                 <td>{{ product.description }}</td>
               </tr>
@@ -32,26 +28,17 @@
                 <td>€{{ product.price.toFixed(2) }}</td>
               </tr>
               <tr>
-                <th>Available</th>
-                <td>{{ product.available ? 'Yes' : 'No' }}</td>
-              </tr>
-              <tr>
                 <th>Warehouse</th>
                 <td>{{ product.warehouseName }}</td>
               </tr>
               <tr>
-                <th>Quantity</th>
+                <th>Stock</th>
                 <td>{{ product.quantity }}</td>
-              </tr>
-              <tr>
-                <th>Sensor</th>
-                <td>{{ product.haveSensor ? 'Yes' : 'No' }}</td>
               </tr>
             </tbody>
           </table>
         </div>
         <div class="col-md-6 text-center">
-          <h5>Product Image</h5>
           <img :src="`${config.public.URL}/images/${product.image}`" alt="Product Image" class="img-fluid" />
         </div>
       </div>

@@ -25,8 +25,8 @@ definePageMeta({
 }
 
 .responsive-iframe {
-  width: 80%;
-  max-width: 900px;
+  width: 90%;
+  max-width: 1200px;
   height: auto;
   aspect-ratio: 16 / 9;
   border-radius: 10px;

@@ -29,39 +29,39 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                            <div class="col-md-6">
-                                <p><strong>Description:</strong> {{ product.description }}</p>
-                                <p><strong>Price:</strong> €{{ product.price.toFixed(2) }}</p>
-                                <p>
-                                    <span v-if="product.quantity === 0" class="text-danger">
-                                        <i class="bi bi-x-circle-fill"></i>
-                                        <strong> Stock ({{ product.quantity }})</strong>
-                                    </span>
-                                    <span v-else-if="product.quantity > 0 && product.quantity <= 5"
-                                        class="text-warning">
-                                        <i class="bi bi-exclamation-triangle-fill"></i>
-                                        <strong> Stock ({{ product.quantity }})</strong>
-                                    </span>
-                                    <span v-else class="text-success">
-                                        <i class="bi bi-check-circle-fill"></i>
-                                        <strong> Stock ({{ product.quantity }})</strong>
-                                    </span>
-                                </p>
+                                <div class="col-md-6">
+                                    <p><strong>Description:</strong> {{ product.description }}</p>
+                                    <p><strong>Price:</strong> €{{ product.price.toFixed(2) }}</p>
+                                    <p>
+                                        <span v-if="product.quantity === 0" class="text-danger">
+                                            <i class="bi bi-x-circle-fill"></i>
+                                            <strong> Stock ({{ product.quantity }})</strong>
+                                        </span>
+                                        <span v-else-if="product.quantity > 0 && product.quantity <= 5"
+                                            class="text-warning">
+                                            <i class="bi bi-exclamation-triangle-fill"></i>
+                                            <strong> Stock ({{ product.quantity }})</strong>
+                                        </span>
+                                        <span v-else class="text-success">
+                                            <i class="bi bi-check-circle-fill"></i>
+                                            <strong> Stock ({{ product.quantity }})</strong>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <img :src="`${config.public.URL}/images/${product.image}`" alt="Product Image"
+                                        class="img-fluid" style="max-height: 11vh;" />
+                                </div>
                             </div>
-                            <div class="col-md-6">                            
-                                <img :src="`${config.public.URL}/images/${product.image}`" alt="Product Image"
-                                    class="img-fluid" />
-                            </div>
-                        </div>
-                            <button style="float: right" class="btn btn-primary" :disabled="!product.quantity"
+                            <button style="float: right" class="btn btn-primary mt-3" :disabled="!product.quantity"
                                 @click="addToCart(product.id)">
                                 <i class="bi bi-bag-plus"></i>
                                 {{ product.quantity ? 'Add to Cart' : 'Out of Stock' }}
                             </button>
                             <nuxt-link style="float: left;" :to="`/e-commerce/${product.id}`"
-                                class="btn btn-dark btn-block"><i class="bi bi-eye-fill"></i> View Details</nuxt-link>
+                                class="btn btn-dark btn-block mt-3"><i class="bi bi-eye-fill"></i> View Details</nuxt-link>
                         </div>
-                    
+
                     </div>
                 </div>
             </div>

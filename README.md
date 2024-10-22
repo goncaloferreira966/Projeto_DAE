@@ -1,4 +1,4 @@
-| ![Imagem Esquerda](img/ipl.png) | ![Imagem Direita](LOGO AQUI) |
+| ![Imagem Esquerda](img/ipl.png) | ![Imagem Direita](img/encomenda.jpg) |
 |:---------------------------------------:|:---------------------------------------:|
 # Projeto DAE - `Primeira Entrega`
 ## `API Documentation`
