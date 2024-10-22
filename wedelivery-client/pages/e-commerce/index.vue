@@ -1,5 +1,4 @@
 <template>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <div class="container">
         <div v-if="messages.length" class="alert alert-danger mt-4">
             <ul>
