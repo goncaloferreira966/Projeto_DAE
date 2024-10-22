@@ -13,18 +13,20 @@ public class Sensor {
     private long id;
     @NotNull
     private String type;
-    private int current_value;
+    private int currentValue;
     //int[] history = new int[5];
+    @NotNull
     private boolean busy;
+    @NotNull
     private boolean expedition;
 
     public Sensor() {
     }
 
-    public Sensor(long id, String type, int current_value, boolean busy, boolean expedition) {
+    public Sensor(long id, String type, int currentValue, boolean busy, boolean expedition) {
         this.id = id;
         this.type = type;
-        this.current_value = current_value;
+        this.currentValue = currentValue;
         this.busy = busy;
         this.expedition =expedition;
     }
@@ -37,8 +39,8 @@ public class Sensor {
         return type;
     }
 
-    public int getCurrent_value() {
-        return current_value;
+    public int getCurrentValue() {
+        return currentValue;
     }
 
     public boolean isBusy() {
@@ -57,8 +59,8 @@ public class Sensor {
         this.type = type;
     }
 
-    public void setCurrent_value(int current_value) {
-        this.current_value = current_value;
+    public void setCurrentValue(int currentValue) {
+        this.currentValue = currentValue;
     }
 
     public void setBusy(boolean busy) {
