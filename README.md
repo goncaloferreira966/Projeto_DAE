@@ -439,6 +439,177 @@ Um Cliente efetua uma Encomenda e a mesma é criada em sistema.
   }
 <br />
 
+### 6. **E-Commerce**
+#### `Get /products`
+Vai buscar todos os produtos existentes 
+- **URL**: `/products`
+- **Método**: `POST`
+- **Headers**: 
+  - `Content-Type`: `application/json`
+- **Response**:
+  ```json
+  [
+    {
+      "available": true,
+      "description": "Coca-Cola",
+      "haveSensor": false,
+      "id": 1,
+      "image": "coca-cola.jpg",
+      "name": "Coca-Cola",
+      "price": 1.5,
+      "quantity": 0,
+      "warehouseName": "Leiria"
+    },
+    ...,
+    {
+      "available": true,
+      "description": "Sumol",
+      "haveSensor": false,
+      "id": 6,
+      "image": "sumol.jpg",
+      "name": "Sumol",
+      "price": 1.5,
+      "quantity": 100,
+      "warehouseName": "Leiria"
+    }
+  ]
+<br />
+
+#### `Get /products/{id}`
+Vai buscar o produto com X id
+- **URL**: `/products/2`
+- **Método**: `GET`
+- **Headers**: 
+  - `Content-Type`: `application/json`
+- **Response**:
+  ```json
+  {
+    "available": true,
+    "description": "Pepsi",
+    "haveSensor": false,
+    "id": 2,
+    "image": "pepsi.jpg",
+    "name": "Pepsi",
+    "price": 1.5,
+    "quantity": 2,
+    "warehouseName": "Leiria"
+  }
+<br />
+
+#### `Get /products/name/{name}`
+Vai buscar tosdos os produtos que contenham a palavra {name}
+- **URL**: `/products/name/S`
+- **Método**: `GET`
+- **Headers**: 
+  - `Content-Type`: `application/json`
+- **Response**:
+  ```json
+  [
+    {
+      "available": true,
+      "description": "Sprite",
+      "haveSensor": false,
+      "id": 3,
+      "image": "sprite.jpg",
+      "name": "Sprite",
+      "price": 1.5,
+      "quantity": 100,
+      "warehouseName": "Leiria"
+    },
+    ...,
+    {
+      "available": true,
+      "description": "Sumol",
+      "haveSensor": false,
+      "id": 6,
+      "image": "sumol.jpg",
+      "name": "Sumol",
+      "price": 1.5,
+      "quantity": 100,
+      "warehouseName": "Leiria"
+    }
+  ]
+<br />
+
+### 7. **Warehouses**
+#### `Get /warehouses`
+Vai buscar os Warehouses que existem
+- **URL**: `/warehouses`
+- **Método**: `GET`
+- **Headers**: 
+  - `Content-Type`: `application/json`
+- **Response**:
+  ```json
+  [
+    {
+      "address": "Rua das Igrejas",
+      "city": "Leiria",
+      "name": "Leiria",
+      "postalCode": "2565-834"
+    },
+    ...,
+    {
+      "address": "Rua das Igrejas",
+      "city": "Porto",
+      "name": "Porto",
+      "postalCode": "2565-834"
+    }
+  ]
+<br />
+
+#### `Get /warehouses/{name}`
+Vai buscar os Warehouses que existem
+- **URL**: `/warehouses/Leiria`
+- **Método**: `GET`
+- **Headers**: 
+  - `Content-Type`: `application/json`
+- **Response**:
+  ```json
+
+  {
+    "address": "Rua das Igrejas",
+    "city": "Leiria",
+    "name": "Leiria",
+    "postalCode": "2565-834"
+  }
+<br />
+
+#### `Get /warehouses/{name}/products`
+Vai buscar todos os produtos que exitem no determindo warehouse
+- **URL**: `/warehouses/Leiria/products`
+- **Método**: `GET`
+- **Headers**: 
+  - `Content-Type`: `application/json`
+- **Response**:
+  ```json
+  
+  [
+    {
+      "available": true,
+      "description": "Coca-Cola",
+      "haveSensor": false,
+      "id": 1,
+      "image": "coca-cola.jpg",
+      "name": "Coca-Cola",
+      "price": 1.5,
+      "quantity": 0,
+      "warehouseName": "Leiria"
+    },
+    ...,
+    {
+      "available": true,
+      "description": "Sumol",
+      "haveSensor": false,
+      "id": 6,
+      "image": "sumol.jpg",
+      "name": "Sumol",
+      "price": 1.5,
+      "quantity": 100,
+      "warehouseName": "Leiria"
+    }
+  ]
+<br />
+
 ---
 ### `Powered By`
 #### `2222051` Gonçalo Ferreira 
