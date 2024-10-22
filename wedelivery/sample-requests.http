@@ -1,5 +1,5 @@
 ### Get All clients
-GET http://localhost:8080/wedelivery/api/clients
+GET http://localhost:8080/wedelivery/api/orders/Guilherme
 Accept: application/json
 
 ### Get All managers
@@ -87,3 +87,6 @@ Accept: application/json
 
 ### Get All products in a warehouse --> Funcionou
 GET http://localhost:8080/wedelivery/api/warehouses/Leiria/products
+
+### Get All products in a warehouse --> Funcionou
+GET http://localhost:8080/wedelivery/api/clients/

@@ -1,6 +1,9 @@
 package pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Client;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Order;
+
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,8 +18,10 @@ public class ClientDTO implements Serializable {
     private String city;
     private String country;
     private String address;
+    private List<OrderDTO> orders;
 
     public ClientDTO() {
+        this.orders = new ArrayList<>();
     }
 
     public ClientDTO(String username, String password, String name, String email, int nif, String postalCode, String city, String country, String address) {
@@ -29,6 +34,7 @@ public class ClientDTO implements Serializable {
         this.city = city;
         this.country = country;
         this.address = address;
+        this.orders = new ArrayList<>();
     }
 
     // Converts an entity  to a DTO client class
@@ -121,5 +127,13 @@ public class ClientDTO implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public List<OrderDTO> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<OrderDTO> orders) {
+        this.orders = orders;
     }
 }

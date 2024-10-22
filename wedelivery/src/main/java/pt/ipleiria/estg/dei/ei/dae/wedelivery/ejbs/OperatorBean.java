@@ -2,8 +2,11 @@ package pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Manager;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Operator;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
+
 import java.util.List;
 
 @Stateless
@@ -12,6 +15,11 @@ public class OperatorBean {
     private EntityManager entityManager;
 
     public void create(String email, String name, String password, String username) {
+        if (exists(username)) {
+            throw new MyEntityExistsException(
+                    "Client with username '" + username + "' already exists");
+        }
+
         var operator = new Operator(email, name, password, username);
         entityManager.persist(operator);
     }
@@ -27,5 +35,14 @@ public class OperatorBean {
             throw new RuntimeException("operator " + username + " not found");
         }
         return admin;
+    }
+
+    public boolean exists(String username) {
+        Query query = entityManager.createQuery(
+                "SELECT COUNT(o.username) FROM Operator o WHERE o.username = :username",
+                Long.class
+        );
+        query.setParameter("username", username);
+        return (Long)query.getSingleResult() > 0L;
     }
 }

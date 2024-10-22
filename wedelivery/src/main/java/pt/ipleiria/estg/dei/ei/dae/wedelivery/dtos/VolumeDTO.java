@@ -27,7 +27,7 @@ public class VolumeDTO {
     // Converts an entity to a DTO Volume class
     public static VolumeDTO from(Volume volume) {
         return new VolumeDTO(
-                volume.getId()
+               // volume.getId()
         );
     }
 

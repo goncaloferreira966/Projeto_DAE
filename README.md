@@ -278,6 +278,24 @@ Um Administrador consulta o perfil de um Cliente.
     "email": "goncalo@gmail.com",
     "name": "Gonçalo",
     "nif": 123123123,
+    "orders": [
+        {
+            "code": 1372122800,
+            "deliveryDate": "2024-10-22T15:47:16.764Z[UTC]",
+            "purchaseDate": "2024-10-22T15:47:16.764Z[UTC]",
+            "state": "Shipped",
+            "username": "Goncalo",
+            "usernameOperator": "GoncaloF00"
+        },
+        {
+            "code": 1413200289,
+            "deliveryDate": "2024-10-22T15:47:16.764Z[UTC]",
+            "purchaseDate": "2024-10-22T15:47:16.764Z[UTC]",
+            "state": "Delivered",
+            "username": "Goncalo",
+            "usernameOperator": "DinisRX"
+        }
+    ],
     "password": "password",
     "postalCode": "2565-834",
     "username": "Goncalo"
@@ -581,7 +599,6 @@ Um utilizador conulta os dados de um warehouse especifico.
   }
 - **Response**:
   ```json
-
   {
     "address": "Rua das Igrejas",
     "city": "Leiria",

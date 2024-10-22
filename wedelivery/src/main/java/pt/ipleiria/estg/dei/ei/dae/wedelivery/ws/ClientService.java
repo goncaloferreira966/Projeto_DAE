@@ -28,8 +28,10 @@ public class ClientService {
     @GET
     @Path("{username}")
     public Response getClient(@PathParam("username") String username) {
-        var client = clientBean.find(username);
-        return Response.ok(ClientDTO.from(client)).build();
+        var client = clientBean.findWithOrders(username);
+        var clientDTO = ClientDTO.from(client);
+        clientDTO.setOrders(OrderDTO.from(client.getOrders()));
+        return Response.ok(clientDTO).build();
     }
 
     @POST
