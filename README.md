@@ -522,14 +522,18 @@ Um utilizador consulta um produto especifico.
 
 #### `Get /products/name/{name}`
 Um utilizador consulta todos os produtos que contenham a palavra {name}.
+<<<<<<< Updated upstream
 - **URL**: `/products/name/{name}`
+=======
+- **URL**: `/products/{name}`
+>>>>>>> Stashed changes
 - **Método**: `GET`
 - **Headers**: 
   - `Content-Type`: `application/json`
 - **Body**:
   ```json
   {
-    "name": "Sprite"
+    "name": "S"
   }
 - **Response**:
   ```json
@@ -558,6 +562,44 @@ Um utilizador consulta todos os produtos que contenham a palavra {name}.
       "warehouseName": "Leiria"
     }
   ]
+<br />
+
+### `GET /products/{id}/details`
+Um utilizador consulta os detalhes de um repectivo produto.
+- **URL**: `/products/{id}/details`
+- **Método**: `GET`
+- **Headers**: 
+  - `Content-Type`: `application/json`
+- **Body**:
+  ```json
+  {
+    "id": "1"
+  }
+- **Response**
+```json
+  {
+  "available": true,
+  "description": "Coca-Cola",
+  "haveSensor": false,
+  "id": 1,
+  "image": "coca-cola.jpg",
+  "name": "Coca-Cola",
+  "price": 1.5,
+  "quantity": 0,
+  "supplier": {
+      "email": "safari@mail.com",
+      "name": "Safari, LDA",
+      "password": "qwerty",
+      "username": "safari"
+    },
+    "warehouse": {
+      "address": "Rua das Igrejas",
+      "city": "Leiria",
+      "name": "Leiria",
+      "postalCode": "2565-834"
+    }
+  }
+  ```
 <br />
 
 ### 7. **Warehouses**
@@ -620,32 +662,226 @@ Um utilizador consulta todos os produtos que exitem num determindo warehouse.
   }
 - **Response**:
   ```json
+  {
+    "address": "Rua das Igrejas",
+    "city": "Leiria",
+    "name": "Leiria",
+    "postalCode": "2565-834",
+    "products": [
+      {
+        "available": true,
+        "description": "Coca-Cola",
+        "haveSensor": false,
+        "id": 1,
+        "image": "coca-cola.jpg",
+        "name": "Coca-Cola",
+        "price": 1.5,
+        "quantity": 0
+      },
+      ...,
+      {
+        "available": true,
+        "description": "Sprite",
+        "haveSensor": false,
+        "id": 3,
+        "image": "sprite.jpg",
+        "name": "Sprite",
+        "price": 1.5,
+        "quantity": 100
+      }
+    ]
+  }
+<br />
+
+#### `Get /warehouses/{name}/products/{id}`
+Um utilizador consulta um determinado produto {id} num determinado warehouse {name}.
+- **URL**: `/warehouses/{name}/products/{id}`
+- **Método**: `GET`
+- **Headers**: 
+  - `Content-Type`: `application/json`
+- **Body**:
+  ```json
+  {
+    "name": "Leiria",
+    "id": 1
+  }
+- **Response**:
+  ```json
+  {
+    "address": "Rua das Igrejas",
+    "city": "Leiria",
+    "name": "Leiria",
+    "postalCode": "2565-834",
+    "products": [
+      {
+        "available": true,
+        "description": "Coca-Cola",
+        "haveSensor": false,
+        "id": 1,
+        "image": "coca-cola.jpg",
+        "name": "Coca-Cola",
+        "price": 1.5,
+        "quantity": 0,
+        "supplier": {
+          "email": "safari@mail.com",
+          "name": "Safari, LDA",
+          "password": "qwerty",
+          "username": "safari"
+        }
+      }
+    ]
+  }
+<br />
+
+### 8. **Suppliers**
+### `GET /suppliers`
+Um utilizador consulta os Suppliers existentes
+ **URL**: `/suppliers`
+- **Método**: `GET`
+- **Headers**: 
+  - `Content-Type`: `application/json`
+- **Response**:
+  ```json
   [
     {
-      "available": true,
-      "description": "Coca-Cola",
-      "haveSensor": false,
-      "id": 1,
-      "image": "coca-cola.jpg",
-      "name": "Coca-Cola",
-      "price": 1.5,
-      "quantity": 0,
-      "warehouseName": "Leiria"
+      "email": "drinklfa@mail.com",
+      "name": "DrinkLFA, LDA",
+      "password": "qwerty",
+      "username": "drinkLFA"
     },
     ...,
     {
-      "available": true,
-      "description": "Sumol",
-      "haveSensor": false,
-      "id": 6,
-      "image": "sumol.jpg",
-      "name": "Sumol",
-      "price": 1.5,
-      "quantity": 100,
-      "warehouseName": "Leiria"
+      "email": "safari@mail.com",
+      "name": "Safari, LDA",
+      "password": "qwerty",
+      "username": "safari"
     }
   ]
 <br />
+
+### `GET /suppliers/{name}` ou `/suppliers/{name}/products`
+Um utilizador consulta um determinado Supplier e os seus respectivos produtos
+ - **URL:** `/suppliers/{name}`
+- **Método**: `GET`
+- **Headers:** 
+  - `Content-Type`: `application/json`
+- **Body:**
+  ```json
+  {
+    "name": "safari"
+  }
+- **Response:**
+  ```json
+  {
+    "email": "safari@mail.com",
+    "name": "Safari, LDA",
+    "password": "qwerty",
+    "products": [
+      {
+        "available": true,
+        "description": "Coca-Cola",
+        "haveSensor": false,
+        "id": 1,
+        "image": "coca-cola.jpg",
+        "name": "Coca-Cola",
+        "price": 1.5,
+        "quantity": 0
+      },
+      ...,
+      {
+        "available": true,
+        "description": "Sumol",
+        "haveSensor": false,
+        "id": 6,
+        "image": "sumol.jpg",
+        "name": "Sumol",
+        "price": 1.5,
+        "quantity": 100
+      }
+    ],
+    "username": "safari"
+  }
+<br />
+
+### `GET /suppliers/{name}/products/{id}`
+
+Um utilizador efetua a consulta de um produto identificado por {id}, pertencente a um fornecedor designado por {name}.
+- **URL:** `/suppliers/{name}/products/{id}`
+- **Método**: `GET`
+- **Headers:** 
+  - `Content-Type`: `application/json`
+- **Body:**
+  ```json
+  {
+    "name": "safari"
+  }
+- **Response:**
+  ```json
+  {
+    "email": "safari@mail.com",
+    "name": "Safari, LDA",
+    "password": "qwerty",
+    "products": [
+      {
+        "available": true,
+        "description": "Pepsi",
+        "haveSensor": false,
+        "id": 2,
+        "image": "pepsi.jpg",
+        "name": "Pepsi",
+        "price": 1.5,
+        "quantity": 2
+      }
+    ],
+    "username": "safari"
+  }
+<br />
+
+### `GET /suppliers/{name}/products/name/{string}`
+Um utilizador consulta diversos produtos com a designação {string}, pertencentes ao fornecedor identificado por {name}.
+ - **URL:** `/suppliers/{name}`
+- **Método**: `GET`
+- **Headers:** 
+  - `Content-Type`: `application/json`
+- **Body:**
+  ```json
+  {
+    "name": "safari",
+    "string": "S"
+  }
+- **Response:**
+  ```json
+  {
+    "email": "safari@mail.com",
+    "name": "Safari, LDA",
+    "password": "qwerty",
+    "products": [
+      {
+        "available": true,
+        "description": "Sprite",
+        "haveSensor": false,
+        "id": 3,
+        "image": "sprite.jpg",
+        "name": "Sprite",
+        "price": 1.5,
+        "quantity": 100
+      },
+      ...,
+      {
+        "available": true,
+        "description": "Sumol",
+        "haveSensor": false,
+        "id": 6,
+        "image": "sumol.jpg",
+        "name": "Sumol",
+        "price": 1.5,
+        "quantity": 100
+      }
+    ],
+    "username": "safari"
+  }
+<br />
+
 
 ---
 ### `Powered By`
