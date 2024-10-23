@@ -1,0 +1,21 @@
+############################################
+###            Products                  ###
+############################################
+
+### Get All Products
+GET http://localhost:8080/wedelivery/api/products
+Accept: application/json
+
+### Get Product by name return List of products
+GET http://localhost:8080/wedelivery/api/products/name/S
+Accept: application/json
+
+### Get Product by id return List of products
+GET http://localhost:8080/wedelivery/api/products/1
+Accept: application/json
+
+### Get Product by id return List of products with details (supplier and warehouse)
+GET http://localhost:8080/wedelivery/api/products/1/details
+Accept: application/json
+
+

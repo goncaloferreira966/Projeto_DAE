@@ -20,4 +20,18 @@ main {
   padding: 20px; /* Espaçamento para o conteúdo */
   min-height: calc(100vh - 100px); /* Ajuste a altura mínima conforme necessário */
 }
+.video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.responsive-iframe {
+  width: 90%;
+  max-width: 1200px;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
 </style>
