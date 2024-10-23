@@ -1,5 +1,4 @@
 <template>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <footer class="mt-5 bg-light text-center py-4">
     <p class="mb-0">© {{ new Date().getFullYear() }} WeDelivery. All rights reserved.</p>
     <p>
