@@ -47,7 +47,7 @@ public class ConfigBean {
 
             supplierBean.create("safari", "qwerty", "Safari, LDA", "safari@mail.com");
             supplierBean.create("liquid", "qwerty", "Liquid, LDA", "liquid@mail.com");
-            supplierBean.create("drinkLFA", "qwerty", "DrinkLFA, LDA", "dronflfa@mail.com");
+            supplierBean.create("drinkLFA", "qwerty", "DrinkLFA, LDA", "drinklfa@mail.com");
 
 
             orderBean.create(Math.abs(UUID.randomUUID().hashCode()), new Date(), new Date(), "Guilherme", "DinisRX", "In distribution");
