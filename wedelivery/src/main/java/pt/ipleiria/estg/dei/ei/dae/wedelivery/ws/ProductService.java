@@ -85,6 +85,9 @@ public class ProductService {
         var productDTO = ProductDTO.from(product);
         var supplier = supplierbean.find(product.getSupplier().getUsername());
         var supplierDTO = SupplierDTO.from(supplier);
+        var warehouse = warehouseBean.find(product.getWarehouse().getName());
+        var warehouseDTO = WarehouseDTO.from(warehouse);
+        productDTO.setWarehouse(warehouseDTO);
         productDTO.setSupplier(supplierDTO);
         return Response.ok(productDTO).build();
     }

@@ -66,6 +66,6 @@ public class SupplierService {
         var supplier = supplierBean.findWithProducts(username);
         var supplierDTO = SupplierDTO.from(supplier);
         supplierDTO.setProducts(ProductDTO.from(supplier.getProducts()));
-        return Response.ok(supplierDTO.getProducts()).build();
+        return Response.ok(supplierDTO).build();
     }
 }
