@@ -24,6 +24,8 @@ public class ConfigBean {
     private ProductBean productBean;
     @EJB
     private WarehouseBean warehouseBean;
+    @EJB
+    private SupplierBean supplierBean;
 
     private static final Logger logger = Logger.getLogger("ejbs.ConfigBean");
 
@@ -43,6 +45,10 @@ public class ConfigBean {
 
             managerBean.create("rui@mgmail.pt", "Rui", "Rui", "Rui");
 
+            supplierBean.create("safari", "qwerty", "Safari, LDA", "safari@mail.com");
+            supplierBean.create("liquid", "qwerty", "Liquid, LDA", "liquid@mail.com");
+            supplierBean.create("drinkLFA", "qwerty", "DrinkLFA, LDA", "dronflfa@mail.com");
+
 
             orderBean.create(Math.abs(UUID.randomUUID().hashCode()), new Date(), new Date(), "Guilherme", "DinisRX", "In distribution");
             orderBean.create(Math.abs(UUID.randomUUID().hashCode()), new Date(), new Date(), "Guilherme","DinisRX", "Pending");
@@ -57,12 +63,12 @@ public class ConfigBean {
             warehouseBean.create("Lisboa", "Rua das Igrejas", "Lisboa", "2565-834");
             warehouseBean.create("Porto", "Rua das Igrejas", "Porto", "2565-834");
 
-            productBean.create(1, "Coca-Cola", "Coca-Cola", 1.5, "coca-cola.jpg", 0, true, false, "Leiria");
-            productBean.create(2, "Pepsi", "Pepsi", 1.5, "pepsi.jpg", 2, true, false, "Leiria");
-            productBean.create(3, "Sprite", "Sprite", 1.5, "sprite.jpg", 100, true, false, "Leiria");
-            productBean.create(4, "Fanta", "Fanta", 1.5, "fanta.jpg", 100, true, false, "Leiria");
-            productBean.create(5, "7up", "7up", 1.5, "7up.jpg", 100, true, false, "Leiria");
-            productBean.create(6, "Sumol", "Sumol", 1.5, "sumol.jpg", 100, true, false, "Leiria");
+            productBean.create(1, "Coca-Cola", "Coca-Cola", 1.5, "coca-cola.jpg", 0, true, false, "Leiria", "safari");
+            productBean.create(2, "Pepsi", "Pepsi", 1.5, "pepsi.jpg", 2, true, false, "Leiria", "safari");
+            productBean.create(3, "Sprite", "Sprite", 1.5, "sprite.jpg", 100, true, false, "Leiria", "safari");
+            productBean.create(4, "Fanta", "Fanta", 1.5, "fanta.jpg", 100, true, false, "Leiria", "safari");
+            productBean.create(5, "7up", "7up", 1.5, "7up.jpg", 100, true, false, "Leiria", "safari");
+            productBean.create(6, "Sumol", "Sumol", 1.5, "sumol.jpg", 100, true, false, "Leiria", "safari");
 
 
         } catch (Exception e) {
