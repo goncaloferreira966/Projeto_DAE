@@ -1,0 +1,23 @@
+############################################
+###            Products                  ###
+############################################
+
+### Get All suppliers
+GET http://localhost:8080/wedelivery/api/suppliers
+
+### Get All products by supplier
+GET http://localhost:8080/wedelivery/api/suppliers/safari
+Accept: application/json
+
+### Get product by Id and supplier name
+
+GET http://localhost:8080/wedelivery/api/suppliers/safari/products/2
+Accept: application/json
+
+### Get All products by supplier name
+GET http://localhost:8080/wedelivery/api/suppliers/safari/products
+
+### Get All products by name and supplier name
+GET http://localhost:8080/wedelivery/api/suppliers/safari/products/name/S
+
+
