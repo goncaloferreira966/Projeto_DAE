@@ -522,11 +522,7 @@ Um utilizador consulta um produto especifico.
 
 #### `Get /products/name/{name}`
 Um utilizador consulta todos os produtos que contenham a palavra {name}.
-<<<<<<< Updated upstream
-- **URL**: `/products/name/{name}`
-=======
 - **URL**: `/products/{name}`
->>>>>>> Stashed changes
 - **Método**: `GET`
 - **Headers**: 
   - `Content-Type`: `application/json`
