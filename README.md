@@ -520,7 +520,7 @@ Um utilizador consulta um produto especifico.
   }
 <br />
 
-#### `Get /products/name/{name}`
+#### `Get /products/{name}`
 Um utilizador consulta todos os produtos que contenham a palavra {name}.
 - **URL**: `/products/{name}`
 - **Método**: `GET`
@@ -625,7 +625,7 @@ Um utilizador consulta os warehouses existentes.
 <br />
 
 #### `Get /warehouses/{name}`
-Um utilizador conulta os dados de um warehouse especifico.
+Um utilizador consulta os dados de um warehouse especifico.
 - **URL**: `/warehouses/{name}`
 - **Método**: `GET`
 - **Headers**: 
