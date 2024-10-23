@@ -25,8 +25,12 @@ public class ProductBean {
 
     @EJB
     private WarehouseBean warehouseBean;
-    //(long id, String name, String description, double price, String image, int quantity,boolean available, boolean haveSensor, warehouse warehouse)
-    public void create(long id, String name, String description, double price, String image, int quantity, boolean available, boolean haveSensor, String warehouseName)
+
+    @EJB
+    private SupplierBean supplierBean;
+
+    //(long id, String name, String description, double price, String image, int quantity,boolean available, boolean haveSensor, warehouse warehouse, Supplier supplier)
+    public void create(long id, String name, String description, double price, String image, int quantity, boolean available, boolean haveSensor, String warehouseName, String supplierUsername)
             throws MyEntityNotFoundException, MyEntityExistsException,
             MyConstraintViolationException
     {
@@ -38,7 +42,8 @@ public class ProductBean {
             }
 
             var warehouse = warehouseBean.find(warehouseName);
-            var product = new Product(id, name, description, price, image, quantity, available, haveSensor, warehouse);
+            var supplier = supplierBean.find(supplierUsername);
+            var product = new Product(id, name, description, price, image, quantity, available, haveSensor, warehouse, supplier);
             entityManager.persist(product);
 
             entityManager.flush();
@@ -70,8 +75,31 @@ public class ProductBean {
         return query.getResultList();
     }
 
+    public Product findSupplierProduct(String username) {
+        var supplier = entityManager.find(Product.class, username);
+        if (supplier == null) {
+            throw new RuntimeException("supplier " + username + " not found");
+        }
+        return supplier;
+    }
 
+    public List<Product> findAllProductsBySupplierUsername(String username) {
+        TypedQuery<Product> query = entityManager.createQuery(
+                "SELECT p FROM Product p WHERE p.supplier.username = :username",
+                Product.class
+        );
+        query.setParameter("username", username);
+        return query.getResultList();
+    }
 
+    public List<Product> findAllProductsByWarehouse(String name) {
+        TypedQuery<Product> query = entityManager.createQuery(
+                "SELECT p FROM Product p WHERE p.warehouse.name = :name",
+                Product.class
+        );
+        query.setParameter("name", name);
+        return query.getResultList();
+    }
 
     public void addProductToWarehouse(String name, long productId) {
         var warehouse = warehouseBean.find(name);
