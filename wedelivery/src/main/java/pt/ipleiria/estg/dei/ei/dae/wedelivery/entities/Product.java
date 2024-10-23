@@ -45,11 +45,25 @@ public class Product {
     @Version
     private int version;
 
+    @ManyToOne
+    @JoinTable(
+            name = "supplier_product",
+            joinColumns = @JoinColumn(
+                    name = "product_id",
+                    referencedColumnName = "id"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "supplier_username",
+                    referencedColumnName = "username"
+            )
+    )
+    private Supplier supplier;
+
 
     public Product() {
     }
 
-    public Product(long id, String name, String description, double price, String image, int quantity,boolean available, boolean haveSensor, Warehouse warehouse) {
+    public Product(long id, String name, String description, double price, String image, int quantity,boolean available, boolean haveSensor, Warehouse warehouse, Supplier supplier) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -59,6 +73,7 @@ public class Product {
         this.available = available;
         this.haveSensor = haveSensor;
         this.warehouse = warehouse;
+        this.supplier = supplier;
     }
 
     public long getId() {return id;}
@@ -70,6 +85,7 @@ public class Product {
     public boolean isAvailable() {return available;}
     public boolean getHaveSensor() {return haveSensor;}
     public Warehouse getWarehouse() {return warehouse;}
+    public Supplier getSupplier() {return supplier;}
 
     public void setId(long id) {this.id = id;}
     public void setName(String name) {this.name = name;}
@@ -88,17 +104,28 @@ public class Product {
             warehouse.addProduct(this); // Adiciona ao novo armazém
         }
     }
-
-        public void addWarehouse(Warehouse warehouse) {
-            if (!this.warehouse.equals(warehouse)) {
-                this.warehouse = warehouse;
-                warehouse.addProduct(this);
-            }
+    public void setSupplier(Supplier supplier) {
+        if (this.supplier != null) {
+            this.supplier.removeProduct(this); // Remove do fornecedor atual
         }
-        public void removeWarehouse(Warehouse warehouse) {
-            if (this.warehouse.equals(warehouse)) {
-                this.warehouse = null;
-                warehouse.removeProduct(this);
-            }
+        this.supplier = supplier;
+        if (supplier != null) {
+            supplier.addProduct(this); // Adiciona ao novo fornecedor
+        }
     }
+
+
+    /*********** Warehouse methods ***************/
+    public void addWarehouse(Warehouse warehouse) {
+        if (!this.warehouse.equals(warehouse)) {
+            this.warehouse = warehouse;
+            warehouse.addProduct(this);
+        }
+    }
+    public void removeWarehouse(Warehouse warehouse) {
+        if (this.warehouse.equals(warehouse)) {
+            this.warehouse = null;
+            warehouse.removeProduct(this);
+        }
+}
 }
