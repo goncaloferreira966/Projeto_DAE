@@ -5,7 +5,10 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.ProductDTO;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.SupplierDTO;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.WarehouseDTO;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.ProductBean;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.SupplierBean;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.WarehouseBean;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Warehouse;
 
@@ -18,6 +21,13 @@ public class WarehouseService {
 
     @EJB
     private WarehouseBean warehouseBean;
+
+    @EJB
+    private ProductBean productBean;
+
+    @EJB
+    private SupplierBean supplierBean;
+
     @GET
     @Path("/")
     public Response getAllWarehouses() {
@@ -37,8 +47,25 @@ public class WarehouseService {
     @GET
     @Path("{name}/products")
     public Response getWarehouseAllProducts(@PathParam("name") String name) {
-        Warehouse warehouse = warehouseBean.find(name);
-        List<ProductDTO> productDTOs = ProductDTO.from(warehouse.getProducts());
-        return Response.ok(productDTOs).build(); // Devolve lista de ProductDTOs
+        var warehouse = warehouseBean.find(name);
+        var warehouseDTO = WarehouseDTO.from(warehouse);
+        var products = productBean.findAllProductsByWarehouse(name);
+        var productDTOs = ProductDTO.from(products);
+        warehouseDTO.setProducts(productDTOs);
+        return Response.ok(warehouseDTO).build(); // Devolve lista de ProductDTOs
+    }
+
+    @GET
+    @Path("{name}/products/{id}")
+    public Response getWarehouseProductById(@PathParam("name") String name, @PathParam("id") long id) {
+        var warehouse = warehouseBean.find(name);
+        var warehouseDTO = WarehouseDTO.from(warehouse);
+        var product = productBean.findById(id);
+        var productDTO = ProductDTO.from(product);
+        var supplier = supplierBean.find(product.getSupplier().getUsername());
+        var supplierDTO = SupplierDTO.from(supplier);
+        productDTO.setSupplier(supplierDTO);
+        warehouseDTO.addProduct(productDTO);
+        return Response.ok(warehouseDTO).build(); // Devolve WarehouseDTO
     }
 }
