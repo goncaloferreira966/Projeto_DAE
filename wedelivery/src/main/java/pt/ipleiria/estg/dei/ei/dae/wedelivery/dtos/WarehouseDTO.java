@@ -22,7 +22,6 @@ public class WarehouseDTO implements Serializable {
         this.address = address;
         this.city = city;
         this.postalCode = postalCode;
-        this.products = new LinkedList<>();
     }
 
     public String getName() {return name;}
@@ -38,7 +37,11 @@ public class WarehouseDTO implements Serializable {
     public void setProducts(List<ProductDTO> products) {this.products = products;}
 
     /*****************************************/
-    public void addProduct(ProductDTO product) {products.add(product);}
+    public void addProduct(ProductDTO product) {
+        if (products == null) {
+            products = new LinkedList<>();
+        }
+        products.add(product);}
     public void removeProduct(ProductDTO product) {products.remove(product);}
 
 

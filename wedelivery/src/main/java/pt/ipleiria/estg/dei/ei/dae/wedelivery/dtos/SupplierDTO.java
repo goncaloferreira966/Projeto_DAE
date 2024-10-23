@@ -23,7 +23,7 @@ public class SupplierDTO implements Serializable {
         this.password = password;
         this.name = name;
         this.email = email;
-        this.products = new LinkedList<>();
+
     }
 
     public String getUsername() {return username;}
@@ -38,7 +38,11 @@ public class SupplierDTO implements Serializable {
     public void setEmail(String email) {this.email = email;}
     public void setProducts(List<ProductDTO> products) {this.products = products;}
 
-    public void addProduct(ProductDTO product) {products.add(product);}
+    public void addProduct(ProductDTO product) {
+        if (this.products == null){
+            this.products = new LinkedList<>();
+        }
+        products.add(product);}
     public void removeProduct(ProductDTO product) {products.remove(product);}
 
 

@@ -36,8 +36,7 @@ public class ProductDTO implements Serializable {
         this.quantity = quantity;
         this.available = available;
         this.haveSensor = haveSensor;
-        this.warehouse = new WarehouseDTO();
-        this.supplier = new SupplierDTO();
+
     }
 
     public long getId() {return id;}
@@ -59,8 +58,16 @@ public class ProductDTO implements Serializable {
     public void setQuantity(int quantity) {this.quantity = quantity;}
     public void setAvailable(boolean available) {this.available = available;}
     public void setHaveSensor(boolean haveSensor) {this.haveSensor = haveSensor;}
-    public void setWarehouse(WarehouseDTO warehouse) {this.warehouse = warehouse;}
-    public void setSupplier(SupplierDTO supplier) {this.supplier = supplier;}
+    public void setWarehouse(WarehouseDTO warehouse) {
+        if (this.warehouse == null)
+            this.warehouse = new WarehouseDTO();
+        this.warehouse = warehouse;
+        }
+    public void setSupplier(SupplierDTO supplier) {
+        if (this.supplier == null)
+            this.supplier = new SupplierDTO();
+        this.supplier = supplier;
+    }
 
     public static ProductDTO from(Product product) {
         return new ProductDTO(
