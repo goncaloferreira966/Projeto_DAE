@@ -1,0 +1,21 @@
+############################################
+###            Volume                    ###
+############################################
+
+### GET All Volumes
+GET http://localhost:8080/wedelivery/api/volumes
+Accept: application/json
+
+### GET Volume ID
+GET http://localhost:8080/wedelivery/api/volumes/1019509487
+Accept: application/json
+
+### Get Product by id return List of products
+GET http://localhost:8080/wedelivery/api/products/1
+Accept: application/json
+
+### Get Product by id return List of products with details (supplier and warehouse)
+GET http://localhost:8080/wedelivery/api/products/1/details
+Accept: application/json
+
+

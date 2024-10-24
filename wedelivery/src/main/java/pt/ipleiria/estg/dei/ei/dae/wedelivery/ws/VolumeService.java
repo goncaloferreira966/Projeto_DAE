@@ -4,7 +4,9 @@ import jakarta.ejb.EJB;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.ProductDTO;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.VolumeDTO;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.ProductBean;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.VolumeBean;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Volume;
 
@@ -17,10 +19,15 @@ public class VolumeService {
     @EJB
     private VolumeBean volumeBean;
 
+    @EJB
+    private ProductBean productBean;
+
     @GET // means: to call this endpoint, we need to use the HTTP GET method
     @Path("/") // means: the relative url path is “/api/volumes/”
-    public List<VolumeDTO> getAllVolumes() {
-        return VolumeDTO.from(volumeBean.findAll());
+    public Response getAllVolumes() {
+        var volumeDTOs = VolumeDTO.from(volumeBean.findAll());
+        return Response.ok(volumeDTOs).build();
+
     }
 
     @GET
@@ -28,6 +35,9 @@ public class VolumeService {
     public Response getSensorById(@PathParam("id") long id) {
         Volume volume = volumeBean.find(id);
         VolumeDTO volumeDTO = VolumeDTO.from(volume);
+        var products = productBean.findAllProductsByVolumeId(id);
+        var productDTOs = ProductDTO.from(products);
+        volumeDTO.addProducts(productDTOs);
         return Response.ok(volumeDTO).build();
     }
 }
