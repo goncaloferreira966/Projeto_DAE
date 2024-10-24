@@ -22,7 +22,11 @@ import java.util.List;
             @NamedQuery(
                     name = "getProductById",
                     query = "SELECT p FROM Product p WHERE p.id =:id"
-            )
+            ),
+            @NamedQuery(
+                    name = "getAllProductsByVolume",
+                    query = "SELECT p FROM Product p JOIN p.volumes v WHERE v.id = :id"
+            ),
         }
 )
 @Entity
@@ -59,6 +63,9 @@ public class Product {
     )
     private Supplier supplier;
 
+    @ManyToMany(mappedBy = "products")
+    private List<Volume> volumes;
+
 
     public Product() {
     }
@@ -74,6 +81,7 @@ public class Product {
         this.haveSensor = haveSensor;
         this.warehouse = warehouse;
         this.supplier = supplier;
+        this.volumes = new LinkedList<>();
     }
 
     public long getId() {return id;}
@@ -86,6 +94,12 @@ public class Product {
     public boolean getHaveSensor() {return haveSensor;}
     public Warehouse getWarehouse() {return warehouse;}
     public Supplier getSupplier() {return supplier;}
+
+    public List<Volume> getVolumes() {
+        if (this.volumes == null)
+            throw new RuntimeException("Product " + id + " don't have volumes");
+        return volumes;
+    }
 
     public void setId(long id) {this.id = id;}
     public void setName(String name) {this.name = name;}
@@ -114,6 +128,12 @@ public class Product {
         }
     }
 
+    public void setVolumes(List<Volume> volumes) {
+        if (this.volumes == null)
+            this.volumes = new LinkedList<>();
+        this.volumes = volumes;
+    }
+
 
     /*********** Warehouse methods ***************/
     public void addWarehouse(Warehouse warehouse) {
@@ -128,4 +148,33 @@ public class Product {
             warehouse.removeProduct(this);
         }
 }
+
+    /********** Supplier methods ***************/
+    public void addSupplier(Supplier supplier) {
+        if (!this.supplier.equals(supplier)) {
+            this.supplier = supplier;
+            supplier.addProduct(this);
+        }
+    }
+    public void removeSupplier(Supplier supplier) {
+        if (this.supplier.equals(supplier)) {
+            this.supplier = null;
+            supplier.removeProduct(this);
+        }
+    }
+
+    /********** Volume methods ***************/
+    public void addVolume(Volume volume) {
+        if (!this.volumes.contains(volume)) {
+            this.volumes.add(volume);
+            volume.addProduct(this);
+        }
+    }
+    public void removeVolume(Volume volume) {
+        if (!this.volumes.contains(volume)) {
+            throw new RuntimeException("Volume " + volume.getId() + " don't exist in product " + id);
+        }
+        this.volumes.remove(volume);
+        volume.removeProduct(this);
+    }
 }
