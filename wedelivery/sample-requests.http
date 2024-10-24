@@ -79,7 +79,16 @@ GET http://localhost:8080/wedelivery/api/clients/Goncalo
 Accept: application/json
 
 
+### Get All orders by operator username
+GET http://localhost:8080/wedelivery/api/orders/
+Accept: application/json
 
+### Get All orders by code with all volumes
+GET http://localhost:8080/wedelivery/api/orders/1536628255
+
+### Get order by code with volume by id
+GET http://localhost:8080/wedelivery/api/orders/1536628255/volume/1825165796
+Accept: application/json
 
 
 

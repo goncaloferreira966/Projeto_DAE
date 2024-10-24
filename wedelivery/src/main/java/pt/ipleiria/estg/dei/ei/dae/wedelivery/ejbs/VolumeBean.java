@@ -6,6 +6,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import jakarta.validation.ConstraintViolationException;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Product;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Sensor;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Volume;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
@@ -22,9 +23,12 @@ public class VolumeBean {
     private EntityManager entityManager;
 
     @EJB
-    private ProductBean productBean;
-    //long id, String state, LocalDate creationDate
-    public void create(long id, String state, Date creationDate)
+    private OrderBean orderBean;
+
+    @EJB
+    private SensorBean sensorBean;
+    //long id, String state, LocalDate creationDate, Order order
+    public void create(long id, String state, Date creationDate, long idOrder)
             throws MyEntityNotFoundException, MyEntityExistsException,
             MyConstraintViolationException
     {
@@ -34,8 +38,8 @@ public class VolumeBean {
                 throw new MyEntityExistsException(
                         "volume with id '" + id + "' already exists");
             }
-
-            var volume = new Volume(id, state, creationDate);
+            var order = orderBean.find(idOrder);
+            var volume = new Volume(id, state, creationDate, order);
             entityManager.persist(volume);
 
             entityManager.flush();
@@ -73,6 +77,34 @@ public class VolumeBean {
                 Volume.class
         ).setParameter("date", LocalDate.of(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2])).toString()).getResultList();
     }
+    //It's the same think with the productBean,
+    // It's redundant and unnecessary to have this method here because
+    // it's the same as the one in the productBean
+    public void addProductToVolume(long idVolume, long idProduct) {
+        var volume = find(idVolume);
+        var product = entityManager.find(Product.class, idProduct);
+        volume.addProduct(product);
+    }
+
+    /*****************  Volume -> Sensor  ***********************************/
+    public void addSensorToVolume(long idVolume, long idSensor) {
+        var volume = find(idVolume);
+        var sensor = sensorBean.find(idSensor);
+        volume.addSensor(sensor);
+    }
+    public void removeSensorFromVolume(long idVolume, long idSensor) {
+        var volume = find(idVolume);
+        var sensor = sensorBean.find(idSensor);
+        volume.removeSensor(sensor);
+    }
+
+    /*****************  Volume -> Order  ***********************************/
+    public List<Volume> findVolumesByOrderId(long id) {
+        return entityManager.createNamedQuery("getAllVolumesByOrder", Volume.class)
+                .setParameter("code", id)
+                .getResultList();
+    }
+
 
 
     /******************************************************************/

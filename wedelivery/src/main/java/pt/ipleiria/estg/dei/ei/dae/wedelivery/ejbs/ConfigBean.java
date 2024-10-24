@@ -29,6 +29,8 @@ public class ConfigBean {
     private SupplierBean supplierBean;
     @EJB
     private VolumeBean volumeBean;
+    @EJB
+    private SensorBean sensorBean;
 
     private static final Logger logger = Logger.getLogger("ejbs.ConfigBean");
 
@@ -87,17 +89,47 @@ public class ConfigBean {
             warehouseBean.create("Porto", "Rua das Igrejas", "Porto", "2565-834");
 
             long id_9 = Math.abs(UUID.randomUUID().hashCode());
-            volumeBean.create(id_9, "No damage", new Date());
+            volumeBean.create(id_9, "No damage", new Date(), id_1);
             long id_10 = Math.abs(UUID.randomUUID().hashCode());
-            volumeBean.create(id_10, "Minor damage", new Date());
+            volumeBean.create(id_10, "Minor damage", new Date(), id_2);
             long id_11 = Math.abs(UUID.randomUUID().hashCode());
-            volumeBean.create(id_11, "Moderate damage", new Date());
+            volumeBean.create(id_11, "Moderate damage", new Date(), id_3);
             long id_12 = Math.abs(UUID.randomUUID().hashCode());
-            volumeBean.create(id_12, "Significant damage", new Date());
+            volumeBean.create(id_12, "Significant damage", new Date(), id_4);
             long id_13 = Math.abs(UUID.randomUUID().hashCode());
-            volumeBean.create(id_13, "Heavily damaged", new Date());
+            volumeBean.create(id_13, "Heavily damaged", new Date(), id_5);
             long id_14 = Math.abs(UUID.randomUUID().hashCode());
-            volumeBean.create(id_14, "Unusable", new Date());
+            volumeBean.create(id_14, "Unusable", new Date(), id_6);
+
+            sensorBean.create(1, "Temperature", 20, false, false);
+            sensorBean.create(2, "Temperature", 20, false, false);
+            sensorBean.create(3, "Temperature", 20, false, false);
+            sensorBean.create(4, "Temperature", 20, false, false);
+            sensorBean.create(5, "Temperature", 20, false, false);
+            sensorBean.create(6, "Temperature", 20, false, false);
+            sensorBean.create(7, "Temperature", 20, false, false);
+            sensorBean.create(8, "Temperature", 20, false, false);
+            sensorBean.create(9, "Temperature", 20, false, false);
+            sensorBean.create(10, "Temperature", 20, false, false);
+            sensorBean.create(11, "Temperature", 20, false, false);
+            sensorBean.create(12, "Temperature", 20, false, false);
+            sensorBean.create(13, "Temperature", 20, false, false);
+            sensorBean.create(14, "Temperature", 20, false, false);
+            sensorBean.create(15, "Temperature", 20, false, false);
+            sensorBean.create(16, "Temperature", 20, false, false);
+            sensorBean.create(17, "Temperature", 20, false, false);
+            sensorBean.create(18, "Temperature", 20, false, false);
+            sensorBean.create(19, "Temperature", 20, false, false);
+            sensorBean.create(20, "Temperature", 20, false, false);
+            sensorBean.create(21, "humidity", 20, false, false);
+            sensorBean.create(22, "humidity", 20, false, false);
+            sensorBean.create(23, "humidity", 20, false, false);
+            sensorBean.create(24, "humidity", 20, false, false);
+            sensorBean.create(25, "humidity", 20, false, false);
+            sensorBean.create(26, "humidity", 20, false, false);
+            sensorBean.create(27, "humidity", 20, false, false);
+            sensorBean.create(28, "humidity", 20, false, false);
+
 
 
             productBean.create(1, "Coca-Cola", "Coca-Cola", 1.5, "coca-cola.jpg", 0, true, false, "Leiria", "safari");
@@ -113,6 +145,21 @@ public class ConfigBean {
             productBean.addProductInVolume(4, id_10);
             productBean.addProductInVolume(5, id_11);
             productBean.addProductInVolume(6, id_11);
+
+
+            volumeBean.addSensorToVolume(id_9, 1);
+            volumeBean.addSensorToVolume(id_9, 21);
+            volumeBean.addSensorToVolume(id_10, 3);
+            volumeBean.addSensorToVolume(id_10, 23);
+            volumeBean.addSensorToVolume(id_11, 5);
+            volumeBean.addSensorToVolume(id_11, 25);
+            volumeBean.addSensorToVolume(id_12, 7);
+            volumeBean.addSensorToVolume(id_12, 27);
+            volumeBean.addSensorToVolume(id_13, 9);
+            volumeBean.addSensorToVolume(id_13, 28);
+
+
+
 
 
 

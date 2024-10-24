@@ -2,6 +2,7 @@ package pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Order;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,6 +13,7 @@ public class OrderDTO implements Serializable {
     private Date deliveryDate;
     private String state;
     private String usernameOperator;
+    private List<VolumeDTO> volumes;
 
     public OrderDTO(long code, Date deliveryDate, Date purchaseDate, String username, String usernameOperator, String state) {
         this.code = code;
@@ -45,48 +47,53 @@ public class OrderDTO implements Serializable {
     public String getState() {
         return state;
     }
+    public long getCode() {
+        return code;
+    }
+    public String getUsername() {
+        return username;
+    }
+    public String getUsernameOperator() {
+        return usernameOperator;
+    }
+    public Date getPurchaseDate() {
+        return purchaseDate;
+    }
+    public Date getDeliveryDate() {
+        return deliveryDate;
+    }
+    public List<VolumeDTO> getVolumes() {return volumes;}
 
     public void setState(String state) {
         this.state = state;
     }
-
-    public long getCode() {
-        return code;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getUsernameOperator() {
-        return usernameOperator;
-    }
-
     public void setUsernameOperator(String usernameOperator) {
         this.usernameOperator = usernameOperator;
     }
-
-    public Date getPurchaseDate() {
-        return purchaseDate;
-    }
-
-    public Date getDeliveryDate() {
-        return deliveryDate;
-    }
-
     public void setCode(long code) {
         this.code = code;
     }
+    public void setUsername(String username) {this.username = username;}
+    public void setPurchaseDate(Date purchaseDate) {this.purchaseDate = purchaseDate;}
+    public void setDeliveryDate(Date deliveryDate) {this.deliveryDate = deliveryDate;}
+    public void setVolumes(List<VolumeDTO> volumes) {
+        if (this.volumes == null)
+            this.volumes = new LinkedList<>();
+        this.volumes = volumes;}
 
-    public void setUsername(String username) {
-        this.username = username;
+    /************************ Volumes Methods ****************************/
+    public void addVolume(VolumeDTO volume) {
+        if (this.volumes == null){
+            this.volumes = new LinkedList<>();
+        }
+        if (!volumes.contains(volume) && volume.getOrderDTO() == null) {
+            volumes.add(volume);
+        }
     }
-
-    public void setPurchaseDate(Date purchaseDate) {
-        this.purchaseDate = purchaseDate;
-    }
-
-    public void setDeliveryDate(Date deliveryDate) {
-        this.deliveryDate = deliveryDate;
+    public void removeVolume(VolumeDTO volume) {
+        if (volumes.contains(volume) && volume.getOrderDTO() != null) {
+            volumes.remove(volume);
+            volume.setOrderDTO(null);
+        }
     }
 }

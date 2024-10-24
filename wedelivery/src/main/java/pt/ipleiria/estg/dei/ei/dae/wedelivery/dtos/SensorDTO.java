@@ -11,6 +11,7 @@ public class SensorDTO {
     private int currentValue;
     boolean busy;
     boolean expedition;
+    private VolumeDTO volume;
 
     public SensorDTO() {
     }
@@ -21,6 +22,7 @@ public class SensorDTO {
         this.currentValue = currentValue;
         this.busy = busy;
         this.expedition =expedition;
+
     }
 
     // Converts an entity to a DTO Sensor class
@@ -41,40 +43,34 @@ public class SensorDTO {
     public long getId() {
         return id;
     }
-
     public String getType() {
         return type;
     }
-
     public int getCurrentValue() {
         return currentValue;
     }
-
     public boolean isBusy() {
         return busy;
     }
-
     public boolean isExpedition() {
         return expedition;
     }
+    public VolumeDTO getVolume() {return volume;}
 
     public void setId(long id) {
         this.id = id;
     }
-
     public void setType(String type) {
         this.type = type;
     }
-
     public void setCurrentValue(int currentValue) {
         this.currentValue = currentValue;
     }
-
     public void setBusy(boolean busy) {
         this.busy = busy;
     }
-
     public void setExpedition(boolean expedition) {
         this.expedition = expedition;
     }
+    public void setVolume(VolumeDTO volume) {this.volume = volume;}
 }

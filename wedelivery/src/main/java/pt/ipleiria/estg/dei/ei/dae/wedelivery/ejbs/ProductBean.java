@@ -9,6 +9,8 @@ import jakarta.persistence.TypedQuery;
 import jakarta.validation.ConstraintViolationException;
 import org.hibernate.Hibernate;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Product;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Supplier;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Warehouse;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityNotFoundException;
@@ -97,6 +99,11 @@ public class ProductBean {
         query.setParameter("username", username);
         return query.getResultList();
     }
+    public Supplier findWithSupplier(long id){
+        var product = this.findById(id);
+        Hibernate.initialize(product.getSupplier());
+        return product.getSupplier();
+    }
 
 
     /************************ Product <---> Warehouse *****************************/
@@ -120,13 +127,13 @@ public class ProductBean {
             entityManager.merge(product);
         }
     }
-    public Product findWithWarehouse(long id){
+    public Warehouse findWithWarehouse(long id){
         if (!exists(id)) {
             throw new MyEntityNotFoundException("Product with id " + id + " not found");
         }
         var product = this.findById(id);
         Hibernate.initialize(product.getWarehouse());
-        return product;
+        return product.getWarehouse();
     }
 
 
