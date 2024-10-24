@@ -4,6 +4,7 @@ import jakarta.ejb.EJB;
 import jakarta.ejb.Singleton;
 import jakarta.ejb.Startup;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.UUID;
 import java.util.logging.Logger;
@@ -26,6 +27,8 @@ public class ConfigBean {
     private WarehouseBean warehouseBean;
     @EJB
     private SupplierBean supplierBean;
+    @EJB
+    private VolumeBean volumeBean;
 
     private static final Logger logger = Logger.getLogger("ejbs.ConfigBean");
 
@@ -49,19 +52,53 @@ public class ConfigBean {
             supplierBean.create("liquid", "qwerty", "Liquid, LDA", "liquid@mail.com");
             supplierBean.create("drinkLFA", "qwerty", "DrinkLFA, LDA", "drinklfa@mail.com");
 
+         //   wait(1000);
+            // wait(1000);
+            //wait(1000);
+            //wait(1000);
+            //wait(1000);
+            //wait(1000);
+            //wait(1000);
+            //wait(1000);
+            //wait(1000);
+            //wait(1000);
+            //wait(1000);
+            //wait(1000);
 
-            orderBean.create(Math.abs(UUID.randomUUID().hashCode()), new Date(), new Date(), "Guilherme", "DinisRX", "In distribution");
-            orderBean.create(Math.abs(UUID.randomUUID().hashCode()), new Date(), new Date(), "Guilherme","DinisRX", "Pending");
-            orderBean.create(Math.abs(UUID.randomUUID().hashCode()), new Date(), new Date(), "Goncalo","GoncaloF00","Shipped");
-            orderBean.create(Math.abs(UUID.randomUUID().hashCode()), new Date(), new Date(), "Goncalo","DinisRX","Delivered");
-            orderBean.create(Math.abs(UUID.randomUUID().hashCode()), new Date(), new Date(), "Goncalo","Gui0000","In distribution");
-            orderBean.create(Math.abs(UUID.randomUUID().hashCode()), new Date(), new Date(), "Goncalo","Gui0000","Pending");
-            orderBean.create(Math.abs(UUID.randomUUID().hashCode()), new Date(), new Date(), "Goncalo","Gui0000","Shipped");
-            orderBean.create(Math.abs(UUID.randomUUID().hashCode()), new Date(), new Date(), "Goncalo","Gui0000","Delivered");
+            long id_1 = Math.abs(UUID.randomUUID().hashCode());
+            orderBean.create(id_1, new Date(), new Date(), "Guilherme", "DinisRX", "In distribution");
+            long id_2 = Math.abs(UUID.randomUUID().hashCode());
+            orderBean.create(id_2, new Date(), new Date(), "Guilherme","DinisRX", "Pending");
+            long id_3 = Math.abs(UUID.randomUUID().hashCode());
+            orderBean.create(id_3, new Date(), new Date(), "Goncalo","GoncaloF00","Shipped");
+            long id_4 = Math.abs(UUID.randomUUID().hashCode());
+            orderBean.create(id_4, new Date(), new Date(), "Goncalo","DinisRX","Delivered");
+            long id_5 = Math.abs(UUID.randomUUID().hashCode());
+            orderBean.create(id_5, new Date(), new Date(), "Goncalo","Gui0000","In distribution");
+            long id_6 = Math.abs(UUID.randomUUID().hashCode());
+            orderBean.create(id_6, new Date(), new Date(), "Goncalo","Gui0000","Pending");
+            long id_7 = Math.abs(UUID.randomUUID().hashCode());
+            orderBean.create(id_7, new Date(), new Date(), "Goncalo","Gui0000","Shipped");
+            long id_8 = Math.abs(UUID.randomUUID().hashCode());
+            orderBean.create(id_8, new Date(), new Date(), "Goncalo","Gui0000","Delivered");
 
             warehouseBean.create("Leiria", "Rua das Igrejas", "Leiria", "2565-834");
             warehouseBean.create("Lisboa", "Rua das Igrejas", "Lisboa", "2565-834");
             warehouseBean.create("Porto", "Rua das Igrejas", "Porto", "2565-834");
+
+            long id_9 = Math.abs(UUID.randomUUID().hashCode());
+            volumeBean.create(id_9, "No damage", new Date());
+            long id_10 = Math.abs(UUID.randomUUID().hashCode());
+            volumeBean.create(id_10, "Minor damage", new Date());
+            long id_11 = Math.abs(UUID.randomUUID().hashCode());
+            volumeBean.create(id_11, "Moderate damage", new Date());
+            long id_12 = Math.abs(UUID.randomUUID().hashCode());
+            volumeBean.create(id_12, "Significant damage", new Date());
+            long id_13 = Math.abs(UUID.randomUUID().hashCode());
+            volumeBean.create(id_13, "Heavily damaged", new Date());
+            long id_14 = Math.abs(UUID.randomUUID().hashCode());
+            volumeBean.create(id_14, "Unusable", new Date());
+
 
             productBean.create(1, "Coca-Cola", "Coca-Cola", 1.5, "coca-cola.jpg", 0, true, false, "Leiria", "safari");
             productBean.create(2, "Pepsi", "Pepsi", 1.5, "pepsi.jpg", 2, true, false, "Leiria", "safari");
@@ -69,6 +106,14 @@ public class ConfigBean {
             productBean.create(4, "Fanta", "Fanta", 1.5, "fanta.jpg", 100, true, false, "Leiria", "safari");
             productBean.create(5, "7up", "7up", 1.5, "7up.jpg", 100, true, false, "Leiria", "safari");
             productBean.create(6, "Sumol", "Sumol", 1.5, "sumol.jpg", 100, true, false, "Leiria", "safari");
+
+            productBean.addProductInVolume(1, id_9);
+            productBean.addProductInVolume(2, id_9);
+            productBean.addProductInVolume(3, id_10);
+            productBean.addProductInVolume(4, id_10);
+            productBean.addProductInVolume(5, id_11);
+            productBean.addProductInVolume(6, id_11);
+
 
 
         } catch (Exception e) {
