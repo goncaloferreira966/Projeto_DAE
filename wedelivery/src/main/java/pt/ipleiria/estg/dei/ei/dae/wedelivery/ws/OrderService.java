@@ -72,7 +72,7 @@ public class OrderService {
 
     @POST
     @Path("/")
-    public Response createNewOrder (OrderDTO orderDTO)
+    public Response createNewOrder (OrderDTO orderDTO, VolumeDTO volumeDTO)
             throws MyEntityExistsException, MyEntityNotFoundException, MyConstraintViolationException {
         orderBean.create(
                 orderDTO.getCode(),

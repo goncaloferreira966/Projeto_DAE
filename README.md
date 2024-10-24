@@ -430,18 +430,82 @@ Um Gestor consulta uma Encomenda efetuada. Este método pode também ser usado p
 - **Body**:
   ```json
   {
-    "code": "1"
+    "code": 1258464486
   }
   ```
 - **Response**:
   ```json
   {
-    "code": 1,
-    "deliveryDate": "2024-10-18T13:38:32.822Z[UTC]",
-    "purchaseDate": "2024-10-18T13:38:32.822Z[UTC]",
+    "code": 1258464486,
+    "deliveryDate": "2024-10-24T23:16:00.949Z[UTC]",
+    "purchaseDate": "2024-10-24T23:16:00.949Z[UTC]",
+    "state": "Pending",
     "username": "Guilherme",
-    "state": "In Distribution",
-    "usernameOperator": "DinisRX"
+    "usernameOperator": "DinisRX",
+    "volumes": [
+      {
+        "creationDate": "2024-10-24 23:16:00.991",
+        "id": 1494305280,
+        "state": "Minor damage"
+      }
+    ]
+  }
+  ```
+<br />
+
+#### `GET /orders/{code}/volume/{id}`
+
+Um Gestor consulta uma Encomenda efetuada e quere verificar um volume. Este método pode também ser usado por um Cliente que deseje consultar uma Encomenda efetuada por si. 
+
+- **URL**: `/orders/{code}/volume/{id}`
+- **Método**: `GET`
+- **Headers**: 
+  - `Content-Type`: `application/json`
+
+- **Body**:
+  ```json
+  {
+    "creationDate": "2024-10-24 23:16:00.991",
+    "id": 1494305280,
+    "products": [
+      {
+        "available": true,
+        "description": "Sprite",
+        "haveSensor": false,
+        "id": 3,
+        "image": "sprite.jpg",
+        "name": "Sprite",
+        "price": 1.5,
+        "quantity": 100
+      },
+      {
+        "available": true,
+        "description": "Fanta",
+        "haveSensor": false,
+        "id": 4,
+        "image": "fanta.jpg",
+        "name": "Fanta",
+        "price": 1.5,
+        "quantity": 100
+      }
+    ],
+    "sensors": [
+      {
+        "busy": false,
+        "currentValue": 20,
+        "expedition": false,
+        "id": 3,
+        "type": "Temperature"
+      },
+      {
+        "busy": false,
+        "currentValue": 20,
+        "expedition": false,
+        "id": 23,
+        "type": "humidity"
+      }
+    ],
+    "state": "Minor damage"
   }
   ```
 <br />
