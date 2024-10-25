@@ -1291,8 +1291,7 @@ Um gestor consulta detalhadamente uma restrição em específico, obtendo també
 #### `Powered By`
 ##### `2222051` [@goncaloferreira966](https://github.com/goncaloferreira966) 
 ##### `2223281` [@GuilhermeCruzPT](https://github.com/GuilhermeCruzPT)   
-##### `2222313` [dinisroxo99](https://github.com/dinisroxo99)  
--     
+##### `2222313` [dinisroxo99](https://github.com/dinisroxo99)     
 
 ---
 
