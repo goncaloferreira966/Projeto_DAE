@@ -19,7 +19,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16'  # ou a versão do Node.js que você está usando
+          node-version: '20.17.0'  # Atualize para a versão do Node.js que você está usando
 
       - name: Install dependencies
         run: |
@@ -30,3 +30,4 @@ jobs:
         run: |
           cd wedelivery-client  # Mude para o diretório correto
           npm test
+
