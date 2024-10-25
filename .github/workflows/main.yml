@@ -19,7 +19,19 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '20.17.0'  # Atualize para a versão do Node.js que você está usando
+          node-version: '20'  # Use a versão do Node.js que você está usando
+
+      - name: Install Docker
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker.io
+          sudo systemctl start docker
+          sudo systemctl enable docker
+
+      - name: Start Docker services
+        run: |
+          cd wedelivery  # Mude para o diretório correto
+          docker-compose up -d  # Inicia os serviços em segundo plano
 
       - name: Install dependencies
         run: |
@@ -29,5 +41,4 @@ jobs:
       - name: Run tests
         run: |
           cd wedelivery-client  # Mude para o diretório correto
-          npm test
-
+          npm run test  # Executa os testes com Cypress
