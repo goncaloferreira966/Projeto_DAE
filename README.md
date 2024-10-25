@@ -224,6 +224,7 @@ Um Gestor consulta todas as encomendas a si associadas.
     "state": "In Distribution",
     "usernameOperator": "DinisRX"
   }
+  ```
 <br />
 
 <div id='clients'/>  
