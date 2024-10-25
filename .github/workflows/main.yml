@@ -1,3 +1,5 @@
+name: CI
+
 on:
   push:
     branches:
@@ -79,21 +81,16 @@ jobs:
           cd wedelivery-client  # Mude para o diretório correto
           npx tsc --noEmit  # Executa a compilação TypeScript sem emitir arquivos
 
-      - name: Start Nuxt dev server in background
+      - name: Start dev server and run tests
         run: |
           cd wedelivery-client  # Mude para o diretório correto
-          npm run dev &  # Inicia o servidor Nuxt em segundo plano
-          echo $! > pid.file  # Salva o PID do processo em um arquivo
-
-      - name: Run tests
-        run: |
-          cd wedelivery-client  # Mude para o diretório correto
-          npm run test  # Executa os testes com Cypress
-
-      - name: Stop Nuxt dev server
-        run: |
-          kill $(cat pid.file)  # Encerra o servidor Nuxt com o PID salvo
-          rm pid.file  # Remove o arquivo de PID
+          echo "Starting dev server..."
+          npm run dev &  # Inicia o servidor em segundo plano
+          echo $! > dev_server.pid  # Armazena o PID do processo
+          echo "Waiting for Cypress to run tests..."
+          wait-on http://localhost:3000 && npx cypress run
+          echo "Tests completed. Stopping dev server..."
+          kill $(cat dev_server.pid)  # Encerra o servidor
 
       - name: Clean up
         run: |
