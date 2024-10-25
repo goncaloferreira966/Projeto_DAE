@@ -13,7 +13,8 @@
         <!-- Cabeçalho da página -->
         <div class="d-flex justify-content-between align-items-center mb-4">
           <h2><i class="bi bi-people"></i> WeDelivery - Clients</h2>
-          <button @click.prevent="refresh" class="btn btn-info"><i class="bi bi-arrow-clockwise"></i> Refresh Data</button>
+          <button @click.prevent="refresh" class="btn btn-info"><i class="bi bi-arrow-clockwise"></i> Refresh
+            Data</button>
         </div>
 
         <!-- Dropdown para filtragem por nome de cliente -->
@@ -31,21 +32,28 @@
           <div class="col-lg-4 col-md-6 mb-4" v-for="client in filteredClients" :key="client.username">
             <div class="card border-secondary">
               <div class="card-header bg-secondary text-white">
-                {{ client.name }}  
+                {{ client.name }}
               </div>
               <div class="card-body">
-                <p><strong>Email:</strong> {{ client.email }}</p>
-                <p><strong>City:</strong> {{ client.city }}</p>
-                <p><strong>Username:</strong> {{ client.username }}</p>
-                <nuxt-link :to="`clients/${client.username}`" class="btn btn-dark btn-block btn-sm">
-                  <i class="bi bi-eye-fill"></i> View Details
-                </nuxt-link>
-              </div>
+                <div class="row">
+                  <div class="col-md-8">
+                    <p><strong>Email:</strong> {{ client.email }}</p>
+                    <p><strong>City:</strong> {{ client.city }}</p>
+                    <p><strong>Username:</strong> {{ client.username }}</p>
+                  </div>
+                  <div class="col-md-4">
+                    <img src="/img_avatar.png" alt="Avatar" class="card-img-top" style="width: 100%; border-radius: 15px;">
+                  </div>
+                </div>
+              <nuxt-link :to="`clients/${client.username}`" class="btn btn-dark btn-block">
+                <i class="bi bi-eye-fill"></i> View Details
+              </nuxt-link>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
   </div>
 </template>
 
