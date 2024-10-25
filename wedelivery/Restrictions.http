@@ -1,0 +1,18 @@
+############################################
+###            Sensores                  ###
+############################################
+### Get All restrictions
+GET http://localhost:8080/wedelivery/api/restrictions
+Accept: application/json
+
+### Get one restriction
+GET http://localhost:8080/wedelivery/api/restrictions/1
+Accept: application/json
+
+### Get one restriction details
+GET http://localhost:8080/wedelivery/api/restrictions/1/details
+Accept: application/json
+
+
+
+

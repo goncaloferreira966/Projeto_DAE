@@ -1,0 +1,26 @@
+############################################
+###            Sensores                  ###
+############################################
+### Get All sensors
+GET http://localhost:8080/wedelivery/api/sensors
+Accept: application/json
+
+### Get one sensor
+GET http://localhost:8080/wedelivery/api/sensors/1
+Accept: application/json
+
+### Get one sensor details
+GET http://localhost:8080/wedelivery/api/sensors/1/details
+Accept: application/json
+
+### Update Sensor Value
+PATCH http://localhost:8080/wedelivery/api/sensors/1
+Content-Type: application/json
+
+{
+  "currentValue": 50
+}
+
+
+
+

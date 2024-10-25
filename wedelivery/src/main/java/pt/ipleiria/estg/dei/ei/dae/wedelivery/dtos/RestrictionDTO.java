@@ -1,5 +1,7 @@
 package pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Restriction;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -8,8 +10,10 @@ public class RestrictionDTO {
     private String type;
     private double maxValue;
     private double minValue;
+    private List<ProductDTO> products;
 
     public RestrictionDTO() {
+        this.products = new ArrayList<>();
     }
 
     public RestrictionDTO(long id, String type, double maxValue, double minValue) {
@@ -17,6 +21,7 @@ public class RestrictionDTO {
         this.type = type;
         this.maxValue = maxValue;
         this.minValue = minValue;
+        this.products = new ArrayList<>();
     }
 
     // Converts an entity to a DTO Restriction class
@@ -31,6 +36,14 @@ public class RestrictionDTO {
 
     public static List<RestrictionDTO> from(List<Restriction> restrictions) {
         return restrictions.stream().map(RestrictionDTO::from).collect(Collectors.toList());
+    }
+
+    public List<ProductDTO> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<ProductDTO> products) {
+        this.products = products;
     }
 
     public long getId() {

@@ -1152,12 +1152,14 @@ Um gestor consulta as restrições existentes.
       "id": 1,
       "maxValue": 25.4,
       "minValue": 19.5,
+      "products": [],
       "type": "Temperature"
     },
     {
       "id": 2,
       "maxValue": 25.4,
       "minValue": 99.0,
+      "products": [],
       "type": "Humidity"
     }
   ]
@@ -1176,6 +1178,46 @@ Um gestor consulta uma restrição em específico.
     "id": 1,
     "maxValue": 25.4,
     "minValue": 19.5,
+    "products": [],
+    "type": "Temperature"
+  }
+  ```
+<br />
+
+#### `GET /restrictions{id}/details`
+Um gestor consulta detalhadamente uma restrição em específico, obtendo também os produtos associados à mesma.
+- **URL:** `/restrictions/1/details`
+- **Método**: `GET`
+- **Headers:** 
+  - `Content-Type`: `application/json`
+- **Response:**
+  ```json
+  {
+    "id": 1,
+    "maxValue": 25.4,
+    "minValue": 19.5,
+    "products": [
+      {
+        "available": true,
+        "description": "Coca-Cola",
+        "haveSensor": false,
+        "id": 1,
+        "image": "coca-cola.jpg",
+        "name": "Coca-Cola",
+        "price": 1.5,
+        "quantity": -3
+      },
+      {
+        "available": true,
+        "description": "Pepsi",
+        "haveSensor": false,
+        "id": 2,
+        "image": "pepsi.jpg",
+        "name": "Pepsi",
+        "price": 1.5,
+        "quantity": 0
+      }
+    ],
     "type": "Temperature"
   }
   ```

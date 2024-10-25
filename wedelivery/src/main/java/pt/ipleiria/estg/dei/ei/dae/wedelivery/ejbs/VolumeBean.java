@@ -57,6 +57,7 @@ public class VolumeBean {
         // remember, maps to: “SELECT s FROM volume v ORDER BY v.id”
         return entityManager.createNamedQuery("getAllVolumes", Volume.class).getResultList();
     }
+
     public Volume find(long id) {
         var volume = entityManager.find(Volume.class, id);
         return volume;
@@ -95,13 +96,11 @@ public class VolumeBean {
         var volume = find(idVolume);
         var sensor = sensorBean.find(idSensor);
         volume.addSensor(sensor);
-        sensor.setVolume(volume);
     }
     public void removeSensorFromVolume(long idVolume, long idSensor) {
         var volume = find(idVolume);
         var sensor = sensorBean.find(idSensor);
         volume.removeSensor(sensor);
-        sensor.setVolume(null);
     }
 
     /*****************  Volume -> Order  ***********************************/

@@ -89,4 +89,16 @@ public class Restriction {
     public void setProducts(List<Product> products) {
         this.products = products;
     }
+
+    public void addProduct(Product product) {
+        if(!this.products.contains(product)){
+            this.products.add(product);
+        }
+    }
+
+    public void removeProduct(Product product) {
+        if(this.products.contains(product)){
+            this.products.remove(product);
+        }
+    }
 }

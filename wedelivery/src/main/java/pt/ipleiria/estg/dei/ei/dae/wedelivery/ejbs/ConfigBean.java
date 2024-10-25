@@ -158,6 +158,10 @@ public class ConfigBean {
             restrictionBean.create(1,"Temperature", 25.4,19.5);
             restrictionBean.create(2,"Humidity", 25.4,99);
 
+            productBean.addRestrictionToProduct(1,1);
+            productBean.addRestrictionToProduct(2,1);
+            productBean.addRestrictionToProduct(2,2);
+
 
         } catch (Exception e) {
             System.err.println("Some exception happened while creating objects");

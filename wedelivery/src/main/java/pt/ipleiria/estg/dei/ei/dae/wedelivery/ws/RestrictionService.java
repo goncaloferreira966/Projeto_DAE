@@ -4,6 +4,7 @@ import jakarta.ejb.EJB;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.ProductDTO;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.RestrictionDTO;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.RestrictionBean;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Restriction;
@@ -28,6 +29,15 @@ public class RestrictionService {
     public Response getRestrictionById(@PathParam("id") long id) {
         Restriction restriction = restrictionBean.find(id);
         RestrictionDTO restrictionDTO = RestrictionDTO.from(restriction);
+        return Response.ok(restrictionDTO).build();
+    }
+
+    @GET
+    @Path("{id}/details")
+    public Response getRestrictionByIdDetails(@PathParam("id") long id) {
+        var restriction = restrictionBean.findWithProducts(id);
+        var restrictionDTO = RestrictionDTO.from(restriction);
+        restrictionDTO.setProducts(ProductDTO.from(restriction.getProducts()));
         return Response.ok(restrictionDTO).build();
     }
 }

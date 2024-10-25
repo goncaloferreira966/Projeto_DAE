@@ -105,3 +105,6 @@ GET http://localhost:8080/wedelivery/api/restrictions/
 
 ### Get one restrictions
 GET http://localhost:8080/wedelivery/api/restrictions/1
+
+### Get one restrictions details
+GET http://localhost:8080/wedelivery/api/restrictions/1/details

@@ -1194,6 +1194,97 @@
 </code></pre></li>
 </ul>
 <br>
+<h3 id="11-restrições">11. <strong>Restrições</strong> </h3>
+<h4 id="get-restrictions"><code>GET /restrictions</code> </h4>
+<p>Um gestor consulta as restrições existentes.</p>
+<ul>
+<li><strong>URL:</strong> <code>/restrictions</code></li>
+<li><strong>Método</strong>: <code>GET</code></li>
+<li><strong>Headers:</strong>
+<ul>
+<li><code>Content-Type</code>: <code>application/json</code></li>
+</ul>
+</li>
+<li><strong>Response:</strong><pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token property">"maxValue"</span><span class="token operator">:</span> <span class="token number">25.4</span><span class="token punctuation">,</span>
+    <span class="token property">"minValue"</span><span class="token operator">:</span> <span class="token number">19.5</span><span class="token punctuation">,</span>
+    <span class="token property">"products"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"Temperature"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token property">"maxValue"</span><span class="token operator">:</span> <span class="token number">25.4</span><span class="token punctuation">,</span>
+    <span class="token property">"minValue"</span><span class="token operator">:</span> <span class="token number">99.0</span><span class="token punctuation">,</span>
+    <span class="token property">"products"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"Humidity"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+</code></pre></li>
+</ul>
+<br>
+<h4 id="get-restrictionsid"><code>GET /restrictions{id}</code> </h4>
+<p>Um gestor consulta uma restrição em específico.</p>
+<ul>
+<li><strong>URL:</strong> <code>/restrictions/1</code></li>
+<li><strong>Método</strong>: <code>GET</code></li>
+<li><strong>Headers:</strong>
+<ul>
+<li><code>Content-Type</code>: <code>application/json</code></li>
+</ul>
+</li>
+<li><strong>Response:</strong><pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+  <span class="token property">"maxValue"</span><span class="token operator">:</span> <span class="token number">25.4</span><span class="token punctuation">,</span>
+  <span class="token property">"minValue"</span><span class="token operator">:</span> <span class="token number">19.5</span><span class="token punctuation">,</span>
+  <span class="token property">"products"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"Temperature"</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+</ul>
+<br>
+<h4 id="get-restrictionsiddetails"><code>GET /restrictions{id}/details</code> </h4>
+<p>Um gestor consulta detalhadamente uma restrição em específico, obtendo também os produtos associados à mesma.</p>
+<ul>
+<li><strong>URL:</strong> <code>/restrictions/1/details</code></li>
+<li><strong>Método</strong>: <code>GET</code></li>
+<li><strong>Headers:</strong>
+<ul>
+<li><code>Content-Type</code>: <code>application/json</code></li>
+</ul>
+</li>
+<li><strong>Response:</strong><pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+  <span class="token property">"maxValue"</span><span class="token operator">:</span> <span class="token number">25.4</span><span class="token punctuation">,</span>
+  <span class="token property">"minValue"</span><span class="token operator">:</span> <span class="token number">19.5</span><span class="token punctuation">,</span>
+  <span class="token property">"products"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"available"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"Coca-Cola"</span><span class="token punctuation">,</span>
+      <span class="token property">"haveSensor"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+      <span class="token property">"image"</span><span class="token operator">:</span> <span class="token string">"coca-cola.jpg"</span><span class="token punctuation">,</span>
+      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Coca-Cola"</span><span class="token punctuation">,</span>
+      <span class="token property">"price"</span><span class="token operator">:</span> <span class="token number">1.5</span><span class="token punctuation">,</span>
+      <span class="token property">"quantity"</span><span class="token operator">:</span> <span class="token number">-3</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"available"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"Pepsi"</span><span class="token punctuation">,</span>
+      <span class="token property">"haveSensor"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+      <span class="token property">"image"</span><span class="token operator">:</span> <span class="token string">"pepsi.jpg"</span><span class="token punctuation">,</span>
+      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Pepsi"</span><span class="token punctuation">,</span>
+      <span class="token property">"price"</span><span class="token operator">:</span> <span class="token number">1.5</span><span class="token punctuation">,</span>
+      <span class="token property">"quantity"</span><span class="token operator">:</span> <span class="token number">0</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"Temperature"</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+</ul>
+<br>
 <hr>
 <h2 id="credits"><strong>Credits</strong> </h2>
 <h4 id="powered-by"><code>Powered By</code> </h4>

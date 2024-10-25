@@ -190,4 +190,18 @@ public class Product {
         this.volumes.remove(volume);
         volume.removeProduct(this);
     }
+
+    /*****************  Restrictions Methods   ******************/
+    public void addRestriction(Restriction restriction) {
+        if (!this.restrictions.contains(restriction)){
+            this.restrictions.add(restriction);
+            restriction.addProduct(this);
+        }
+    }
+    public void removeRestriction(Restriction restriction) {
+        if (!restrictions.contains(restriction))
+            throw new RuntimeException("restriction " + restriction.getId() + " don't exist in volume " + id);
+        restrictions.remove(restriction);
+        restriction.removeProduct(this);
+    }
 }

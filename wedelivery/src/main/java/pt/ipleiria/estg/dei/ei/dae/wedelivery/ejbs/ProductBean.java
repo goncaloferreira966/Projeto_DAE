@@ -32,6 +32,9 @@ public class ProductBean {
     @EJB
     private VolumeBean volumeBean;
 
+    @EJB
+    private RestrictionBean restrictionBean;
+
     //(long id, String name, String description, double price, String image, int quantity,boolean available, boolean haveSensor, warehouse warehouse, Supplier supplier)
     public void create(long id, String name, String description, double price, String image, int quantity, boolean available, boolean haveSensor, String warehouseName, String supplierUsername)
             throws MyEntityNotFoundException, MyEntityExistsException,
@@ -184,6 +187,17 @@ public class ProductBean {
         return products;
     }
 
+    /*****************  Product -> Restriction  ***********************************/
+    public void addRestrictionToProduct(long idProduct, long idRestriction) {
+        var product = findById(idProduct);
+        var restriction = restrictionBean.find(idRestriction);
+        product.addRestriction(restriction);
+    }
+    public void removeRestrictionToProduct(long idProduct, long idRestriction) {
+        var product = findById(idProduct);
+        var restriction = restrictionBean.find(idRestriction);
+        product.removeRestriction(restriction);
+    }
 
 
     /*******************************************************************************/
