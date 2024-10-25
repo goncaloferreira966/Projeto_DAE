@@ -4,9 +4,23 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'wedelivery/src/main/java/pt/ipleiria/estg/dei/ei/dae/wedelivery/**'
+      - 'wedelivery-client/cypress/e2e/**'
+      - 'wedelivery-client/layouts/**'
+      - 'wedelivery-client/pages/**'
+      - 'wedelivery-client/public/**'
+      - 'wedelivery-client/app.vue'
   pull_request:
     branches:
       - main
+    paths:
+      - 'wedelivery/src/main/java/pt/ipleiria/estg/dei/ei/dae/wedelivery/**'
+      - 'wedelivery-client/cypress/e2e/**'
+      - 'wedelivery-client/layouts/**'
+      - 'wedelivery-client/pages/**'
+      - 'wedelivery-client/public/**'
+      - 'wedelivery-client/app.vue'
 
 jobs:
   build:
