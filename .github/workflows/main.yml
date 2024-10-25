@@ -79,10 +79,21 @@ jobs:
           cd wedelivery-client  # Mude para o diretório correto
           npx tsc --noEmit  # Executa a compilação TypeScript sem emitir arquivos
 
+      - name: Start Nuxt dev server in background
+        run: |
+          cd wedelivery-client  # Mude para o diretório correto
+          npm run dev &  # Inicia o servidor Nuxt em segundo plano
+          echo $! > pid.file  # Salva o PID do processo em um arquivo
+
       - name: Run tests
         run: |
           cd wedelivery-client  # Mude para o diretório correto
           npm run test  # Executa os testes com Cypress
+
+      - name: Stop Nuxt dev server
+        run: |
+          kill $(cat pid.file)  # Encerra o servidor Nuxt com o PID salvo
+          rm pid.file  # Remove o arquivo de PID
 
       - name: Clean up
         run: |
