@@ -38,6 +38,11 @@ jobs:
         run: |
           cd wedelivery-client  # Mude para o diretório correto
           npm install
+      
+      - name: Deploy application
+        run: |
+          cd wedelivery  # Mude para o diretório onde o Makefile está localizado
+          make deploy  # Executa o comando make deploy
 
       - name: Run tests
         run: |
@@ -46,4 +51,5 @@ jobs:
 
       - name: Shut down Docker
         run: |
-          docker-compose -f wedelivery\docker-compose.yaml down  # Para parar os containers
+          cd wedelivery  # Mude para o diretório correto
+          docker-compose docker-compose.yaml down  # Para parar os containers
