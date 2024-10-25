@@ -34,11 +34,21 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y docker-ce
 
+      - name: Install Docker Compose
+        run: |
+          sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+          sudo chmod +x /usr/local/bin/docker-compose
+
       - name: Start Docker services
         run: |
           cd wedelivery  # Mude para o diretório correto
           docker-compose up -d  # Inicia os serviços em segundo plano
           sleep 60
+
+      - name: Deploy application
+        run: |
+          cd wedelivery  # Mude para o diretório correto
+          make deploy  # Executa o comando make deploy
 
       - name: Install dependencies
         run: |
