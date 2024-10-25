@@ -69,11 +69,15 @@ jobs:
 
       - name: Check if services are running
         run: |
-          if ! docker ps | grep -q 'webserver'; then
+          if ! docker ps | grep -q 'your_service_name'; then
             echo "Error: Docker service is not running!"
             exit 1
           fi
 
+      - name: Run TypeScript compilation
+        run: |
+          cd wedelivery-client  # Mude para o diretório correto
+          npx tsc --noEmit  # Executa a compilação TypeScript sem emitir arquivos
 
       - name: Run tests
         run: |
