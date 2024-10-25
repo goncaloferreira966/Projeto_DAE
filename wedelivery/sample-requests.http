@@ -92,7 +92,7 @@ Accept: application/json
 
 
 ### Update Sensor Value
-PATCH http://localhost:8080/wedelivery/api/sensors/1/updateCurrentValue
+PATCH http://localhost:8080/wedelivery/api/sensors/1
 Content-Type: application/json
 
 {

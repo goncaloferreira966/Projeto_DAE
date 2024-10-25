@@ -1115,9 +1115,9 @@ Um gestor consulta detalhadamente um sensor em específico, contendo assim a inf
   ```
 <br />
 
-#### `PATCH /sensors/{id}/updateCurrentValue`
+#### `PATCH /sensors/{id}`
 Um gestor consulta detalhadamente um sensor em específico, contendo assim a informação do volume associado ao sensor especificado.
-- **URL:** `/sensors/1/updateCurrentValue`
+- **URL:** `/sensors/1`
 - **Método**: `PATCH`
 - **Headers:** 
   - `Content-Type`: `application/json`

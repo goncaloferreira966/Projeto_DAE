@@ -43,7 +43,7 @@ public class SensorService {
     }
 
     @PATCH
-    @Path("{id}/updateCurrentValue")
+    @Path("{id}")
     public Response updateCurrentValue(@PathParam("id") long id, SensorDTO sensorDTO) {
         Sensor sensor = sensorBean.find(id);
 
