@@ -121,7 +121,7 @@ Um Operador efetua o registo na plataforma do sistema.
   }
   ```
 
-### 3. **managers**
+### 3. **Gestores**
 #### `GET /managers`
 Um Administrador consulta a listagem de todos os Gestores Registados.
 
@@ -913,6 +913,7 @@ Um utilizador efetua a consulta de um produto identificado por {id}, pertencente
 - **Body:**
   ```json
   {
+    "id": 2,
     "name": "safari"
   }
   ```
@@ -986,7 +987,7 @@ Um utilizador consulta diversos produtos com a designação {string}, pertencent
   ```
 <br />
 
-### 9. **Volume**
+### 9. **Volumes**
 #### `GET /volumes`
 Um utilizador consulta os volumes existentes
 - **URL:** `/volume`
