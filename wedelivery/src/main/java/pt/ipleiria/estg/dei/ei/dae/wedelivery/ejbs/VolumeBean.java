@@ -95,11 +95,13 @@ public class VolumeBean {
         var volume = find(idVolume);
         var sensor = sensorBean.find(idSensor);
         volume.addSensor(sensor);
+        sensor.setVolume(volume);
     }
     public void removeSensorFromVolume(long idVolume, long idSensor) {
         var volume = find(idVolume);
         var sensor = sensorBean.find(idSensor);
         volume.removeSensor(sensor);
+        sensor.setVolume(null);
     }
 
     /*****************  Volume -> Order  ***********************************/

@@ -67,6 +67,7 @@ public class Product {
     private int version;
 
     public Product() {
+        this.volumes = new LinkedList<>();
         this.restrictions = new LinkedList<>();
     }
 
