@@ -5,7 +5,6 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.*;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.*;
-import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Operator;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Order;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
@@ -86,5 +85,24 @@ public class OrderService {
         return Response.status(Response.Status.CREATED)
                 .entity(OrderDTO.from(newOrder))
                 .build();
+    }
+
+    @PATCH
+    @Path("{code}")
+    public Response updateState(@PathParam("code") long code, OrderDTO orderDTO) {
+        Order order = orderBean.find(code);
+
+        // Verifica se o order existe
+        if (order == null) {
+            return Response.status(Response.Status.NOT_FOUND).entity("Order not found").build();
+        }
+
+        order.setState(orderDTO.getState());
+
+        // Persiste a alteração
+        orderBean.update(order);
+
+        OrderDTO orderUpdated = OrderDTO.from(order);
+        return Response.ok(orderUpdated).build();
     }
 }

@@ -30,3 +30,12 @@ Content-Type: application/json
   "username": "Guilherme",
   "usernameOperator": "DinisRX"
 }
+
+### Update order Value
+PATCH http://localhost:8080/wedelivery/api/orders/761527421
+Content-Type: application/json
+
+{
+  "state": "Delivered"
+}
+

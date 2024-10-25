@@ -1,8 +1,7 @@
 | ![Imagem Esquerda](img/ipl.png) | ![Imagem Direita](img/encomenda.jpg) |
 |:---------------------------------------:|:---------------------------------------:|
-# Projeto DAE - `Primeira Entrega`
+# Projeto DAE
 ## `API Documentation`
-
 ---
 
 ### `WeDelivery`
@@ -11,12 +10,28 @@ Esta API permite responder a todo o tipo de Pedidos necessários ao negócio da 
 
 ---
 
+#### Índice
+ 1. [Autenticação](#auth)
+ 2. [Operadores](#operators)
+ 3. [Gestores](#managers)
+ 4. [Clientes](#clients)
+ 5. [Encomendas](#orders)
+ 6. [Produtos](#products)
+ 7. [Armazéns](#warehouses)
+ 8. [Fabricantes](#suppliers)
+ 9. [Volumes](#volumes)
+ 10. [Sensores](#sensors)
+ 11. [Restrições](#restrictions)
+ 
+---
+
 #### Base URL
 #### `http://Localhost:8080/wedelivery/api`
 
 ---
 
 ## Endpoints
+<div id='auth'/>  
 
 ### 1. **Autenticação**
 #### `POST /auth/login`
@@ -41,6 +56,8 @@ Um User inicia sessão e recebe, para sua segurança, um token JWT.
   }
   ```
 <br />
+
+<div id='operators'/>  
 
 ### 2. **Operadores**
 #### `GET /operators`
@@ -113,6 +130,7 @@ Um Operador efetua o registo na plataforma do sistema.
     "username": "Ana"
   }
   ```
+<div id='managers'/>  
 
 ### 3. **Gestores**
 #### `GET /managers`
@@ -206,6 +224,8 @@ Um Gestor consulta todas as encomendas a si associadas.
     "usernameOperator": "DinisRX"
   }
 <br />
+
+<div id='clients'/>  
 
 ### 4. **Clientes**
 #### `GET /clients`
@@ -344,6 +364,8 @@ Um Cliente consulta todas as suas encomendas realizadas
   }
   ```
 <br />
+
+<div id='orders'/>  
 
 ### 5. **Encomendas**
 #### `GET /orders`
@@ -499,6 +521,32 @@ Um Cliente efetua uma Encomenda e a mesma é criada em sistema.
   ```
 <br />
 
+#### `PATCH /orders/{id}`
+Um gestor altera o estado de uma encomenda especificada por {id}.
+- **URL:** `/orders/761527421`
+- **Método**: `PATCH`
+- **Headers:** 
+  - `Content-Type`: `application/json`
+- **Body:**
+  ```json
+  {
+    "state": "Delivered"
+  }
+- **Response:**
+  ```json
+  {
+    "code": 761527421,
+    "deliveryDate": "2024-10-25T14:11:00.389Z[UTC]",
+    "purchaseDate": "2024-10-25T14:11:00.389Z[UTC]",
+    "state": "Delivered",
+    "username": "Guilherme",
+    "usernameOperator": "DinisRX"
+  }
+  ```
+<br />
+
+<div id='products'/>  
+
 ### 6. **Produtos**
 
 #### `Get /products`
@@ -631,6 +679,8 @@ Um utilizador consulta os detalhes de um repectivo produto.
   ```
 <br />
 
+<div id='warehouses'/>  
+
 ### 7. **Armazéns**
 #### `Get /warehouses`
 Um utilizador consulta os warehouses existentes.
@@ -749,6 +799,8 @@ Um utilizador consulta um determinado produto {id} num determinado warehouse {na
   }
   ```
 <br />
+
+<div id='suppliers'/>  
 
 ### 8. **Fabricantes**
 #### `GET /suppliers`
@@ -886,6 +938,8 @@ Um utilizador consulta diversos produtos com a designação {string}, pertencent
   }
   ```
 <br />
+
+<div id='volumes'/>  
 
 ### 9. **Volumes**
 #### `GET /volumes`
@@ -1046,6 +1100,8 @@ Um administrador consulta, ao detalhe, um volume registado.
   ```
 <br />
 
+<div id='sensors'/>  
+
 ### 10. **Sensores**
 #### `GET /sensors`
 Um gestor consulta os sensores existentes.
@@ -1116,7 +1172,7 @@ Um gestor consulta detalhadamente um sensor em específico, contendo assim a inf
 <br />
 
 #### `PATCH /sensors/{id}`
-Um gestor consulta detalhadamente um sensor em específico, contendo assim a informação do volume associado ao sensor especificado.
+Um gestor altera o valor atual de um sensor especificando o seu {id}.
 - **URL:** `/sensors/1`
 - **Método**: `PATCH`
 - **Headers:** 
@@ -1137,6 +1193,8 @@ Um gestor consulta detalhadamente um sensor em específico, contendo assim a inf
   }
   ```
 <br />
+
+<div id='restrictions'/>  
 
 ### 11. **Restrições**
 #### `GET /restrictions`

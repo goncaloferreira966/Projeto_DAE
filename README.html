@@ -32,16 +32,32 @@
 </tr>
 </thead>
 </table>
-<h1 id="projeto-dae---primeira-entrega">Projeto DAE - <code>Primeira Entrega</code> </h1>
+<h1 id="projeto-dae">Projeto DAE </h1>
 <h2 id="api-documentation"><code>API Documentation</code> </h2>
 <hr>
 <h3 id="wedelivery"><code>WeDelivery</code> </h3>
 <p>Esta API permite responder a todo o tipo de Pedidos necessários ao negócio da empresa WeDelivery, empresa ligada ao serviço de transporte e armazenamento de embalagens e produtos. Fornece endpoints para todas as funcionalidades da nossa Aplicação WEB.</p>
 <hr>
+<h4 id="índice">Índice </h4>
+<ol>
+<li><a href="#auth">Autenticação</a></li>
+<li><a href="#operators">Operadores</a></li>
+<li><a href="#managers">Gestores</a></li>
+<li><a href="#clients">Clientes</a></li>
+<li><a href="#orders">Encomendas</a></li>
+<li><a href="#products">Produtos</a></li>
+<li><a href="#warehouses">Armazéns</a></li>
+<li><a href="#suppliers">Fabricantes</a></li>
+<li><a href="#volumes">Volumes</a></li>
+<li><a href="#sensors">Sensores</a></li>
+<li><a href="#restrictions">Restrições</a></li>
+</ol>
+<hr>
 <h4 id="base-url">Base URL </h4>
 <h4 id="httplocalhost8080wedeliveryapi"><code>http://Localhost:8080/wedelivery/api</code> </h4>
 <hr>
 <h2 id="endpoints">Endpoints </h2>
+<div id="auth">  
 <h3 id="1-autenticação">1. <strong>Autenticação</strong> </h3>
 <h4 id="post-authlogin"><code>POST /auth/login</code> </h4>
 <p>Um User inicia sessão e recebe, para sua segurança, um token JWT.</p>
@@ -65,6 +81,7 @@
 </code></pre></li>
 </ul>
 <br>
+<div id="operators">  
 <h3 id="2-operadores">2. <strong>Operadores</strong> </h3>
 <h4 id="get-operators"><code>GET /operators</code> </h4>
 <p>Um Administrador consulta a listagem de todos os Operadores Registados.</p>
@@ -137,6 +154,7 @@
 <span class="token punctuation">}</span>
 </code></pre></li>
 </ul>
+<div id="managers">  
 <h3 id="3-gestores">3. <strong>Gestores</strong> </h3>
 <h4 id="get-managers"><code>GET /managers</code> </h4>
 <p>Um Administrador consulta a listagem de todos os Gestores Registados.</p>
@@ -231,6 +249,7 @@
 </code></pre></li>
 </ul>
 <br>
+<div id="clients">  
 <h3>4. <strong>Clientes</strong></h3>
 <h4><code>GET /clients</code></h4>
 <p>Um Administrador consulta a listagem de todos os Clientes Registados.</p>
@@ -369,6 +388,7 @@
 </code></pre></li>
 </ul>
 <br>
+<div id="orders">  
 <h3>5. <strong>Encomendas</strong></h3>
 <h4><code>GET /orders</code></h4>
 <p>Um Gestor consulta a listagem de todos as Encomendas efetuadas.</p>
@@ -523,8 +543,34 @@
 </code></pre></li>
 </ul>
 <br>
-<h3>6. <strong>Produtos</strong></h3>
-<h4><code>Get /products</code></h4>
+<h4><code>PATCH /orders/{id}</code></h4>
+<p>Um gestor altera o estado de uma encomenda especificada por {id}.</p>
+<ul>
+<li><strong>URL:</strong> <code>/orders/761527421</code></li>
+<li><strong>Método</strong>: <code>PATCH</code></li>
+<li><strong>Headers:</strong>
+<ul>
+<li><code>Content-Type</code>: <code>application/json</code></li>
+</ul>
+</li>
+<li><strong>Body:</strong><pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"state"</span><span class="token operator">:</span> <span class="token string">"Delivered"</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+<li><strong>Response:</strong><pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"code"</span><span class="token operator">:</span> <span class="token number">761527421</span><span class="token punctuation">,</span>
+  <span class="token property">"deliveryDate"</span><span class="token operator">:</span> <span class="token string">"2024-10-25T14:11:00.389Z[UTC]"</span><span class="token punctuation">,</span>
+  <span class="token property">"purchaseDate"</span><span class="token operator">:</span> <span class="token string">"2024-10-25T14:11:00.389Z[UTC]"</span><span class="token punctuation">,</span>
+  <span class="token property">"state"</span><span class="token operator">:</span> <span class="token string">"Delivered"</span><span class="token punctuation">,</span>
+  <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"Guilherme"</span><span class="token punctuation">,</span>
+  <span class="token property">"usernameOperator"</span><span class="token operator">:</span> <span class="token string">"DinisRX"</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+</ul>
+<br>
+<div id="products">  
+<h3 id="6-produtos">6. <strong>Produtos</strong> </h3>
+<h4 id="get-products"><code>Get /products</code> </h4>
 <p>Um utilizador consulta todos os produtos na página de e-commerce.</p>
 <ul>
 <li><strong>URL</strong>: <code>/products</code></li>
@@ -562,7 +608,7 @@
 </code></pre></li>
 </ul>
 <br>
-<h4><code>Get /products/{id}</code></h4>
+<h4 id="get-productsid"><code>Get /products/{id}</code> </h4>
 <p>Um utilizador consulta um produto especifico.</p>
 <ul>
 <li><strong>URL</strong>: <code>/products/2</code></li>
@@ -586,7 +632,7 @@
 </code></pre></li>
 </ul>
 <br>
-<h4><code>Get /products/{name}</code></h4>
+<h4 id="get-productsname"><code>Get /products/{name}</code> </h4>
 <p>Um utilizador consulta todos os produtos que contenham a palavra {name}.</p>
 <ul>
 <li><strong>URL</strong>: <code>/products/S</code></li>
@@ -624,7 +670,7 @@
 </code></pre></li>
 </ul>
 <br>
-<h4><code>GET /products/{id}/details</code></h4>
+<h4 id="get-productsiddetails"><code>GET /products/{id}/details</code> </h4>
 <p>Um utilizador consulta os detalhes de um repectivo produto.</p>
 <ul>
 <li><strong>URL</strong>: <code>/products/1/details</code></li>
@@ -659,8 +705,9 @@
 </code></pre></li>
 </ul>
 <br>
-<h3>7. <strong>Armazéns</strong></h3>
-<h4><code>Get /warehouses</code></h4>
+<div id="warehouses">  
+<h3 id="7-armazéns">7. <strong>Armazéns</strong> </h3>
+<h4 id="get-warehouses"><code>Get /warehouses</code> </h4>
 <p>Um utilizador consulta os warehouses existentes.</p>
 <ul>
 <li><strong>URL</strong>: <code>/warehouses</code></li>
@@ -688,7 +735,7 @@
 </code></pre></li>
 </ul>
 <br>
-<h4><code>Get /warehouses/{name}</code></h4>
+<h4 id="get-warehousesname"><code>Get /warehouses/{name}</code> </h4>
 <p>Um utilizador consulta os dados de um warehouse especifico.</p>
 <ul>
 <li><strong>URL</strong>: <code>/warehouses/Leiria</code></li>
@@ -707,7 +754,7 @@
 </code></pre></li>
 </ul>
 <br>
-<h4><code>Get /warehouses/{name}/products</code></h4>
+<h4 id="get-warehousesnameproducts"><code>Get /warehouses/{name}/products</code> </h4>
 <p>Um utilizador consulta todos os produtos que exitem num determindo warehouse.</p>
 <ul>
 <li><strong>URL</strong>: <code>/warehouses/Leiria/products</code></li>
@@ -749,7 +796,7 @@
 </code></pre></li>
 </ul>
 <br>
-<h4><code>Get /warehouses/{name}/products/{id}</code></h4>
+<h4 id="get-warehousesnameproductsid"><code>Get /warehouses/{name}/products/{id}</code> </h4>
 <p>Um utilizador consulta um determinado produto {id} num determinado warehouse {name}.</p>
 <ul>
 <li><strong>URL</strong>: <code>/warehouses/Leiria/products/1</code></li>
@@ -786,8 +833,9 @@
 </code></pre></li>
 </ul>
 <br>
-<h3>8. <strong>Fabricantes</strong></h3>
-<h4><code>GET /suppliers</code></h4>
+<div id="suppliers">  
+<h3 id="8-fabricantes">8. <strong>Fabricantes</strong> </h3>
+<h4 id="get-suppliers"><code>GET /suppliers</code> </h4>
 <p>Um utilizador consulta os Suppliers existentes<br>
 <strong>URL</strong>: <code>/suppliers</code></p>
 <ul>
@@ -815,7 +863,7 @@
 </code></pre></li>
 </ul>
 <br>
-<h4><code>GET /suppliers/{name}</code> ou <code>/suppliers/{name}/products</code></h4>
+<h4 id="get-suppliersname-ou-suppliersnameproducts"><code>GET /suppliers/{name}</code> ou <code>/suppliers/{name}/products</code> </h4>
 <p>Um utilizador consulta um determinado Supplier e os seus respectivos produtos</p>
 <ul>
 <li><strong>URL:</strong> <code>/suppliers/safari</code></li>
@@ -857,7 +905,7 @@
 </code></pre></li>
 </ul>
 <br>
-<h4><code>GET /suppliers/{name}/products/{id}</code></h4>
+<h4 id="get-suppliersnameproductsid"><code>GET /suppliers/{name}/products/{id}</code> </h4>
 <p>Um utilizador efetua a consulta de um produto identificado por {id}, pertencente a um fornecedor designado por {name}.</p>
 <ul>
 <li><strong>URL:</strong> <code>/suppliers/safari/products/2</code></li>
@@ -888,7 +936,7 @@
 </code></pre></li>
 </ul>
 <br>
-<h4><code>GET /suppliers/{name}/products/name/{string}</code></h4>
+<h4 id="get-suppliersnameproductsnamestring"><code>GET /suppliers/{name}/products/name/{string}</code> </h4>
 <p>Um utilizador consulta diversos produtos com a designação {string}, pertencentes ao fornecedor identificado por {name}.</p>
 <ul>
 <li><strong>URL:</strong> <code>/suppliers/safari/products/name/S</code></li>
@@ -930,8 +978,9 @@
 </code></pre></li>
 </ul>
 <br>
-<h3>9. <strong>Volumes</strong></h3>
-<h4><code>GET /volumes</code></h4>
+<div id="volumes">  
+<h3 id="9-volumes">9. <strong>Volumes</strong> </h3>
+<h4 id="get-volumes"><code>GET /volumes</code> </h4>
 <p>Um administrador consulta os volumes existentes.</p>
 <ul>
 <li><strong>URL:</strong> <code>/volumes</code></li>
@@ -957,7 +1006,7 @@
 </code></pre></li>
 </ul>
 <br>
-<h4><code>GET /volumes/{id}</code></h4>
+<h4 id="get-volumesid"><code>GET /volumes/{id}</code> </h4>
 <p>Um administrador consulta um volume registado.</p>
 <ul>
 <li><strong>URL:</strong> <code>/volumes/1058107426</code></li>
@@ -1015,7 +1064,7 @@
 </code></pre></li>
 </ul>
 <br>
-<h4><code>GET /volumes/{id}/details</code></h4>
+<h4 id="get-volumesiddetails"><code>GET /volumes/{id}/details</code> </h4>
 <p>Um administrador consulta, ao detalhe, um volume registado.</p>
 <ul>
 <li><strong>URL:</strong> <code>/volumes/1058107426/details</code></li>
@@ -1095,8 +1144,9 @@
 </code></pre></li>
 </ul>
 <br>
-<h3>10. <strong>Sensores</strong></h3>
-<h4><code>GET /sensors</code></h4>
+<div id="sensors">  
+<h3 id="10-sensores">10. <strong>Sensores</strong> </h3>
+<h4 id="get-sensors"><code>GET /sensors</code> </h4>
 <p>Um gestor consulta os sensores existentes.</p>
 <ul>
 <li><strong>URL:</strong> <code>/sensors</code></li>
@@ -1125,7 +1175,7 @@
 </code></pre></li>
 </ul>
 <br>
-<h4><code>GET /sensors/{id}</code></h4>
+<h4 id="get-sensorsid"><code>GET /sensors/{id}</code> </h4>
 <p>Um gestor consulta um sensor em específico.</p>
 <ul>
 <li><strong>URL:</strong> <code>/sensors/2</code></li>
@@ -1145,7 +1195,7 @@
 </code></pre></li>
 </ul>
 <br>
-<h4><code>GET /sensors/{id}/details</code></h4>
+<h4 id="get-sensorsiddetails"><code>GET /sensors/{id}/details</code> </h4>
 <p>Um gestor consulta detalhadamente um sensor em específico, contendo assim a informação do volume associado ao sensor especificado.</p>
 <ul>
 <li><strong>URL:</strong> <code>/sensors/1</code></li>
@@ -1170,8 +1220,8 @@
 </code></pre></li>
 </ul>
 <br>
-<h4><code>PATCH /sensors/{id}</code></h4>
-<p>Um gestor consulta detalhadamente um sensor em específico, contendo assim a informação do volume associado ao sensor especificado.</p>
+<h4 id="patch-sensorsid"><code>PATCH /sensors/{id}</code> </h4>
+<p>Um gestor altera o valor atual de um sensor especificando o seu {id}.</p>
 <ul>
 <li><strong>URL:</strong> <code>/sensors/1</code></li>
 <li><strong>Método</strong>: <code>PATCH</code></li>
@@ -1194,8 +1244,9 @@
 </code></pre></li>
 </ul>
 <br>
-<h3 id="11-restrições">11. <strong>Restrições</strong> </h3>
-<h4 id="get-restrictions"><code>GET /restrictions</code> </h4>
+<div id="restrictions">  
+<h3>11. <strong>Restrições</strong></h3>
+<h4><code>GET /restrictions</code></h4>
 <p>Um gestor consulta as restrições existentes.</p>
 <ul>
 <li><strong>URL:</strong> <code>/restrictions</code></li>
@@ -1224,7 +1275,7 @@
 </code></pre></li>
 </ul>
 <br>
-<h4 id="get-restrictionsid"><code>GET /restrictions{id}</code> </h4>
+<h4><code>GET /restrictions{id}</code></h4>
 <p>Um gestor consulta uma restrição em específico.</p>
 <ul>
 <li><strong>URL:</strong> <code>/restrictions/1</code></li>
@@ -1244,7 +1295,7 @@
 </code></pre></li>
 </ul>
 <br>
-<h4 id="get-restrictionsiddetails"><code>GET /restrictions{id}/details</code> </h4>
+<h4><code>GET /restrictions{id}/details</code></h4>
 <p>Um gestor consulta detalhadamente uma restrição em específico, obtendo também os produtos associados à mesma.</p>
 <ul>
 <li><strong>URL:</strong> <code>/restrictions/1/details</code></li>
@@ -1286,17 +1337,17 @@
 </ul>
 <br>
 <hr>
-<h2 id="credits"><strong>Credits</strong> </h2>
-<h4 id="powered-by"><code>Powered By</code> </h4>
-<h5 id="2222051-gonçalo-ferreira"><code>2222051</code> Gonçalo Ferreira </h5>
-<h5 id="2223281-guilherme-cruz"><code>2223281</code> Guilherme Cruz </h5>
-<h5 id="2222313-dinis-roxo"><code>2222313</code> Dinis Roxo </h5>
+<h2><strong>Credits</strong></h2>
+<h4><code>Powered By</code></h4>
+<h5><code>2222051</code> Gonçalo Ferreira</h5>
+<h5><code>2223281</code> Guilherme Cruz</h5>
+<h5><code>2222313</code> Dinis Roxo</h5>
 <hr>
-<h4 id="cliente"><code>Cliente</code> </h4>
-<h5 id="professor-joão-ferreira"><code>Professor</code> João Ferreira </h5>
+<h4><code>Cliente</code></h4>
+<h5><code>Professor</code> João Ferreira</h5>
 <hr>
 <p><img src="img/github.png" alt="Imagem Esquerda"></p>
-
+</div></div></div></div></div></div></div></div></div></div></div>
       </div>
       
       
