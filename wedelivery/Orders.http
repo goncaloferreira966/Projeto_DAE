@@ -18,3 +18,15 @@ Accept: application/json
 GET http://localhost:8080/wedelivery/api/orders/Guilherme
 Accept: application/json
 
+### Create A New order
+POST http://localhost:8080/wedelivery/api/orders
+Content-Type: application/json
+
+{
+  "code": 1930548778,
+  "deliveryDate": "2024-10-20T23:02:22.383Z[UTC]",
+  "purchaseDate": "2024-10-20T23:02:22.383Z[UTC]",
+  "state": "Pending",
+  "username": "Guilherme",
+  "usernameOperator": "DinisRX"
+}

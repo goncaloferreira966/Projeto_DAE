@@ -54,19 +54,6 @@ Content-Type: application/json
   "password": "password"
 }
 
-### Create A New order
-POST http://localhost:8080/wedelivery/api/orders
-Content-Type: application/json
-
-{
-  "code": 1930548778,
-  "deliveryDate": "2024-10-20T23:02:22.383Z[UTC]",
-  "purchaseDate": "2024-10-20T23:02:22.383Z[UTC]",
-  "state": "Pending",
-  "username": "Guilherme",
-  "usernameOperator": "DinisRX"
-}
-
 
 
 ### Get All products in a warehouse --> Funcionou
@@ -90,21 +77,3 @@ GET http://localhost:8080/wedelivery/api/orders/1258464486
 GET http://localhost:8080/wedelivery/api/orders/1258464486/volume/1494305280
 Accept: application/json
 
-
-### Update Sensor Value
-PATCH http://localhost:8080/wedelivery/api/sensors/1
-Content-Type: application/json
-
-{
-  "currentValue": 50
-}
-
-
-### Get All restrictions
-GET http://localhost:8080/wedelivery/api/restrictions/
-
-### Get one restrictions
-GET http://localhost:8080/wedelivery/api/restrictions/1
-
-### Get one restrictions details
-GET http://localhost:8080/wedelivery/api/restrictions/1/details
