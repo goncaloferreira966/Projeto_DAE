@@ -138,13 +138,15 @@ public class ProductBean {
 
 
     /************************ Product <---> Volume ********************************/
-    public void addProductInVolume(long productId, long volumeId) {
+    public void addProductInVolume(long productId, long volumeId, int quantity) {
         var product = findById(productId);
         var volume = volumeBean.find(volumeId);
 
         if (!product.getVolumes().contains(volume)) {
             product.addVolume(volume);
             volume.addProduct(product);
+            int updateStock = product.getQuantity() - quantity;
+            product.setQuantity(updateStock);
             entityManager.merge(product);
             entityManager.merge(volume);
         }

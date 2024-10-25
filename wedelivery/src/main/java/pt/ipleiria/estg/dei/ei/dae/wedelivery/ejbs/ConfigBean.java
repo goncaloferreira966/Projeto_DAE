@@ -139,12 +139,12 @@ public class ConfigBean {
             productBean.create(5, "7up", "7up", 1.5, "7up.jpg", 100, true, false, "Leiria", "safari");
             productBean.create(6, "Sumol", "Sumol", 1.5, "sumol.jpg", 100, true, false, "Leiria", "safari");
 
-            productBean.addProductInVolume(1, id_9);
-            productBean.addProductInVolume(2, id_9);
-            productBean.addProductInVolume(3, id_10);
-            productBean.addProductInVolume(4, id_10);
-            productBean.addProductInVolume(5, id_11);
-            productBean.addProductInVolume(6, id_11);
+            productBean.addProductInVolume(1, id_9, 3);
+            productBean.addProductInVolume(2, id_9, 2);
+            productBean.addProductInVolume(3, id_10,5);
+            productBean.addProductInVolume(4, id_10,3);
+            productBean.addProductInVolume(5, id_11,1);
+            productBean.addProductInVolume(6, id_11,1);
 
 
             volumeBean.addSensorToVolume(id_9, 1);
