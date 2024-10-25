@@ -32,6 +32,7 @@ jobs:
         run: |
           cd wedelivery  # Mude para o diretório correto
           docker-compose up -d  # Inicia os serviços em segundo plano
+          sleep 60
 
       - name: Install dependencies
         run: |
@@ -42,3 +43,7 @@ jobs:
         run: |
           cd wedelivery-client  # Mude para o diretório correto
           npm run test  # Executa os testes com Cypress
+
+      - name: Shut down Docker
+        run: |
+          docker-compose -f wedelivery\docker-compose.yaml down  # Para parar os containers
