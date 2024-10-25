@@ -1,7 +1,10 @@
 | ![Imagem Esquerda](img/ipl.png) | ![Imagem Direita](img/encomenda.jpg) |
 |:---------------------------------------:|:---------------------------------------:|
+
 # Projeto DAE
+
 ## `API Documentation`
+
 ---
 
 ### `WeDelivery`
@@ -11,6 +14,7 @@ Esta API permite responder a todo o tipo de Pedidos necessários ao negócio da 
 ---
 
 #### Índice
+
  **1.** [Autenticação](#auth)
  **2.** [Operadores](#operators)
  **3.** [Gestores](#managers)
@@ -27,15 +31,19 @@ Esta API permite responder a todo o tipo de Pedidos necessários ao negócio da 
 ---
 
 #### Base URL
+
 #### `http://Localhost:8080/wedelivery/api`
 
 ---
 
 ## Endpoints
-<div id='auth'/>  
+
+<div id='auth'></div>  
 
 ### 1. **Autenticação**
+
 #### `POST /auth/login`
+
 Um User inicia sessão e recebe, para sua segurança, um token JWT.
 
 - **URL**: `/auth/login`
@@ -58,10 +66,12 @@ Um User inicia sessão e recebe, para sua segurança, um token JWT.
   ```
 <br />
 
-<div id='operators'/>  
+<div id='operators'></div>  
 
 ### 2. **Operadores**
+
 #### `GET /operators`
+
 Um Administrador consulta a listagem de todos os Operadores Registados.
 
 - **URL**: `/operators`
@@ -107,6 +117,7 @@ Um Administrador consulta o perfil de um Operador.
 <br />
 
 #### `POST /operators`
+
 Um Operador efetua o registo na plataforma do sistema.
 
 - **URL**: `/operators`
@@ -131,10 +142,12 @@ Um Operador efetua o registo na plataforma do sistema.
     "username": "Ana"
   }
   ```
-<div id='managers'/>  
+<div id='managers'></div>  
 
 ### 3. **Gestores**
+
 #### `GET /managers`
+
 Um Administrador consulta a listagem de todos os Gestores Registados.
 
 - **URL**: `/managers`
@@ -180,6 +193,7 @@ Um Administrador consulta o perfil de um Gestor.
 <br />
 
 #### `POST /managers`
+
 Um Gestor efetua o registo na plataforma do sistema.
 
 - **URL**: `/managers`
@@ -227,10 +241,12 @@ Um Gestor consulta todas as encomendas a si associadas.
   ```
 <br />
 
-<div id='clients'/>  
+<div id='clients'></div>  
 
 ### 4. **Clientes**
+
 #### `GET /clients`
+
 Um Administrador consulta a listagem de todos os Clientes Registados.
 
 - **URL**: `/clients`
@@ -309,6 +325,7 @@ Um Administrador consulta o perfil de um Cliente.
 <br />
 
 #### `POST /clients`
+
 Um Cliente efetua o registo na plataforma do sistema.
 
 - **URL**: `/clients`
@@ -367,10 +384,12 @@ Um Cliente consulta todas as suas encomendas realizadas
   ```
 <br />
 
-<div id='orders'/>  
+<div id='orders'></div>  
 
 ### 5. **Encomendas**
+
 #### `GET /orders`
+
 Um Gestor consulta a listagem de todos as Encomendas efetuadas.
 
 - **URL**: `/orders`
@@ -493,6 +512,7 @@ Um Gestor consulta uma Encomenda efetuada e quere verificar um volume. Este mét
 <br />
 
 #### `POST /orders`
+
 Um Cliente efetua uma Encomenda e a mesma é criada em sistema.
 
 - **URL**: `/orders`
@@ -524,7 +544,9 @@ Um Cliente efetua uma Encomenda e a mesma é criada em sistema.
 <br />
 
 #### `PATCH /orders/{id}`
+
 Um gestor altera o estado de uma encomenda especificada por {id}.
+
 - **URL:** `/orders/761527421`
 - **Método**: `PATCH`
 - **Headers:** 
@@ -547,11 +569,12 @@ Um gestor altera o estado de uma encomenda especificada por {id}.
   ```
 <br />
 
-<div id='products'/>  
+<div id='products'></div>
 
 ### 6. **Produtos**
 
 #### `Get /products`
+
 Um utilizador consulta todos os produtos na página de e-commerce.
 
 - **URL**: `/products`
@@ -613,7 +636,9 @@ Um utilizador consulta um produto especifico.
 <br />
 
 #### `Get /products/{name}`
+
 Um utilizador consulta todos os produtos que contenham a palavra {name}.
+
 - **URL**: `/products/S`
 - **Método**: `GET`
 - **Headers**: 
@@ -649,7 +674,9 @@ Um utilizador consulta todos os produtos que contenham a palavra {name}.
 <br />
 
 #### `GET /products/{id}/details`
+
 Um utilizador consulta os detalhes de um repectivo produto.
+
 - **URL**: `/products/1/details`
 - **Método**: `GET`
 - **Headers**: 
@@ -681,11 +708,14 @@ Um utilizador consulta os detalhes de um repectivo produto.
   ```
 <br />
 
-<div id='warehouses'/>  
+<div id='warehouses'></div>  
 
 ### 7. **Armazéns**
+
 #### `Get /warehouses`
+
 Um utilizador consulta os warehouses existentes.
+
 - **URL**: `/warehouses`
 - **Método**: `GET`
 - **Headers**: 
@@ -711,7 +741,9 @@ Um utilizador consulta os warehouses existentes.
 <br />
 
 #### `Get /warehouses/{name}`
+
 Um utilizador consulta os dados de um warehouse especifico.
+
 - **URL**: `/warehouses/Leiria`
 - **Método**: `GET`
 - **Headers**: 
@@ -728,7 +760,9 @@ Um utilizador consulta os dados de um warehouse especifico.
 <br />
 
 #### `Get /warehouses/{name}/products`
+
 Um utilizador consulta todos os produtos que exitem num determindo warehouse.
+
 - **URL**: `/warehouses/Leiria/products`
 - **Método**: `GET`
 - **Headers**: 
@@ -768,7 +802,9 @@ Um utilizador consulta todos os produtos que exitem num determindo warehouse.
 <br />
 
 #### `Get /warehouses/{name}/products/{id}`
+
 Um utilizador consulta um determinado produto {id} num determinado warehouse {name}.
+
 - **URL**: `/warehouses/Leiria/products/1`
 - **Método**: `GET`
 - **Headers**: 
@@ -802,12 +838,15 @@ Um utilizador consulta um determinado produto {id} num determinado warehouse {na
   ```
 <br />
 
-<div id='suppliers'/>  
+<div id='suppliers'></div>  
 
 ### 8. **Fabricantes**
+
 #### `GET /suppliers`
+
 Um utilizador consulta os Suppliers existentes
- **URL**: `/suppliers`
+
+- **URL**: `/suppliers`
 - **Método**: `GET`
 - **Headers**: 
   - `Content-Type`: `application/json`
@@ -832,8 +871,10 @@ Um utilizador consulta os Suppliers existentes
 <br />
 
 #### `GET /suppliers/{name}` ou `/suppliers/{name}/products`
+
 Um utilizador consulta um determinado Supplier e os seus respectivos produtos
- - **URL:** `/suppliers/safari`
+
+- **URL:** `/suppliers/safari`
 - **Método**: `GET`
 - **Headers:** 
   - `Content-Type`: `application/json`
@@ -874,6 +915,7 @@ Um utilizador consulta um determinado Supplier e os seus respectivos produtos
 #### `GET /suppliers/{name}/products/{id}`
 
 Um utilizador efetua a consulta de um produto identificado por {id}, pertencente a um fornecedor designado por {name}.
+
 - **URL:** `/suppliers/safari/products/2`
 - **Método**: `GET`
 - **Headers:** 
@@ -902,8 +944,10 @@ Um utilizador efetua a consulta de um produto identificado por {id}, pertencente
 <br />
 
 #### `GET /suppliers/{name}/products/name/{string}`
+
 Um utilizador consulta diversos produtos com a designação {string}, pertencentes ao fornecedor identificado por {name}.
- - **URL:** `/suppliers/safari/products/name/S`
+
+- **URL:** `/suppliers/safari/products/name/S`
 - **Método**: `GET`
 - **Headers:** 
   - `Content-Type`: `application/json`
@@ -941,11 +985,14 @@ Um utilizador consulta diversos produtos com a designação {string}, pertencent
   ```
 <br />
 
-<div id='volumes'/>  
+<div id='volumes'></div>
 
 ### 9. **Volumes**
+
 #### `GET /volumes`
+
 Um administrador consulta os volumes existentes.
+
 - **URL:** `/volumes`
 - **Método**: `GET`
 - **Headers:** 
@@ -969,7 +1016,9 @@ Um administrador consulta os volumes existentes.
 <br />
 
 #### `GET /volumes/{id}`
+
 Um administrador consulta um volume registado.
+
 - **URL:** `/volumes/1058107426`
 - **Método**: `GET`
 - **Headers:** 
@@ -1025,7 +1074,9 @@ Um administrador consulta um volume registado.
 <br />
 
 #### `GET /volumes/{id}/details`
+
 Um administrador consulta, ao detalhe, um volume registado.
+
 - **URL:** `/volumes/1058107426/details`
 - **Método**: `GET`
 - **Headers:** 
@@ -1102,12 +1153,15 @@ Um administrador consulta, ao detalhe, um volume registado.
   ```
 <br />
 
-<div id='sensors'/>  
+<div id='sensors'></div>
 
 ### 10. **Sensores**
+
 #### `GET /sensors`
+
 Um gestor consulta os sensores existentes.
-- **URL:** `/sensors`
+
+ **URL:** `/sensors`
 - **Método**: `GET`
 - **Headers:** 
   - `Content-Type`: `application/json`
@@ -1133,7 +1187,9 @@ Um gestor consulta os sensores existentes.
 <br />
 
 #### `GET /sensors/{id}`
+
 Um gestor consulta um sensor em específico.
+
 - **URL:** `/sensors/2`
 - **Método**: `GET`
 - **Headers:** 
@@ -1151,7 +1207,9 @@ Um gestor consulta um sensor em específico.
 <br />
 
 #### `GET /sensors/{id}/details`
+
 Um gestor consulta detalhadamente um sensor em específico, contendo assim a informação do volume associado ao sensor especificado.
+
 - **URL:** `/sensors/1`
 - **Método**: `GET`
 - **Headers:** 
@@ -1174,7 +1232,9 @@ Um gestor consulta detalhadamente um sensor em específico, contendo assim a inf
 <br />
 
 #### `PATCH /sensors/{id}`
+
 Um gestor altera o valor atual de um sensor especificando o seu {id}.
+
 - **URL:** `/sensors/1`
 - **Método**: `PATCH`
 - **Headers:** 
@@ -1196,11 +1256,14 @@ Um gestor altera o valor atual de um sensor especificando o seu {id}.
   ```
 <br />
 
-<div id='restrictions'/>  
+<div id='restrictions'></div>
 
 ### 11. **Restrições**
+
 #### `GET /restrictions`
+
 Um gestor consulta as restrições existentes.
+
 - **URL:** `/restrictions`
 - **Método**: `GET`
 - **Headers:** 
@@ -1227,7 +1290,9 @@ Um gestor consulta as restrições existentes.
 <br />
 
 #### `GET /restrictions{id}`
+
 Um gestor consulta uma restrição em específico.
+
 - **URL:** `/restrictions/1`
 - **Método**: `GET`
 - **Headers:** 
@@ -1245,7 +1310,9 @@ Um gestor consulta uma restrição em específico.
 <br />
 
 #### `GET /restrictions{id}/details`
+
 Um gestor consulta detalhadamente uma restrição em específico, obtendo também os produtos associados à mesma.
+
 - **URL:** `/restrictions/1/details`
 - **Método**: `GET`
 - **Headers:** 
@@ -1285,19 +1352,24 @@ Um gestor consulta detalhadamente uma restrição em específico, obtendo també
 
 
 ---
-<div id='credits'/>  
+<div id='credits'></div>  
 
 ## **Créditos**
+
 #### `Powered By`
+
 ##### `2222051` [@goncaloferreira966](https://github.com/goncaloferreira966) 
+
 ##### `2223281` [@GuilhermeCruzPT](https://github.com/GuilhermeCruzPT)   
+
 ##### `2222313` [dinisroxo99](https://github.com/dinisroxo99)     
 
 ---
 
 #### `Cliente`
+
 ##### `Professor` João Ferreira
 
-
 ---
+
 ![Imagem Esquerda](img/github.png)
