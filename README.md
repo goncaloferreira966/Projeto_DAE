@@ -541,7 +541,7 @@ Um Cliente efetua uma Encomenda e a mesma é criada em sistema.
   ```
 <br />
 
-### 6. **Products**
+### 6. **Produtos**
 
 #### `Get /products`
 Um utilizador consulta todos os produtos na página de e-commerce.
@@ -692,7 +692,7 @@ Um utilizador consulta os detalhes de um repectivo produto.
   ```
 <br />
 
-### 7. **Warehouses**
+### 7. **Armazéns**
 #### `Get /warehouses`
 Um utilizador consulta os warehouses existentes.
 - **URL**: `/warehouses`
@@ -830,7 +830,7 @@ Um utilizador consulta um determinado produto {id} num determinado warehouse {na
   ```
 <br />
 
-### 8. **Suppliers**
+### 8. **Fabricantes**
 #### `GET /suppliers`
 Um utilizador consulta os Suppliers existentes
  **URL**: `/suppliers`
@@ -989,8 +989,8 @@ Um utilizador consulta diversos produtos com a designação {string}, pertencent
 
 ### 9. **Volumes**
 #### `GET /volumes`
-Um utilizador consulta os volumes existentes
-- **URL:** `/volume`
+Um administrador consulta os volumes existentes.
+- **URL:** `/volumes`
 - **Método**: `GET`
 - **Headers:** 
   - `Content-Type`: `application/json`
@@ -1013,8 +1013,8 @@ Um utilizador consulta os volumes existentes
 <br />
 
 #### `GET /volumes/{id}`
-Um utilizador consulta os volumes existentes
-- **URL:** `/volume/{id}`
+Um administrador consulta um volume registado.
+- **URL:** `/volumes/{id}`
 - **Método**: `GET`
 - **Headers:** 
   - `Content-Type`: `application/json`
@@ -1075,8 +1075,8 @@ Um utilizador consulta os volumes existentes
 <br />
 
 #### `GET /volumes/{id}/details`
-Um utilizador consulta os volumes existentes
-- **URL:** `/volume/{id}/details`
+Um administrador consulta, ao detalhe, um volume registado.
+- **URL:** `/volumes/{id}/details`
 - **Método**: `GET`
 - **Headers:** 
   - `Content-Type`: `application/json`
@@ -1156,6 +1156,86 @@ Um utilizador consulta os volumes existentes
     "state": "Moderate damage"
   }
   ```
+<br />
+
+### 10. **Sensores**
+#### `GET /sensors`
+Um gestor consulta os sensores existentes.
+- **URL:** `/sensors`
+- **Método**: `GET`
+- **Headers:** 
+  - `Content-Type`: `application/json`
+- **Response:**
+  ```json
+  [
+    {
+        "busy": false,
+        "currentValue": 20,
+        "expedition": false,
+        "id": 2,
+        "type": "Temperature"
+    },
+    {
+        "busy": false,
+        "currentValue": 20,
+        "expedition": false,
+        "id": 4,
+        "type": "Temperature"
+    }
+  ]
+  ```
+<br />
+
+#### `GET /sensors/{id}`
+Um gestor consulta um sensor em específico.
+- **URL:** `/sensors/{id}`
+- **Método**: `GET`
+- **Headers:** 
+  - `Content-Type`: `application/json`
+- **Body:**
+  ```json
+  {
+    "id": 2
+  }
+- **Response:**
+  ```json
+  {
+    "busy": false,
+    "currentValue": 20,
+    "expedition": false,
+    "id": 2,
+    "type": "Temperature"
+  }
+  ```
+<br />
+
+#### `GET /sensors/{id}/details`
+Um gestor consulta detalhadamente um sensor em específico.
+- **URL:** `/sensors/{id}`
+- **Método**: `GET`
+- **Headers:** 
+  - `Content-Type`: `application/json`
+- **Body:**
+  ```json
+  {
+    "id": 1
+  }
+- **Response:**
+  ```json
+  {
+    "busy": false,
+    "currentValue": 20,
+    "expedition": false,
+    "id": 1,
+    "type": "Temperature",
+    "volume": {
+        "creationDate": "2024-10-25 10:47:49.814",
+        "id": 662380363,
+        "state": "No damage"
+    }
+  }
+  ```
+<br />
 
 ---
 

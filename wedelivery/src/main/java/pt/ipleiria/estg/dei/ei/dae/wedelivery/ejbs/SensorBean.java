@@ -6,6 +6,8 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import jakarta.validation.ConstraintViolationException;
+import org.hibernate.Hibernate;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Client;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Restriction;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Sensor;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
@@ -60,9 +62,11 @@ public class SensorBean {
                 .getResultList();
     }
 
-
-
-
+    public Sensor findWithVolume(long id){
+        var sensor = this.find(id);
+        Hibernate.initialize(sensor.getVolume());
+        return sensor;
+    }
 
     public boolean exists(long id) {
         Query query = entityManager.createQuery(

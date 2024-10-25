@@ -3,7 +3,10 @@ import jakarta.ejb.EJB;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.ClientDTO;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.OrderDTO;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.SensorDTO;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.VolumeDTO;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.SensorBean;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Sensor;
 
@@ -27,6 +30,15 @@ public class SensorService {
     public Response getSensorById(@PathParam("id") long id) {
         Sensor sensor = sensorBean.find(id);
         SensorDTO sensorDTO = SensorDTO.from(sensor);
+        return Response.ok(sensorDTO).build();
+    }
+
+    @GET
+    @Path("{id}/details")
+    public Response getSensorByIdDetails(@PathParam("id") long id) {
+        var sensor = sensorBean.findWithVolume(id);
+        var sensorDTO = SensorDTO.from(sensor);
+        sensorDTO.setVolume(VolumeDTO.from(sensor.getVolume()));
         return Response.ok(sensorDTO).build();
     }
 }

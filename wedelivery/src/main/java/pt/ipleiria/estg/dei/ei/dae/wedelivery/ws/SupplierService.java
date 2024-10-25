@@ -49,6 +49,7 @@ public class SupplierService {
         return Response.ok(supllierDTO).build();
     }
 
+    /////TEMOS DE CONFIRMAR ESTE ENDPOINT POIS TEM 4 /
     @GET
     @Path("{username}/products/name/{name}")
     public Response getSupplierProductByName(@PathParam("username") String username, @PathParam("name") String name) {

@@ -37,13 +37,6 @@
 <hr>
 <h3 id="wedelivery"><code>WeDelivery</code> </h3>
 <p>Esta API permite responder a todo o tipo de Pedidos necessários ao negócio da empresa WeDelivery, empresa ligada ao serviço de transporte e armazenamento de embalagens e produtos. Fornece endpoints para todas as funcionalidades da nossa Aplicação WEB.</p>
-<h1 id="índice">Índice </h1>
-<ol>
-<li><a href="#autenticacao">Autenticação</a></li>
-<li><a href="#operadores">Operadores</a></li>
-<li><a href="#uso">Uso</a></li>
-<li><a href="#contribuicao">Contribuição</a></li>
-</ol>
 <hr>
 <h4 id="base-url">Base URL </h4>
 <h4 id="httplocalhost8080wedeliveryapi"><code>http://Localhost:8080/wedelivery/api</code> </h4>
@@ -615,7 +608,7 @@
 </code></pre></li>
 </ul>
 <br>
-<h3 id="6-products">6. <strong>Products</strong> </h3>
+<h3 id="6-produtos">6. <strong>Produtos</strong> </h3>
 <h4 id="get-products"><code>Get /products</code> </h4>
 <p>Um utilizador consulta todos os produtos na página de e-commerce.</p>
 <ul>
@@ -772,7 +765,7 @@
 </code></pre></li>
 </ul>
 <br>
-<h3 id="7-warehouses">7. <strong>Warehouses</strong> </h3>
+<h3 id="7-armazéns">7. <strong>Armazéns</strong> </h3>
 <h4 id="get-warehouses"><code>Get /warehouses</code> </h4>
 <p>Um utilizador consulta os warehouses existentes.</p>
 <ul>
@@ -912,7 +905,7 @@
 </code></pre></li>
 </ul>
 <br>
-<h3 id="8-suppliers">8. <strong>Suppliers</strong> </h3>
+<h3 id="8-fabricantes">8. <strong>Fabricantes</strong> </h3>
 <h4 id="get-suppliers"><code>GET /suppliers</code> </h4>
 <p>Um utilizador consulta os Suppliers existentes<br>
 <strong>URL</strong>: <code>/suppliers</code></p>
@@ -1072,9 +1065,9 @@
 <br>
 <h3 id="9-volumes">9. <strong>Volumes</strong> </h3>
 <h4 id="get-volumes"><code>GET /volumes</code> </h4>
-<p>Um utilizador consulta os volumes existentes</p>
+<p>Um administrador consulta os volumes existentes.</p>
 <ul>
-<li><strong>URL:</strong> <code>/volume</code></li>
+<li><strong>URL:</strong> <code>/volumes</code></li>
 <li><strong>Método</strong>: <code>GET</code></li>
 <li><strong>Headers:</strong>
 <ul>
@@ -1098,9 +1091,9 @@
 </ul>
 <br>
 <h4 id="get-volumesid"><code>GET /volumes/{id}</code> </h4>
-<p>Um utilizador consulta os volumes existentes</p>
+<p>Um administrador consulta um volume registado.</p>
 <ul>
-<li><strong>URL:</strong> <code>/volume/{id}</code></li>
+<li><strong>URL:</strong> <code>/volumes/{id}</code></li>
 <li><strong>Método</strong>: <code>GET</code></li>
 <li><strong>Headers:</strong>
 <ul>
@@ -1160,9 +1153,9 @@
 </ul>
 <br>
 <h4 id="get-volumesiddetails"><code>GET /volumes/{id}/details</code> </h4>
-<p>Um utilizador consulta os volumes existentes</p>
+<p>Um administrador consulta, ao detalhe, um volume registado.</p>
 <ul>
-<li><strong>URL:</strong> <code>/volume/{id}/details</code></li>
+<li><strong>URL:</strong> <code>/volumes/{id}/details</code></li>
 <li><strong>Método</strong>: <code>GET</code></li>
 <li><strong>Headers:</strong>
 <ul>
@@ -1242,6 +1235,90 @@
 <span class="token punctuation">}</span>
 </code></pre></li>
 </ul>
+<br>
+<h3 id="10-sensores">10. <strong>Sensores</strong> </h3>
+<h4 id="get-sensors"><code>GET /sensors</code> </h4>
+<p>Um gestor consulta os sensores existentes.</p>
+<ul>
+<li><strong>URL:</strong> <code>/sensors</code></li>
+<li><strong>Método</strong>: <code>GET</code></li>
+<li><strong>Headers:</strong>
+<ul>
+<li><code>Content-Type</code>: <code>application/json</code></li>
+</ul>
+</li>
+<li><strong>Response:</strong><pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+      <span class="token property">"busy"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      <span class="token property">"currentValue"</span><span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
+      <span class="token property">"expedition"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+      <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"Temperature"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+      <span class="token property">"busy"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      <span class="token property">"currentValue"</span><span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
+      <span class="token property">"expedition"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+      <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"Temperature"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+</code></pre></li>
+</ul>
+<br>
+<h4 id="get-sensorsid"><code>GET /sensors/{id}</code> </h4>
+<p>Um gestor consulta um sensor em específico.</p>
+<ul>
+<li><strong>URL:</strong> <code>/sensors/{id}</code></li>
+<li><strong>Método</strong>: <code>GET</code></li>
+<li><strong>Headers:</strong>
+<ul>
+<li><code>Content-Type</code>: <code>application/json</code></li>
+</ul>
+</li>
+<li><strong>Body:</strong><pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">2</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+<li><strong>Response:</strong><pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"busy"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token property">"currentValue"</span><span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
+  <span class="token property">"expedition"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+  <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"Temperature"</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+</ul>
+<br>
+<h4><code>GET /sensors/{id}/details</code></h4>
+<p>Um gestor consulta detalhadamente um sensor em específico.</p>
+<ul>
+<li><strong>URL:</strong> <code>/sensors/{id}</code></li>
+<li><strong>Método</strong>: <code>GET</code></li>
+<li><strong>Headers:</strong>
+<ul>
+<li><code>Content-Type</code>: <code>application/json</code></li>
+</ul>
+</li>
+<li><strong>Body:</strong><pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">1</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+<li><strong>Response:</strong><pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"busy"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token property">"currentValue"</span><span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
+  <span class="token property">"expedition"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+  <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"Temperature"</span><span class="token punctuation">,</span>
+  <span class="token property">"volume"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"creationDate"</span><span class="token operator">:</span> <span class="token string">"2024-10-25 10:47:49.814"</span><span class="token punctuation">,</span>
+      <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">662380363</span><span class="token punctuation">,</span>
+      <span class="token property">"state"</span><span class="token operator">:</span> <span class="token string">"No damage"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+</ul>
+<br>
 <hr>
 <h2 id="credits"><strong>Credits</strong> </h2>
 <h4 id="powered-by"><code>Powered By</code> </h4>

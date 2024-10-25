@@ -37,8 +37,6 @@ public class ConfigBean {
     @PostConstruct
     public void populateDB() {
 
-
-
         try {
             clientBean.create("Goncalo", "password", "Gonçalo", "goncalo@gmail.com", 123123123, "2565-834", "PT", "Leiria", "Rua das Igrejas");
             clientBean.create("Guilherme", "password", "Guilherme", "guilherme@gmail.com" ,123123124, "2565-834", "PT", "Leiria", "Rua das Igrejas");
@@ -130,8 +128,6 @@ public class ConfigBean {
             sensorBean.create(27, "humidity", 20, false, false);
             sensorBean.create(28, "humidity", 20, false, false);
 
-
-
             productBean.create(1, "Coca-Cola", "Coca-Cola", 1.5, "coca-cola.jpg", 0, true, false, "Leiria", "safari");
             productBean.create(2, "Pepsi", "Pepsi", 1.5, "pepsi.jpg", 2, true, false, "Leiria", "safari");
             productBean.create(3, "Sprite", "Sprite", 1.5, "sprite.jpg", 100, true, false, "Leiria", "safari");
@@ -146,7 +142,6 @@ public class ConfigBean {
             productBean.addProductInVolume(5, id_11,1);
             productBean.addProductInVolume(6, id_11,1);
 
-
             volumeBean.addSensorToVolume(id_9, 1);
             volumeBean.addSensorToVolume(id_9, 21);
             volumeBean.addSensorToVolume(id_10, 3);
@@ -157,10 +152,6 @@ public class ConfigBean {
             volumeBean.addSensorToVolume(id_12, 27);
             volumeBean.addSensorToVolume(id_13, 9);
             volumeBean.addSensorToVolume(id_13, 28);
-
-
-
-
 
 
         } catch (Exception e) {
