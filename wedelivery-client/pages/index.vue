@@ -1,13 +1,13 @@
 <template>
   <div>
     <!-- O conteúdo específico da página vai aqui -->
-    <div class="video-container d-flex justify-content-center my-5">
+    <!-- <div class="video-container d-flex justify-content-center my-5">
       <iframe class="responsive-iframe" src="https://www.youtube.com/embed/D9bwnJclcas?si=39ybdtqbnMOkh3Mi"
         title="YouTube video player" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
       </iframe>
-    </div>
+    </div> -->
   </div>
 </template>
 

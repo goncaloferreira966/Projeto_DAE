@@ -31,12 +31,17 @@
               <h5>Client Information</h5>
               <img src="/img_avatar.png" alt="Avatar" style="width: 100%">
               <div class="container">
-                <h4>{{ client.name }}</h4>
-                <p>{{ client.email }}</p>
-                <p>{{ client.address }}</p>
-                <p>{{ client.postalCode }}</p>
-                <p>{{ client.city }}</p>
-                <p>{{ client.country }}</p>
+                <div v-if="client">
+                  <h4>{{ client.name }}</h4>
+                  <p>{{ client.email }}</p>
+                  <p>{{ client.address }}</p>
+                  <p>{{ client.postalCode }}</p>
+                  <p>{{ client.city }}</p>
+                  <p>{{ client.country }}</p>
+                </div>
+                <div v-else>
+                  <p>Loading client information...</p>
+                </div>
               </div>
             </div>
           </div>

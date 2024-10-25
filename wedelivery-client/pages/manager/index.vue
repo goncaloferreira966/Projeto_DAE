@@ -28,12 +28,12 @@
         
         <!-- Cards com informação adicional -->
         <div class="row mt-5">
-          <div class="col-lg-4 col-md-6 mb-4" v-for="order in filteredOrders" :key="order.code">
+          <div v-for="(order, index) in filteredOrders" :key="index" class="col-lg-4 col-md-6 mb-4">
             <div class="card border-secondary">
               <div class="card-header bg-secondary text-white">
-                Order #{{ order.code }}  
+                Order #{{ order.code }}
               </div>
-              <div class="card-body">
+              <div class="card-body" :id="`${index}`">
                 <p><strong>Username:</strong> {{ order.username }}</p>
                 <p><strong>Purchase Date:</strong> {{ order.purchaseDate }}</p>
                 <p><strong>State:</strong>
@@ -60,6 +60,7 @@ definePageMeta({
 const config = useRuntimeConfig();
 const api = config.public.API_URL;
 const { data: orders, error, refresh } = await useFetch(`${api}/orders`);
+const id_order = ref(0);
 
 const selectedUsername = ref('');
 
