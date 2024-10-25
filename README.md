@@ -11,18 +11,19 @@ Esta API permite responder a todo o tipo de Pedidos necessários ao negócio da 
 ---
 
 #### Índice
- 1. [Autenticação](#auth)
- 2. [Operadores](#operators)
- 3. [Gestores](#managers)
- 4. [Clientes](#clients)
- 5. [Encomendas](#orders)
- 6. [Produtos](#products)
- 7. [Armazéns](#warehouses)
- 8. [Fabricantes](#suppliers)
- 9. [Volumes](#volumes)
- 10. [Sensores](#sensors)
- 11. [Restrições](#restrictions)
- 
+ **1.** [Autenticação](#auth)
+ **2.** [Operadores](#operators)
+ **3.** [Gestores](#managers)
+ **4.** [Clientes](#clients)
+ **5.** [Encomendas](#orders)
+ **6.** [Produtos](#products)
+ **7.** [Armazéns](#warehouses)
+ **8.** [Fabricantes](#suppliers)
+ **9.** [Volumes](#volumes)
+ **10.** [Sensores](#sensors)
+ **11.** [Restrições](#restrictions)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Créditos](#credits)
+
 ---
 
 #### Base URL
@@ -1283,8 +1284,9 @@ Um gestor consulta detalhadamente uma restrição em específico, obtendo també
 
 
 ---
+<div id='credits'/>  
 
-## **Credits**
+## **Créditos**
 #### `Powered By`
 ##### `2222051` Gonçalo Ferreira 
 ##### `2223281` Guilherme Cruz   
