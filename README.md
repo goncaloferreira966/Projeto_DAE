@@ -1241,7 +1241,7 @@ Um gestor consulta uma restrição em específico.
     "products": [],
     "type": "Temperature"
   }
-  ```
+
 <br />
 
 #### `GET /restrictions{id}/details`
@@ -1280,7 +1280,7 @@ Um gestor consulta detalhadamente uma restrição em específico, obtendo també
     ],
     "type": "Temperature"
   }
-  ```
+  estou a testar o workflow do readme.md 
 <br />
 
 
