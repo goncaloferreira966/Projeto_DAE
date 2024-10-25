@@ -67,6 +67,7 @@ public class Product {
     private int version;
 
     public Product() {
+        this.restrictions = new LinkedList<>();
     }
 
     public Product(long id, String name, String description, double price, String image, int quantity,boolean available, boolean haveSensor, Warehouse warehouse, Supplier supplier) {
@@ -81,6 +82,7 @@ public class Product {
         this.warehouse = warehouse;
         this.supplier = supplier;
         this.volumes = new LinkedList<>();
+        this.restrictions = new LinkedList<>();
     }
 
     public long getId() {return id;}
@@ -93,6 +95,14 @@ public class Product {
     public boolean getHaveSensor() {return haveSensor;}
     public Warehouse getWarehouse() {return warehouse;}
     public Supplier getSupplier() {return supplier;}
+
+    public boolean isHaveSensor() {
+        return haveSensor;
+    }
+
+    public List<Restriction> getRestrictions() {
+        return restrictions;
+    }
 
     public List<Volume> getVolumes() {
         if (this.volumes == null)
@@ -133,6 +143,9 @@ public class Product {
         this.volumes = volumes;
     }
 
+    public void setRestrictions(List<Restriction> restrictions) {
+        this.restrictions = restrictions;
+    }
 
     /*********** Warehouse methods ***************/
     public void addWarehouse(Warehouse warehouse) {

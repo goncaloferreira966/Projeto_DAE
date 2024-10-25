@@ -1,5 +1,4 @@
 package pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs;
-
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -18,7 +17,7 @@ public class RestrictionBean {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public void create(long id, String type, int maxValue, int minValue)
+    public void create(long id, String type, double maxValue, double minValue)
             throws MyEntityNotFoundException, MyEntityExistsException,
             MyConstraintViolationException
     {

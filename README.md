@@ -1138,6 +1138,49 @@ Um gestor consulta detalhadamente um sensor em específico, contendo assim a inf
   ```
 <br />
 
+### 11. **Restrições**
+#### `GET /restrictions`
+Um gestor consulta as restrições existentes.
+- **URL:** `/restrictions`
+- **Método**: `GET`
+- **Headers:** 
+  - `Content-Type`: `application/json`
+- **Response:**
+  ```json
+  [
+    {
+      "id": 1,
+      "maxValue": 25.4,
+      "minValue": 19.5,
+      "type": "Temperature"
+    },
+    {
+      "id": 2,
+      "maxValue": 25.4,
+      "minValue": 99.0,
+      "type": "Humidity"
+    }
+  ]
+  ```
+<br />
+
+#### `GET /restrictions{id}`
+Um gestor consulta uma restrição em específico.
+- **URL:** `/restrictions/1`
+- **Método**: `GET`
+- **Headers:** 
+  - `Content-Type`: `application/json`
+- **Response:**
+  ```json
+  {
+    "id": 1,
+    "maxValue": 25.4,
+    "minValue": 19.5,
+    "type": "Temperature"
+  }
+  ```
+<br />
+
 
 ---
 

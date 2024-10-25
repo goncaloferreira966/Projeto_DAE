@@ -31,6 +31,8 @@ public class ConfigBean {
     private VolumeBean volumeBean;
     @EJB
     private SensorBean sensorBean;
+    @EJB
+    private RestrictionBean restrictionBean;
 
     private static final Logger logger = Logger.getLogger("ejbs.ConfigBean");
 
@@ -152,6 +154,9 @@ public class ConfigBean {
             volumeBean.addSensorToVolume(id_12, 27);
             volumeBean.addSensorToVolume(id_13, 9);
             volumeBean.addSensorToVolume(id_13, 28);
+
+            restrictionBean.create(1,"Temperature", 25.4,19.5);
+            restrictionBean.create(2,"Humidity", 25.4,99);
 
 
         } catch (Exception e) {

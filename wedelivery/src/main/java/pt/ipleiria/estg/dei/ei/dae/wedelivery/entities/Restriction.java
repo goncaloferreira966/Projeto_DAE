@@ -2,6 +2,7 @@ package pt.ipleiria.estg.dei.ei.dae.wedelivery.entities;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Table(name = "restrictions")
@@ -19,8 +20,8 @@ public class Restriction {
     private long id;
     @NotNull
     private String type;
-    private int maxValue;
-    private int minValue;
+    private double maxValue;
+    private double minValue;
     @ManyToMany
     @JoinTable(
             name = "restriciton_product",
@@ -38,13 +39,15 @@ public class Restriction {
     private int version;
 
     public Restriction() {
+        this.products = new ArrayList<>();
     }
 
-    public Restriction(long id, String type, int maxValue, int minValue) {
+    public Restriction(long id, String type, double maxValue, double minValue) {
         this.id = id;
         this.type = type;
         this.maxValue = maxValue;
         this.minValue = minValue;
+        this.products = new ArrayList<>();
     }
 
     public long getId() {
@@ -55,11 +58,11 @@ public class Restriction {
         return type;
     }
 
-    public int getMaxValue() {
+    public double getMaxValue() {
         return maxValue;
     }
 
-    public int getMinValue() {
+    public double getMinValue() {
         return minValue;
     }
 
@@ -71,11 +74,19 @@ public class Restriction {
         this.type = type;
     }
 
-    public void setMaxValue(int maxValue) {
+    public void setMaxValue(double maxValue) {
         this.maxValue = maxValue;
     }
 
-    public void setMinValue(int minValue) {
+    public void setMinValue(double minValue) {
         this.minValue = minValue;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 }

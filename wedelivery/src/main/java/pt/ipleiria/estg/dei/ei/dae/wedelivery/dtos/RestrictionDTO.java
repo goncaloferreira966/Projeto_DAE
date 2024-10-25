@@ -1,20 +1,18 @@
 package pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos;
-
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Restriction;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RestrictionDTO {
     private long id;
     private String type;
-    private int maxValue;
-    private int minValue;
+    private double maxValue;
+    private double minValue;
 
     public RestrictionDTO() {
     }
 
-    public RestrictionDTO(long id, String type, int maxValue, int minValue) {
+    public RestrictionDTO(long id, String type, double maxValue, double minValue) {
         this.id = id;
         this.type = type;
         this.maxValue = maxValue;
@@ -43,11 +41,11 @@ public class RestrictionDTO {
         return type;
     }
 
-    public int getMaxValue() {
+    public double getMaxValue() {
         return maxValue;
     }
 
-    public int getMinValue() {
+    public double getMinValue() {
         return minValue;
     }
 
@@ -59,11 +57,11 @@ public class RestrictionDTO {
         this.type = type;
     }
 
-    public void setMaxValue(int maxValue) {
+    public void setMaxValue(double maxValue) {
         this.maxValue = maxValue;
     }
 
-    public void setMinValue(int minValue) {
+    public void setMinValue(double minValue) {
         this.minValue = minValue;
     }
 }

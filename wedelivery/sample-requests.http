@@ -99,3 +99,9 @@ Content-Type: application/json
   "currentValue": 50
 }
 
+
+### Get All restrictions
+GET http://localhost:8080/wedelivery/api/restrictions/
+
+### Get one restrictions
+GET http://localhost:8080/wedelivery/api/restrictions/1
