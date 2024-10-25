@@ -1,7 +1,8 @@
 package pt.ipleiria.estg.dei.ei.dae.wedelivery.entities;
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+
+import java.util.List;
 
 @Table(name = "restrictions")
 @NamedQueries(
@@ -20,6 +21,19 @@ public class Restriction {
     private String type;
     private int maxValue;
     private int minValue;
+    @ManyToMany
+    @JoinTable(
+            name = "restriciton_product",
+            joinColumns = @JoinColumn(
+                    name = "restriction_id",
+                    referencedColumnName = "id"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "product_id",
+                    referencedColumnName = "id"
+            )
+    )
+    private List<Product> products;
     @Version
     private int version;
 

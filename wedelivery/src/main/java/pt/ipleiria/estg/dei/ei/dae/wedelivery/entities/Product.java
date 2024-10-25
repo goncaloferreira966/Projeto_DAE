@@ -46,9 +46,6 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "warehouse_name", referencedColumnName = "name")
     private Warehouse warehouse;
-    @Version
-    private int version;
-
     @ManyToOne
     @JoinTable(
             name = "supplier_product",
@@ -62,10 +59,12 @@ public class Product {
             )
     )
     private Supplier supplier;
-
     @ManyToMany(mappedBy = "products")
     private List<Volume> volumes;
-
+    @ManyToMany(mappedBy = "products")
+    private List<Restriction> restrictions;
+    @Version
+    private int version;
 
     public Product() {
     }

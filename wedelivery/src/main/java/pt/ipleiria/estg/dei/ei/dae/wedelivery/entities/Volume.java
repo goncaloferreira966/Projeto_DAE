@@ -130,7 +130,6 @@ public class Volume {
         sensor.setVolume(null);
     }
 
-
     @Override
     public int hashCode() {
         return Objects.hashCode(id);
@@ -143,16 +142,4 @@ public class Volume {
         Volume volume = (Volume) o;
         return Objects.equals(id, volume.id);
     }
-    /*
-    public List<Sensor> getSensors() {
-        return sensors;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public void setSensors(List<Sensor> sensors) {
-        this.sensors = sensors;
-    }*/
 }

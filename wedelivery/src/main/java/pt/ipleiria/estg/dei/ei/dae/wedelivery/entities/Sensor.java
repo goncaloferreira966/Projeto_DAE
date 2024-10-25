@@ -28,10 +28,8 @@ public class Sensor {
     private boolean busy;
     @NotNull
     private boolean expedition;
-
     @ManyToOne
     private Volume volume;
-
     @Version
     private int version;
 
