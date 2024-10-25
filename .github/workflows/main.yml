@@ -18,13 +18,13 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
-          java-version: '17'  # Define a versão do JDK
+          java-version: '17'
           distribution: 'temurin'
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '20'  # Use a versão do Node.js que você está usando
+          node-version: '20'
 
       - name: Install Docker
         run: |
@@ -41,8 +41,8 @@ jobs:
 
       - name: Build with Maven
         run: |
-          cd wedelivery  # Mude para o diretório onde está o pom.xml
-          mvn clean install  # Executa o comando Maven
+          cd wedelivery
+          mvn clean install
 
       - name: Install Docker Compose
         run: |
@@ -51,8 +51,8 @@ jobs:
 
       - name: Pull Docker images with retry
         run: |
-          cd wedelivery  # Mude para o diretório correto
-          docker-compose up -d  # Inicia os serviços em segundo plano
+          cd wedelivery
+          docker-compose up -d
           sleep 60
           for i in {1..5}; do
             docker-compose pull && break || sleep 10;
@@ -60,14 +60,14 @@ jobs:
 
       - name: Deploy application
         run: |
-          cd wedelivery  # Mude para o diretório correto
-          make deploy  # Executa o comando make deploy
-          sleep 60
+          cd wedelivery
+          make deploy
+          sleep 20
 
       - name: Install dependencies
         run: |
-          cd wedelivery-client  # Mude para o diretório correto
-          npm install  # Instala as dependências do cliente
+          cd wedelivery-client
+          npm install
 
       - name: Check if services are running
         run: |
@@ -78,21 +78,28 @@ jobs:
 
       - name: Run TypeScript compilation
         run: |
-          cd wedelivery-client  # Mude para o diretório correto
-          npx tsc --noEmit  # Executa a compilação TypeScript sem emitir arquivos
+          cd wedelivery-client
+          npx tsc --noEmit
 
-      - name: Start dev server and run tests
+      - name: Start dev server
         run: |
-          cd wedelivery-client  # Mude para o diretório correto
+          cd wedelivery-client
+          npm install -g wait-on  # Instalar wait-on
           echo "Starting dev server..."
-          npm run dev &  # Inicia o servidor em segundo plano
-          echo $! > dev_server.pid  # Armazena o PID do processo
-          echo "Waiting for Cypress to run tests..."
-          wait-on http://localhost:3000 && npx cypress run
-          echo "Tests completed. Stopping dev server..."
-          kill $(cat dev_server.pid)  # Encerra o servidor
+          npm run dev &
+          wait-on http://localhost:3000
+
+      - name: Start tests
+        run: |
+          cd wedelivery-client
+          npx cypress run
+
+      - name: Stop dev server
+        run: |
+          echo "Stopping dev server..."
+          pkill -f "npm run dev"
 
       - name: Clean up
         run: |
-          cd wedelivery  # Mude para o diretório correto
-          docker-compose down  # Para parar os containers
+          cd wedelivery
+          docker-compose down
