@@ -41,4 +41,23 @@ public class SensorService {
         sensorDTO.setVolume(VolumeDTO.from(sensor.getVolume()));
         return Response.ok(sensorDTO).build();
     }
+
+    @PATCH
+    @Path("{id}/updateCurrentValue")
+    public Response updateCurrentValue(@PathParam("id") long id, SensorDTO sensorDTO) {
+        Sensor sensor = sensorBean.find(id);
+
+        // Verifica se o sensor existe
+        if (sensor == null) {
+            return Response.status(Response.Status.NOT_FOUND).entity("Sensor not found").build();
+        }
+
+        sensor.setCurrentValue(sensorDTO.getCurrentValue());
+
+        // Persiste a alteração
+        sensorBean.update(sensor);
+
+        SensorDTO sensorDTOUpdated = SensorDTO.from(sensor);
+        return Response.ok(sensorDTOUpdated).build();
+    }
 }

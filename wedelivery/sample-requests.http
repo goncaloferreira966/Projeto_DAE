@@ -91,5 +91,11 @@ GET http://localhost:8080/wedelivery/api/orders/1258464486/volume/1494305280
 Accept: application/json
 
 
+### Update Sensor Value
+PATCH http://localhost:8080/wedelivery/api/sensors/1/updateCurrentValue
+Content-Type: application/json
 
+{
+  "currentValue": 50
+}
 

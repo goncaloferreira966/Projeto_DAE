@@ -55,6 +55,10 @@ public class SensorBean {
         return sensor;
     }
 
+    public void update(Sensor sensor) {
+        entityManager.merge(sensor);  // Atualiza o sensor na bd
+    }
+
     /*****************  Sensor -> Volume  ***********************************/
     public List<Sensor> findAllSensorsByVolumeId(long id) {
         return entityManager.createNamedQuery("getAllSensorsByVolume", Sensor.class)
