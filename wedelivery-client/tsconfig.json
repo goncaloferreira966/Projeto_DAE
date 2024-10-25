@@ -1,15 +1,18 @@
 {
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
-    // Aqui você pode adicionar outras opções de compilador
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "types": [
+      "nuxt",
+      "node"  // Adicione 'node' aqui
+    ]
   },
   "include": [
     "nuxt.config.ts",
-    "cypress/**/*.ts",  // Inclua os arquivos de teste do Cypress
-    "components/**/*.vue"  // Inclua componentes Vue se necessário
+    "cypress/**/*.ts",
+    "components/**/*.vue"
   ]
 }

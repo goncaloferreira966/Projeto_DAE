@@ -1,4 +1,4 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
 
@@ -6,7 +6,6 @@ export default defineNuxtConfig({
     'bootstrap/dist/css/bootstrap.css',
   ],
   plugins: [],
-
 
   devtools: { enabled: true },
 
