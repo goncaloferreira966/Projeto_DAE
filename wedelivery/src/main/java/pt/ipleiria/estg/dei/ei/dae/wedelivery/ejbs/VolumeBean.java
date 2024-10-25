@@ -48,6 +48,10 @@ public class VolumeBean {
             throw new MyConstraintViolationException(e);
         }
     }
+
+    public void update(Volume volume) {
+        entityManager.merge(volume);  // Atualiza o volume na bd
+    }
     /*********************  Volume  ***********************************/
     public List<Volume> findAll() {
         // remember, maps to: “SELECT s FROM volume v ORDER BY v.id”

@@ -7,6 +7,7 @@ import jakarta.validation.ConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Client;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Manager;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Operator;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Sensor;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityNotFoundException;
@@ -36,6 +37,10 @@ public class OperatorBean {
         catch (ConstraintViolationException e) {
             throw new MyConstraintViolationException(e);
         }
+    }
+
+    public void update(Operator operator) {
+        entityManager.merge(operator);  // Atualiza o operator na bd
     }
 
     public List<Operator> findAll() {

@@ -7,6 +7,7 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import jakarta.validation.ConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Product;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Sensor;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Volume;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Warehouse;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
@@ -40,6 +41,10 @@ public class WarehouseBean {
         catch (ConstraintViolationException e) {
             throw new MyConstraintViolationException(e);
         }
+    }
+
+    public void update(Warehouse warehouse) {
+        entityManager.merge(warehouse);  // Atualiza o warehouse na bd
     }
 
     public List<Warehouse> findAll() {

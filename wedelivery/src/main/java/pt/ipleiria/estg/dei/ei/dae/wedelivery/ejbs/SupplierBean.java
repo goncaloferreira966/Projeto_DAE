@@ -7,6 +7,7 @@ import jakarta.persistence.Query;
 import jakarta.validation.ConstraintViolationException;
 import org.hibernate.Hibernate;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Client;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Sensor;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Supplier;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
@@ -69,5 +70,9 @@ public class SupplierBean {
         );
         query.setParameter("username", username);
         return (Long) query.getSingleResult() > 0;
+    }
+
+    public void update(Supplier supplier) {
+        entityManager.merge(supplier);  // Atualiza o supplier na bd
     }
 }

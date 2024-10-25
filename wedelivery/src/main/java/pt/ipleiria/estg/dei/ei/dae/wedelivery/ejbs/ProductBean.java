@@ -9,6 +9,7 @@ import jakarta.persistence.TypedQuery;
 import jakarta.validation.ConstraintViolationException;
 import org.hibernate.Hibernate;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Product;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Sensor;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Supplier;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Warehouse;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
@@ -134,6 +135,10 @@ public class ProductBean {
         var product = this.findById(id);
         Hibernate.initialize(product.getWarehouse());
         return product.getWarehouse();
+    }
+
+    public void update(Product product) {
+        entityManager.merge(product);  // Atualiza o produto na bd
     }
 
 

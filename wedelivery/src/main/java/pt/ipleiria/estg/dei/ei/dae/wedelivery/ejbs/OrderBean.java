@@ -7,6 +7,7 @@ import jakarta.persistence.Query;
 import jakarta.validation.ConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Operator;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Order;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Sensor;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityNotFoundException;
@@ -85,6 +86,9 @@ public class OrderBean {
         ).setParameter("date1", date1).setParameter("date2", date2).getResultList();
     }
 
+    public void update(Order order) {
+        entityManager.merge(order);  // Atualiza o order na bd
+    }
 
     /********************************* Orders by Users ******************************************/
     public List<Order> findOrdersByClientId(String username) {

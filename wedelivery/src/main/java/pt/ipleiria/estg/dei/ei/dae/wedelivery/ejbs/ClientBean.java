@@ -6,6 +6,7 @@ import jakarta.persistence.Query;
 import jakarta.validation.ConstraintViolationException;
 import org.hibernate.Hibernate;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Client;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Sensor;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityNotFoundException;
@@ -53,6 +54,10 @@ public class ClientBean {
         var client = this.find(username);
         Hibernate.initialize(client.getOrders());
         return client;
+    }
+
+    public void update(Client client) {
+        entityManager.merge(client);  // Atualiza o client na bd
     }
 
     public boolean exists(String username) {
