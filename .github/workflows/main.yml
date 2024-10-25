@@ -69,7 +69,7 @@ jobs:
 
       - name: Check if services are running
         run: |
-          if ! docker ps | grep -q 'your_service_name'; then
+          if ! docker ps | grep -q 'webserver'; then
             echo "Error: Docker service is not running!"
             exit 1
           fi
