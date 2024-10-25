@@ -1289,9 +1289,10 @@ Um gestor consulta detalhadamente uma restrição em específico, obtendo també
 
 ## **Créditos**
 #### `Powered By`
-##### `2222051` Gonçalo Ferreira 
-##### `2223281` Guilherme Cruz   
-##### `2222313` Dinis Roxo       
+##### `2222051` [@goncaloferreira966](https://github.com/goncaloferreira966) 
+##### `2223281` [@GuilhermeCruzPT](https://github.com/GuilhermeCruzPT)   
+##### `2222313` [dinisroxo99](https://github.com/dinisroxo99)  
+-     
 
 ---
 
