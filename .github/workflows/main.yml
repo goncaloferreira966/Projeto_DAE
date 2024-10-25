@@ -1,5 +1,3 @@
-name: CI/CD Pipeline
-
 on:
   push:
     branches:
@@ -11,9 +9,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v2
 
       - name: Set up JDK
@@ -21,6 +18,11 @@ jobs:
         with:
           java-version: '17'  # Define a versão do JDK
           distribution: 'temurin'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'  # Use a versão do Node.js que você está usando
 
       - name: Install Docker
         run: |
@@ -35,17 +37,21 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y docker-ce
 
+      - name: Build with Maven
+        run: |
+          cd wedelivery  # Mude para o diretório onde está o pom.xml
+          mvn clean install  # Executa o comando Maven
+
       - name: Install Docker Compose
         run: |
           sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
           sudo chmod +x /usr/local/bin/docker-compose
 
-      - name: Build with Maven
-        run: mvn clean install
-
       - name: Pull Docker images with retry
         run: |
           cd wedelivery  # Mude para o diretório correto
+          docker-compose up -d  # Inicia os serviços em segundo plano
+          sleep 60
           for i in {1..5}; do
             docker-compose pull && break || sleep 10;
           done
@@ -54,13 +60,12 @@ jobs:
         run: |
           cd wedelivery  # Mude para o diretório correto
           make deploy  # Executa o comando make deploy
-          docker-compose up -d  # Inicia os serviços em segundo plano
           sleep 60
 
       - name: Install dependencies
         run: |
           cd wedelivery-client  # Mude para o diretório correto
-          npm install
+          npm install  # Instala as dependências do cliente
 
       - name: Check if services are running
         run: |
@@ -74,7 +79,7 @@ jobs:
           cd wedelivery-client  # Mude para o diretório correto
           npm run test  # Executa os testes com Cypress
 
-      - name: Shut down Docker
+      - name: Clean up
         run: |
           cd wedelivery  # Mude para o diretório correto
           docker-compose down  # Para parar os containers
