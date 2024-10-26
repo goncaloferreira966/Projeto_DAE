@@ -60,6 +60,7 @@ public class Order implements Serializable {
             )
     )
     private Operator operator;
+    @NotNull
     private Date purchaseDate;
     private Date deliveryDate;
     @NotNull

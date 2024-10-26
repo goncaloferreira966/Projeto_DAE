@@ -3,23 +3,21 @@
   password varchar(255) [not null]
   name varchar(255) [not null]
   email varchar(255) [unique, not null]
-  phone int(9) [unique, not null]
-  birth date [not null]
-  genre char [not null]
  }
 
  Table client {
   username varchar(255) [ref: > user.username]
   nif int(9) [unique, not null]
   postal_code varchar(8) [not null]
-  coutry varchar(255) [not null]
+  country varchar(255) [not null]
   city varchar(255) [not null]
   address varchar(255) [not null]
-  orders list [ref: > order.id]
+  orders list [ref: > order.code]
  }
 
- Table administrator {
+ Table operator {
   username varchar(255) [ref: > user.username]
+  orders List [ref: > order.code]
  }
 
  Table Maneger {
@@ -27,51 +25,57 @@
  }
 
  Table order {
-  id int [pk, increment]
-  volume list [ref: > volume.id]
+  code int [pk, increment]
   purchase_date date [not null]
-  delivery_date date []
-
+  delivery_date date
+  state varchar(255)
+  client int [ref: > client.username]
+  operator int [ref: > operator.username]
+  volume list [ref: > volume.id]
  }
 
  Table volume {
   id int [pk, increment]
-  sensor list [ref: > Sensor.id]
-  products list [ref: > Product.id]
+  state varchar(255)
+  creation_date date [not null]
+  sensor list [ref: > sensor.id]
+  products list [ref: > product.id]
+  order list [ref: > order.code]
  }
 
- Table Sensor {
+ Table sensor {
   id int [pk, increment]
   type varchar(255) [not null]
   current_value int
-  history vector
+  history list
   busy bool
   expedition bool
+  volume int [ref: > volume.id]
  }
 
- Table Product {
+ Table product {
   id int [pk, increment]
   name varchar(255) [not null]
   image varchar(255) [not null]
   description varchar(255) [not null]
+  price double [not null]
   quantity int [not null]
-  state bool [not null] 
-  restriction list [ref: > Restriction.id]
+  available bool [not null] 
+  restriction list [ref: > restriction.id]
  }
 
- Table Restriction {
+ Table restriction {
   id int [pk, increment]
   type varchar(255) [not null]
   max_value int
   min_value int
  }
 
- Table Warehouse {
-  id int [pk, increment]
-  name varchar(255) [not null]
-  products list [not null, ref: > Product.id]
+ Table warehouse {
+  name varchar(255) [pk, increment]
   postal_code varchar(8) [not null]
-  coutry varchar(255) [not null]
+  country varchar(255) [not null]
   city varchar(255) [not null]
   address varchar(255) [not null]
+  products list [not null, ref: > product.id]
  }

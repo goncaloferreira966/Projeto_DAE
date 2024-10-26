@@ -39,6 +39,7 @@ public class Product {
     @NotNull
     private double price;
     private String image;
+    @NotNull
     private int quantity;
     @NotNull
     private boolean available;
