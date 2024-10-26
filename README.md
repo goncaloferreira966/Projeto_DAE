@@ -463,7 +463,7 @@ um Cliente que deseje consultar uma Encomenda efetuada por si.
 
 Um Gestor consulta uma Encomenda efetuada e verifica um volume. Este método pode
 também ser usado por um Cliente que deseje consultar uma Encomenda efetuada por
-si. 
+si.
 
 - **URL**: `/orders/1494305280/volume/3`
 - **Método**: `GET`
@@ -919,7 +919,8 @@ Um utilizador consulta um determinado Supplier e os seus respectivos produtos
 
 #### `GET /suppliers/{name}/products/{id}`
 
-Um utilizador efetua a consulta de um produto identificado por `{id}`, pertencente a um fornecedor designado por `{name}`.
+Um utilizador efetua a consulta de um produto identificado por `{id}`, pertencente a um
+fornecedor designado por `{name}`.
 
 - **URL:** `/suppliers/safari/products/2`
 - **Método**: `GET`
@@ -1299,7 +1300,7 @@ Um gestor consulta uma restrição em específico.
 
 - **URL:** `/restrictions/1`
 - **Método**: `GET`
-- **Headers:** 
+- **Headers:**
   - `Content-Type`: `application/json`
 - **Response:**
 
