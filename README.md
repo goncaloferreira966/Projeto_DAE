@@ -77,7 +77,7 @@ Um Administrador consulta a listagem de todos os Operadores Registados.
 
 - **URL**: `/operators`
 - **Método**: `GET`
-- **Headers**: 
+- **Headers**:
   - `Content-Type`: `application/json`
 - **Response**:
 
@@ -104,7 +104,7 @@ Um Administrador consulta o perfil de um Operador.
 
 - **URL**: `/operators/DinisRX`
 - **Método**: `GET`
-- **Headers**: 
+- **Headers**:
   - `Content-Type`: `application/json`
 - **Response**:
 
@@ -117,14 +117,13 @@ Um Administrador consulta o perfil de um Operador.
   }
   ```
 
-
 #### `POST /operators`
 
 Um Operador efetua o registo na plataforma do sistema.
 
 - **URL**: `/operators`
 - **Método**: `POST`
-- **Headers**: 
+- **Headers**:
   - `Content-Type`: `application/json`
 - **Body**:
 
@@ -156,7 +155,7 @@ Um Administrador consulta a listagem de todos os Gestores Registados.
 
 - **URL**: `/managers`
 - **Método**: `GET`
-- **Headers**: 
+- **Headers**:
   - `Content-Type`: `application/json`
 - **Response**:
 
@@ -183,7 +182,7 @@ Um Administrador consulta o perfil de um Gestor.
 
 - **URL**: `/managers/Rui`
 - **Método**: `GET`
-- **Headers**: 
+- **Headers**:
   - `Content-Type`: `application/json`
 - **Response**:
 
@@ -202,7 +201,7 @@ Um Gestor efetua o registo na plataforma do sistema.
 
 - **URL**: `/managers`
 - **Método**: `POST`
-- **Headers**: 
+- **Headers**:
   - `Content-Type`: `application/json`
 - **Body**:
 
@@ -232,7 +231,7 @@ Um Gestor consulta todas as encomendas a si associadas.
 
 - **URL**: `/managers/DinisRX/orders`
 - **Método**: `GET`
-- **Headers**: 
+- **Headers**:
   - `Content-Type`: `application/json`
 - **Response**:
 
@@ -255,7 +254,7 @@ Um Administrador consulta a listagem de todos os Clientes Registados.
 
 - **URL**: `/clients`
 - **Método**: `GET`
-- **Headers**: 
+- **Headers**:
   - `Content-Type`: `application/json`
 - **Response**:
 
@@ -292,7 +291,7 @@ Um Administrador consulta o perfil de um Cliente.
 
 - **URL**: `/clients/Goncalo`
 - **Método**: `GET`
-- **Headers**: 
+- **Headers**:
   - `Content-Type`: `application/json`
 - **Response**:
 
@@ -328,14 +327,13 @@ Um Administrador consulta o perfil de um Cliente.
   }
   ```
 
-
 #### `POST /clients`
 
 Um Cliente efetua o registo na plataforma do sistema.
 
 - **URL**: `/clients`
 - **Método**: `POST`
-- **Headers**: 
+- **Headers**:
   - `Content-Type`: `application/json`
 - **Body**:
 
@@ -370,14 +368,13 @@ Um Cliente efetua o registo na plataforma do sistema.
   }
   ```
 
-
 #### `GET /clients/{username}/orders`
 
 Um Cliente consulta todas as suas encomendas realizadas
 
 - **URL**: `/clients/Goncalo/orders`
 - **Método**: `GET`
-- **Headers**: 
+- **Headers**:
   - `Content-Type`: `application/json`
 - **Response**:
 
@@ -400,7 +397,7 @@ Um Gestor consulta a listagem de todos as Encomendas efetuadas.
 
 - **URL**: `/orders`
 - **Método**: `GET`
-- **Headers**: 
+- **Headers**:
   - `Content-Type`: `application/json`
 - **Response**:
 
@@ -435,11 +432,12 @@ Um Gestor consulta a listagem de todos as Encomendas efetuadas.
 
 #### `GET /orders/{code}`
 
-Um Gestor consulta uma Encomenda efetuada. Este método pode também ser usado por um Cliente que deseje consultar uma Encomenda efetuada por si. 
+Um Gestor consulta uma Encomenda efetuada. Este método pode também ser usado por
+um Cliente que deseje consultar uma Encomenda efetuada por si.
 
 - **URL**: `/orders/1258464486`
 - **Método**: `GET`
-- **Headers**: 
+- **Headers**:
   - `Content-Type`: `application/json`
 - **Response**:
 
@@ -463,11 +461,13 @@ Um Gestor consulta uma Encomenda efetuada. Este método pode também ser usado p
 
 #### `GET /orders/{code}/volume/{id}`
 
-Um Gestor consulta uma Encomenda efetuada e quere verificar um volume. Este método pode também ser usado por um Cliente que deseje consultar uma Encomenda efetuada por si. 
+Um Gestor consulta uma Encomenda efetuada e verifica um volume. Este método pode
+também ser usado por um Cliente que deseje consultar uma Encomenda efetuada por
+si. 
 
 - **URL**: `/orders/1494305280/volume/3`
 - **Método**: `GET`
-- **Headers**: 
+- **Headers**:
   - `Content-Type`: `application/json`
 - **Response**:
 
@@ -523,7 +523,7 @@ Um Cliente efetua uma Encomenda e a mesma é criada em sistema.
 
 - **URL**: `/orders`
 - **Método**: `POST`
-- **Headers**: 
+- **Headers:**
   - `Content-Type`: `application/json`
 - **Body**:
 
@@ -556,8 +556,8 @@ Um Cliente efetua uma Encomenda e a mesma é criada em sistema.
 Um gestor altera o estado de uma encomenda especificada por {id}.
 
 - **URL:** `/orders/761527421`
-- **Método**: `PATCH`
-- **Headers:** 
+- **Método:** `PATCH`
+- **Headers:**
   - `Content-Type`: `application/json`
 - **Body:**
 
@@ -586,11 +586,11 @@ Um gestor altera o estado de uma encomenda especificada por {id}.
 
 Um utilizador consulta todos os produtos na página de e-commerce.
 
-- **URL**: `/products`
-- **Método**: `GET`
-- **Headers**: 
+- **URL:** `/products`
+- **Método:** `GET`
+- **Headers:**
   - `Content-Type`: `application/json`
-- **Response**:
+- **Response:**
 
   ```json
   [
@@ -624,11 +624,11 @@ Um utilizador consulta todos os produtos na página de e-commerce.
 
 Um utilizador consulta um produto especifico.
 
-- **URL**: `/products/2`
-- **Método**: `GET`
-- **Headers**: 
+- **URL:** `/products/2`
+- **Método:** `GET`
+- **Headers:**
   - `Content-Type`: `application/json`
-- **Response**:
+- **Response:**
 
   ```json
   {
@@ -648,11 +648,11 @@ Um utilizador consulta um produto especifico.
 
 Um utilizador consulta todos os produtos que contenham a palavra {name}.
 
-- **URL**: `/products/S`
-- **Método**: `GET`
-- **Headers**: 
+- **URL:** `/products/S`
+- **Método:** `GET`
+- **Headers:**
   - `Content-Type`: `application/json`
-- **Response**:
+- **Response:**
 
   ```json
   [
@@ -688,7 +688,7 @@ Um utilizador consulta os detalhes de um repectivo produto.
 
 - **URL:** `/products/1/details`
 - **Método:** `GET`
-- **Headers:** 
+- **Headers:**
   - `Content-Type`: `application/json`
 - **Response:**
 
@@ -725,7 +725,7 @@ Um utilizador consulta os warehouses existentes.
 
 - **URL:** `/warehouses`
 - **Método:** `GET`
-- **Headers:** 
+- **Headers:**
   - `Content-Type`: `application/json`
 - **Response:**
 
@@ -772,9 +772,9 @@ Um utilizador consulta todos os produtos que exitem num determindo warehouse.
 
 - **URL:** `/warehouses/Leiria/products`
 - **Método:** `GET`
-- **Headers:** 
+- **Headers:**
   - `Content-Type`: `application/json`
-- **Response:** 
+- **Response:**
 
   ```json
   {
@@ -814,7 +814,7 @@ Um utilizador consulta um determinado produto {id} num determinado warehouse {na
 
 - **URL:** `/warehouses/Leiria/products/1`
 - **Método:** `GET`
-- **Headers:** 
+- **Headers:**
   - `Content-Type`: `application/json`
 - **Response:**
 
@@ -853,7 +853,7 @@ Um utilizador consulta os Suppliers existentes
 
 - **URL:** `/suppliers`
 - **Método:** `GET`
-- **Headers:** 
+- **Headers:**
   - `Content-Type`: `application/json`
 - **Response:**
 
@@ -881,7 +881,7 @@ Um utilizador consulta um determinado Supplier e os seus respectivos produtos
 
 - **URL:** `/suppliers/safari`
 - **Método:** `GET`
-- **Headers:** 
+- **Headers:**
   - `Content-Type`: `application/json`
 - **Response:**
 
@@ -919,11 +919,11 @@ Um utilizador consulta um determinado Supplier e os seus respectivos produtos
 
 #### `GET /suppliers/{name}/products/{id}`
 
-Um utilizador efetua a consulta de um produto identificado por {id}, pertencente a um fornecedor designado por {name}.
+Um utilizador efetua a consulta de um produto identificado por `{id}`, pertencente a um fornecedor designado por `{name}`.
 
 - **URL:** `/suppliers/safari/products/2`
 - **Método**: `GET`
-- **Headers:** 
+- **Headers:**
   - `Content-Type`: `application/json`
 - **Response:**
 
@@ -950,11 +950,12 @@ Um utilizador efetua a consulta de um produto identificado por {id}, pertencente
 
 #### `GET /suppliers/{name}/products/name/{string}`
 
-Um utilizador consulta diversos produtos com a designação {string}, pertencentes ao fornecedor identificado por {name}.
+Um utilizador consulta diversos produtos com a designação {string}, pertencentes
+ao fornecedor identificado por {name}.
 
 - **URL:** `/suppliers/safari/products/name/S`
 - **Método**: `GET`
-- **Headers:** 
+- **Headers:**
   - `Content-Type`: `application/json`
 - **Response:**
 
@@ -998,7 +999,7 @@ Um administrador consulta os volumes existentes.
 
 - **URL:** `/volumes`
 - **Método:** `GET`
-- **Headers:** 
+- **Headers:**
   - `Content-Type`: `application/json`
 - **Response:**
 
@@ -1024,7 +1025,7 @@ Um administrador consulta um volume registado.
 
 - **URL:** `/volumes/1058107426`
 - **Método**: `GET`
-- **Headers:** 
+- **Headers:**
   - `Content-Type`: `application/json`
 - **Response:**
 
@@ -1082,7 +1083,7 @@ Um administrador consulta, ao detalhe, um volume registado.
 
 - **URL:** `/volumes/1058107426/details`
 - **Método**: `GET`
-- **Headers:** 
+- **Headers:**
   - `Content-Type`: `application/json`
 - **Response:**
 
@@ -1162,9 +1163,9 @@ Um administrador consulta, ao detalhe, um volume registado.
 
 Um gestor consulta os sensores existentes.
 
- **URL:** `/sensors`
+- **URL:** `/sensors`
 - **Método:** `GET`
-- **Headers:** 
+- **Headers:**
   - `Content-Type`: `application/json`
 - **Response:**
 
@@ -1193,7 +1194,7 @@ Um gestor consulta um sensor em específico.
 
 - **URL:** `/sensors/2`
 - **Método:** `GET`
-- **Headers:** 
+- **Headers:**
   - `Content-Type`: `application/json`
 - **Response:**
 
@@ -1209,11 +1210,12 @@ Um gestor consulta um sensor em específico.
 
 #### `GET /sensors/{id}/details`
 
-Um gestor consulta detalhadamente um sensor em específico, contendo assim a informação do volume associado ao sensor especificado.
+Um gestor consulta detalhadamente um sensor em específico, contendo assim a
+informação do volume associado ao sensor especificado.
 
 - **URL:** `/sensors/1`
 - **Método:** `GET`
-- **Headers:** 
+- **Headers:**
   - `Content-Type`: `application/json`
 - **Response:**
 
@@ -1238,7 +1240,7 @@ Um gestor altera o valor atual de um sensor especificando o seu {id}.
 
 - **URL:** `/sensors/1`
 - **Método:** `PATCH`
-- **Headers:** 
+- **Headers:**
   - `Content-Type`: `application/json`
 - **Body:**
 
@@ -1258,7 +1260,7 @@ Um gestor altera o valor atual de um sensor especificando o seu {id}.
     "id": 1,
     "type": "Temperature"
   }
-  ``` 
+  ```
 
 ### 11. **Restrições**
 
@@ -1268,7 +1270,7 @@ Um gestor consulta as restrições existentes.
 
 - **URL:** `/restrictions`
 - **Método:** `GET`
-- **Headers:** 
+- **Headers:**
   - `Content-Type`: `application/json`
 - **Response:**
 
@@ -1313,11 +1315,12 @@ Um gestor consulta uma restrição em específico.
 
 #### `GET /restrictions{id}/details`
 
-Um gestor consulta detalhadamente uma restrição em específico, obtendo também os produtos associados à mesma.
+Um gestor consulta detalhadamente uma restrição em específico, obtendo também os
+produtos associados à mesma.
 
 - **URL:** `/restrictions/1/details`
 - **Método:** `GET`
-- **Headers:** 
+- **Headers:**
   - `Content-Type`: `application/json`
 - **Response:**
 
@@ -1354,15 +1357,15 @@ Um gestor consulta detalhadamente uma restrição em específico, obtendo també
 
 ---
 
-## **Créditos**
+### **Créditos**
 
 #### `Powered By`
 
-##### `2222051` [@goncaloferreira966](https://github.com/goncaloferreira966) 
+##### `2222051` [@goncaloferreira966](https://github.com/goncaloferreira966)
 
-##### `2223281` [@GuilhermeCruzPT](https://github.com/GuilhermeCruzPT)   
+##### `2223281` [@GuilhermeCruzPT](https://github.com/GuilhermeCruzPT)
 
-##### `2222313` [dinisroxo99](https://github.com/dinisroxo99)     
+##### `2222313` [dinisroxo99](https://github.com/dinisroxo99)
 
 ---
 
