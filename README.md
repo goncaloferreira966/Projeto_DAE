@@ -17,7 +17,8 @@ Aplicação WEB.
 ---
 
 #### Índice
-
+&nbsp;&nbsp;&nbsp;&nbsp;[Diagrama da Base de Dados](#diagramabd)
+&nbsp;&nbsp;&nbsp;&nbsp;[Endpoints da API](#1-autenticação)
  **1.** [Autenticação](#1-autenticação)
  **2.** [Operadores](#2-operadores)
  **3.** [Gestores](#3-gestores)
@@ -32,8 +33,15 @@ Aplicação WEB.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Créditos](#créditos)
 
 ---
+<div id='diagramabd'></div>  
 
-#### Base URL
+### Diagrama da Base de dados
+
+![Imagem Esquerda](bd/WeDelivery.png)
+
+---
+
+### Base URL
 
 #### `http://Localhost:8080/wedelivery/api`
 
