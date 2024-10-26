@@ -920,7 +920,7 @@ Um utilizador consulta um determinado Supplier e os seus respectivos produtos
 #### `GET /suppliers/{name}/products/{id}`
 
 Um utilizador efetua a consulta de um produto identificado por `{id}`, 
-pertencente a um ornecedor designado por `{name}`.
+pertencente a um fornecedor designado por `{name}`.
 
 - **URL:** `/suppliers/safari/products/2`
 - **Método**: `GET`
