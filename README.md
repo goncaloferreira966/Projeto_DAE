@@ -9,9 +9,9 @@
 
 ### `WeDelivery`
 
-Esta API permite responder a todo o tipo de Pedidos necessários ao negócio da 
-empresa WeDelivery, empresa ligada ao serviço de transporte e armazenamento de 
-embalagens e produtos. Fornece endpoints para todas as funcionalidades da nossa 
+Esta API permite responder a todo o tipo de Pedidos necessários ao negócio da
+empresa WeDelivery, empresa ligada ao serviço de transporte e armazenamento de
+embalagens e produtos. Fornece endpoints para todas as funcionalidades da nossa
 Aplicação WEB.
 
 ---
@@ -49,7 +49,7 @@ Um User inicia sessão e recebe, para sua segurança, um token JWT.
 
 - **URL**: `/auth/login`
 - **Método**: `POST`
-- **Headers**: 
+- **Headers**:
   - `Content-Type`: `application/json`
 - **Body**:
 
@@ -68,8 +68,6 @@ Um User inicia sessão e recebe, para sua segurança, um token JWT.
     "expires_in": 3600
   }
   ```
-
-<br /> 
 
 ### 2. **Operadores**
 
@@ -100,8 +98,6 @@ Um Administrador consulta a listagem de todos os Operadores Registados.
   }
   ```
 
-<br />
-
 #### `GET /operators/{username}`
 
 Um Administrador consulta o perfil de um Operador.
@@ -121,7 +117,6 @@ Um Administrador consulta o perfil de um Operador.
   }
   ```
 
-<br />
 
 #### `POST /operators`
 
@@ -182,8 +177,6 @@ Um Administrador consulta a listagem de todos os Gestores Registados.
   }
   ```
 
-<br />
-
 #### `GET /managers/{username}`
 
 Um Administrador consulta o perfil de um Gestor.
@@ -202,8 +195,6 @@ Um Administrador consulta o perfil de um Gestor.
     "username":"RuiM100"
   }
   ```
-
-<br />
 
 #### `POST /managers`
 
@@ -235,8 +226,6 @@ Um Gestor efetua o registo na plataforma do sistema.
   }
   ```
 
-<br />
-
 #### `GET /managers/{username}/orders`
 
 Um Gestor consulta todas as encomendas a si associadas.
@@ -257,9 +246,6 @@ Um Gestor consulta todas as encomendas a si associadas.
     "usernameOperator": "DinisRX"
   }
   ```
-
-<br />
-
 
 ### 4. **Clientes**
 
@@ -299,8 +285,6 @@ Um Administrador consulta a listagem de todos os Clientes Registados.
     }
   }
   ```
-
-<br />
 
 #### `GET /clients/{username}`
 
@@ -344,7 +328,6 @@ Um Administrador consulta o perfil de um Cliente.
   }
   ```
 
-<br />
 
 #### `POST /clients`
 
@@ -387,7 +370,6 @@ Um Cliente efetua o registo na plataforma do sistema.
   }
   ```
 
-<br />
 
 #### `GET /clients/{username}/orders`
 
@@ -409,8 +391,6 @@ Um Cliente consulta todas as suas encomendas realizadas
     "usernameOperator": "DinisRX"
   }
   ```
-
-<br />  
 
 ### 5. **Encomendas**
 
@@ -453,8 +433,6 @@ Um Gestor consulta a listagem de todos as Encomendas efetuadas.
   }
   ```
 
-<br />
-
 #### `GET /orders/{code}`
 
 Um Gestor consulta uma Encomenda efetuada. Este método pode também ser usado por um Cliente que deseje consultar uma Encomenda efetuada por si. 
@@ -482,8 +460,6 @@ Um Gestor consulta uma Encomenda efetuada. Este método pode também ser usado p
     ]
   }
   ```
-
-<br />
 
 #### `GET /orders/{code}/volume/{id}`
 
@@ -541,8 +517,6 @@ Um Gestor consulta uma Encomenda efetuada e quere verificar um volume. Este mét
   }
   ```
 
-<br />
-
 #### `POST /orders`
 
 Um Cliente efetua uma Encomenda e a mesma é criada em sistema.
@@ -577,8 +551,6 @@ Um Cliente efetua uma Encomenda e a mesma é criada em sistema.
   }
   ```
 
-<br />
-
 #### `PATCH /orders/{id}`
 
 Um gestor altera o estado de uma encomenda especificada por {id}.
@@ -607,8 +579,6 @@ Um gestor altera o estado de uma encomenda especificada por {id}.
     "usernameOperator": "DinisRX"
   }
   ```
-
-<br />
 
 ### 6. **Produtos**
 
@@ -650,8 +620,6 @@ Um utilizador consulta todos os produtos na página de e-commerce.
   ]
   ```
 
-<br/>
-
 #### `Get /products/{id}`
 
 Um utilizador consulta um produto especifico.
@@ -675,8 +643,6 @@ Um utilizador consulta um produto especifico.
     "warehouseName": "Leiria"
   }
   ```
-
-<br />
 
 #### `Get /products/{name}`
 
@@ -716,8 +682,6 @@ Um utilizador consulta todos os produtos que contenham a palavra {name}.
   ]
   ```
 
-<br />
-
 #### `GET /products/{id}/details`
 
 Um utilizador consulta os detalhes de um repectivo produto.
@@ -753,8 +717,6 @@ Um utilizador consulta os detalhes de um repectivo produto.
   }
   ```
 
-<br />
-
 ### 7. **Armazéns**
 
 #### `Get /warehouses`
@@ -785,8 +747,6 @@ Um utilizador consulta os warehouses existentes.
   ]
   ```
 
-<br />
-
 #### `Get /warehouses/{name}`
 
 Um utilizador consulta os dados de um warehouse especifico.
@@ -805,8 +765,6 @@ Um utilizador consulta os dados de um warehouse especifico.
     "postalCode": "2565-834"
   }
   ```
-
-<br />
 
 #### `Get /warehouses/{name}/products`
 
@@ -850,8 +808,6 @@ Um utilizador consulta todos os produtos que exitem num determindo warehouse.
   }
   ```
 
-<br />
-
 #### `Get /warehouses/{name}/products/{id}`
 
 Um utilizador consulta um determinado produto {id} num determinado warehouse {name}.
@@ -889,8 +845,6 @@ Um utilizador consulta um determinado produto {id} num determinado warehouse {na
   }
   ```
 
-<br />
-
 ### 8. **Fabricantes**
 
 #### `GET /suppliers`
@@ -920,8 +874,6 @@ Um utilizador consulta os Suppliers existentes
     }
   ]
   ```
-
-<br />
 
 #### `GET /suppliers/{name}` ou `/suppliers/{name}/products`
 
@@ -965,8 +917,6 @@ Um utilizador consulta um determinado Supplier e os seus respectivos produtos
   }
   ```
 
-<br />
-
 #### `GET /suppliers/{name}/products/{id}`
 
 Um utilizador efetua a consulta de um produto identificado por {id}, pertencente a um fornecedor designado por {name}.
@@ -997,8 +947,6 @@ Um utilizador efetua a consulta de um produto identificado por {id}, pertencente
     "username": "safari"
   }
   ```
-
-<br />
 
 #### `GET /suppliers/{name}/products/name/{string}`
 
@@ -1042,8 +990,6 @@ Um utilizador consulta diversos produtos com a designação {string}, pertencent
   }
   ```
 
-<br />
-
 ### 9. **Volumes**
 
 #### `GET /volumes`
@@ -1072,8 +1018,6 @@ Um administrador consulta os volumes existentes.
   ]
   ```
 
-<br />
-
 #### `GET /volumes/{id}`
 
 Um administrador consulta um volume registado.
@@ -1083,6 +1027,7 @@ Um administrador consulta um volume registado.
 - **Headers:** 
   - `Content-Type`: `application/json`
 - **Response:**
+
   ```json
     {
     "creationDate": "2024-10-24 20:36:54.968",
@@ -1130,7 +1075,6 @@ Um administrador consulta um volume registado.
     "state": "Moderate damage"
   }
   ```
-<br />
 
 #### `GET /volumes/{id}/details`
 
@@ -1212,8 +1156,6 @@ Um administrador consulta, ao detalhe, um volume registado.
   }
   ```
 
-<br />
-
 ### 10. **Sensores**
 
 #### `GET /sensors`
@@ -1245,8 +1187,6 @@ Um gestor consulta os sensores existentes.
   ]
   ```
 
-<br />
-
 #### `GET /sensors/{id}`
 
 Um gestor consulta um sensor em específico.
@@ -1266,8 +1206,6 @@ Um gestor consulta um sensor em específico.
     "type": "Temperature"
   }
   ```
-
-<br />
 
 #### `GET /sensors/{id}/details`
 
@@ -1293,8 +1231,6 @@ Um gestor consulta detalhadamente um sensor em específico, contendo assim a inf
     }
   }
   ```
-
-<br />
 
 #### `PATCH /sensors/{id}`
 
@@ -1322,9 +1258,7 @@ Um gestor altera o valor atual de um sensor especificando o seu {id}.
     "id": 1,
     "type": "Temperature"
   }
-  ```
-
-<br />
+  ``` 
 
 ### 11. **Restrições**
 
@@ -1357,8 +1291,6 @@ Um gestor consulta as restrições existentes.
   ]
   ```
 
-<br />
-
 #### `GET /restrictions{id}`
 
 Um gestor consulta uma restrição em específico.
@@ -1378,8 +1310,6 @@ Um gestor consulta uma restrição em específico.
     "type": "Temperature"
   }
   ```
-
-<br />
 
 #### `GET /restrictions{id}/details`
 
@@ -1421,8 +1351,6 @@ Um gestor consulta detalhadamente uma restrição em específico, obtendo també
     "type": "Temperature"
   }
   ```
-
-<br/>
 
 ---
 
