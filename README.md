@@ -52,19 +52,23 @@ Um User inicia sessão e recebe, para sua segurança, um token JWT.
 - **Headers**: 
   - `Content-Type`: `application/json`
 - **Body**:
+
   ```json
   {
     "email": "user@example.com",
     "password": "password"
   }
   ```
+
 - **Response**:
+
   ```json
   {
     "token": "jwt_token",
     "expires_in": 3600
   }
   ```
+
 <br /> 
 
 ### 2. **Operadores**
@@ -78,6 +82,7 @@ Um Administrador consulta a listagem de todos os Operadores Registados.
 - **Headers**: 
   - `Content-Type`: `application/json`
 - **Response**:
+
   ```json
   {
     {
@@ -94,6 +99,7 @@ Um Administrador consulta a listagem de todos os Operadores Registados.
     }
   }
   ```
+
 <br />
 
 #### `GET /operators/{username}`
@@ -105,6 +111,7 @@ Um Administrador consulta o perfil de um Operador.
 - **Headers**: 
   - `Content-Type`: `application/json`
 - **Response**:
+
   ```json
   {
     "email":"Dinis@gmail.com",
@@ -113,6 +120,7 @@ Um Administrador consulta o perfil de um Operador.
     "username":"DinisRX"
   }
   ```
+
 <br />
 
 #### `POST /operators`
@@ -124,6 +132,7 @@ Um Operador efetua o registo na plataforma do sistema.
 - **Headers**: 
   - `Content-Type`: `application/json`
 - **Body**:
+
   ```json
   {
     "email": "ana@mail.com",
@@ -132,7 +141,9 @@ Um Operador efetua o registo na plataforma do sistema.
     "password": "password"
   }
   ```
+
 - **Response**:
+
   ```json
   {
     "email": "ana@mail.com",
@@ -153,6 +164,7 @@ Um Administrador consulta a listagem de todos os Gestores Registados.
 - **Headers**: 
   - `Content-Type`: `application/json`
 - **Response**:
+
   ```json
   {
     {
@@ -169,6 +181,7 @@ Um Administrador consulta a listagem de todos os Gestores Registados.
     }
   }
   ```
+
 <br />
 
 #### `GET /managers/{username}`
@@ -180,6 +193,7 @@ Um Administrador consulta o perfil de um Gestor.
 - **Headers**: 
   - `Content-Type`: `application/json`
 - **Response**:
+
   ```json
   {
     "email":"Rui@gmail.com",
@@ -188,6 +202,7 @@ Um Administrador consulta o perfil de um Gestor.
     "username":"RuiM100"
   }
   ```
+
 <br />
 
 #### `POST /managers`
@@ -199,6 +214,7 @@ Um Gestor efetua o registo na plataforma do sistema.
 - **Headers**: 
   - `Content-Type`: `application/json`
 - **Body**:
+
   ```json
   {
     "email": "margarida@mail.com",
@@ -207,7 +223,9 @@ Um Gestor efetua o registo na plataforma do sistema.
     "password": "password"
   }
   ```
+
 - **Response**:
+
   ```json
   {
     "email": "margarida@mail.com",
@@ -216,6 +234,7 @@ Um Gestor efetua o registo na plataforma do sistema.
     "username": "Margarida"
   }
   ```
+
 <br />
 
 #### `GET /managers/{username}/orders`
@@ -227,6 +246,7 @@ Um Gestor consulta todas as encomendas a si associadas.
 - **Headers**: 
   - `Content-Type`: `application/json`
 - **Response**:
+
   ```json
   {
     "code": 3,
@@ -237,6 +257,7 @@ Um Gestor consulta todas as encomendas a si associadas.
     "usernameOperator": "DinisRX"
   }
   ```
+
 <br />
 
 
@@ -251,6 +272,7 @@ Um Administrador consulta a listagem de todos os Clientes Registados.
 - **Headers**: 
   - `Content-Type`: `application/json`
 - **Response**:
+
   ```json
   {
    {
@@ -277,6 +299,7 @@ Um Administrador consulta a listagem de todos os Clientes Registados.
     }
   }
   ```
+
 <br />
 
 #### `GET /clients/{username}`
@@ -288,6 +311,7 @@ Um Administrador consulta o perfil de um Cliente.
 - **Headers**: 
   - `Content-Type`: `application/json`
 - **Response**:
+
   ```json
   {
     "address": "Rua das Igrejas",
@@ -319,6 +343,7 @@ Um Administrador consulta o perfil de um Cliente.
     "username": "Goncalo"
   }
   ```
+
 <br />
 
 #### `POST /clients`
@@ -330,6 +355,7 @@ Um Cliente efetua o registo na plataforma do sistema.
 - **Headers**: 
   - `Content-Type`: `application/json`
 - **Body**:
+
   ```json
   {
     "username": "john",
@@ -344,7 +370,9 @@ Um Cliente efetua o registo na plataforma do sistema.
     "address": "Rua x"
   }
   ```
+
 - **Response**:
+
   ```json
   {
     "address": "Rua x",
@@ -358,6 +386,7 @@ Um Cliente efetua o registo na plataforma do sistema.
     "username": "john"
   }
   ```
+
 <br />
 
 #### `GET /clients/{username}/orders`
@@ -369,6 +398,7 @@ Um Cliente consulta todas as suas encomendas realizadas
 - **Headers**: 
   - `Content-Type`: `application/json`
 - **Response**:
+
   ```json
   {
     "code": 3,
@@ -379,6 +409,7 @@ Um Cliente consulta todas as suas encomendas realizadas
     "usernameOperator": "DinisRX"
   }
   ```
+
 <br />  
 
 ### 5. **Encomendas**
@@ -392,6 +423,7 @@ Um Gestor consulta a listagem de todos as Encomendas efetuadas.
 - **Headers**: 
   - `Content-Type`: `application/json`
 - **Response**:
+
   ```json
   {
    {
@@ -420,6 +452,7 @@ Um Gestor consulta a listagem de todos as Encomendas efetuadas.
     }
   }
   ```
+
 <br />
 
 #### `GET /orders/{code}`
@@ -431,6 +464,7 @@ Um Gestor consulta uma Encomenda efetuada. Este método pode também ser usado p
 - **Headers**: 
   - `Content-Type`: `application/json`
 - **Response**:
+
   ```json
   {
     "code": 1258464486,
@@ -448,6 +482,7 @@ Um Gestor consulta uma Encomenda efetuada. Este método pode também ser usado p
     ]
   }
   ```
+
 <br />
 
 #### `GET /orders/{code}/volume/{id}`
@@ -459,6 +494,7 @@ Um Gestor consulta uma Encomenda efetuada e quere verificar um volume. Este mét
 - **Headers**: 
   - `Content-Type`: `application/json`
 - **Response**:
+
   ```json
   {
     "creationDate": "2024-10-24 23:16:00.991",
@@ -504,6 +540,7 @@ Um Gestor consulta uma Encomenda efetuada e quere verificar um volume. Este mét
     "state": "Minor damage"
   }
   ```
+
 <br />
 
 #### `POST /orders`
@@ -515,6 +552,7 @@ Um Cliente efetua uma Encomenda e a mesma é criada em sistema.
 - **Headers**: 
   - `Content-Type`: `application/json`
 - **Body**:
+
   ```json
   {
     "code": 1930548778,
@@ -525,7 +563,9 @@ Um Cliente efetua uma Encomenda e a mesma é criada em sistema.
     "usernameOperator": "DinisRX"
   }
   ```
+
 - **Response**:
+
   ```json
   {
     "code": 1930548778,
@@ -536,6 +576,7 @@ Um Cliente efetua uma Encomenda e a mesma é criada em sistema.
     "usernameOperator": "DinisRX"
   }
   ```
+
 <br />
 
 #### `PATCH /orders/{id}`
@@ -547,12 +588,15 @@ Um gestor altera o estado de uma encomenda especificada por {id}.
 - **Headers:** 
   - `Content-Type`: `application/json`
 - **Body:**
+
   ```json
   {
     "state": "Delivered"
   }
   ```
+
 - **Response:**
+
   ```json
   {
     "code": 761527421,
@@ -563,6 +607,7 @@ Um gestor altera o estado de uma encomenda especificada por {id}.
     "usernameOperator": "DinisRX"
   }
   ```
+
 <br />
 
 ### 6. **Produtos**
@@ -576,6 +621,7 @@ Um utilizador consulta todos os produtos na página de e-commerce.
 - **Headers**: 
   - `Content-Type`: `application/json`
 - **Response**:
+
   ```json
   [
     {
@@ -603,6 +649,7 @@ Um utilizador consulta todos os produtos na página de e-commerce.
     }
   ]
   ```
+
 <br/>
 
 #### `Get /products/{id}`
@@ -614,6 +661,7 @@ Um utilizador consulta um produto especifico.
 - **Headers**: 
   - `Content-Type`: `application/json`
 - **Response**:
+
   ```json
   {
     "available": true,
@@ -627,6 +675,7 @@ Um utilizador consulta um produto especifico.
     "warehouseName": "Leiria"
   }
   ```
+
 <br />
 
 #### `Get /products/{name}`
@@ -638,6 +687,7 @@ Um utilizador consulta todos os produtos que contenham a palavra {name}.
 - **Headers**: 
   - `Content-Type`: `application/json`
 - **Response**:
+
   ```json
   [
     {
@@ -665,17 +715,19 @@ Um utilizador consulta todos os produtos que contenham a palavra {name}.
     }
   ]
   ```
+
 <br />
 
 #### `GET /products/{id}/details`
 
 Um utilizador consulta os detalhes de um repectivo produto.
 
-- **URL**: `/products/1/details`
-- **Método**: `GET`
-- **Headers**: 
+- **URL:** `/products/1/details`
+- **Método:** `GET`
+- **Headers:** 
   - `Content-Type`: `application/json`
-- **Response**
+- **Response:**
+
   ```json
   {
   "available": true,
@@ -700,6 +752,7 @@ Um utilizador consulta os detalhes de um repectivo produto.
     }
   }
   ```
+
 <br />
 
 ### 7. **Armazéns**
@@ -708,11 +761,12 @@ Um utilizador consulta os detalhes de um repectivo produto.
 
 Um utilizador consulta os warehouses existentes.
 
-- **URL**: `/warehouses`
-- **Método**: `GET`
-- **Headers**: 
+- **URL:** `/warehouses`
+- **Método:** `GET`
+- **Headers:** 
   - `Content-Type`: `application/json`
-- **Response**:
+- **Response:**
+
   ```json
   [
     {
@@ -730,17 +784,19 @@ Um utilizador consulta os warehouses existentes.
     }
   ]
   ```
+
 <br />
 
 #### `Get /warehouses/{name}`
 
 Um utilizador consulta os dados de um warehouse especifico.
 
-- **URL**: `/warehouses/Leiria`
-- **Método**: `GET`
-- **Headers**: 
+- **URL:** `/warehouses/Leiria`
+- **Método:** `GET`
+- **Headers:**
   - `Content-Type`: `application/json`
-- **Response**:
+- **Response:**
+
   ```json
   {
     "address": "Rua das Igrejas",
@@ -749,17 +805,19 @@ Um utilizador consulta os dados de um warehouse especifico.
     "postalCode": "2565-834"
   }
   ```
+
 <br />
 
 #### `Get /warehouses/{name}/products`
 
 Um utilizador consulta todos os produtos que exitem num determindo warehouse.
 
-- **URL**: `/warehouses/Leiria/products`
-- **Método**: `GET`
-- **Headers**: 
+- **URL:** `/warehouses/Leiria/products`
+- **Método:** `GET`
+- **Headers:** 
   - `Content-Type`: `application/json`
-- **Response**:
+- **Response:** 
+
   ```json
   {
     "address": "Rua das Igrejas",
@@ -791,17 +849,19 @@ Um utilizador consulta todos os produtos que exitem num determindo warehouse.
     ]
   }
   ```
+
 <br />
 
 #### `Get /warehouses/{name}/products/{id}`
 
 Um utilizador consulta um determinado produto {id} num determinado warehouse {name}.
 
-- **URL**: `/warehouses/Leiria/products/1`
-- **Método**: `GET`
-- **Headers**: 
+- **URL:** `/warehouses/Leiria/products/1`
+- **Método:** `GET`
+- **Headers:** 
   - `Content-Type`: `application/json`
-- **Response**:
+- **Response:**
+
   ```json
   {
     "address": "Rua das Igrejas",
@@ -828,6 +888,7 @@ Um utilizador consulta um determinado produto {id} num determinado warehouse {na
     ]
   }
   ```
+
 <br />
 
 ### 8. **Fabricantes**
@@ -836,11 +897,12 @@ Um utilizador consulta um determinado produto {id} num determinado warehouse {na
 
 Um utilizador consulta os Suppliers existentes
 
-- **URL**: `/suppliers`
-- **Método**: `GET`
-- **Headers**: 
+- **URL:** `/suppliers`
+- **Método:** `GET`
+- **Headers:** 
   - `Content-Type`: `application/json`
-- **Response**:
+- **Response:**
+
   ```json
   [
     {
@@ -858,6 +920,7 @@ Um utilizador consulta os Suppliers existentes
     }
   ]
   ```
+
 <br />
 
 #### `GET /suppliers/{name}` ou `/suppliers/{name}/products`
@@ -865,10 +928,11 @@ Um utilizador consulta os Suppliers existentes
 Um utilizador consulta um determinado Supplier e os seus respectivos produtos
 
 - **URL:** `/suppliers/safari`
-- **Método**: `GET`
+- **Método:** `GET`
 - **Headers:** 
   - `Content-Type`: `application/json`
 - **Response:**
+
   ```json
   {
     "email": "safari@mail.com",
@@ -900,6 +964,7 @@ Um utilizador consulta um determinado Supplier e os seus respectivos produtos
     "username": "safari"
   }
   ```
+
 <br />
 
 #### `GET /suppliers/{name}/products/{id}`
@@ -911,6 +976,7 @@ Um utilizador efetua a consulta de um produto identificado por {id}, pertencente
 - **Headers:** 
   - `Content-Type`: `application/json`
 - **Response:**
+
   ```json
   {
     "email": "safari@mail.com",
@@ -931,6 +997,7 @@ Um utilizador efetua a consulta de um produto identificado por {id}, pertencente
     "username": "safari"
   }
   ```
+
 <br />
 
 #### `GET /suppliers/{name}/products/name/{string}`
@@ -942,6 +1009,7 @@ Um utilizador consulta diversos produtos com a designação {string}, pertencent
 - **Headers:** 
   - `Content-Type`: `application/json`
 - **Response:**
+
   ```json
   {
     "email": "safari@mail.com",
@@ -973,6 +1041,7 @@ Um utilizador consulta diversos produtos com a designação {string}, pertencent
     "username": "safari"
   }
   ```
+
 <br />
 
 ### 9. **Volumes**
@@ -982,10 +1051,11 @@ Um utilizador consulta diversos produtos com a designação {string}, pertencent
 Um administrador consulta os volumes existentes.
 
 - **URL:** `/volumes`
-- **Método**: `GET`
+- **Método:** `GET`
 - **Headers:** 
   - `Content-Type`: `application/json`
 - **Response:**
+
   ```json
   [
     {
@@ -1001,6 +1071,7 @@ Um administrador consulta os volumes existentes.
     }
   ]
   ```
+
 <br />
 
 #### `GET /volumes/{id}`
@@ -1070,6 +1141,7 @@ Um administrador consulta, ao detalhe, um volume registado.
 - **Headers:** 
   - `Content-Type`: `application/json`
 - **Response:**
+
   ```json
   {
     "creationDate": "2024-10-24 20:36:54.968",
@@ -1139,6 +1211,7 @@ Um administrador consulta, ao detalhe, um volume registado.
     "state": "Moderate damage"
   }
   ```
+
 <br />
 
 ### 10. **Sensores**
@@ -1148,10 +1221,11 @@ Um administrador consulta, ao detalhe, um volume registado.
 Um gestor consulta os sensores existentes.
 
  **URL:** `/sensors`
-- **Método**: `GET`
+- **Método:** `GET`
 - **Headers:** 
   - `Content-Type`: `application/json`
 - **Response:**
+
   ```json
   [
     {
@@ -1170,6 +1244,7 @@ Um gestor consulta os sensores existentes.
     }
   ]
   ```
+
 <br />
 
 #### `GET /sensors/{id}`
@@ -1177,10 +1252,11 @@ Um gestor consulta os sensores existentes.
 Um gestor consulta um sensor em específico.
 
 - **URL:** `/sensors/2`
-- **Método**: `GET`
+- **Método:** `GET`
 - **Headers:** 
   - `Content-Type`: `application/json`
 - **Response:**
+
   ```json
   {
     "busy": false,
@@ -1190,6 +1266,7 @@ Um gestor consulta um sensor em específico.
     "type": "Temperature"
   }
   ```
+
 <br />
 
 #### `GET /sensors/{id}/details`
@@ -1197,10 +1274,11 @@ Um gestor consulta um sensor em específico.
 Um gestor consulta detalhadamente um sensor em específico, contendo assim a informação do volume associado ao sensor especificado.
 
 - **URL:** `/sensors/1`
-- **Método**: `GET`
+- **Método:** `GET`
 - **Headers:** 
   - `Content-Type`: `application/json`
 - **Response:**
+
   ```json
   {
     "busy": false,
@@ -1215,6 +1293,7 @@ Um gestor consulta detalhadamente um sensor em específico, contendo assim a inf
     }
   }
   ```
+
 <br />
 
 #### `PATCH /sensors/{id}`
@@ -1222,16 +1301,19 @@ Um gestor consulta detalhadamente um sensor em específico, contendo assim a inf
 Um gestor altera o valor atual de um sensor especificando o seu {id}.
 
 - **URL:** `/sensors/1`
-- **Método**: `PATCH`
+- **Método:** `PATCH`
 - **Headers:** 
   - `Content-Type`: `application/json`
 - **Body:**
+
   ```json
   {
     "currentValue": 50
   }
   ```
+
 - **Response:**
+
   ```json
   {
     "busy": false,
@@ -1241,6 +1323,7 @@ Um gestor altera o valor atual de um sensor especificando o seu {id}.
     "type": "Temperature"
   }
   ```
+
 <br />
 
 ### 11. **Restrições**
@@ -1250,10 +1333,11 @@ Um gestor altera o valor atual de um sensor especificando o seu {id}.
 Um gestor consulta as restrições existentes.
 
 - **URL:** `/restrictions`
-- **Método**: `GET`
+- **Método:** `GET`
 - **Headers:** 
   - `Content-Type`: `application/json`
 - **Response:**
+
   ```json
   [
     {
@@ -1272,6 +1356,7 @@ Um gestor consulta as restrições existentes.
     }
   ]
   ```
+
 <br />
 
 #### `GET /restrictions{id}`
@@ -1283,6 +1368,7 @@ Um gestor consulta uma restrição em específico.
 - **Headers:** 
   - `Content-Type`: `application/json`
 - **Response:**
+
   ```json
   {
     "id": 1,
@@ -1291,6 +1377,7 @@ Um gestor consulta uma restrição em específico.
     "products": [],
     "type": "Temperature"
   }
+  ```
 
 <br />
 
@@ -1299,10 +1386,11 @@ Um gestor consulta uma restrição em específico.
 Um gestor consulta detalhadamente uma restrição em específico, obtendo também os produtos associados à mesma.
 
 - **URL:** `/restrictions/1/details`
-- **Método**: `GET`
+- **Método:** `GET`
 - **Headers:** 
   - `Content-Type`: `application/json`
 - **Response:**
+
   ```json
   {
     "id": 1,
@@ -1332,9 +1420,9 @@ Um gestor consulta detalhadamente uma restrição em específico, obtendo també
     ],
     "type": "Temperature"
   }
-  estou a testar o workflow do readme.md 
-<br />
+  ```
 
+<br/>
 
 ---
 
