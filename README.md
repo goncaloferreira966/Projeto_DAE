@@ -1,7 +1,7 @@
+# Projeto DAE
+
 | ![Imagem Esquerda](img/ipl.png) | ![Imagem Direita](img/encomenda.jpg) |
 |:---------------------------------------:|:---------------------------------------:|
-
-# Projeto DAE
 
 ## `API Documentation`
 
@@ -9,24 +9,27 @@
 
 ### `WeDelivery`
 
-Esta API permite responder a todo o tipo de Pedidos necessários ao negócio da empresa WeDelivery, empresa ligada ao serviço de transporte e armazenamento de embalagens e produtos. Fornece endpoints para todas as funcionalidades da nossa Aplicação WEB.
+Esta API permite responder a todo o tipo de Pedidos necessários ao negócio da 
+empresa WeDelivery, empresa ligada ao serviço de transporte e armazenamento de 
+embalagens e produtos. Fornece endpoints para todas as funcionalidades da nossa 
+Aplicação WEB.
 
 ---
 
 #### Índice
 
- **1.** [Autenticação](#auth)
- **2.** [Operadores](#operators)
- **3.** [Gestores](#managers)
- **4.** [Clientes](#clients)
- **5.** [Encomendas](#orders)
- **6.** [Produtos](#products)
- **7.** [Armazéns](#warehouses)
- **8.** [Fabricantes](#suppliers)
- **9.** [Volumes](#volumes)
- **10.** [Sensores](#sensors)
- **11.** [Restrições](#restrictions)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Créditos](#credits)
+ **1.** [Autenticação](#1-autenticação)
+ **2.** [Operadores](#2-operadores)
+ **3.** [Gestores](#3-gestores)
+ **4.** [Clientes](#4-clientes)
+ **5.** [Encomendas](#5-encomendas)
+ **6.** [Produtos](#6-produtos)
+ **7.** [Armazéns](#7-armazéns)
+ **8.** [Fabricantes](#8-fabricantes)
+ **9.** [Volumes](#9-volumes)
+ **10.** [Sensores](#10-sensores)
+ **11.** [Restrições](#11-restrições)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Créditos](#créditos)
 
 ---
 
@@ -37,8 +40,6 @@ Esta API permite responder a todo o tipo de Pedidos necessários ao negócio da 
 ---
 
 ## Endpoints
-
-<div id='auth'></div>  
 
 ### 1. **Autenticação**
 
@@ -64,9 +65,7 @@ Um User inicia sessão e recebe, para sua segurança, um token JWT.
     "expires_in": 3600
   }
   ```
-<br />
-
-<div id='operators'></div>  
+<br /> 
 
 ### 2. **Operadores**
 
@@ -142,7 +141,6 @@ Um Operador efetua o registo na plataforma do sistema.
     "username": "Ana"
   }
   ```
-<div id='managers'></div>  
 
 ### 3. **Gestores**
 
@@ -241,7 +239,6 @@ Um Gestor consulta todas as encomendas a si associadas.
   ```
 <br />
 
-<div id='clients'></div>  
 
 ### 4. **Clientes**
 
@@ -382,9 +379,7 @@ Um Cliente consulta todas as suas encomendas realizadas
     "usernameOperator": "DinisRX"
   }
   ```
-<br />
-
-<div id='orders'></div>  
+<br />  
 
 ### 5. **Encomendas**
 
@@ -556,6 +551,7 @@ Um gestor altera o estado de uma encomenda especificada por {id}.
   {
     "state": "Delivered"
   }
+  ```
 - **Response:**
   ```json
   {
@@ -568,8 +564,6 @@ Um gestor altera o estado de uma encomenda especificada por {id}.
   }
   ```
 <br />
-
-<div id='products'></div>
 
 ### 6. **Produtos**
 
@@ -708,8 +702,6 @@ Um utilizador consulta os detalhes de um repectivo produto.
   ```
 <br />
 
-<div id='warehouses'></div>  
-
 ### 7. **Armazéns**
 
 #### `Get /warehouses`
@@ -837,8 +829,6 @@ Um utilizador consulta um determinado produto {id} num determinado warehouse {na
   }
   ```
 <br />
-
-<div id='suppliers'></div>  
 
 ### 8. **Fabricantes**
 
@@ -984,8 +974,6 @@ Um utilizador consulta diversos produtos com a designação {string}, pertencent
   }
   ```
 <br />
-
-<div id='volumes'></div>
 
 ### 9. **Volumes**
 
@@ -1153,8 +1141,6 @@ Um administrador consulta, ao detalhe, um volume registado.
   ```
 <br />
 
-<div id='sensors'></div>
-
 ### 10. **Sensores**
 
 #### `GET /sensors`
@@ -1244,6 +1230,7 @@ Um gestor altera o valor atual de um sensor especificando o seu {id}.
   {
     "currentValue": 50
   }
+  ```
 - **Response:**
   ```json
   {
@@ -1255,8 +1242,6 @@ Um gestor altera o valor atual de um sensor especificando o seu {id}.
   }
   ```
 <br />
-
-<div id='restrictions'></div>
 
 ### 11. **Restrições**
 
@@ -1352,7 +1337,6 @@ Um gestor consulta detalhadamente uma restrição em específico, obtendo també
 
 
 ---
-<div id='credits'></div>  
 
 ## **Créditos**
 
