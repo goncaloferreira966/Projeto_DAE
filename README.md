@@ -17,7 +17,8 @@ Aplicação WEB.
 ---
 
 #### Índice
-&nbsp;&nbsp;&nbsp;&nbsp;[Diagrama da Base de Dados](#diagramabd)
+
+&nbsp;&nbsp;&nbsp;&nbsp;[Diagrama da Base de Dados](#diagrama-da-base-de-dados)
 &nbsp;&nbsp;&nbsp;&nbsp;[Endpoints da API](#1-autenticação)
  **1.** [Autenticação](#1-autenticação)
  **2.** [Operadores](#2-operadores)
@@ -33,7 +34,6 @@ Aplicação WEB.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Créditos](#créditos)
 
 ---
-<div id='diagramabd'></div>  
 
 ### Diagrama da Base de dados
 
