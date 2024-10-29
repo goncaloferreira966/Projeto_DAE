@@ -957,49 +957,6 @@ pertencente a um fornecedor designado por `{name}`.
   }
   ```
 
-#### `GET /suppliers/{name}/products/name/{string}`
-
-Um utilizador consulta diversos produtos com a designação {string}, pertencentes
-ao fornecedor identificado por {name}.
-
-- **URL:** `/suppliers/safari/products/name/S`
-- **Método**: `GET`
-- **Headers:**
-  - `Content-Type`: `application/json`
-- **Response:**
-
-  ```json
-  {
-    "email": "safari@mail.com",
-    "name": "Safari, LDA",
-    "password": "qwerty",
-    "products": [
-      {
-        "available": true,
-        "description": "Sprite",
-        "haveSensor": false,
-        "id": 3,
-        "image": "sprite.jpg",
-        "name": "Sprite",
-        "price": 1.5,
-        "quantity": 100
-      },
-      ...,
-      {
-        "available": true,
-        "description": "Sumol",
-        "haveSensor": false,
-        "id": 6,
-        "image": "sumol.jpg",
-        "name": "Sumol",
-        "price": 1.5,
-        "quantity": 100
-      }
-    ],
-    "username": "safari"
-  }
-  ```
-
 ### 9. **Volumes**
 
 #### `GET /volumes`

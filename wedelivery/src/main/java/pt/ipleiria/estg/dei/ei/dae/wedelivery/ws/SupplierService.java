@@ -50,7 +50,7 @@ public class SupplierService {
     }
 
     /////TEMOS DE CONFIRMAR ESTE ENDPOINT POIS TEM 4 /
-    @GET
+    /*@GET
     @Path("{username}/products/name/{name}")
     public Response getSupplierProductByName(@PathParam("username") String username, @PathParam("name") String name) {
         var supplier = supplierBean.find(username);
@@ -59,7 +59,7 @@ public class SupplierService {
         var productDTOs = ProductDTO.from(products);
         supplierDTO.setProducts(productDTOs);
         return Response.ok(supplierDTO).build();
-    }
+    }*/
 
     @GET
     @Path("{username}/products")
