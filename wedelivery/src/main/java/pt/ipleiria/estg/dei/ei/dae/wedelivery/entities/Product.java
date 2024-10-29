@@ -1,8 +1,4 @@
 package pt.ipleiria.estg.dei.ei.dae.wedelivery.entities;
-
-import jakarta.ejb.EJB;
-import jakarta.enterprise.inject.Default;
-import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
@@ -35,9 +31,11 @@ public class Product {
     private long id;
     @NotNull
     private String name;
+    @NotNull
     private String description;
     @NotNull
     private double price;
+    @NotNull
     private String image;
     @NotNull
     private int quantity;
