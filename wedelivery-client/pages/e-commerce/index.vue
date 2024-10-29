@@ -53,7 +53,7 @@
                                 </div>
                             </div>
                             <button style="float: right" class="btn btn-primary mt-3" :disabled="!product.quantity"
-                                @click="addToCart(product.id)">
+                                @click="addToCart(product)">
                                 <i class="bi bi-bag-plus"></i>
                                 {{ product.quantity ? 'Add to Cart' : 'Out of Stock' }}
                             </button>
@@ -71,6 +71,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRuntimeConfig } from '#imports'
+import { useCartStore } from '@/stores/cart'
 definePageMeta({
     layout: 'default'
 });
@@ -114,8 +115,10 @@ const searchProducts = async () => {
 }
 
 // Função para adicionar o produto ao carrinho
-const addToCart = (productId) => {
-    alert(`Product ${productId} added to cart!`)
+const addToCart = (product) => {
+    const cartStore = useCartStore(); // Get the cart store
+    cartStore.addToCart(product); // Call the addToCart action from the store
+    alert(`Product ${product.name} added to cart!`); // Alert with product name
 }
 
 // Carrega os produtos ao montar o componente

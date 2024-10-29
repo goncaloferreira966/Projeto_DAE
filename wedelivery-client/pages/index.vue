@@ -12,9 +12,11 @@
 </template>
 
 <script setup>
+
 definePageMeta({
   layout: 'default' // Garante que o layout padrão seja usado
 });
+
 </script>
 
 <style scoped>
