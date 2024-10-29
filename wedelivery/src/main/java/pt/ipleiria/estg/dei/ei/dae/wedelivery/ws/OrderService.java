@@ -1,10 +1,12 @@
 package pt.ipleiria.estg.dei.ei.dae.wedelivery.ws;
 import jakarta.ejb.EJB;
+import jakarta.mail.MessagingException;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.*;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.*;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Client;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Order;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
@@ -30,7 +32,8 @@ public class OrderService {
     private ProductBean productBean;
     @EJB
     private ClientBean clientBean;
-
+    @EJB
+    private EmailBean emailBean;
 
 
     @GET // means: to call this endpoint, we need to use the HTTP GET method
@@ -76,7 +79,7 @@ public class OrderService {
     @POST
     @Path("/")
     public Response createNewOrder (OrderRequestDTO orderRequestDTO)
-            throws MyEntityExistsException, MyEntityNotFoundException, MyConstraintViolationException {
+            throws MyEntityExistsException, MyEntityNotFoundException, MyConstraintViolationException, MessagingException {
         var newOrderID = Math.abs(UUID.randomUUID().hashCode());
         orderBean.create(newOrderID, new Date(), new Date(), "Goncalo","DinisRX", "Pending");
         long volumeID = Math.abs(UUID.randomUUID().hashCode());
@@ -84,6 +87,13 @@ public class OrderService {
         for (ProductDTO productDTO : orderRequestDTO.getProductsDTOs()) {
             volumeBean.addProductToVolume(volumeID, productDTO.getId()); // Get product ID from the item
         }
+
+        emailBean.send(orderBean.find(newOrderID).getClient().getEmail(),
+                "Order " + newOrderID + " created",
+                "Order " + newOrderID + " created");
+
+
+
         return Response.status(Response.Status.CREATED)
                 .entity("Order created successfully with ID: " + newOrderID)
                 .build();
