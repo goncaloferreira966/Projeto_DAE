@@ -61,10 +61,8 @@ public class Sensor {
         return expedition;
     }
     public Volume getVolume() {
-        if (volume == null)
-            throw new RuntimeException("Sensor " + id + " doesn't have a volume");
-        return volume;}
-
+        return volume;
+    }
     public void setId(long id) {
         this.id = id;
     }

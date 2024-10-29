@@ -1228,22 +1228,6 @@ Um gestor altera o valor atual de um sensor especificando o seu {id}.
   }
   ```
 
-  #### `DELETE /sensors/{id}`
-
-Um gestor elimina um sensor especificando o seu {id}.
-
-- **URL:** `/sensors/1`
-- **Método:** `DELETE`
-- **Headers:**
-  - `Content-Type`: `application/json`
-- **Response:**
-
-  ```json
-  {
-    Sensor com ID 3 foi excluído com sucesso.
-  }
-  ```
-
 ### 11. **Restrições**
 
 #### `GET /restrictions`

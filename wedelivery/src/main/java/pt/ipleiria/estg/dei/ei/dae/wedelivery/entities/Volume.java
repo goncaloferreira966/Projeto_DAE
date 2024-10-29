@@ -1,8 +1,6 @@
 package pt.ipleiria.estg.dei.ei.dae.wedelivery.entities;
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-
 import java.time.LocalDate;
 import java.util.*;
 

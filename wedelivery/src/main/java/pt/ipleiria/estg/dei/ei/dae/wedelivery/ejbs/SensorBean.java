@@ -3,6 +3,7 @@ package pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import jakarta.validation.ConstraintViolationException;
@@ -60,10 +61,7 @@ public class SensorBean {
     }
 
     public void delete(Sensor sensor) {
-        if(sensor.getVolume() == null){
-            entityManager.remove(sensor);
-            entityManager.flush(); // Garantir que a operação seja aplicada imediatamente
-        }
+        entityManager.remove(sensor);
     }
 
     /*****************  Sensor -> Volume  ***********************************/
