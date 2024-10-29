@@ -10,7 +10,9 @@ import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationEx
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityNotFoundException;
 
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Path("orders") // relative url web path for this service
 @Produces({MediaType.APPLICATION_JSON}) // injects header “Content-Type: application/json”
@@ -26,6 +28,8 @@ public class OrderService {
     private SensorBean sensorBean;
     @EJB
     private ProductBean productBean;
+    @EJB
+    private ClientBean clientBean;
 
 
 
@@ -71,21 +75,20 @@ public class OrderService {
 
     @POST
     @Path("/")
-    public Response createNewOrder (OrderDTO orderDTO, VolumeDTO volumeDTO)
+    public Response createNewOrder (OrderRequestDTO orderRequestDTO)
             throws MyEntityExistsException, MyEntityNotFoundException, MyConstraintViolationException {
-        orderBean.create(
-                orderDTO.getCode(),
-                orderDTO.getPurchaseDate(),
-                orderDTO.getDeliveryDate(),
-                orderDTO.getUsername(),
-                orderDTO.getUsernameOperator(),
-                orderDTO.getState()
-        );
-        Order newOrder = orderBean.find(orderDTO.getCode());
+        var newOrderID = Math.abs(UUID.randomUUID().hashCode());
+        orderBean.create(newOrderID, new Date(), new Date(), "Goncalo","DinisRX", "Pending");
+        long volumeID = Math.abs(UUID.randomUUID().hashCode());
+        volumeBean.create(volumeID, "Pending", new Date(),newOrderID);
+        for (ProductDTO productDTO : orderRequestDTO.getProductsDTOs()) {
+            volumeBean.addProductToVolume(volumeID, productDTO.getId()); // Get product ID from the item
+        }
         return Response.status(Response.Status.CREATED)
-                .entity(OrderDTO.from(newOrder))
+                .entity("Order created successfully with ID: " + newOrderID)
                 .build();
     }
+
 
     @PATCH
     @Path("{code}")

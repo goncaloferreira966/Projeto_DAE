@@ -23,13 +23,31 @@ POST http://localhost:8080/wedelivery/api/orders
 Content-Type: application/json
 
 {
-  "code": 1930548778,
-  "deliveryDate": "2024-10-20T23:02:22.383Z[UTC]",
-  "purchaseDate": "2024-10-20T23:02:22.383Z[UTC]",
-  "state": "Pending",
-  "username": "Guilherme",
-  "usernameOperator": "DinisRX"
+  "items": [
+  {
+    "available": true,
+    "description": "Sprite",
+    "haveSensor": false,
+    "id": 3,
+    "image": "sprite.jpg",
+    "name": "Sprite",
+    "price": 1.5,
+    "quantity": 1
+  },
+  {
+    "available": true,
+    "description": "Sumol",
+    "haveSensor": false,
+    "id": 6,
+    "image": "sumol.jpg",
+    "name": "Sumol",
+    "price": 1.5,
+    "quantity": 1
+  }
+  ],
+  "totalPrice": 26
 }
+
 
 ### Update order Value
 PATCH http://localhost:8080/wedelivery/api/orders/761527421
