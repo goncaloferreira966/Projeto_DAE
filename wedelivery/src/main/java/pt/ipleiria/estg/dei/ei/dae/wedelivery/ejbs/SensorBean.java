@@ -60,8 +60,13 @@ public class SensorBean {
         entityManager.merge(sensor);  // Atualiza o sensor na bd
     }
 
-    public void delete(Sensor sensor) {
-        entityManager.remove(sensor);
+    public boolean delete(Sensor sensor) {
+        Sensor managedSensor = entityManager.find(Sensor.class, sensor.getId());
+        if (managedSensor != null && managedSensor.getVolume() == null) {
+            entityManager.remove(managedSensor);
+            return true;
+        }
+        return false;
     }
 
     /*****************  Sensor -> Volume  ***********************************/

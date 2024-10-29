@@ -1,6 +1,8 @@
 package pt.ipleiria.estg.dei.ei.dae.wedelivery.entities;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import org.hibernate.annotations.Cascade;
+
 import java.time.LocalDate;
 import java.util.*;
 
@@ -48,7 +50,7 @@ public class Volume {
     )
     private List<Product> products;
 
-    @OneToMany(mappedBy = "volume")
+    @OneToMany(mappedBy = "volume", cascade = CascadeType.REMOVE)
     private List<Sensor> sensors;
 
     @ManyToOne

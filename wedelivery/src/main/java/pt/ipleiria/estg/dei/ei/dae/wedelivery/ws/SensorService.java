@@ -60,4 +60,19 @@ public class SensorService {
         SensorDTO sensorDTOUpdated = SensorDTO.from(sensor);
         return Response.ok(sensorDTOUpdated).build();
     }
+
+    @DELETE
+    @Path("{id}")
+    public Response delete(@PathParam("id") long id) {
+        Sensor sensor = sensorBean.find(id);
+        if (sensor == null) {
+            return Response.status(Response.Status.NOT_FOUND).entity("Sensor não encontrado").build();
+        }
+        if(sensorBean.delete(sensor)){
+            return Response.ok("Sensor com ID " + id + " foi removido com sucesso.").build();
+        }
+        else{
+            return Response.ok("Sensor com ID " + id + " foi removido sem sucesso.").build();
+        }
+    }
 }
