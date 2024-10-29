@@ -59,6 +59,13 @@ public class SensorBean {
         entityManager.merge(sensor);  // Atualiza o sensor na bd
     }
 
+    public void delete(Sensor sensor) {
+        if(sensor.getVolume() == null){
+            entityManager.remove(sensor);
+            entityManager.flush(); // Garantir que a operação seja aplicada imediatamente
+        }
+    }
+
     /*****************  Sensor -> Volume  ***********************************/
     public List<Sensor> findAllSensorsByVolumeId(long id) {
         return entityManager.createNamedQuery("getAllSensorsByVolume", Sensor.class)
