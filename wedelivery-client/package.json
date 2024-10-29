@@ -11,11 +11,13 @@
     "test": "concurrently \"npm run dev\" \"wait-on http://localhost:3000 && cypress run\""
   },
   "dependencies": {
+    "@pinia/nuxt": "^0.5.5",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
     "nuxt": "^3.13.2",
-    "vue": "latest",
-    "vue-router": "latest"
+    "pinia": "^2.2.4",
+    "vue": "3.5.12",
+    "vue-router": "4.4.5"
   },
   "devDependencies": {
     "@cypress/vite-dev-server": "^5.2.0",
