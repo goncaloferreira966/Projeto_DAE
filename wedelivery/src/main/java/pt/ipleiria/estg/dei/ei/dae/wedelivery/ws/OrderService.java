@@ -96,7 +96,7 @@ public class OrderService {
 
         emailBean.send(orderBean.find(newOrderID).getClient().getEmail(),
                 "Order " + newOrderID + " created",
-                "Order " + newOrderID + " created");
+                "Order " + newOrderID + " created successfully.");
 
 
 

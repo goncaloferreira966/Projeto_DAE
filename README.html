@@ -471,6 +471,36 @@ Aplicação WEB.</p>
   <span class="token property">"state"</span><span class="token operator">:</span> <span class="token string">"In Distribution"</span><span class="token punctuation">,</span>
   <span class="token property">"usernameOperator"</span><span class="token operator">:</span> <span class="token string">"DinisRX"</span>
 <span class="token punctuation">}</span>
+</code></pre><h4><code>POST /clients/Goncalo/email</code></h4>
+</li>
+</ul>
+<p>Um Cliente efetua uma encomenda, e o método post da encomenda chama este endpoint, posteriormente o cliente é notificado por e-mail.</p>
+<ul>
+<li>
+<p><strong>URL</strong>: <code>/clients/{username}/email</code></p>
+</li>
+<li>
+<p><strong>Método</strong>: <code>POST</code></p>
+</li>
+<li>
+<p><strong>Headers</strong>:</p>
+<ul>
+<li><code>Content-Type</code>: <code>application/json</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Body</strong>:</p>
+<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"subject"</span><span class="token operator">:</span> <span class="token string">"Order 756754685648 created"</span><span class="token punctuation">,</span>
+  <span class="token property">"body"</span><span class="token operator">:</span> <span class="token string">"Order 756754685648 created successfully."</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+<li>
+<p><strong>Response</strong>:</p>
+<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"status"</span><span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span>
+  <span class="token property">"message"</span><span class="token operator">:</span> <span class="token string">"E-mail sent"</span>
+<span class="token punctuation">}</span>
 </code></pre></li>
 </ul>
 <h3 id="5-encomendas">5. <strong>Encomendas</strong> </h3>

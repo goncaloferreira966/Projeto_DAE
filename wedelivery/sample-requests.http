@@ -78,15 +78,6 @@ GET http://localhost:8080/wedelivery/api/orders/1258464486/volume/1494305280
 Accept: application/json
 
 
-### Create A New manager
-POST http://localhost:8080/wedelivery/api/clients/Cristiano/email
-Content-Type: application/json
-
-{
-  "subject": "olaolaola",
-  "body": "mundomindomudno"
-}
-
 ### REQUEST JWT TOKEN - LOGIN
 POST http://localhost:8080/wedelivery/api/auth/login
 Content-Type: application/json
@@ -100,4 +91,5 @@ Accept: application/json
 ### GET ALL STUDENTS
 GET http://localhost:8080/wedelivery/api/clients
 Accept: application/json
-Authorization: Bearer <token>
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvIiwiaWF0IjoxNzMwODIzNDY3LCJleHAiOjE3MzA4MjcwNjd9.IKMxEEsro8Ze6CYvmnaBxvbkTmWTYNVG-aPVOeZtugvd-3retcZzW9AR61KtBhgl
+

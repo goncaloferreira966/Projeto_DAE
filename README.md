@@ -398,6 +398,32 @@ Um Cliente consulta todas as suas encomendas realizadas
   }
   ```
 
+  #### `POST /clients/Goncalo/email`
+
+Um Cliente efetua uma encomenda, e o método post da encomenda chama este endpoint, posteriormente o cliente é notificado por e-mail.
+
+- **URL**: `/clients/{username}/email`
+- **Método**: `POST`
+- **Headers**:
+  - `Content-Type`: `application/json`
+- **Body**:
+
+  ```json
+  {
+    "subject": "Order 756754685648 created",
+    "body": "Order 756754685648 created successfully."
+  }
+  ```
+
+- **Response**:
+
+  ```json
+  {
+    "status": 200,
+    "message": "E-mail sent"
+  }
+  ```
+
 ### 5. **Encomendas**
 
 #### `GET /orders`
