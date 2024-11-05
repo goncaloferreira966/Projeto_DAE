@@ -1,8 +1,11 @@
 package pt.ipleiria.estg.dei.ei.dae.wedelivery.ws;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.ejb.EJB;
 import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.SecurityContext;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.ManagerDTO;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.OrderDTO;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.ManagerBean;
@@ -11,13 +14,18 @@ import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Manager;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityNotFoundException;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.security.Authenticated;
 
 import java.util.List;
 
 @Path("managers") // relative url web path for this service
 @Produces({MediaType.APPLICATION_JSON}) // injects header “Content-Type: application/json”
 @Consumes({MediaType.APPLICATION_JSON}) // injects header “Accept: application/json”
+@Authenticated
+@RolesAllowed({"Manager", "Operator"})
 public class ManagerService {
+    @Context
+    private SecurityContext securityContext;
     @EJB
     private ManagerBean managerBean;
     @EJB

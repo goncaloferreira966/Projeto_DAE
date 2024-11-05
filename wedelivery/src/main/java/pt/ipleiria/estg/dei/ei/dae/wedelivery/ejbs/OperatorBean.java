@@ -1,16 +1,15 @@
 package pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs;
 import jakarta.ejb.Stateless;
+import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import jakarta.validation.ConstraintViolationException;
-import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Client;
-import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Manager;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Operator;
-import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Sensor;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityNotFoundException;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.security.Hasher;
 
 import java.util.List;
 
@@ -18,6 +17,8 @@ import java.util.List;
 public class OperatorBean {
     @PersistenceContext
     private EntityManager entityManager;
+    @Inject
+    private Hasher hasher;
 
     public void create(String email, String name, String password, String username)
             throws MyEntityNotFoundException, MyEntityExistsException,
@@ -29,7 +30,7 @@ public class OperatorBean {
                         "Client with username '" + username + "' already exists");
             }
 
-            var operator = new Operator(email, name, password, username);
+            var operator = new Operator(email, name, hasher.hash(password), username);
             entityManager.persist(operator);
 
             entityManager.flush();
@@ -40,6 +41,7 @@ public class OperatorBean {
     }
 
     public void update(Operator operator) {
+        operator.setPassword(hasher.hash(operator.getPassword()));
         entityManager.merge(operator);  // Atualiza o operator na bd
     }
 

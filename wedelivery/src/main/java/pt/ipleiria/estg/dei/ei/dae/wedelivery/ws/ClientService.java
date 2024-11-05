@@ -1,7 +1,10 @@
 package pt.ipleiria.estg.dei.ei.dae.wedelivery.ws;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.mail.MessagingException;
 import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.SecurityContext;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.ClientDTO;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.EmailDTO;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.OrderDTO;
@@ -14,13 +17,18 @@ import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Client;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityNotFoundException;
-
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.security.Authenticated;
 import java.util.List;
 
 @Path("clients") // relative url web path for this service
 @Produces({MediaType.APPLICATION_JSON}) // injects header “Content-Type: application/json”
 @Consumes({MediaType.APPLICATION_JSON}) // injects header “Accept: application/json”
+@Authenticated
+//Estas roles têm acesso a todos os métodos deste service
+@RolesAllowed({"Manager", "Operator"})
 public class ClientService {
+    @Context
+    private SecurityContext securityContext;
     @EJB
     private ClientBean clientBean;
     @EJB
@@ -36,7 +44,14 @@ public class ClientService {
 
     @GET
     @Path("{username}")
+    @RolesAllowed({"Client"})//Acesso apenas a este método
     public Response getClient(@PathParam("username") String username) {
+        //Verifica se o utilizador pode ter acesso ou nao
+        var principal = securityContext.getUserPrincipal();
+        if(!principal.getName().equals(username)) {
+            return Response.status(Response.Status.FORBIDDEN).build();
+        }
+
         var client = clientBean.findWithOrders(username);
         var clientDTO = ClientDTO.from(client);
         clientDTO.setOrders(OrderDTO.from(client.getOrders()));
@@ -66,8 +81,15 @@ public class ClientService {
 
     @GET
     @Path("{username}/orders") // Define o caminho para incluir o ID do cliente
-    public List<OrderDTO> getOrdersByClient(@PathParam("username") String username) {
-        return OrderDTO.from(orderBean.findOrdersByClientId(username));
+    @RolesAllowed({"Client"})
+    public Response getOrdersByClient(@PathParam("username") String username) {
+        //Verifica se o utilizador pode ter acesso ou nao
+        var principal = securityContext.getUserPrincipal();
+        if(!principal.getName().equals(username)) {
+            return Response.status(Response.Status.FORBIDDEN).build();
+        }
+
+        return Response.ok(OrderDTO.from(orderBean.findOrdersByClientId(username))).build();
     }
 
     @POST

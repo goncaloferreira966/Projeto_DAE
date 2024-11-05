@@ -62,8 +62,8 @@ Um User inicia sessão e recebe, para sua segurança, um token JWT.
 - **Body**:
 
   ```json
-  {
-    "email": "user@example.com",
+  { 
+    "username": "Goncalo",
     "password": "password"
   }
   ```
@@ -72,8 +72,9 @@ Um User inicia sessão e recebe, para sua segurança, um token JWT.
 
   ```json
   {
-    "token": "jwt_token",
-    "expires_in": 3600
+    "token": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvIiwiaW
+    F0IjoxNzMwODIxMzM0LCJleHAiOjE3MzA4MjQ5MzR9.ZDP7ZR4DT6ktuX
+    78kVLAQpf9Yb715YS93QQ3Wj29LAapxCGOzGege3PuZy4Mt9hH"
   }
   ```
 
@@ -1414,7 +1415,7 @@ produtos associados à mesma.
 
 ##### `2223281` [@GuilhermeCruzPT](https://github.com/GuilhermeCruzPT)
 
-##### `2222313` [dinisroxo99](https://github.com/dinisroxo99)
+##### `2222313` [@dinisroxo99](https://github.com/dinisroxo99)
 
 ---
 

@@ -1,5 +1,6 @@
 package pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs;
 import jakarta.ejb.Stateless;
+import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
@@ -10,6 +11,7 @@ import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Sensor;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityNotFoundException;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.security.Hasher;
 
 import java.util.List;
 
@@ -17,6 +19,8 @@ import java.util.List;
 public class ClientBean {
     @PersistenceContext
     private EntityManager entityManager;
+    @Inject
+    private Hasher hasher;
 
     public void create(String username, String password, String name, String email, int nif, String postalCode, String country, String city, String address)
             throws MyEntityNotFoundException, MyEntityExistsException,
@@ -27,7 +31,7 @@ public class ClientBean {
                         "Client with username '" + username + "' already exists");
             }
 
-            var client = new Client(email, name, password, username, nif, postalCode, city, country, address);
+            var client = new Client(email, name, hasher.hash(password), username, nif, postalCode, city, country, address);
             entityManager.persist(client);
 
             entityManager.flush();
@@ -57,6 +61,7 @@ public class ClientBean {
     }
 
     public void update(Client client) {
+        client.setPassword(hasher.hash(client.getPassword()));
         entityManager.merge(client);  // Atualiza o client na bd
     }
 

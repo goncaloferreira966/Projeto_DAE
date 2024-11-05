@@ -1,9 +1,12 @@
 package pt.ipleiria.estg.dei.ei.dae.wedelivery.ws;
 
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.ejb.EJB;
 import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.SecurityContext;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.ProductDTO;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.SupplierDTO;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.WarehouseDTO;
@@ -17,8 +20,10 @@ import java.util.List;
 @Path("/warehouses")
 @Produces({MediaType.APPLICATION_JSON}) // injects header “Content-Type: application/json”
 @Consumes({MediaType.APPLICATION_JSON})
+@RolesAllowed({"Manager", "Operator", "Supplier"})
 public class WarehouseService {
-
+    @Context
+    private SecurityContext securityContext;
     @EJB
     private WarehouseBean warehouseBean;
 

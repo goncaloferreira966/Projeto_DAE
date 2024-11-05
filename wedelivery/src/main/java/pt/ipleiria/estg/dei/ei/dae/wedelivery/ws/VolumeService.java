@@ -1,9 +1,12 @@
 package pt.ipleiria.estg.dei.ei.dae.wedelivery.ws;
 
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.ejb.EJB;
 import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.SecurityContext;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.*;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.*;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Volume;
@@ -13,7 +16,10 @@ import java.util.List;
 @Path("volumes") // relative url web path for this service
 @Produces({MediaType.APPLICATION_JSON}) // injects header “Content-Type: application/json”
 @Consumes({MediaType.APPLICATION_JSON}) // injects header “Accept: application/json”
+@RolesAllowed({"Manager", "Operator"})
 public class VolumeService {
+    @Context
+    private SecurityContext securityContext;
     @EJB
     private VolumeBean volumeBean;
     @EJB

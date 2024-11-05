@@ -91,9 +91,4 @@ public class ProductService {
         productDTO.setSupplier(supplierDTO);
         return Response.ok(productDTO).build();
     }
-
-
-
-
-
 }

@@ -1,12 +1,14 @@
 package pt.ipleiria.estg.dei.ei.dae.wedelivery.ws;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.ejb.EJB;
 import jakarta.mail.MessagingException;
 import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.SecurityContext;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.*;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.*;
-import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Client;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Order;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
@@ -19,7 +21,10 @@ import java.util.UUID;
 @Path("orders") // relative url web path for this service
 @Produces({MediaType.APPLICATION_JSON}) // injects header “Content-Type: application/json”
 @Consumes({MediaType.APPLICATION_JSON})
+@RolesAllowed({"Manager", "Operator"})
 public class OrderService {
+    @Context
+    private SecurityContext securityContext;
     @EJB
     private OrderBean orderBean;
     @EJB
@@ -78,6 +83,7 @@ public class OrderService {
 
     @POST
     @Path("/")
+    @RolesAllowed({"Client"})
     public Response createNewOrder (OrderRequestDTO orderRequestDTO)
             throws MyEntityExistsException, MyEntityNotFoundException, MyConstraintViolationException, MessagingException {
         var newOrderID = Math.abs(UUID.randomUUID().hashCode());

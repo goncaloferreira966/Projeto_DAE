@@ -1,8 +1,11 @@
 package pt.ipleiria.estg.dei.ei.dae.wedelivery.ws;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.ejb.EJB;
 import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.SecurityContext;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.ClientDTO;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.OrderDTO;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.SensorDTO;
@@ -15,10 +18,12 @@ import java.util.List;
 @Path("sensors") // relative url web path for this service
 @Produces({MediaType.APPLICATION_JSON}) // injects header “Content-Type: application/json”
 @Consumes({MediaType.APPLICATION_JSON}) // injects header “Accept: application/json”
+@RolesAllowed({"Manager", "Operator"})
 public class SensorService {
+    @Context
+    private SecurityContext securityContext;
     @EJB
     private SensorBean sensorBean;
-
     @GET // means: to call this endpoint, we need to use the HTTP GET method
     @Path("/") // means: the relative url path is “/api/sensors/”
     public List<SensorDTO> getAllSensors() {

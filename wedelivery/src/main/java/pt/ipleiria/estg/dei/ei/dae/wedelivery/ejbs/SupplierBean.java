@@ -1,6 +1,7 @@
 package pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs;
 
 import jakarta.ejb.Stateless;
+import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
@@ -12,6 +13,7 @@ import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Supplier;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityNotFoundException;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.security.Hasher;
 
 import java.util.List;
 
@@ -19,6 +21,8 @@ import java.util.List;
 public class SupplierBean {
     @PersistenceContext
     private EntityManager entityManager;
+    @Inject
+    private Hasher hasher;
 
     public void create(String username, String password, String name, String email)
             throws MyEntityNotFoundException, MyEntityExistsException,
@@ -29,7 +33,7 @@ public class SupplierBean {
                         "Supplier with username '" + username + "' already exists");
             }
 
-            var supplier = new Supplier(email, name, password, username);
+            var supplier = new Supplier(email, name, hasher.hash(password), username);
             entityManager.persist(supplier);
 
             entityManager.flush();
@@ -73,6 +77,7 @@ public class SupplierBean {
     }
 
     public void update(Supplier supplier) {
+        supplier.setPassword(hasher.hash(supplier.getPassword()));
         entityManager.merge(supplier);  // Atualiza o supplier na bd
     }
 }

@@ -86,3 +86,18 @@ Content-Type: application/json
   "subject": "olaolaola",
   "body": "mundomindomudno"
 }
+
+### REQUEST JWT TOKEN - LOGIN
+POST http://localhost:8080/wedelivery/api/auth/login
+Content-Type: application/json
+Accept: application/json
+
+{
+"username": "Goncalo",
+"password": "password"
+}
+
+### GET ALL STUDENTS
+GET http://localhost:8080/wedelivery/api/clients
+Accept: application/json
+Authorization: Bearer <token>
