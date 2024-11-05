@@ -542,7 +542,29 @@ Um Cliente efetua uma Encomenda e a mesma é criada em sistema.
     "purchaseDate": "2024-10-20T23:02:22.383Z[UTC]",
     "state": "Pending",
     "username": "Guilherme",
-    "usernameOperator": "DinisRX"
+    "items": [
+      {
+        "available": true,
+        "description": "Sprite",
+        "haveSensor": false,
+        "id": 3,
+        "image": "sprite.jpg",
+        "name": "Sprite",
+        "price": 1.5,
+        "quantity": 1
+      },
+      {
+        "available": true,
+        "description": "Sumol",
+        "haveSensor": false,
+        "id": 6,
+        "image": "sumol.jpg",
+        "name": "Sumol",
+        "price": 1.5,
+        "quantity": 1
+      }
+    ],
+  "totalPrice": 26
   }
   ```
 
@@ -555,7 +577,52 @@ Um Cliente efetua uma Encomenda e a mesma é criada em sistema.
     "purchaseDate": "2024-10-20T23:02:22.383Z[UTC]",
     "state": "Pending",
     "username": "Guilherme",
-    "usernameOperator": "DinisRX"
+    "usernameOperator": "DinisRX",
+    "volumes":[
+    {
+        "creationDate": "2024-10-24 00:00:00.0",
+        "id": 121270755,
+        "state": "Significant damage",
+        "products": [
+        {
+          "available": true,
+          "description": "Sprite",
+          "haveSensor": false,
+          "id": 3,
+          "image": "sprite.jpg",
+          "name": "Sprite",
+          "price": 1.5,
+          "quantity": 1
+        },
+        {
+          "available": true,
+          "description": "Sumol",
+          "haveSensor": false,
+          "id": 6,
+          "image": "sumol.jpg",
+          "name": "Sumol",
+          "price": 1.5,
+          "quantity": 1
+        }
+      ],
+       "sensors": [
+        {
+          "busy": false,
+          "currentValue": 20,
+          "expedition": false,
+          "id": 5,
+          "type": "Temperature"
+        },
+        {
+          "busy": false,
+          "currentValue": 20,
+          "expedition": false,
+          "id": 25,
+          "type": "humidity"
+        }
+      ],
+     }
+    ]
   }
   ```
 
