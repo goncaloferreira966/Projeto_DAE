@@ -128,7 +128,7 @@ Um Administrador consulta o perfil de um Operador.
 
 #### `POST /operators`
 
-Um Operador efetua o registo na plataforma do sistema.
+Um Administrador efetua o registo de um Operador na plataforma do sistema.
 
 - **URL**: `/operators`
 - **Método**: `POST`
@@ -206,7 +206,7 @@ Um Administrador consulta o perfil de um Gestor.
 
 #### `POST /managers`
 
-Um Gestor efetua o registo na plataforma do sistema.
+Um Administrador efetua o registo de um Gestor na plataforma do sistema.
 
 - **URL**: `/managers`
 - **Método**: `POST`
@@ -467,8 +467,7 @@ Um Gestor consulta a listagem de todos as Encomendas efetuadas.
 
 #### `GET /orders/{code}`
 
-Um Gestor consulta uma Encomenda efetuada. Este método pode também ser usado por
-um Cliente que deseje consultar uma Encomenda efetuada por si.
+Um Gestor consulta uma Encomenda efetuada.
 
 - **URL**: `/orders/1258464486`
 - **Método**: `GET`
