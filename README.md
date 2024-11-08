@@ -654,7 +654,7 @@ Um Cliente efetua uma Encomenda e a mesma é criada em sistema.
 
 #### `PATCH /orders/{id}`
 
-Um gestor altera o estado de uma encomenda especificada por {id}.
+Um Gestor altera o estado de uma encomenda especificada por {id}.
 
 - **URL:** `/orders/761527421`
 - **Método:** `PATCH`
@@ -685,7 +685,7 @@ Um gestor altera o estado de uma encomenda especificada por {id}.
 
 #### `Get /products`
 
-Um utilizador consulta todos os produtos na página de e-commerce.
+Um Utilizador consulta todos os produtos na página de e-commerce.
 
 - **URL:** `/products`
 - **Método:** `GET`
@@ -723,7 +723,7 @@ Um utilizador consulta todos os produtos na página de e-commerce.
 
 #### `Get /products/{id}`
 
-Um utilizador consulta um produto especifico.
+Um Utilizador consulta um produto especifico.
 
 - **URL:** `/products/2`
 - **Método:** `GET`
@@ -747,7 +747,7 @@ Um utilizador consulta um produto especifico.
 
 #### `Get /products/{name}`
 
-Um utilizador consulta todos os produtos que contenham a palavra {name}.
+Um Utilizador consulta todos os produtos que contenham a palavra {name}.
 
 - **URL:** `/products/S`
 - **Método:** `GET`
@@ -785,7 +785,7 @@ Um utilizador consulta todos os produtos que contenham a palavra {name}.
 
 #### `GET /products/{id}/details`
 
-Um utilizador consulta os detalhes de um repectivo produto.
+Um Utilizador consulta os detalhes de um repectivo produto.
 
 - **URL:** `/products/1/details`
 - **Método:** `GET`
@@ -822,7 +822,7 @@ Um utilizador consulta os detalhes de um repectivo produto.
 
 #### `Get /warehouses`
 
-Um utilizador consulta os warehouses existentes.
+Um Gestor consulta os warehouses existentes.
 
 - **URL:** `/warehouses`
 - **Método:** `GET`
@@ -850,7 +850,7 @@ Um utilizador consulta os warehouses existentes.
 
 #### `Get /warehouses/{name}`
 
-Um utilizador consulta os dados de um warehouse especifico.
+Um Gestor consulta os dados de um warehouse especifico.
 
 - **URL:** `/warehouses/Leiria`
 - **Método:** `GET`
@@ -869,7 +869,7 @@ Um utilizador consulta os dados de um warehouse especifico.
 
 #### `Get /warehouses/{name}/products`
 
-Um utilizador consulta todos os produtos que exitem num determindo warehouse.
+Um Gestor consulta todos os produtos que exitem num determindo warehouse.
 
 - **URL:** `/warehouses/Leiria/products`
 - **Método:** `GET`
@@ -911,7 +911,7 @@ Um utilizador consulta todos os produtos que exitem num determindo warehouse.
 
 #### `Get /warehouses/{name}/products/{id}`
 
-Um utilizador consulta um determinado produto {id} num determinado warehouse {name}.
+Um Gestor consulta um determinado produto {id} num determinado warehouse {name}.
 
 - **URL:** `/warehouses/Leiria/products/1`
 - **Método:** `GET`
@@ -950,7 +950,7 @@ Um utilizador consulta um determinado produto {id} num determinado warehouse {na
 
 #### `GET /suppliers`
 
-Um utilizador consulta os Suppliers existentes
+Um Gestor consulta os Suppliers existentes
 
 - **URL:** `/suppliers`
 - **Método:** `GET`
@@ -978,7 +978,7 @@ Um utilizador consulta os Suppliers existentes
 
 #### `GET /suppliers/{name}` ou `/suppliers/{name}/products`
 
-Um utilizador consulta um determinado Supplier e os seus respectivos produtos
+Um Gestor consulta um determinado Supplier e os seus respectivos produtos
 
 - **URL:** `/suppliers/safari`
 - **Método:** `GET`
@@ -1020,7 +1020,7 @@ Um utilizador consulta um determinado Supplier e os seus respectivos produtos
 
 #### `GET /suppliers/{name}/products/{id}`
 
-Um utilizador efetua a consulta de um produto identificado por `{id}`,
+Um Gestor efetua a consulta de um produto identificado por `{id}`,
 pertencente a um fornecedor designado por `{name}`.
 
 - **URL:** `/suppliers/safari/products/2`
@@ -1054,7 +1054,7 @@ pertencente a um fornecedor designado por `{name}`.
 
 #### `GET /volumes`
 
-Um administrador consulta os volumes existentes.
+Um Gestor consulta os volumes existentes.
 
 - **URL:** `/volumes`
 - **Método:** `GET`
@@ -1080,7 +1080,7 @@ Um administrador consulta os volumes existentes.
 
 #### `GET /volumes/{id}`
 
-Um administrador consulta um volume registado.
+Um Gestor consulta um volume registado.
 
 - **URL:** `/volumes/1058107426`
 - **Método**: `GET`
@@ -1138,7 +1138,7 @@ Um administrador consulta um volume registado.
 
 #### `GET /volumes/{id}/details`
 
-Um administrador consulta, ao detalhe, um volume registado.
+Um Gestor consulta, ao detalhe, um volume registado.
 
 - **URL:** `/volumes/1058107426/details`
 - **Método**: `GET`
@@ -1220,7 +1220,7 @@ Um administrador consulta, ao detalhe, um volume registado.
 
 #### `GET /sensors`
 
-Um gestor consulta os sensores existentes.
+Um Gestor consulta os sensores existentes.
 
 - **URL:** `/sensors`
 - **Método:** `GET`
@@ -1249,7 +1249,7 @@ Um gestor consulta os sensores existentes.
 
 #### `GET /sensors/{id}`
 
-Um gestor consulta um sensor em específico.
+Um Gestor consulta um sensor em específico.
 
 - **URL:** `/sensors/2`
 - **Método:** `GET`
@@ -1269,7 +1269,7 @@ Um gestor consulta um sensor em específico.
 
 #### `GET /sensors/{id}/details`
 
-Um gestor consulta detalhadamente um sensor em específico, contendo assim a
+Um Gestor consulta detalhadamente um sensor em específico, contendo assim a
 informação do volume associado ao sensor especificado.
 
 - **URL:** `/sensors/1`
@@ -1323,7 +1323,7 @@ Um gestor altera o valor atual de um sensor especificando o seu {id}.
 
   #### `DELETE /sensors/{id}`
 
-Um gestor elimina um sensor especificando o seu {id}.
+Um Gestor elimina um sensor especificando o seu {id}.
 
 - **URL:** `/sensors/1`
 - **Método:** `DELETE`
@@ -1341,7 +1341,7 @@ Um gestor elimina um sensor especificando o seu {id}.
 
 #### `GET /restrictions`
 
-Um gestor consulta as restrições existentes.
+Um Gestor consulta as restrições existentes.
 
 - **URL:** `/restrictions`
 - **Método:** `GET`
@@ -1370,7 +1370,7 @@ Um gestor consulta as restrições existentes.
 
 #### `GET /restrictions{id}`
 
-Um gestor consulta uma restrição em específico.
+Um Gestor consulta uma restrição em específico.
 
 - **URL:** `/restrictions/1`
 - **Método**: `GET`
@@ -1390,7 +1390,7 @@ Um gestor consulta uma restrição em específico.
 
 #### `GET /restrictions{id}/details`
 
-Um gestor consulta detalhadamente uma restrição em específico, obtendo também os
+Um Gestor consulta detalhadamente uma restrição em específico, obtendo também os
 produtos associados à mesma.
 
 - **URL:** `/restrictions/1/details`
