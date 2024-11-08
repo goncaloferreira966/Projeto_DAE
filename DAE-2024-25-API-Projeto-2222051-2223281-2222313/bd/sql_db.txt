@@ -1,0 +1,91 @@
+ Table user {
+  username varchar(255) [pk, increment]
+  password varchar(255) [not null]
+  name varchar(255) [not null]
+  email varchar(255) [unique, not null]
+ }
+
+ Table client {
+  username varchar(255) [ref: > user.username]
+  nif int(9) [unique, not null]
+  postal_code varchar(8) [not null]
+  country varchar(255) [not null]
+  city varchar(255) [not null]
+  address varchar(255) [not null]
+  orders list [ref: > order.code]
+ }
+
+ Table operator {
+  username varchar(255) [ref: > user.username]
+  orders List [ref: > order.code]
+ }
+
+ Table Maneger {
+  username varchar(255) [ref: > user.username]
+ }
+
+ Table supplier {
+  username varchar(255) [ref: > user.username]
+  products list [ref: > product.id]
+ }
+
+ Table order {
+  code int [pk, increment]
+  purchase_date date [not null]
+  delivery_date date
+  state varchar(255)
+  client int [ref: > client.username]
+  operator int [ref: > operator.username]
+  volume list [ref: > volume.id]
+ }
+
+ Table volume {
+  id int [pk, increment]
+  state varchar(255)
+  creation_date date [not null]
+  sensor list [ref: > sensor.id]
+  products list [ref: > product.id]
+  order list [ref: > order.code, not null]
+ }
+
+ Table sensor {
+  id int [pk, increment]
+  type varchar(255) [not null]
+  current_value int
+  history list
+  busy bool
+  expedition bool
+  volume int [ref: > volume.id]
+ }
+
+ Table product {
+  id int [pk, increment]
+  name varchar(255) [not null]
+  image varchar(255) [not null]
+  description varchar(255) [not null]
+  price double [not null]
+  quantity int [not null]
+  available bool [not null]
+  have_box bool [not null]
+  restriction list [ref: > restriction.id] 
+  supplier list [ref: > supplier.username]
+  warehouse list [ref: > warehouse.name]
+  volume list [ref: > volume.id]
+ }
+
+ Table restriction {
+  id int [pk, increment]
+  type varchar(255) [not null]
+  max_value int
+  min_value int
+  products list [ref: > product.id]
+ }
+
+ Table warehouse {
+  name varchar(255) [pk, increment]
+  postal_code varchar(8) [not null]
+  country varchar(255) [not null]
+  city varchar(255) [not null]
+  address varchar(255) [not null]
+  products list [not null, ref: > product.id]
+ }
