@@ -131,6 +131,8 @@ public class ProductBean {
             entityManager.merge(product);
         }
     }
+
+
     public Warehouse findWithWarehouse(long id){
         if (!exists(id)) {
             throw new MyEntityNotFoundException("Product with id " + id + " not found");

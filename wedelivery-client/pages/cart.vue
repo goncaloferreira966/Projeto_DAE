@@ -120,6 +120,9 @@ const config = useRuntimeConfig();
 const cartStore = useCartStore();
 const items = computed(() => cartStore.items);
 const totalPrice = computed(() => cartStore.totalPrice);
+const notify = (message) => {
+    alert(message);
+};
 
 const removeItem = (productId) => {
     cartStore.removeFromCart(productId);
@@ -145,21 +148,7 @@ const validateAndSend = async () => {
 };
 const sendItems = async () => {
     try {
-        // Validate items and total price
-        if (!Array.isArray(items.value) || items.value.length === 0) {
-            throw new Error('Items are empty or invalid.');
-        }
-        
-        if (typeof totalPrice.value !== 'number' || totalPrice.value < 0) {
-            throw new Error('Total price is invalid.');
-        }
-
-        // Log the payload
-        console.log('Sending items:', {
-            items: items.value,
-            totalPrice: totalPrice.value + 20,
-        });
-
+        console.log('Enviando itens...', items.value, totalPrice.value);
         const response = await fetch(config.public.API_URL + '/orders', {
             method: 'POST',
             headers: {
@@ -170,23 +159,18 @@ const sendItems = async () => {
                 totalPrice: totalPrice.value + 20,
             }),
         });
-
-        console.log('Response:', response);
-
+       
         if (!response.ok) {
-            const errorData = await response.json(); // Get error details from response
-            throw new Error(`Error ${response.status}: ${errorData.message || 'Unknown error'}`);
+            const errorData = await response.json();
+            throw new Error(`Erro ${response.status}: ${errorData.message || 'Erro desconhecido'}`);
         }
-
+        alert('Pedido criado com sucesso. ID: ' + data.orderId);
         const data = await response.json();
-        console.log('Order created successfully:', data);
-        
-        // Clear the cart after successful order
-        cartStore.clearCart();
     } catch (error) {
-        console.error('There was a problem with the fetch operation:', error);
+        console.error('Erro na operação fetch:', error);
     }
 };
+
 </script>
 
 <style scoped>

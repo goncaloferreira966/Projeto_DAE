@@ -2,6 +2,7 @@ package pt.ipleiria.estg.dei.ei.dae.wedelivery.ws;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.ejb.EJB;
 import jakarta.mail.MessagingException;
+import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
@@ -10,6 +11,7 @@ import jakarta.ws.rs.core.SecurityContext;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.*;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.*;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Order;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Volume;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityNotFoundException;
@@ -39,7 +41,8 @@ public class OrderService {
     private ClientBean clientBean;
     @EJB
     private EmailBean emailBean;
-
+    @EJB
+    private WarehouseBean warehouseBean;
 
     @GET // means: to call this endpoint, we need to use the HTTP GET method
     @Path("/") // means: the relative url path is “/api/clients/”
@@ -86,25 +89,43 @@ public class OrderService {
     @RolesAllowed({"Client"})
     public Response createNewOrder (OrderRequestDTO orderRequestDTO)
             throws MyEntityExistsException, MyEntityNotFoundException, MyConstraintViolationException, MessagingException {
-        var newOrderID = Math.abs(UUID.randomUUID().hashCode());
+        long newOrderID = Math.abs(UUID.randomUUID().hashCode());
         orderBean.create(newOrderID, new Date(), new Date(), "Goncalo","DinisRX", "Pending");
-        long volumeID = Math.abs(UUID.randomUUID().hashCode());
-        volumeBean.create(volumeID, "Pending", new Date(),newOrderID);
+        var order = orderBean.find(newOrderID);
+        newOrderID = order.getCode();
+
         for (ProductDTO productDTO : orderRequestDTO.getProductsDTOs()) {
-            volumeBean.addProductToVolume(volumeID, productDTO.getId()); // Get product ID from the item
+
+           if (volumeBean.findVolumesByOrderId(newOrderID).isEmpty()){
+               var newVolumeID = Math.abs(UUID.randomUUID().hashCode());
+                  volumeBean.create(newVolumeID, "Pending", new Date(),newOrderID);
+                  productBean.addProductInVolume(productDTO.getId(), newVolumeID, productDTO.getQuantity());
+           } else {
+               for (Volume volume : volumeBean.findVolumesByOrderId(newOrderID)){
+                   var products = productBean.findAllProductsByVolumeId(volume.getId());
+                   if (products.stream().noneMatch(product -> product.getWarehouse().getName() == productBean.findById(productDTO.getId()).getWarehouse().getName())){
+                       productBean.addProductInVolume(productDTO.getId(), volume.getId(), productDTO.getQuantity());
+                   }else {
+                       var newVolumeID = Math.abs(UUID.randomUUID().hashCode());
+                       volumeBean.create(newVolumeID, "Pending", new Date(),newOrderID);
+                       productBean.addProductInVolume(productDTO.getId(), newVolumeID, productDTO.getQuantity());
+                   }
+               }
+           }
+        }
+        var orderDTO = OrderDTO.from(order);
+        var volume = volumeBean.findVolumesByOrderId(newOrderID);
+        List<VolumeDTO> volumeDTOs = VolumeDTO.from(volume);
+        for (VolumeDTO volumeDTO : volumeDTOs ){
+            orderDTO.addVolume(volumeDTO);
         }
 
-        emailBean.send(orderBean.find(newOrderID).getClient().getEmail(),
-                "Order " + newOrderID + " created",
-                "Order " + newOrderID + " created successfully.");
-
-
+        emailBean.send(orderBean.find(newOrderID).getClient().getEmail(), "Order " + newOrderID + " created", "Order " + newOrderID + " created successfully.");
 
         return Response.status(Response.Status.CREATED)
-                .entity("Order created successfully with ID: " + newOrderID)
+                .entity(volumeDTOs)
                 .build();
     }
-
 
     @PATCH
     @Path("{code}")

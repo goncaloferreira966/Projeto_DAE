@@ -6,7 +6,7 @@ export default defineNuxtConfig({
     'bootstrap/dist/css/bootstrap.css',
   ],
   plugins: [],
-
+  modulesDir: ['../../node_modules'],
   devtools: { enabled: true },
 
   runtimeConfig: {

@@ -7,7 +7,7 @@ GET http://localhost:8080/wedelivery/api/orders/
 Accept: application/json
 
 ### Get All orders by code with all volumes
-GET http://localhost:8080/wedelivery/api/orders/1258464486
+GET http://localhost:8080/wedelivery/api/orders/497232379
 
 ### Get order by code with volume by id
 GET http://localhost:8080/wedelivery/api/orders/1258464486/volume/1494305280
@@ -50,7 +50,7 @@ Content-Type: application/json
 
 
 ### Update order Value
-PATCH http://localhost:8080/wedelivery/api/orders/761527421
+PATCH http://localhost:8080/wedelivery/api/orders/964018722
 Content-Type: application/json
 
 {

@@ -9,6 +9,7 @@ import jakarta.validation.ConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Product;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Sensor;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Volume;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Warehouse;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityNotFoundException;
@@ -109,6 +110,7 @@ public class VolumeBean {
                 .setParameter("code", id)
                 .getResultList();
     }
+
 
 
 
