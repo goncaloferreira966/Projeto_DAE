@@ -46,11 +46,9 @@ public class ClientService {
     @RolesAllowed({"Client"})//Acesso apenas a este método
     public Response getClient(@PathParam("username") String username) {
         //Verifica se o utilizador pode ter acesso ou nao
-
-        
         var principal = securityContext.getUserPrincipal();
-
-        if(!principal.getName().equals(username)) {
+        
+        if(securityContext.isUserInRole("Client") && !principal.getName().equals(username)) {
             return Response.status(Response.Status.FORBIDDEN).build();
         }
 
@@ -59,6 +57,7 @@ public class ClientService {
         clientDTO.setOrders(OrderDTO.from(client.getOrders()));
         return Response.ok(clientDTO).build();
     }
+
 
     @POST
     @Path("/")
