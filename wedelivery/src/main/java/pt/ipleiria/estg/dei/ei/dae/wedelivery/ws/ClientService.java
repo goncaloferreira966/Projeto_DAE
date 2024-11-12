@@ -24,7 +24,6 @@ import java.util.List;
 @Produces({MediaType.APPLICATION_JSON}) // injects header “Content-Type: application/json”
 @Consumes({MediaType.APPLICATION_JSON}) // injects header “Accept: application/json”
 @Authenticated
-//Estas roles têm acesso a todos os métodos deste service
 @RolesAllowed({"Manager", "Operator"})
 public class ClientService {
     @Context
@@ -47,7 +46,10 @@ public class ClientService {
     @RolesAllowed({"Client"})//Acesso apenas a este método
     public Response getClient(@PathParam("username") String username) {
         //Verifica se o utilizador pode ter acesso ou nao
+
+        
         var principal = securityContext.getUserPrincipal();
+
         if(!principal.getName().equals(username)) {
             return Response.status(Response.Status.FORBIDDEN).build();
         }

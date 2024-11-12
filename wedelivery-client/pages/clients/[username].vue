@@ -27,27 +27,27 @@
           <div class="col-md-8" style="padding-left: 2%;">
             <div class="card">
               <div class="card-header bg-secondary">
-              <ul class="nav nav-tabs card-header-tabs">
-                <li class="nav-item">
-                  <a class="nav-link active " aria-current="true" href="#">All</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white" href="#">Completed</a>
-                </li>
-                <li class="nav-item ">
-                  <a class="nav-link text-white " href="#" tabindex="-1" aria-disabled="true">In Distribution</a>
-                </li>
-                <li class="nav-item ">
-                  <a class="nav-link text-white " href="#" tabindex="-1" aria-disabled="true">Pending</a>
-                </li>
-                <li class="nav-item ">
-                  <a class="nav-link text-white " href="#" tabindex="-1" aria-disabled="true">Shipped</a>
-                </li>
-              </ul>
-            </div>
+                <ul class="nav nav-tabs card-header-tabs">
+                  <li class="nav-item">
+                    <a class="nav-link active " aria-current="true" href="#">All</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-white" href="#">Completed</a>
+                  </li>
+                  <li class="nav-item ">
+                    <a class="nav-link text-white " href="#" tabindex="-1" aria-disabled="true">In Distribution</a>
+                  </li>
+                  <li class="nav-item ">
+                    <a class="nav-link text-white " href="#" tabindex="-1" aria-disabled="true">Pending</a>
+                  </li>
+                  <li class="nav-item ">
+                    <a class="nav-link text-white " href="#" tabindex="-1" aria-disabled="true">Shipped</a>
+                  </li>
+                </ul>
+              </div>
               <div class="row" style="padding: 1%;">
                 <div v-for="(order) in client.orders" :key="order.code" class="col-md-6 mb-3">
-                  <div class="card border-secondary" >
+                  <div class="card border-secondary">
                     <div class="card-header bg-secondary text-white">
                       <h6><strong>Order Code:</strong> {{ order.code }}</h6>
                     </div>
@@ -108,7 +108,12 @@ const client = ref(null);  // Armazenar os detalhes do cliente
 const loadClientData = async () => {
   try {
     // Usar $fetch para obter os dados do cliente
-    const response = await $fetch(`${api}/clients/${username}`);
+    const token = localStorage.getItem('AccessToken');
+    const response = await $fetch(`${api}/clients/${username}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
 
     // Verifica se a resposta inclui orders
     if (!response.orders) {

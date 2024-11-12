@@ -65,6 +65,7 @@ definePageMeta({
 
 const config = useRuntimeConfig();
 const api = config.public.API_URL;
+const token = localStorage.getItem('AccessToken');
 const { data: clients, error, refresh } = await useFetch(`${api}/clients`,{
   headers: {
     Authorization: `Bearer ${token}`

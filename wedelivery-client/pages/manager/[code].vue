@@ -58,7 +58,8 @@
 
       </div>
       <div class="card-footer text-center">
-        <button @click.prevent="refresh" class="btn btn-info ml-2"><i class="bi bi-arrow-clockwise"></i> Refresh Data</button>
+        <button @click.prevent="refresh" class="btn btn-info ml-2"><i class="bi bi-arrow-clockwise"></i> Refresh
+          Data</button>
       </div>
     </div>
 
@@ -91,7 +92,13 @@ const client = ref(null) // Armazenar os detalhes do cliente
 const loadOrderAndClient = async () => {
   try {
     // Primeiro, carrega os dados do pedido
-    const { data: orderData, error: orderError } = await useFetch(`${api}/orders/${code}`)
+    const token = localStorage.getItem('AccessToken');
+    const { data: orderData, error: orderError } = await useFetch(`${api}/orders/${code}`
+      , {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
     if (orderError.value) {
       messages.value.push(orderError.value)
       return
