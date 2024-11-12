@@ -65,7 +65,11 @@ definePageMeta({
 
 const config = useRuntimeConfig();
 const api = config.public.API_URL;
-const { data: clients, error, refresh } = await useFetch(`${api}/clients`);
+const { data: clients, error, refresh } = await useFetch(`${api}/clients`,{
+  headers: {
+    Authorization: `Bearer ${token}`
+  }
+});
 
 const selectedUsername = ref('');
 

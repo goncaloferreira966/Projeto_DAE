@@ -59,7 +59,13 @@ definePageMeta({
 
 const config = useRuntimeConfig();
 const api = config.public.API_URL;
-const { data: orders, error, refresh } = await useFetch(`${api}/orders`);
+const token = localStorage.getItem('AccessToken');
+const { data: orders, error, refresh } = await useFetch(`${api}/orders`,{
+  headers: {
+    Authorization: `Bearer ${token}`
+  }
+});
+
 const id_order = ref(0);
 
 const selectedUsername = ref('');
