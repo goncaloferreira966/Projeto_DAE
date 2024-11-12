@@ -47,7 +47,7 @@ public class ClientService {
     public Response getClient(@PathParam("username") String username) {
         //Verifica se o utilizador pode ter acesso ou nao
         var principal = securityContext.getUserPrincipal();
-        
+
         if(securityContext.isUserInRole("Client") && !principal.getName().equals(username)) {
             return Response.status(Response.Status.FORBIDDEN).build();
         }

@@ -21,7 +21,7 @@
                         <nuxt-link class="nav-link" to="/clients"><i class="bi bi-person"></i> Clients</nuxt-link>
                     </li>
                     <li v-if="isLoggedIn" class="nav-item">
-                        <nuxt-link class="nav-link" to="/cart"><i class="bi bi-cart-fill"></i> Cart</nuxt-link>
+                        <nuxt-link class="nav-link" to="/cart"><i class="bi bi-cart"></i> Cart</nuxt-link>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
