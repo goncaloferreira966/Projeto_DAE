@@ -15,6 +15,7 @@ import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Volume;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityNotFoundException;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.security.Authenticated;
 
 import java.util.Date;
 import java.util.List;
@@ -23,6 +24,7 @@ import java.util.UUID;
 @Path("orders") // relative url web path for this service
 @Produces({MediaType.APPLICATION_JSON}) // injects header “Content-Type: application/json”
 @Consumes({MediaType.APPLICATION_JSON})
+@Authenticated
 @RolesAllowed({"Manager", "Operator"})
 public class OrderService {
     @Context

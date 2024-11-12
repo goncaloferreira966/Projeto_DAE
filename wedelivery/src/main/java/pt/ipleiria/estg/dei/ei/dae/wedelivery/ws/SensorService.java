@@ -12,12 +12,14 @@ import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.SensorDTO;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.VolumeDTO;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.SensorBean;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Sensor;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.security.Authenticated;
 
 import java.util.List;
 
 @Path("sensors") // relative url web path for this service
 @Produces({MediaType.APPLICATION_JSON}) // injects header “Content-Type: application/json”
 @Consumes({MediaType.APPLICATION_JSON}) // injects header “Accept: application/json”
+@Authenticated
 @RolesAllowed({"Manager", "Operator"})
 public class SensorService {
     @Context

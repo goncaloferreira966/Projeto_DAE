@@ -14,12 +14,14 @@ import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.ProductBean;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.SupplierBean;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.WarehouseBean;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Warehouse;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.security.Authenticated;
 
 import java.util.List;
 
 @Path("/warehouses")
 @Produces({MediaType.APPLICATION_JSON}) // injects header “Content-Type: application/json”
 @Consumes({MediaType.APPLICATION_JSON})
+@Authenticated
 @RolesAllowed({"Manager", "Operator", "Supplier"})
 public class WarehouseService {
     @Context

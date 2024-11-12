@@ -11,12 +11,14 @@ import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.ProductDTO;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.RestrictionDTO;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.RestrictionBean;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Restriction;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.security.Authenticated;
 
 import java.util.List;
 
 @Path("restrictions") // relative url web path for this service
 @Produces({MediaType.APPLICATION_JSON}) // injects header “Content-Type: application/json”
 @Consumes({MediaType.APPLICATION_JSON}) // injects header “Accept: application/json”
+@Authenticated
 @RolesAllowed({"Manager", "Operator"})
 public class RestrictionService {
     @Context
