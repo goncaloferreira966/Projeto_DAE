@@ -71,6 +71,7 @@
         localStorage.setItem("AccessToken", token);
 
         this.$emit("login-success");
+        window.location.href = '/e-commerce';
 
         // Decodifica o payload do token
 

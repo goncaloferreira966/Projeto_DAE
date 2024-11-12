@@ -23,14 +23,14 @@
                     <li class="nav-item">
                         <nuxt-link class="nav-link" to="/cart"><i class="bi bi-cart-fill"></i> Cart</nuxt-link>
                     </li>
-
-
-
                 </ul>
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
+                    <li v-if="!isLoggedIn" class="nav-item">
                         <nuxt-link class="nav-link" to="/login"><i class="bi bi-box-arrow-in-right"></i>
                             Login</nuxt-link>
+                    </li>
+                    <li v-else class="nav-item">
+                        <button @click="handleLogout" class="btn nav-link"><i class="bi bi-box-arrow-right"></i> Logout</button>
                     </li>
                 </ul>
             </div>
@@ -39,6 +39,23 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue';
+
+const isLoggedIn = ref(false);
+
+onMounted(() => {
+    // Verifica se o token de acesso está no localStorage
+    isLoggedIn.value = !!localStorage.getItem('AccessToken');
+});
+
+function handleLogout() {
+    // Remove o token e atualiza a variável de estado
+    localStorage.removeItem('AccessToken');
+    isLoggedIn.value = false;
+    // Redireciona para a página de login
+    window.location.href = '/login';
+}
+
 
 </script>
 
