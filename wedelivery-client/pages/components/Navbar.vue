@@ -11,16 +11,16 @@
                     <li class="nav-item">
                         <nuxt-link class="nav-link" to="/"><i class="bi bi-house"></i> Home</nuxt-link>
                     </li>
-                    <li class="nav-item">
+                    <li v-if="isLoggedIn" class="nav-item">
                         <nuxt-link class="nav-link" to="/manager"><i class="bi bi-box-seam"></i> Orders</nuxt-link>
                     </li>
-                    <li class="nav-item">
+                    <li v-if="isLoggedIn" class="nav-item">
                         <nuxt-link class="nav-link" to="/e-commerce"><i class="bi bi-shop"></i> E-Commerce</nuxt-link>
                     </li>
-                    <li class="nav-item">
+                    <li v-if="isLoggedIn" class="nav-item">
                         <nuxt-link class="nav-link" to="/clients"><i class="bi bi-person"></i> Clients</nuxt-link>
                     </li>
-                    <li class="nav-item">
+                    <li v-if="isLoggedIn" class="nav-item">
                         <nuxt-link class="nav-link" to="/cart"><i class="bi bi-cart-fill"></i> Cart</nuxt-link>
                     </li>
                 </ul>
