@@ -14,13 +14,15 @@
               <th>Code</th>
               <th>Purchase Date</th>
               <th>State</th>
+              <th>Delivery Date</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>{{ order.code }}</td>
-              <td>{{ order.purchaseDate }}</td>
+              <td>{{ formatDate(order.purchaseDate) }}</td>
               <td>{{ order.state }}</td>
+              <td>{{ formatDate(order.deliveryDate) }}</td>
             </tr>
           </tbody>
         </table>
@@ -48,10 +50,15 @@
           <div style="display: flex;" class="col-md-1">
 
           </div>
-          <div style="display: flex;" class="col-md-9">
-            <div class="card">
-              <h5>Order Information and Content</h5>
-
+            <div v-for="(volume, index) in order.volumes" :key="index" class="col-md-4">
+              <div class="card">
+                <div class="card-body">
+                <h4>Volume ID: {{ volume.id }}</h4>
+                <p><strong>State:</strong> {{ volume.state }}</p>
+                <p><strong>Creation Date:</strong> {{ volume.creationDate }}</p>
+                <p><strong>Sensors:</strong> {{ volume.sensors }}</p>
+                <p><strong>Products:</strong> {{ volume.products }}</p>
+                </div>
             </div>
           </div>
         </div>
@@ -88,6 +95,7 @@ const messages = ref([]) // Armazenar mensagens de erro
 const order = ref(null)  // Armazenar os detalhes do pedido
 const client = ref(null) // Armazenar os detalhes do cliente
 
+
 // Função assíncrona para carregar dados do pedido e cliente
 const loadOrderAndClient = async () => {
   try {
@@ -119,7 +127,11 @@ const loadOrderAndClient = async () => {
     messages.value.push("Unexpected error: " + err.message)
   }
 }
-
+const formatDate = (timestamp) => {
+  if (!timestamp) return "N/A"; // Retorna "N/A" caso o valor seja nulo ou indefinido
+  return new Date(timestamp).toLocaleString("pt-PT"); // Converte para uma data legível
+};
 // Chama a função para carregar os dados
 await loadOrderAndClient()
+
 </script>

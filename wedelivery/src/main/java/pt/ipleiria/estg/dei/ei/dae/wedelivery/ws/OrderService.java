@@ -17,9 +17,7 @@ import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityNotFoundException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.security.Authenticated;
 
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Path("orders") // relative url web path for this service
 @Produces({MediaType.APPLICATION_JSON}) // injects header “Content-Type: application/json”
@@ -92,42 +90,64 @@ public class OrderService {
     public Response createNewOrder (OrderRequestDTO orderRequestDTO)
             throws MyEntityExistsException, MyEntityNotFoundException, MyConstraintViolationException, MessagingException {
         long newOrderID = Math.abs(UUID.randomUUID().hashCode());
-        orderBean.create(newOrderID, new Date(), new Date(), "Goncalo","DinisRX", "Pending");
+        orderBean.create(newOrderID, new Date(), new Date(), "Goncalo", "DinisRX", "Pending");
         var order = orderBean.find(newOrderID);
-        newOrderID = order.getCode();
+        long OrderID = order.getCode();
 
         for (ProductDTO productDTO : orderRequestDTO.getProductsDTOs()) {
+            var haveVolume = false;
+            if (volumeBean.findVolumesByOrderId(newOrderID).isEmpty()) {
+                var newVolumeID = Math.abs(UUID.randomUUID().hashCode());
+                volumeBean.create(newVolumeID, "Pending", new Date(), newOrderID);
+                productBean.addProductInVolume(productDTO.getId(), newVolumeID, productDTO.getQuantity());
+                haveVolume = true;
 
-           if (volumeBean.findVolumesByOrderId(newOrderID).isEmpty()){
-               var newVolumeID = Math.abs(UUID.randomUUID().hashCode());
-                  volumeBean.create(newVolumeID, "Pending", new Date(),newOrderID);
-                  productBean.addProductInVolume(productDTO.getId(), newVolumeID, productDTO.getQuantity());
-           } else {
-               for (Volume volume : volumeBean.findVolumesByOrderId(newOrderID)){
+            } else {
+                var volumes = volumeBean.findVolumesByOrderId(newOrderID);
+                for (Volume volume : volumes) {
+                    var products = productBean.findAllProductsByVolumeId(volume.getId());
+                    if (products.stream().noneMatch(product -> product.getId() == productDTO.getId()) && products.stream().allMatch(product -> product.getWarehouse().getName().equals(productBean.findById(productDTO.getId()).getWarehouse().getName()))) {
+                        productBean.addProductInVolume(productDTO.getId(), volume.getId(), productDTO.getQuantity());
+                        haveVolume = true;
+                    }
+                }
+            }
+            if (!haveVolume) {
+                var newVolumeID = Math.abs(UUID.randomUUID().hashCode());
+                volumeBean.create(newVolumeID, "Pending", new Date(), newOrderID);
+                productBean.addProductInVolume(productDTO.getId(), newVolumeID, productDTO.getQuantity());
+            }
+
+             /*for (Volume volume : volumeBean.findVolumesByOrderId(newOrderID)) {
                    var products = productBean.findAllProductsByVolumeId(volume.getId());
-                   if (products.stream().noneMatch(product -> product.getWarehouse().getName() == productBean.findById(productDTO.getId()).getWarehouse().getName())){
+                   if (products.stream().noneMatch(product -> product.getWarehouse().getName().equals(productBean.findById(productDTO.getId()).getWarehouse().getName()))) {
                        productBean.addProductInVolume(productDTO.getId(), volume.getId(), productDTO.getQuantity());
-                   }else {
-                       var newVolumeID = Math.abs(UUID.randomUUID().hashCode());
-                       volumeBean.create(newVolumeID, "Pending", new Date(),newOrderID);
+
+                   } else {
+                       newVolumeID = Math.abs(UUID.randomUUID().hashCode());
+                       volumeBean.create(newVolumeID, "Pending", new Date(), newOrderID);
                        productBean.addProductInVolume(productDTO.getId(), newVolumeID, productDTO.getQuantity());
                    }
                }
-           }
-        }
-        var orderDTO = OrderDTO.from(order);
-        var volume = volumeBean.findVolumesByOrderId(newOrderID);
-        List<VolumeDTO> volumeDTOs = VolumeDTO.from(volume);
-        for (VolumeDTO volumeDTO : volumeDTOs ){
-            orderDTO.addVolume(volumeDTO);
+           }*/
         }
 
-        emailBean.send(orderBean.find(newOrderID).getClient().getEmail(), "Order " + newOrderID + " created", "Order " + newOrderID + " created successfully.");
 
-        return Response.status(Response.Status.CREATED)
-                .entity(volumeDTOs)
-                .build();
-    }
+            var orderDTO = OrderDTO.from(order);
+            var volume = volumeBean.findVolumesByOrderId(newOrderID);
+            List<VolumeDTO> volumeDTOs = VolumeDTO.from(volume);
+            for (VolumeDTO volumeDTO : volumeDTOs) {
+                volumeDTO.setProducts(ProductDTO.from(productBean.findAllProductsByVolumeId(volumeDTO.getId())));
+                orderDTO.addVolume(volumeDTO);
+
+            }
+
+            emailBean.send(orderBean.find(newOrderID).getClient().getEmail(), "Order " + newOrderID + " created", "Order " + newOrderID + " created successfully.");
+
+            return Response.status(Response.Status.CREATED)
+                    .entity(volumeDTOs)
+                    .build();
+        }
 
     @PATCH
     @Path("{code}")

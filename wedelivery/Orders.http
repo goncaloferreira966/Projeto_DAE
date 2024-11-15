@@ -15,7 +15,7 @@ Accept: application/json
 
 ## Get All orders by client username
 ### Get All orders by client username
-GET http://localhost:8080/wedelivery/api/orders/Guilherme
+GET http://localhost:8080/wedelivery/api/orders/889846120
 Accept: application/json
 
 ### Create A New order

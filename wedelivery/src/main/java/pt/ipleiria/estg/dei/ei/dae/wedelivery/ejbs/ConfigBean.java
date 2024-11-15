@@ -132,10 +132,10 @@ public class ConfigBean {
 
             productBean.create(1, "Coca-Cola", "Coca-Cola", 1.5, "coca-cola.jpg", 19, true, false, "Leiria", "safari");
             productBean.create(2, "Pepsi", "Pepsi", 1.5, "pepsi.jpg", 2, true, false, "Leiria", "safari");
-            productBean.create(3, "Sprite", "Sprite", 1.5, "sprite.jpg", 100, true, false, "Leiria", "safari");
+            productBean.create(3, "Sprite", "Sprite", 1.5, "sprite.jpg", 100, true, false, "Lisboa", "safari");
             productBean.create(4, "Fanta", "Fanta", 1.5, "fanta.jpg", 100, true, false, "Leiria", "safari");
-            productBean.create(5, "7up", "7up", 1.5, "7up.jpg", 100, true, false, "Leiria", "safari");
-            productBean.create(6, "Sumol", "Sumol", 1.5, "sumol.jpg", 100, true, false, "Leiria", "safari");
+            productBean.create(5, "7up", "7up", 1.5, "7up.jpg", 100, true, false, "Porto", "safari");
+            productBean.create(6, "Sumol", "Sumol", 1.5, "sumol.jpg", 100, true, false, "Porto", "safari");
 
             productBean.addProductInVolume(1, id_9, 3);
             productBean.addProductInVolume(2, id_9, 2);
