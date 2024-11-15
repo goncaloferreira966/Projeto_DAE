@@ -4,7 +4,7 @@
   <div class="container mt-5">
     <div v-if="order" class="card shadow-lg">
       <div class="card-header bg-secondary text-white d-flex justify-content-between align-items-center">
-        <nuxt-link to="/manager" class="btn btn-light text-secondary">Back</nuxt-link>
+        <button @click="goBack"  class="btn btn-light text-secondary">Back</button>
         <h2 class="mb-0">Details of Order - {{ order.username }} ({{ order.code }})</h2>
       </div>
       <div class="card-body">
@@ -28,7 +28,7 @@
         </table>
         <div class="container" style="display: flex;">
 
-          <div style="display: flex;" class="col-md-2">
+          <div v-if="client" style="display: flex;" class="col-md-3">
             <div class="card">
               <h5>Client Information</h5>
               <img src="/img_avatar.png" alt="Avatar" style="width: 100%">
@@ -47,18 +47,15 @@
               </div>
             </div>
           </div>
-          <div style="display: flex;" class="col-md-1">
-
-          </div>
-            <div v-for="(volume, index) in order.volumes" :key="index" class="col-md-4">
-              <div class="card">
-                <div class="card-body">
-                <h4>Volume ID: {{ volume.id }}</h4>
-                <p><strong>State:</strong> {{ volume.state }}</p>
-                <p><strong>Creation Date:</strong> {{ volume.creationDate }}</p>
-                <p><strong>Sensors:</strong> {{ volume.sensors }}</p>
-                <p><strong>Products:</strong> {{ volume.products }}</p>
-                </div>
+          <div v-for="(volume, index) in order.volumes" :key="index" class="col-md-3" style="padding-left: 1%;">
+            <div class="card">
+              <div class="card-body">
+              <h4>Volume ID: {{ volume.id }}</h4>
+              <p><strong>State:</strong> {{ volume.state }}</p>
+              <p><strong>Creation Date:</strong> {{ volume.creationDate }}</p>
+              <p><strong>Sensors:</strong> {{ volume.sensors }}</p>
+              <p><strong>Products:</strong> {{ volume.products }}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -80,17 +77,21 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter  } from 'vue-router'
+
 import { useRuntimeConfig, useFetch } from '#imports'
 definePageMeta({
   layout: 'default'
 });
 
 const route = useRoute()
+const router = useRouter() 
 const code = route.params.code
 const config = useRuntimeConfig()
 const api = config.public.API_URL
-
+const goBack = () => {
+  router.back()
+}
 const messages = ref([]) // Armazenar mensagens de erro
 const order = ref(null)  // Armazenar os detalhes do pedido
 const client = ref(null) // Armazenar os detalhes do cliente
@@ -115,7 +116,12 @@ const loadOrderAndClient = async () => {
     order.value = orderData.value // Armazena o pedido
 
     // Agora, carrega os dados do cliente com base no 'username' do pedido
-    const { data: clientData, error: clientError } = await useFetch(`${api}/clients/${order.value.username}`)
+    const { data: clientData, error: clientError } = await useFetch(`${api}/clients/${order.value.username}`
+    , {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
     if (clientError.value) {
       messages.value.push(clientError.value)
       return

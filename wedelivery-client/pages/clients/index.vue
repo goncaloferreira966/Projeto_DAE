@@ -37,7 +37,7 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-8">
-                    <p><strong>Email:</strong> {{ client.email }}</p>
+                    <p><strong>Email:</strong><br> {{ client.email }}</p>
                     <p><strong>City:</strong> {{ client.city }}</p>
                     <p><strong>Username:</strong> {{ client.username }}</p>
                   </div>
