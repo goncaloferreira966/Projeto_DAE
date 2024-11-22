@@ -28,13 +28,6 @@ public class VolumeDTO {
         //this.sensors = new ArrayList<>();
         //this.products = new ArrayList<>();
     }
-    public void VolumeDTO(long id, String state, String creationDate) {
-        this.id = id;
-        this.state = state;
-        this.creationDate = creationDate;
-        //this.sensors = new ArrayList<>();
-        //this.products = new ArrayList<>();
-    }
 
     // Converts an entity to a DTO Volume class
     public static VolumeDTO from(Volume volume) {

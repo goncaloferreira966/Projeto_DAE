@@ -9,7 +9,7 @@
 
 <script setup>
 import { defineProps, defineEmits } from 'vue';
-
+console.log();
 const props = defineProps({
     items: Array,
     totalPrice: Number,

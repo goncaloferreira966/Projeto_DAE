@@ -63,24 +63,22 @@ public class OrderService {
 
     @GET
     @Path("{code}/volume/{id}")
-    public Response getOrderVolumeById(@PathParam("code") long code, @PathParam("id") long id) {
-        var order = orderBean.find(code);
-        var orderDTO = OrderDTO.from(order);
+    public VolumeDTO getOrderVolumeById(@PathParam("code") long code, @PathParam("id") long id) {
         var volume = volumeBean.find(id);
-
         var volumeDTO = VolumeDTO.from(volume);
-        if (volume.getOrder().getCode() != code) {
-            return Response.status(Response.Status.NOT_FOUND).build();
-        }
+
+        // Buscar e adicionar sensores
         var sensors = sensorBean.findAllSensorsByVolumeId(id);
         var sensorDTOs = SensorDTO.from(sensors);
         volumeDTO.addSensors(sensorDTOs);
+
+        // Buscar e adicionar produtos
         var products = productBean.findAllProductsByVolumeId(id);
         var productDTOs = ProductDTO.from(products);
-        volumeDTO.addProducts(productDTOs);
+        volumeDTO.setProducts(productDTOs);
 
-        orderDTO.addVolume(volumeDTO);
-        return Response.ok(volumeDTO).build();
+        // Retornar o VolumeDTO
+        return volumeDTO;
     }
 
 

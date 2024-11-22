@@ -12,7 +12,7 @@
                         <nuxt-link class="nav-link" to="/"><i class="bi bi-house"></i> Home</nuxt-link>
                     </li>
                     <li v-if="isLoggedIn" class="nav-item">
-                        <nuxt-link class="nav-link" to="/manager"><i class="bi bi-box-seam"></i> Orders</nuxt-link>
+                        <nuxt-link class="nav-link" to="/orders"><i class="bi bi-box-seam"></i> Orders</nuxt-link>
                     </li>
                     <li v-if="isLoggedIn" class="nav-item">
                         <nuxt-link class="nav-link" to="/e-commerce"><i class="bi bi-shop"></i> E-Commerce</nuxt-link>

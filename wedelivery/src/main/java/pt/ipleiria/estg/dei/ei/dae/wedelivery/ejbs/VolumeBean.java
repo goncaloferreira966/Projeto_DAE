@@ -60,8 +60,7 @@ public class VolumeBean {
     }
 
     public Volume find(long id) {
-        var volume = entityManager.find(Volume.class, id);
-        return volume;
+        return entityManager.find(Volume.class, id);
     }
 
     /**************** Volumes <---> Product ***************************/
