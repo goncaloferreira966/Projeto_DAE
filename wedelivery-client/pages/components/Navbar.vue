@@ -53,7 +53,7 @@ function handleLogout() {
     localStorage.removeItem('AccessToken');
     isLoggedIn.value = false;
     // Redireciona para a página de login
-    window.location.href = '/login';
+    window.location.href = '/';
 }
 
 

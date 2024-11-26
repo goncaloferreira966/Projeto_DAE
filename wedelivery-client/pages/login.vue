@@ -76,8 +76,6 @@ export default {
        this.$emit("login-success");
        window.location.href = '/e-commerce';
 
-        // Decodifica o payload do token
-
       } catch (error) {
         this.errorMessage = "Credenciais Inválidas.";
       }
