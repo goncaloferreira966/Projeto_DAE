@@ -11,16 +11,16 @@
                     <li class="nav-item">
                         <nuxt-link class="nav-link" to="/"><i class="bi bi-house"></i> Home</nuxt-link>
                     </li>
-                    <li v-if="isLoggedIn" class="nav-item">
+                    <li v-if="isLoggedIn & userRole === 'Operator'" class="nav-item">
                         <nuxt-link class="nav-link" to="/orders"><i class="bi bi-box-seam"></i> Orders</nuxt-link>
                     </li>
-                    <li v-if="isLoggedIn" class="nav-item">
+                    <li v-if="isLoggedIn & userRole === 'Client'" class="nav-item">
                         <nuxt-link class="nav-link" to="/e-commerce"><i class="bi bi-shop"></i> E-Commerce</nuxt-link>
                     </li>
-                    <li v-if="isLoggedIn" class="nav-item">
+                    <li v-if="isLoggedIn & userRole === 'Operator'" class="nav-item">
                         <nuxt-link class="nav-link" to="/clients"><i class="bi bi-person"></i> Clients</nuxt-link>
                     </li>
-                    <li v-if="isLoggedIn" class="nav-item">
+                    <li v-if="isLoggedIn & userRole === 'Client'" class="nav-item">
                         <nuxt-link class="nav-link" to="/cart"><i class="bi bi-cart"></i> Cart</nuxt-link>
                     </li>
                 </ul>
@@ -42,10 +42,13 @@
 import { ref, onMounted } from 'vue';
 
 const isLoggedIn = ref(false);
+const userRole = ref(false);
+
 
 onMounted(() => {
     // Verifica se o token de acesso está no localStorage
     isLoggedIn.value = !!localStorage.getItem('AccessToken');
+    userRole.value = localStorage.getItem('Role');
 });
 
 function handleLogout() {
