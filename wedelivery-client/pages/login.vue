@@ -33,9 +33,10 @@
 
 <script>
 import axios from 'axios';
-
+//import {useAuthStore} from "../stores/auth-store"
 const config = useRuntimeConfig();
-
+//const authStore = useAuthStore()
+//const {token, user} = storeToRefs(authStore)
 
 export default {
   data() {
@@ -70,11 +71,12 @@ export default {
             },
           });
           console.log(response.data);
+          localStorage.setItem("Role", response.data.role);
+          
         } catch (error) {
           console.error('Erro ao obter informações do usuário:', error);
           throw new Error('Falha ao carregar informações do usuário.');
         }
-
 
        this.$emit("login-success");
        window.location.href = '/e-commerce';

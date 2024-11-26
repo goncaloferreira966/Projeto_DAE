@@ -51,6 +51,7 @@ onMounted(() => {
 function handleLogout() {
     // Remove o token e atualiza a variável de estado
     localStorage.removeItem('AccessToken');
+    localStorage.removeItem('Role');
     isLoggedIn.value = false;
     // Redireciona para a página de login
     window.location.href = '/';
