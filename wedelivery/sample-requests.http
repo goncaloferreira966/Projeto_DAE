@@ -84,13 +84,11 @@ Content-Type: application/json
 Accept: application/json
 
 {
-"username": "Goncalo",
+"username": "GoncaloF00",
 "password": "password"
 }
 
-### GET ALL STUDENTS
-GET http://localhost:8080/wedelivery/api/clients/Cristiano
+### Test endpoint of role
+GET http://localhost:8080/wedelivery/api/auth/user
 Accept: application/json
-Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvIiwiaWF0IjoxNzMxNDMxMDcyLCJleHAiOjE3MzE0MzQ2NzJ9.-RTgjOY9In0XS37OU6C7XW8Pl1g-y_-uPiMvbNII3Z0LvhczrA8drhnvC5wDL3WM
-
-
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
