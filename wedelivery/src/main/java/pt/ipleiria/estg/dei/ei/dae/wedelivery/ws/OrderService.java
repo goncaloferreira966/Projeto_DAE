@@ -11,6 +11,7 @@ import jakarta.ws.rs.core.SecurityContext;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.*;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.*;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Order;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Product;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Volume;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
@@ -87,63 +88,18 @@ public class OrderService {
     @RolesAllowed({"Client"})
     public Response createNewOrder (OrderRequestDTO orderRequestDTO)
             throws MyEntityExistsException, MyEntityNotFoundException, MyConstraintViolationException, MessagingException {
-        long newOrderID = Math.abs(UUID.randomUUID().hashCode());
-        orderBean.create(newOrderID, new Date(), new Date(), "Goncalo", "DinisRX", "Pending");
-        var order = orderBean.find(newOrderID);
-        long OrderID = order.getCode();
 
-        for (ProductDTO productDTO : orderRequestDTO.getProductsDTOs()) {
-            var haveVolume = false;
-            if (volumeBean.findVolumesByOrderId(newOrderID).isEmpty()) {
-                var newVolumeID = Math.abs(UUID.randomUUID().hashCode());
-                volumeBean.create(newVolumeID, "Pending", new Date(), newOrderID);
-                productBean.addProductInVolume(productDTO.getId(), newVolumeID, productDTO.getQuantity());
-                haveVolume = true;
+        List<Product> products = new LinkedList<>();
+        for (ProductDTO productDTO : orderRequestDTO.getProductsDTOs()){
 
-            } else {
-                var volumes = volumeBean.findVolumesByOrderId(newOrderID);
-                for (Volume volume : volumes) {
-                    var products = productBean.findAllProductsByVolumeId(volume.getId());
-                    if (products.stream().noneMatch(product -> product.getId() == productDTO.getId()) && products.stream().allMatch(product -> product.getWarehouse().getName().equals(productBean.findById(productDTO.getId()).getWarehouse().getName()))) {
-                        productBean.addProductInVolume(productDTO.getId(), volume.getId(), productDTO.getQuantity());
-                        haveVolume = true;
-                    }
-                }
-            }
-            if (!haveVolume) {
-                var newVolumeID = Math.abs(UUID.randomUUID().hashCode());
-                volumeBean.create(newVolumeID, "Pending", new Date(), newOrderID);
-                productBean.addProductInVolume(productDTO.getId(), newVolumeID, productDTO.getQuantity());
-            }
-
-             /*for (Volume volume : volumeBean.findVolumesByOrderId(newOrderID)) {
-                   var products = productBean.findAllProductsByVolumeId(volume.getId());
-                   if (products.stream().noneMatch(product -> product.getWarehouse().getName().equals(productBean.findById(productDTO.getId()).getWarehouse().getName()))) {
-                       productBean.addProductInVolume(productDTO.getId(), volume.getId(), productDTO.getQuantity());
-
-                   } else {
-                       newVolumeID = Math.abs(UUID.randomUUID().hashCode());
-                       volumeBean.create(newVolumeID, "Pending", new Date(), newOrderID);
-                       productBean.addProductInVolume(productDTO.getId(), newVolumeID, productDTO.getQuantity());
-                   }
-               }
-           }*/
+            products.add(productBean.findById(productDTO.getId()));
         }
+        OrderDTO orderDTO = orderBean.makeNewOrder( products);
 
-
-            var orderDTO = OrderDTO.from(order);
-            var volume = volumeBean.findVolumesByOrderId(newOrderID);
-            List<VolumeDTO> volumeDTOs = VolumeDTO.from(volume);
-            for (VolumeDTO volumeDTO : volumeDTOs) {
-                volumeDTO.setProducts(ProductDTO.from(productBean.findAllProductsByVolumeId(volumeDTO.getId())));
-                orderDTO.addVolume(volumeDTO);
-
-            }
-
-            emailBean.send(orderBean.find(newOrderID).getClient().getEmail(), "Order " + newOrderID + " created", "Order " + newOrderID + " created successfully.");
+        emailBean.send(orderBean.find(orderDTO.getCode()).getClient().getEmail(), "Order " + orderDTO.getCode() + " created", "Order " + orderDTO.getCode() + " created successfully.");
 
             return Response.status(Response.Status.CREATED)
-                    .entity(volumeDTOs)
+                    .entity(orderDTO.getVolumes())
                     .build();
         }
 

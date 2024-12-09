@@ -5,15 +5,18 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import jakarta.validation.ConstraintViolationException;
-import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Operator;
-import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Order;
-import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Sensor;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.OrderDTO;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.ProductDTO;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.VolumeDTO;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.*;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityNotFoundException;
 
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.UUID;
 
 @Stateless
 public class OrderBean {
@@ -25,6 +28,9 @@ public class OrderBean {
 
     @EJB
     private OperatorBean operatorBean;
+
+    @EJB
+    private ProductBean productBean;
 
     @EJB
     private VolumeBean volumeBean;
@@ -150,6 +156,45 @@ public class OrderBean {
     }
     */
 
+    public OrderDTO makeNewOrder(List<Product> products) throws MyConstraintViolationException {
+        long idOrder = getNewID();
+        create(idOrder, new Date(), new Date(), "Goncalo", "DinisRX", "Pending");
+        Order order = find(idOrder);
+        var haveVolume = false;
+        for (Product product : products){
+
+            if (findOrdersByVolumeId(idOrder).isEmpty()){
+                long newVolumeID = getNewID();
+                volumeBean.create(newVolumeID, "Pending",  new Date(), idOrder);
+                productBean.addProductInVolume(product.getId(), newVolumeID, product.getQuantity());
+                haveVolume = true;
+            } else {
+                var volumes = volumeBean.findVolumesByOrderId(idOrder);
+                for (Volume volume : volumes){
+                    var productsInVolumes = productBean.findAllProductsByVolumeId(volume.getId());
+                    if (productsInVolumes.stream().noneMatch(productIn -> productIn.getId() == product.getId()) && productsInVolumes.stream().allMatch(productIn -> productIn.getWarehouse().getName().equals(productBean.findById(product.getId()).getWarehouse().getName()))) {
+                        productBean.addProductInVolume(product.getId(), volume.getId(), product.getQuantity());
+                        haveVolume = true;
+                    }
+                }
+            }
+            if (!haveVolume) {
+                var newVolumeID = getNewID();
+                volumeBean.create(newVolumeID, "Pending", new Date(), idOrder);
+                productBean.addProductInVolume(product.getId(), newVolumeID, product.getQuantity());
+
+            }
+        }
+        OrderDTO orderDTO = OrderDTO.from(order);
+        List<Volume> volumes = volumeBean.findVolumesByOrderId(idOrder);
+        List<VolumeDTO> volumeDTOS = VolumeDTO.from(volumes);
+        for (VolumeDTO volumeDTO : volumeDTOS){
+            volumeDTO.setProducts(ProductDTO.from(productBean.findAllProductsByVolumeId(volumeDTO.getId())));
+            orderDTO.addVolume(volumeDTO);
+        }
+        return orderDTO;
+    }
+
 
     public boolean exists(long code) {
         Query query = entityManager.createQuery(
@@ -158,5 +203,8 @@ public class OrderBean {
         );
         query.setParameter("code", code);
         return (Long)query.getSingleResult() > 0L;
+    }
+    private long getNewID(){
+        return Math.abs(UUID.randomUUID().hashCode());
     }
 }
