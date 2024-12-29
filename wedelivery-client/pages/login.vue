@@ -72,6 +72,7 @@ export default {
           });
           console.log(response.data);
           localStorage.setItem("Role", response.data.role);
+          localStorage.setItem("Username", response.data.username);
           
         } catch (error) {
           console.error('Erro ao obter informações do usuário:', error);
