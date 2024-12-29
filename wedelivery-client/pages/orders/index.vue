@@ -60,6 +60,10 @@ definePageMeta({
 const config = useRuntimeConfig();
 const api = config.public.API_URL;
 const token = localStorage.getItem('AccessToken');
+const role = localStorage.getItem('Role');
+const username = localStorage.getItem('Username');
+
+//Chamar esse endpoint só para os operadores ou managers, para os clients chamar outro clients/username/orders
 const { data: orders, error, refresh } = await useFetch(`${api}/orders`,{
   headers: {
     Authorization: `Bearer ${token}`
