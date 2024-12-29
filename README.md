@@ -88,6 +88,13 @@ Um Administrador consulta a listagem de todos os Operadores Registados.
 - **Método**: `GET`
 - **Headers**:
   - `Content-Type`: `application/json`
+- **Body**:
+
+  ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
+  ```
+
 - **Response**:
 
   ```json
@@ -115,6 +122,12 @@ Um Administrador consulta o perfil de um Operador.
 - **Método**: `GET`
 - **Headers**:
   - `Content-Type`: `application/json`
+- **Body**:
+
+  ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
+  ```
 - **Response**:
 
   ```json
@@ -137,6 +150,8 @@ Um Administrador efetua o registo de um Operador na plataforma do sistema.
 - **Body**:
 
   ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
   {
     "email": "ana@mail.com",
     "name": "Ana",
@@ -166,6 +181,12 @@ Um Administrador consulta a listagem de todos os Gestores Registados.
 - **Método**: `GET`
 - **Headers**:
   - `Content-Type`: `application/json`
+- **Body**:
+
+  ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
+  ```
 - **Response**:
 
   ```json
@@ -193,6 +214,12 @@ Um Administrador consulta o perfil de um Gestor.
 - **Método**: `GET`
 - **Headers**:
   - `Content-Type`: `application/json`
+- **Body**:
+
+  ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
+  ```
 - **Response**:
 
   ```json
@@ -215,6 +242,8 @@ Um Administrador efetua o registo de um Gestor na plataforma do sistema.
 - **Body**:
 
   ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
   {
     "email": "margarida@mail.com",
     "name": "Margarida",
@@ -242,6 +271,12 @@ Um Gestor consulta todas as encomendas a si associadas.
 - **Método**: `GET`
 - **Headers**:
   - `Content-Type`: `application/json`
+- **Body**:
+
+  ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
+  ```
 - **Response**:
 
   ```json
@@ -265,6 +300,12 @@ Um Administrador consulta a listagem de todos os Clientes Registados.
 - **Método**: `GET`
 - **Headers**:
   - `Content-Type`: `application/json`
+- **Body**:
+
+  ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
+  ```
 - **Response**:
 
   ```json
@@ -302,6 +343,12 @@ Um Administrador consulta o perfil de um Cliente.
 - **Método**: `GET`
 - **Headers**:
   - `Content-Type`: `application/json`
+- **Body**:
+
+  ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
+  ```
 - **Response**:
 
   ```json
@@ -344,9 +391,11 @@ Um Cliente efetua o registo na plataforma do sistema.
 - **Método**: `POST`
 - **Headers**:
   - `Content-Type`: `application/json`
-- **Body**:
 
+- **Body**:
   ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
   {
     "username": "john",
     "email": "johndoe@mail.com",
@@ -385,6 +434,12 @@ Um Cliente consulta todas as suas encomendas realizadas
 - **Método**: `GET`
 - **Headers**:
   - `Content-Type`: `application/json`
+- **Body**:
+
+  ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
+  ```
 - **Response**:
 
   ```json
@@ -409,6 +464,8 @@ Um Cliente efetua uma encomenda, e o método post da encomenda chama este endpoi
 - **Body**:
 
   ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
   {
     "subject": "Order 756754685648 created",
     "body": "Order 756754685648 created successfully."
@@ -434,6 +491,12 @@ Um Gestor consulta a listagem de todos as Encomendas efetuadas.
 - **Método**: `GET`
 - **Headers**:
   - `Content-Type`: `application/json`
+- **Body**:
+
+  ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
+  ```
 - **Response**:
 
   ```json
@@ -473,6 +536,12 @@ Um Gestor consulta uma Encomenda efetuada.
 - **Método**: `GET`
 - **Headers**:
   - `Content-Type`: `application/json`
+- **Body**:
+
+  ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
+  ```
 - **Response**:
 
   ```json
@@ -503,6 +572,12 @@ si.
 - **Método**: `GET`
 - **Headers**:
   - `Content-Type`: `application/json`
+- **Body**:
+
+  ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
+  ```
 - **Response**:
 
   ```json
@@ -562,6 +637,8 @@ Um Cliente efetua uma Encomenda e a mesma é criada em sistema.
 - **Body**:
 
   ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
   {
     "code": 1930548778,
     "deliveryDate": "2024-10-20T23:02:22.383Z[UTC]",
@@ -660,9 +737,11 @@ Um Gestor altera o estado de uma encomenda especificada por {id}.
 - **Método:** `PATCH`
 - **Headers:**
   - `Content-Type`: `application/json`
-- **Body:**
+- **Body**:
 
   ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
   {
     "state": "Delivered"
   }
@@ -828,6 +907,12 @@ Um Gestor consulta os warehouses existentes.
 - **Método:** `GET`
 - **Headers:**
   - `Content-Type`: `application/json`
+- **Body**:
+
+  ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
+  ```
 - **Response:**
 
   ```json
@@ -856,6 +941,12 @@ Um Gestor consulta os dados de um warehouse especifico.
 - **Método:** `GET`
 - **Headers:**
   - `Content-Type`: `application/json`
+- **Body**:
+
+  ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
+  ```
 - **Response:**
 
   ```json
@@ -875,6 +966,12 @@ Um Gestor consulta todos os produtos que exitem num determindo warehouse.
 - **Método:** `GET`
 - **Headers:**
   - `Content-Type`: `application/json`
+- **Body**:
+
+  ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
+  ```
 - **Response:**
 
   ```json
@@ -917,6 +1014,12 @@ Um Gestor consulta um determinado produto {id} num determinado warehouse {name}.
 - **Método:** `GET`
 - **Headers:**
   - `Content-Type`: `application/json`
+- **Body**:
+
+  ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
+  ```
 - **Response:**
 
   ```json
@@ -956,6 +1059,12 @@ Um Gestor consulta os Suppliers existentes
 - **Método:** `GET`
 - **Headers:**
   - `Content-Type`: `application/json`
+- **Body**:
+
+  ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
+  ```
 - **Response:**
 
   ```json
@@ -984,6 +1093,12 @@ Um Gestor consulta um determinado Supplier e os seus respectivos produtos
 - **Método:** `GET`
 - **Headers:**
   - `Content-Type`: `application/json`
+- **Body**:
+
+  ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
+  ```
 - **Response:**
 
   ```json
@@ -1027,6 +1142,12 @@ pertencente a um fornecedor designado por `{name}`.
 - **Método**: `GET`
 - **Headers:**
   - `Content-Type`: `application/json`
+- **Body**:
+
+  ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
+  ```
 - **Response:**
 
   ```json
@@ -1060,6 +1181,12 @@ Um Gestor consulta os volumes existentes.
 - **Método:** `GET`
 - **Headers:**
   - `Content-Type`: `application/json`
+- **Body**:
+
+  ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
+  ```
 - **Response:**
 
   ```json
@@ -1086,6 +1213,12 @@ Um Gestor consulta um volume registado.
 - **Método**: `GET`
 - **Headers:**
   - `Content-Type`: `application/json`
+- **Body**:
+
+  ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
+  ```
 - **Response:**
 
   ```json
@@ -1144,6 +1277,12 @@ Um Gestor consulta, ao detalhe, um volume registado.
 - **Método**: `GET`
 - **Headers:**
   - `Content-Type`: `application/json`
+- **Body**:
+
+  ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
+  ```
 - **Response:**
 
   ```json
@@ -1226,6 +1365,12 @@ Um Gestor consulta os sensores existentes.
 - **Método:** `GET`
 - **Headers:**
   - `Content-Type`: `application/json`
+- **Body**:
+
+  ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
+  ```
 - **Response:**
 
   ```json
@@ -1255,6 +1400,12 @@ Um Gestor consulta um sensor em específico.
 - **Método:** `GET`
 - **Headers:**
   - `Content-Type`: `application/json`
+- **Body**:
+
+  ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
+  ```
 - **Response:**
 
   ```json
@@ -1276,6 +1427,12 @@ informação do volume associado ao sensor especificado.
 - **Método:** `GET`
 - **Headers:**
   - `Content-Type`: `application/json`
+- **Body**:
+
+  ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
+  ```
 - **Response:**
 
   ```json
@@ -1301,9 +1458,11 @@ Um gestor altera o valor atual de um sensor especificando o seu {id}.
 - **Método:** `PATCH`
 - **Headers:**
   - `Content-Type`: `application/json`
-- **Body:**
+- **Body**:
 
   ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
   {
     "currentValue": 50
   }
@@ -1329,6 +1488,12 @@ Um Gestor elimina um sensor especificando o seu {id}.
 - **Método:** `DELETE`
 - **Headers:**
   - `Content-Type`: `application/json`
+- **Body**:
+
+  ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
+  ```
 - **Response:**
 
   ```json
@@ -1347,6 +1512,12 @@ Um Gestor consulta as restrições existentes.
 - **Método:** `GET`
 - **Headers:**
   - `Content-Type`: `application/json`
+- **Body**:
+
+  ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
+  ```
 - **Response:**
 
   ```json
@@ -1376,6 +1547,12 @@ Um Gestor consulta uma restrição em específico.
 - **Método**: `GET`
 - **Headers:**
   - `Content-Type`: `application/json`
+- **Body**:
+
+  ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
+  ```
 - **Response:**
 
   ```json
@@ -1397,6 +1574,12 @@ produtos associados à mesma.
 - **Método:** `GET`
 - **Headers:**
   - `Content-Type`: `application/json`
+- **Body**:
+
+  ```json
+  Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+
+  ```
 - **Response:**
 
   ```json
