@@ -165,9 +165,6 @@ public class ConfigBean {
             volumeBean.addSensorToVolume(id_13, 9);
             volumeBean.addSensorToVolume(id_13, 28);
 
-            restrictionBean.create(1,"Temperature", 25.4,19.5);
-            restrictionBean.create(2,"Humidity", 25.4,99);
-
             productBean.addRestrictionToProduct(1,1);
             productBean.addRestrictionToProduct(2,1);
             productBean.addRestrictionToProduct(2,2);
