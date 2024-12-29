@@ -2,8 +2,8 @@
   <div class="container d-flex align-items-center justify-content-center min-vh-100">
     <div class="col-md-7">
       <div class="card shadow-lg border-0 rounded-3">
-        <div class="card-header bg-secondary text-white text-center py-4">
-          <h3>Login</h3>
+        <div class="card-header bg-light text-white text-center py-4">
+          <h3 class="text-dark">Login</h3>
         </div>
         <div class="card-body p-4">
           <form @submit.prevent="handleLogin">
@@ -23,7 +23,7 @@
                   placeholder="Enter your password" required />
               </div>
             </div>
-            <button type="submit" class="btn btn-primary w-100 btn-lg">Login</button>
+            <button type="submit" class="btn btn-secondary w-100 btn-lg">Login</button>
           </form>
         </div>
       </div>
