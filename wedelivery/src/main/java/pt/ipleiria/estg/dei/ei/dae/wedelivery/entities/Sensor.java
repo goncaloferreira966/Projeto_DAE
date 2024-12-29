@@ -1,7 +1,8 @@
 package pt.ipleiria.estg.dei.ei.dae.wedelivery.entities;
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @Table(name = "sensors")
 @NamedQueries(
@@ -30,11 +31,14 @@ public class Sensor {
     private boolean expedition;
     @ManyToOne
     private Volume volume;
+    @OneToMany(mappedBy = "sensor")
+    private List<SensorValue> history;
     @Version
     private int version;
 
 
     public Sensor() {
+        this.history = new ArrayList<>();
     }
 
     public Sensor(long id, String type, int currentValue, boolean busy, boolean expedition) {
@@ -43,6 +47,7 @@ public class Sensor {
         this.currentValue = currentValue;
         this.busy = busy;
         this.expedition =expedition;
+        this.history = new ArrayList<>();
     }
 
     public long getId() {
@@ -82,6 +87,9 @@ public class Sensor {
         if (volume == null)
             this.volume = new Volume();
         this.volume = volume;
+    }
+    public List<SensorValue> getHistory() {
+        return history;
     }
 
     /****************** Sensor -> Volume ***********************/
