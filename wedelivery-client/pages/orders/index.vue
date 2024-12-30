@@ -17,7 +17,7 @@
         </div>
 
         <!-- Dropdown para filtragem por username -->
-        <div class="col-md-2 mt-4">
+        <div v-if="role === 'Operator' || role === 'Manager'" class="col-md-2 mt-4">
           <select v-model="selectedUsername" class="form-select">
             <option value="">Select a Client</option>
             <option v-for="username in uniqueUsernames" :key="username" :value="username">
@@ -63,8 +63,13 @@ const token = localStorage.getItem('AccessToken');
 const role = localStorage.getItem('Role');
 const username = localStorage.getItem('Username');
 
-//Chamar esse endpoint só para os operadores ou managers, para os clients chamar outro clients/username/orders
-const { data: orders, error, refresh } = await useFetch(`${api}/orders`,{
+//Verificação da role e chamada do endpoint correto
+const endpoint = role === 'Operator' || role === 'Manager' 
+  ? `${api}/orders` 
+  : `${api}/clients/${username}/orders`;
+
+// Chamada do endpoint
+const { data: orders, error, refresh } = await useFetch(endpoint, {
   headers: {
     Authorization: `Bearer ${token}`
   }
