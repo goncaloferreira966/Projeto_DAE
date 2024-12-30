@@ -53,8 +53,22 @@ public class OrderService {
 
     @GET
     @Path("{code}")
+    @RolesAllowed({"Client"})//Acesso apenas a este método
     public Response getOder(@PathParam("code") long code) {
+        //Vai procurar a order
         var order = orderBean.find(code);
+        //Procurar o username do user owner da order
+        var username = order.getClient().getUsername();
+
+        //Verifica se o utilizador pode ter acesso ou nao
+        var principal = securityContext.getUserPrincipal();
+
+        //Verifica se esse user deve ou nao ver essa order(verifica se é owner)
+        if(securityContext.isUserInRole("Client") && !principal.getName().equals(username)) {
+            return Response.status(Response.Status.FORBIDDEN).build();
+        }
+
+
         var orderDTO = OrderDTO.from(order);
         var volumes = volumeBean.findVolumesByOrderId(code);
         var volumeDTOs = VolumeDTO.from(volumes);
