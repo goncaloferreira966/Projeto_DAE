@@ -78,8 +78,21 @@ public class OrderService {
 
     @GET
     @Path("{code}/volume/{id}")
+    @RolesAllowed({"Client"})//Acesso apenas a este método
     public VolumeDTO getOrderVolumeById(@PathParam("code") long code, @PathParam("id") long id) {
         var volume = volumeBean.find(id);
+
+        //Procurar o username do user owner do volume
+        var username = volume.getOrder().getClient().getUsername();
+
+        //Verifica se o utilizador pode ter acesso ou nao
+        var principal = securityContext.getUserPrincipal();
+
+        //Verifica se esse user deve ou nao ver essa order(verifica se é owner)
+        if(securityContext.isUserInRole("Client") && !principal.getName().equals(username)) {
+            return new VolumeDTO();
+        }
+
         var volumeDTO = VolumeDTO.from(volume);
 
         // Buscar e adicionar sensores

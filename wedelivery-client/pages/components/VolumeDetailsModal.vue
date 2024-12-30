@@ -33,7 +33,7 @@
                   <p class="card-text"><strong>Name:</strong> {{ product.name }}</p>
                   <p class="card-text"><strong>Description:</strong> {{ product.description }}</p>
                   <p class="card-text"><strong>Price:</strong> €{{ product.price.toFixed(2) }}</p>
-                  <p class="card-text"><strong>Quantity:</strong> {{ product.quantity }}</p>
+                 <!-- <p class="card-text"><strong>Quantity:</strong> {{ product.quantity }}</p>-->
                 </div>
               </div>
             </div>
