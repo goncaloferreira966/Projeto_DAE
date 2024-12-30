@@ -64,7 +64,7 @@
                         class="btn btn-dark btn-block btn-sm">
                         <i class="bi bi-eye-fill"></i> View Details
                       </nuxt-link> -->
-                      <nuxt-link :to="`/manager/${order.code}`" class="btn btn-dark btn-block"><i class="bi bi-eye-fill"></i> View Details</nuxt-link>
+                     <!-- <nuxt-link :to="`/manager/${order.code}`" class="btn btn-dark btn-block"><i class="bi bi-eye-fill"></i> View Details</nuxt-link>-->
                     </div>
                   </div>
                 </div>

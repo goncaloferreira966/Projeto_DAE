@@ -20,6 +20,9 @@
                     <li v-if="isLoggedIn & userRole === 'Operator'" class="nav-item">
                         <nuxt-link class="nav-link" to="/clients"><i class="bi bi-person"></i> Clients</nuxt-link>
                     </li>
+                    <li v-if="isLoggedIn & userRole === 'Operator'" class="nav-item">
+                        <nuxt-link class="nav-link" to="/sensors"><i class="bi bi-thermometer-low"></i> Sensors</nuxt-link>
+                    </li>
                     <li v-if="isLoggedIn & userRole === 'Client'" class="nav-item">
                         <nuxt-link class="nav-link" to="/cart"><i class="bi bi-cart"></i> Cart</nuxt-link>
                     </li>
