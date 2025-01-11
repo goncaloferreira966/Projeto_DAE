@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 public class SensorDTO {
     private long id;
     private String type;
-    private int currentValue;
+    private String currentValue;
     boolean busy;
     boolean expedition;
     private VolumeDTO volume;
@@ -16,7 +16,7 @@ public class SensorDTO {
     public SensorDTO() {
     }
 
-    public SensorDTO(long id, String type, int currentValue, boolean busy, boolean expedition) {
+    public SensorDTO(long id, String type, String currentValue, boolean busy, boolean expedition) {
         this.id = id;
         this.type = type;
         this.currentValue = currentValue;
@@ -46,7 +46,7 @@ public class SensorDTO {
     public String getType() {
         return type;
     }
-    public int getCurrentValue() {
+    public String getCurrentValue() {
         return currentValue;
     }
     public boolean isBusy() {
@@ -63,7 +63,7 @@ public class SensorDTO {
     public void setType(String type) {
         this.type = type;
     }
-    public void setCurrentValue(int currentValue) {
+    public void setCurrentValue(String currentValue) {
         this.currentValue = currentValue;
     }
     public void setBusy(boolean busy) {
