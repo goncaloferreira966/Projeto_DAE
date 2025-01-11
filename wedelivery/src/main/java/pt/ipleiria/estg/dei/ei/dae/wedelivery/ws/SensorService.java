@@ -11,10 +11,14 @@ import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.OrderDTO;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.SensorDTO;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.VolumeDTO;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.SensorBean;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.SensorValueBean;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Sensor;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.security.Authenticated;
 
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Path("sensors") // relative url web path for this service
 @Produces({MediaType.APPLICATION_JSON}) // injects header “Content-Type: application/json”
@@ -26,6 +30,8 @@ public class SensorService {
     private SecurityContext securityContext;
     @EJB
     private SensorBean sensorBean;
+    @EJB
+    private SensorValueBean sensorValueBean;
     @GET // means: to call this endpoint, we need to use the HTTP GET method
     @Path("/") // means: the relative url path is “/api/sensors/”
     public List<SensorDTO> getAllSensors() {
@@ -51,7 +57,7 @@ public class SensorService {
 
     @PATCH
     @Path("{id}")
-    public Response updateCurrentValue(@PathParam("id") long id, SensorDTO sensorDTO) {
+    public Response updateCurrentValue(@PathParam("id") long id, SensorDTO sensorDTO) throws MyConstraintViolationException {
         Sensor sensor = sensorBean.find(id);
 
         // Verifica se o sensor existe
@@ -61,8 +67,12 @@ public class SensorService {
 
         sensor.setCurrentValue(sensorDTO.getCurrentValue());
 
+
         // Persiste a alteração
         sensorBean.update(sensor);
+
+        //Cria um novo sensorValue
+        sensorValueBean.create(Math.abs(UUID.randomUUID().hashCode()), sensorDTO.getCurrentValue(), new Date(), id);
 
         SensorDTO sensorDTOUpdated = SensorDTO.from(sensor);
         return Response.ok(sensorDTOUpdated).build();
