@@ -9,7 +9,7 @@ import java.util.List;
         {
                 @NamedQuery(
                         name = "getAllSensors",
-                        query = "SELECT s FROM Sensor s"
+                        query = "SELECT s FROM Sensor s order by s.id"
                 ),
                 @NamedQuery(
                         name = "getAllSensorsByVolume",

@@ -17,7 +17,7 @@
             Data</button>
         </div>
 
-        <div class="container">
+        <div class="container" style="text-align: center;">
           <table class="table table-bordered table-striped rounded">
             <thead class="thead-dark">
               <tr>
@@ -30,7 +30,11 @@
             <tbody>
               <tr v-for="sensor in sensors" :key="sensor.id">
                 <td>{{ sensor.id }}</td>
-                <td>{{ sensor.type }}</td>
+
+                <td v-if="sensor.type == 'Temperature'"><i class="bi bi-thermometer-half"></i> {{ sensor.type }}</td>
+                <td v-else-if="sensor.type == 'Humidity'"><i class="bi bi-droplet-fill"></i> {{ sensor.type }}</td>
+                <td v-else-if="sensor.type == 'GPS'"><i class="bi bi-geo-alt-fill"></i> {{ sensor.type }}</td>
+
                 <td v-if="editedSensorId !== sensor.id">{{ sensor.currentValue }}</td>
                 <td v-else>
                   <input v-model="editedValue" type="number" class="form-control form-control-sm" />
@@ -38,14 +42,14 @@
                 <td>
                   <button v-if="editedSensorId !== sensor.id" @click="startEditing(sensor)"
                     class="btn btn-sm btn-primary">
-                    Editar
+                    <i class="bi bi-pencil-fill"></i> Editar
                   </button>
                   <div v-else>
                     <button @click="saveValue(sensor)" class="btn btn-sm btn-success me-2">
-                      Guardar
+                      <i class="bi bi-floppy-fill"></i> Guardar
                     </button>
                     <button @click="cancelEditing" class="btn btn-sm btn-danger">
-                      Cancelar
+                      <i class="bi bi-x-circle-fill"></i> Cancelar
                     </button>
                   </div>
                 </td>
