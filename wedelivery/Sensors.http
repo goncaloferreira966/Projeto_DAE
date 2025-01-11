@@ -16,6 +16,8 @@ Accept: application/json
 ### Update Sensor Value
 PATCH http://localhost:8080/wedelivery/api/sensors/1
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzM2NjA5MTA4LCJleHAiOjE3MzY2MTI3MDh9.JLdwDPvPkPeBz1q_y87SspobLHqAyDJaygvvAtFHLzOZW2fMJWhAMyT4F3JOQMuG
+
 
 {
   "currentValue": 50

@@ -3,6 +3,7 @@ import jakarta.annotation.PostConstruct;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Singleton;
 import jakarta.ejb.Startup;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Sensor;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -33,6 +34,8 @@ public class ConfigBean {
     private SensorBean sensorBean;
     @EJB
     private RestrictionBean restrictionBean;
+    @EJB
+    private SensorValueBean sensorValueBean;
 
     private static final Logger logger = Logger.getLogger("ejbs.ConfigBean");
 
@@ -102,40 +105,110 @@ public class ConfigBean {
             volumeBean.create(id_14, "Unusable", new Date(), id_6);
 
             sensorBean.create(1, "Temperature", "20", false, false);
+            sensorValueBean.create(1,"20", new Date(), 1);
+
             sensorBean.create(2, "Temperature", "23", false, false);
+            sensorValueBean.create(2,"23", new Date(), 2);
+
             sensorBean.create(3, "Temperature", "30", false, false);
+            sensorValueBean.create(3,"30", new Date(), 3);
+
             sensorBean.create(4, "Temperature", "31", false, false);
+            sensorValueBean.create(4,"31", new Date(), 4);
+
             sensorBean.create(5, "Temperature", "10", false, false);
+            sensorValueBean.create(5,"10", new Date(), 5);
+
             sensorBean.create(6, "Temperature", "20", false, false);
+            sensorValueBean.create(6,"20", new Date(), 6);
+
             sensorBean.create(7, "Temperature", "21", false, false);
+            sensorValueBean.create(7,"21", new Date(), 7);
+
             sensorBean.create(8, "Temperature", "22", false, false);
+            sensorValueBean.create(8,"22", new Date(), 8);
+
             sensorBean.create(9, "Temperature", "22", false, false);
+            sensorValueBean.create(9,"22", new Date(), 9);
+
             sensorBean.create(10, "Temperature", "23", false, false);
+            sensorValueBean.create(10,"23", new Date(), 10);
+
             sensorBean.create(11, "Temperature", "-4", false, false);
+            sensorValueBean.create(11,"-4", new Date(), 11);
+
             sensorBean.create(12, "Temperature", "-1", false, false);
+            sensorValueBean.create(12,"-1", new Date(), 12);
+
             sensorBean.create(13, "Temperature", "10", false, false);
+            sensorValueBean.create(13,"10", new Date(), 13);
+
             sensorBean.create(14, "Temperature", "20", false, false);
+            sensorValueBean.create(14,"20", new Date(), 14);
+
             sensorBean.create(15, "Temperature", "30", false, false);
+            sensorValueBean.create(15,"30", new Date(), 15);
+
             sensorBean.create(16, "Temperature", "31", false, false);
+            sensorValueBean.create(16,"31", new Date(), 16);
+
             sensorBean.create(17, "Temperature", "21", false, false);
+            sensorValueBean.create(17,"21", new Date(), 17);
+
             sensorBean.create(18, "Temperature", "22", false, false);
+            sensorValueBean.create(18,"22", new Date(), 18);
+
             sensorBean.create(19, "Temperature", "22", false, false);
+            sensorValueBean.create(19,"22", new Date(), 19);
+
             sensorBean.create(20, "Temperature", "22", false, false);
+            sensorValueBean.create(20,"22", new Date(), 20);
+
             sensorBean.create(21, "Humidity", "100", false, false);
+            sensorValueBean.create(21,"100", new Date(), 21);
+
             sensorBean.create(22, "Humidity", "88", false, false);
+            sensorValueBean.create(22,"88", new Date(), 22);
+
             sensorBean.create(23, "Humidity", "90", false, false);
+            sensorValueBean.create(23,"90", new Date(), 23);
+
             sensorBean.create(24, "Humidity", "70", false, false);
+            sensorValueBean.create(24,"70", new Date(), 24);
+
             sensorBean.create(25, "Humidity", "77", false, false);
+            sensorValueBean.create(25,"77", new Date(), 25);
+
             sensorBean.create(26, "Humidity", "60", false, false);
+            sensorValueBean.create(26,"60", new Date(), 26);
+
             sensorBean.create(27, "Humidity", "20", false, false);
+            sensorValueBean.create(27,"20", new Date(), 27);
+
             sensorBean.create(28, "Humidity", "55", false, false);
+            sensorValueBean.create(28,"55", new Date(), 28);
+
             sensorBean.create(29, "GPS", "38.7071,-9.1355", false, false);
+            sensorValueBean.create(29,"38.7071,-9.1355", new Date(), 29);
+
             sensorBean.create(30, "GPS", "48.8584,2.2945", false, false);
+            sensorValueBean.create(30,"48.8584,2.2945", new Date(), 30);
+
             sensorBean.create(31, "GPS", "40.6892,-74.0445", false, false);
+            sensorValueBean.create(31,"40.6892,-74.0445", new Date(), 31);
+
             sensorBean.create(32, "GPS", "41.8902,9.1355", false, false);
-            sensorBean.create(33, "Accelerometer", "55", false, false);
-            sensorBean.create(34, "Accelerometer", "45", false, false);
-            sensorBean.create(35, "Accelerometer", "35", false, false);
+            sensorValueBean.create(32,"41.8902,9.1355", new Date(), 32);
+
+            sensorBean.create(33, "Accelerometer", "2", false, false);
+            sensorValueBean.create(33,"2", new Date(), 33);
+
+            sensorBean.create(34, "Accelerometer", "4", false, false);
+            sensorValueBean.create(34,"4", new Date(), 34);
+
+            sensorBean.create(35, "Accelerometer", "3", false, false);
+            sensorValueBean.create(35,"3", new Date(), 35);
+
 
             productBean.create(1, "Coca-Cola", "Coca-Cola", 1.5, "coca-cola.jpg", 19, true, false, "Leiria", "safari");
             productBean.create(2, "Pepsi", "Pepsi", 1.5, "pepsi.jpg", 2, true, false, "Leiria", "safari");
