@@ -107,9 +107,17 @@ const cancelEditing = () => {
 const saveValue = async (sensor) => {
   try {
     // Faz uma requisição POST (ou PUT, dependendo da API) para guardar o novo valor
-    /*await axios.post(`http://localhost/api/sensors/${sensor.id}`, {
-      currentValue: editedValue.value,
-    });*/
+    const { data, error } = await useFetch(`${api}/sensors/${sensor.id}`, {
+      method: 'PATCH',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: {
+        currentValue: editedValue.value
+      }
+    });
+
 
     // Atualiza o valor na tabela
     sensor.currentValue = editedValue.value;
