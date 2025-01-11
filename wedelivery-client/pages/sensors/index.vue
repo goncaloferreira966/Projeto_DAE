@@ -106,7 +106,7 @@ const cancelEditing = () => {
 // Guarda o novo valor atual do sensor
 const saveValue = async (sensor) => {
   try {
-    // Faz uma requisição POST (ou PUT, dependendo da API) para salvar o novo valor
+    // Faz uma requisição POST (ou PUT, dependendo da API) para guardar o novo valor
     /*await axios.post(`http://localhost/api/sensors/${sensor.id}`, {
       currentValue: editedValue.value,
     });*/

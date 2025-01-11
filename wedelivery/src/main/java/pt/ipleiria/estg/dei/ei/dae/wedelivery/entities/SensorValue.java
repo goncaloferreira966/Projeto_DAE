@@ -25,10 +25,11 @@ public class SensorValue {
     public SensorValue() {
     }
 
-    public SensorValue(long id, String value, Date date) {
+    public SensorValue(long id, String value, Date date, Sensor sensor) {
         this.id = id;
         this.value = value;
         this.date = date;
+        this.sensor = sensor;
     }
 
     public long getId() {

@@ -144,15 +144,15 @@ public class ConfigBean {
             productBean.create(5, "7up", "7up", 1.5, "7up.jpg", 100, true, false, "Porto", "safari");
             productBean.create(6, "Sumol", "Sumol", 1.5, "sumol.jpg", 100, true, false, "Porto", "safari");
 
-            restrictionBean.create(1, "temperature", 20, 0);
-            restrictionBean.create(2, "temperature", 15,9);
-            restrictionBean.create(5, "temperature", 2, -2);
-            restrictionBean.create(6, "temperature", 0,-15);
-            restrictionBean.create(3, "humidity", 10,40);//optimal
-            restrictionBean.create(4,"humidity",70,40);//too moist
-            restrictionBean.create(7, "humidity", 40, 0);//too dry
-            restrictionBean.create(8, "accelerometer_10_G", 0, 5);
-            restrictionBean.create(9, "accelerometer_16_G", 0, 10);
+            restrictionBean.create(1, "Temperature", 20, 0);
+            restrictionBean.create(2, "Temperature", 15,9);
+            restrictionBean.create(5, "Temperature", 2, -2);
+            restrictionBean.create(6, "Temperature", 0,-15);
+            restrictionBean.create(3, "Humidity", 10,40);//optimal
+            restrictionBean.create(4,"Humidity",70,40);//too moist
+            restrictionBean.create(7, "Humidity", 40, 0);//too dry
+            restrictionBean.create(8, "Accelerometer", 0, 5);
+            restrictionBean.create(9, "Accelerometer", 0, 10);
 
             productBean.addProductInVolume(1, id_9, 3);
             productBean.addProductInVolume(2, id_9, 2);
