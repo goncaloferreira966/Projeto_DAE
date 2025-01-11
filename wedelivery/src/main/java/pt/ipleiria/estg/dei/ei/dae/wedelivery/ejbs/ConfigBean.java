@@ -121,14 +121,14 @@ public class ConfigBean {
             sensorBean.create(18, "Temperature", 20, false, false);
             sensorBean.create(19, "Temperature", 20, false, false);
             sensorBean.create(20, "Temperature", 20, false, false);
-            sensorBean.create(21, "humidity", 20, false, false);
-            sensorBean.create(22, "humidity", 20, false, false);
-            sensorBean.create(23, "humidity", 20, false, false);
-            sensorBean.create(24, "humidity", 20, false, false);
-            sensorBean.create(25, "humidity", 20, false, false);
-            sensorBean.create(26, "humidity", 20, false, false);
-            sensorBean.create(27, "humidity", 20, false, false);
-            sensorBean.create(28, "humidity", 20, false, false);
+            sensorBean.create(21, "Humidity", 20, false, false);
+            sensorBean.create(22, "Humidity", 20, false, false);
+            sensorBean.create(23, "Humidity", 20, false, false);
+            sensorBean.create(24, "Humidity", 20, false, false);
+            sensorBean.create(25, "Humidity", 20, false, false);
+            sensorBean.create(26, "Humidity", 20, false, false);
+            sensorBean.create(27, "Humidity", 20, false, false);
+            sensorBean.create(28, "Humidity", 20, false, false);
 
             productBean.create(1, "Coca-Cola", "Coca-Cola", 1.5, "coca-cola.jpg", 19, true, false, "Leiria", "safari");
             productBean.create(2, "Pepsi", "Pepsi", 1.5, "pepsi.jpg", 2, true, false, "Leiria", "safari");
