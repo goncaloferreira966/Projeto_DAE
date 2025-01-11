@@ -37,7 +37,8 @@
 
                 <td v-if="editedSensorId !== sensor.id">{{ sensor.currentValue }}</td>
                 <td v-else>
-                  <input v-model="editedValue" type="number" class="form-control form-control-sm" />
+                  <input v-if="sensor.type !== 'GPS'" v-model="editedValue" type="number" class="form-control form-control-sm" />
+                  <input v-else v-model="editedValue" type="text" class="form-control form-control-sm" />
                 </td>
                 <td>
                   <button v-if="editedSensorId !== sensor.id" @click="startEditing(sensor)"

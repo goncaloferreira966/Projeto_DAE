@@ -129,7 +129,10 @@ public class ConfigBean {
             sensorBean.create(26, "Humidity", "60", false, false);
             sensorBean.create(27, "Humidity", "20", false, false);
             sensorBean.create(28, "Humidity", "55", false, false);
-            sensorBean.create(29, "GPS", "20", false, false);
+            sensorBean.create(29, "GPS", "38.7071,-9.1355", false, false);
+            sensorBean.create(30, "GPS", "48.8584,2.2945", false, false);
+            sensorBean.create(31, "GPS", "40.6892,-74.0445", false, false);
+            sensorBean.create(32, "GPS", "41.8902,9.1355", false, false);
 
             productBean.create(1, "Coca-Cola", "Coca-Cola", 1.5, "coca-cola.jpg", 19, true, false, "Leiria", "safari");
             productBean.create(2, "Pepsi", "Pepsi", 1.5, "pepsi.jpg", 2, true, false, "Leiria", "safari");
