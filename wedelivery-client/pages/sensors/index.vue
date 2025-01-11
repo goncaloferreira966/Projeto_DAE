@@ -34,11 +34,14 @@
                 <td v-if="sensor.type == 'Temperature'"><i class="bi bi-thermometer-half"></i> {{ sensor.type }}</td>
                 <td v-else-if="sensor.type == 'Humidity'"><i class="bi bi-droplet-fill"></i> {{ sensor.type }}</td>
                 <td v-else-if="sensor.type == 'GPS'"><i class="bi bi-geo-alt-fill"></i> {{ sensor.type }}</td>
+                <td v-else-if="sensor.type == 'Accelerometer'"><i class="bi bi-speedometer"></i> {{ sensor.type }}</td>
 
                 <td v-if="editedSensorId !== sensor.id">{{ sensor.currentValue }}</td>
                 <td v-else>
-                  <input v-if="sensor.type !== 'GPS'" v-model="editedValue" type="number" class="form-control form-control-sm" />
-                  <input v-else v-model="editedValue" type="text" class="form-control form-control-sm" />
+                  <input v-if="sensor.type === 'Temperature'" v-model="editedValue" min="-20" max="50" type="number" class="form-control form-control-sm" />
+                  <input v-if="sensor.type === 'Humidity'" v-model="editedValue" min="0" max="100" type="number" class="form-control form-control-sm" />
+                  <input v-if="sensor.type === 'Accelerometer'" v-model="editedValue" min="0" max="15" type="number" class="form-control form-control-sm" />
+                  <input v-else-if="sensor.type === 'GPS'" v-model="editedValue" type="text" class="form-control form-control-sm" />
                 </td>
                 <td>
                   <button v-if="editedSensorId !== sensor.id" @click="startEditing(sensor)"

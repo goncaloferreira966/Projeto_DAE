@@ -133,6 +133,9 @@ public class ConfigBean {
             sensorBean.create(30, "GPS", "48.8584,2.2945", false, false);
             sensorBean.create(31, "GPS", "40.6892,-74.0445", false, false);
             sensorBean.create(32, "GPS", "41.8902,9.1355", false, false);
+            sensorBean.create(33, "Accelerometer", "55", false, false);
+            sensorBean.create(34, "Accelerometer", "45", false, false);
+            sensorBean.create(35, "Accelerometer", "35", false, false);
 
             productBean.create(1, "Coca-Cola", "Coca-Cola", 1.5, "coca-cola.jpg", 19, true, false, "Leiria", "safari");
             productBean.create(2, "Pepsi", "Pepsi", 1.5, "pepsi.jpg", 2, true, false, "Leiria", "safari");
@@ -142,8 +145,8 @@ public class ConfigBean {
             productBean.create(6, "Sumol", "Sumol", 1.5, "sumol.jpg", 100, true, false, "Porto", "safari");
 
             restrictionBean.create(1, "temperature", 20, 0);
-            restrictionBean.create(2, "temprature", 15,9);
-            restrictionBean.create(5, "temperatire", 2, -2);
+            restrictionBean.create(2, "temperature", 15,9);
+            restrictionBean.create(5, "temperature", 2, -2);
             restrictionBean.create(6, "temperature", 0,-15);
             restrictionBean.create(3, "humidity", 10,40);//optimal
             restrictionBean.create(4,"humidity",70,40);//too moist
