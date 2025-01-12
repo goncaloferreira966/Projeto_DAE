@@ -37,7 +37,7 @@
                                         <div class="col-md-6" style="padding-left: 3%;">
                                             <div class="card-body d-flex align-items-center" style="height: 100%;">
                                                 <h5>{{ item.name }}</h5>
-                                                <p class="small mb-0">Price: €{{ item.price.toFixed(2) }}</p>
+                                                <p class="small mb-0 m-2"> Price: €{{ item.price.toFixed(2) }}</p>
                                             </div>
                                         </div>
                                         <div class="col-md-5">
