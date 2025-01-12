@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div v-if="error" class="alert alert-danger mt-4">Error: {{ error.message }}</div>
-    
+
     <div v-else class="col-md-12 mt-5">
       <div v-if="!orders" class="d-flex justify-content-center">
         <!-- Spinner enquanto os dados são carregados -->
@@ -13,7 +13,8 @@
         <!-- Cabeçalho da página -->
         <div class="d-flex justify-content-between align-items-center mb-4">
           <h2><i class="bi bi-box-seam"></i> WeDelivery - Orders</h2>
-          <button @click.prevent="refresh" class="btn btn-info"><i class="bi bi-arrow-clockwise"></i> Refresh Data</button>
+          <button @click.prevent="refresh" class="btn btn-info"><i class="bi bi-arrow-clockwise"></i> Refresh
+            Data</button>
         </div>
 
         <!-- Dropdown para filtragem por username -->
@@ -25,7 +26,7 @@
             </option>
           </select>
         </div>
-        
+
         <!-- Cards com informação adicional -->
         <div class="row mt-5">
           <div v-for="(order, index) in filteredOrders" :key="index" class="col-lg-4 col-md-6 mb-4">
@@ -41,7 +42,21 @@
                     {{ order.state }}
                   </span>
                 </p>
-                <nuxt-link :to="`/orders/${order.code}`" class="btn btn-dark btn-block"><i class="bi bi-eye-fill"></i> View Details</nuxt-link>
+                <div class="row">
+                  <div class="col-md-6">
+
+                    <nuxt-link :to="`/orders/${order.code}`" style="width: 100%;" class="btn btn-dark btn-block"><i
+                        class="bi bi-eye-fill"></i>
+                      View Details</nuxt-link>
+                  </div>
+                  <div class="col-md-6">
+
+                    <button v-if="order.state === 'Pending'" @click="approveOrder(order)" style="width: 100%;"
+                      class="btn btn-success btn-block"><i class="bi bi-eye-fill"></i> Approve Order</button>
+                  </div>
+
+                </div>
+
               </div>
             </div>
           </div>
@@ -64,8 +79,8 @@ const role = localStorage.getItem('Role');
 const username = localStorage.getItem('Username');
 
 //Verificação da role e chamada do endpoint correto
-const endpoint = role === 'Operator' || role === 'Manager' 
-  ? `${api}/orders` 
+const endpoint = role === 'Operator' || role === 'Manager'
+  ? `${api}/orders`
   : `${api}/clients/${username}/orders`;
 
 // Chamada do endpoint
@@ -115,6 +130,22 @@ const getStateClass = (state) => {
       return 'badge bg-secondary'; // Default
   }
 };
+
+const approveOrder = async (order) => {
+  // Faz uma requisição POST (ou PUT, dependendo da API) para guardar o novo valor
+  const { data, error } = await useFetch(`${api}/orders/${order.code}`, {
+      method: 'PATCH',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: {
+        state: "Shipped"
+      }
+    });
+    order.state = "Shipped";
+};
+
 </script>
 
 <style scoped>
@@ -124,18 +155,22 @@ const getStateClass = (state) => {
 
 /* Cores das etiquetas */
 .bg-light-blue {
-  background-color: #ADD8E6; /* Azul claro */
+  background-color: #ADD8E6;
+  /* Azul claro */
 }
 
 .bg-warning {
-  background-color: #FFC107; /* Amarelo (Warning) */
+  background-color: #FFC107;
+  /* Amarelo (Warning) */
 }
 
 .bg-blue {
-  background-color: #007BFF; /* Azul */
+  background-color: #007BFF;
+  /* Azul */
 }
 
 .bg-success {
-  background-color: #28A745; /* Verde (Sucesso) */
+  background-color: #28A745;
+  /* Verde (Sucesso) */
 }
 </style>

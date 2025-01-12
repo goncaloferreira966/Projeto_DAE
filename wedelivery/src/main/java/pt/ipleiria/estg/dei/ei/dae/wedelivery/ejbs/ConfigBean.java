@@ -55,7 +55,7 @@ public class ConfigBean {
             supplierBean.create("drinkLFA", "qwerty", "DrinkLFA, LDA", "drinklfa@mail.com");
 
             long id_1 = Math.abs(UUID.randomUUID().hashCode());
-            orderBean.create(id_1, new Date(), new Date(), "Guilherme", "DinisRX", "In distribution");
+            orderBean.create(id_1, new Date(), new Date(), "Guilherme", "DinisRX", "Shipped");
             long id_2 = Math.abs(UUID.randomUUID().hashCode());
             orderBean.create(id_2, new Date(), new Date(), "Guilherme","DinisRX", "Pending");
             long id_3 = Math.abs(UUID.randomUUID().hashCode());
@@ -63,9 +63,9 @@ public class ConfigBean {
             long id_4 = Math.abs(UUID.randomUUID().hashCode());
             orderBean.create(id_4, new Date(), new Date(), "Goncalo","DinisRX","Delivered");
             long id_5 = Math.abs(UUID.randomUUID().hashCode());
-            orderBean.create(id_5, new Date(), new Date(), "Goncalo","Gui0000","In distribution");
+            orderBean.create(id_5, new Date(), new Date(), "Goncalo","Gui0000","Shipped");
             long id_6 = Math.abs(UUID.randomUUID().hashCode());
-            orderBean.create(id_6, new Date(), new Date(), "Goncalo","Gui0000","Compromised");
+            orderBean.create(id_6, new Date(), new Date(), "Goncalo","Gui0000","Shipped");
             long id_7 = Math.abs(UUID.randomUUID().hashCode());
             orderBean.create(id_7, new Date(), new Date(), "Goncalo","Gui0000","Shipped");
             long id_8 = Math.abs(UUID.randomUUID().hashCode());

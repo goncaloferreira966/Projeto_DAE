@@ -91,4 +91,5 @@ Accept: application/json
 ### Test endpoint of role
 GET http://localhost:8080/wedelivery/api/auth/user
 Accept: application/json
-Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
+Authorization: Bearer eyJhbGc
+iOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzMyNjM4MzM3LCJleHAiOjE3MzI2NDE5Mzd9.-UjahwGa9vKommvWv7j4TTuNnxFF4xjDu-FVmD3oDlROAfFW2iujzRJ2vPZN2LwP
