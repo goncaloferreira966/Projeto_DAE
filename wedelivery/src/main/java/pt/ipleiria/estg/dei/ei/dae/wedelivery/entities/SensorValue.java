@@ -1,13 +1,18 @@
 package pt.ipleiria.estg.dei.ei.dae.wedelivery.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Version;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.Date;
 
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = "getAllSensorsValuesById",
+                        query = "SELECT s FROM SensorValue s WHERE s.sensor.id = :id"
+                )
+        }
+)
 @Entity
 public class SensorValue {
     @Id

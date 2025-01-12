@@ -6,16 +6,15 @@ import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.SecurityContext;
-import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.ClientDTO;
-import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.OrderDTO;
-import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.SensorDTO;
-import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.VolumeDTO;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.*;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.SensorBean;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.SensorValueBean;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Sensor;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.SensorValue;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.security.Authenticated;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -43,6 +42,17 @@ public class SensorService {
     public Response getSensorById(@PathParam("id") long id) {
         Sensor sensor = sensorBean.find(id);
         SensorDTO sensorDTO = SensorDTO.from(sensor);
+
+        var sensorValues = sensorValueBean.findAllSensorValuesById(id);
+
+        List<SensorValueDTO> sensorValuesDTOs = new ArrayList<>();
+
+        for (SensorValue sensorValue : sensorValues) {
+            sensorValuesDTOs.add(SensorValueDTO.from(sensorValue));
+        }
+
+        sensorDTO.setSensorValues(sensorValuesDTOs);
+
         return Response.ok(sensorDTO).build();
     }
 
@@ -52,6 +62,17 @@ public class SensorService {
         var sensor = sensorBean.findWithVolume(id);
         var sensorDTO = SensorDTO.from(sensor);
         sensorDTO.setVolume(VolumeDTO.from(sensor.getVolume()));
+
+        var sensorValues = sensorValueBean.findAllSensorValuesById(id);
+
+        List<SensorValueDTO> sensorValuesDTOs = new ArrayList<>();
+
+        for (SensorValue sensorValue : sensorValues) {
+            sensorValuesDTOs.add(SensorValueDTO.from(sensorValue));
+        }
+
+        sensorDTO.setSensorValues(sensorValuesDTOs);
+
         return Response.ok(sensorDTO).build();
     }
 
@@ -66,7 +87,6 @@ public class SensorService {
         }
 
         sensor.setCurrentValue(sensorDTO.getCurrentValue());
-
 
         // Persiste a alteração
         sensorBean.update(sensor);

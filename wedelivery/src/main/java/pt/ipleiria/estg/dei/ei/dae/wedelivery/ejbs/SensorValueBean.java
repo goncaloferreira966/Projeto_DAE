@@ -6,6 +6,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import jakarta.validation.ConstraintViolationException;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Order;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Sensor;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.SensorValue;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
@@ -13,6 +14,7 @@ import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityNotFoundException;
 
 import java.util.Date;
+import java.util.List;
 
 @Stateless
 public class SensorValueBean {
@@ -39,6 +41,12 @@ public class SensorValueBean {
         catch (ConstraintViolationException e) {
             throw new MyConstraintViolationException(e);
         }
+    }
+
+    public List<SensorValue> findAllSensorValuesById(long id) {
+        return entityManager.createNamedQuery("getAllSensorsValuesById", SensorValue.class)
+                .setParameter("id", id)
+                .getResultList();
     }
 
     /******************************************************************/

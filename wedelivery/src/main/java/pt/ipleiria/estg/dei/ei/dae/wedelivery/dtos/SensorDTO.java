@@ -57,7 +57,13 @@ public class SensorDTO {
         return expedition;
     }
     public VolumeDTO getVolume() {return volume;}
+    public List<SensorValueDTO> getSensorValues() {
+        return sensorValues;
+    }
 
+    public void setSensorValues(List<SensorValueDTO> sensorValues) {
+        this.sensorValues = sensorValues;
+    }
     public void setId(long id) {
         this.id = id;
     }

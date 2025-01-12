@@ -2,7 +2,6 @@ package pt.ipleiria.estg.dei.ei.dae.wedelivery.ws;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.ejb.EJB;
 import jakarta.mail.MessagingException;
-import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
@@ -12,7 +11,6 @@ import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.*;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.*;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Order;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Product;
-import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Volume;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityNotFoundException;
@@ -71,7 +69,9 @@ public class OrderService {
 
         var orderDTO = OrderDTO.from(order);
         var volumes = volumeBean.findVolumesByOrderId(code);
+
         var volumeDTOs = VolumeDTO.from(volumes);
+
         orderDTO.setVolumes(volumeDTOs);
         return Response.ok(orderDTO).build();
     }

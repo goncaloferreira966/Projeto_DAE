@@ -8,7 +8,8 @@ Accept: application/json
 ### Get one sensor
 GET http://localhost:8080/wedelivery/api/sensors/8
 Accept: application/json
-Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzM2NzAwODIwLCJleHAiOjE3MzY3MDQ0MjB9.k7h4e4DrVStSPkGPm2GJqlw7Z0S3ts_I-Es3_mVt2liR-lqLnifYYqMMbQ6Gn1Ek
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzM2NzAyNzA0LCJleHAiOjE3MzY3MDYzMDR9.xKUSofYyS80KA8x2wm2NFZmd4v49Sr4i2PvRcaZN4TCHWsl7y7Qa6QZGxadqqzI5
+
 
 
 ### Get one sensor details
