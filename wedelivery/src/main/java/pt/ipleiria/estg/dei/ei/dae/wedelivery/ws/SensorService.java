@@ -6,11 +6,11 @@ import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.SecurityContext;
+import org.hibernate.procedure.ProcedureOutputs;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.*;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.SensorBean;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.SensorValueBean;
-import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Sensor;
-import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.SensorValue;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.*;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.security.Authenticated;
 
@@ -109,6 +109,45 @@ public class SensorService {
         sensorValueBean.create(Math.abs(UUID.randomUUID().hashCode()), sensorDTO.getCurrentValue(), new Date(), id);
 
         SensorDTO sensorDTOUpdated = SensorDTO.from(sensor);
+
+        //Verificar se estragou algum produto
+        Volume volume = sensor.getVolume();
+
+        int counter = 0;
+        for(Product product : volume.getProducts() ) {
+            for(Restriction restriction : product.getRestrictions() ) {
+                if(sensor.getType().equals(restriction.getType())) {
+                    if(!sensor.getType().equals("GPS")){
+                        if((Double.parseDouble(sensorDTO.getCurrentValue()) < restriction.getMinValue()) ||  Double.parseDouble(sensorDTO.getCurrentValue()) > restriction.getMaxValue()){
+                            counter ++;
+                        }
+                    }
+                }
+            }
+        }
+
+        //Alterar o estado de um volume
+        switch (counter) {
+            case 0:
+                volume.setState("No damage");
+                break;
+            case 1:
+                volume.setState("Minor damage");
+                break;
+            case 2:
+                volume.setState("Moderate damage");
+                break;
+            case 3:
+                volume.setState("Significant damage");
+                break;
+            case 4:
+                volume.setState("Heavily damaged");
+                break;
+            default:
+                volume.setState("Unusable");
+                break;
+        }
+
         return Response.ok(sensorDTOUpdated).build();
     }
 
