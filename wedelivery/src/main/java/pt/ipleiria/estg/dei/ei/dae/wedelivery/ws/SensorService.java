@@ -34,7 +34,21 @@ public class SensorService {
     @GET // means: to call this endpoint, we need to use the HTTP GET method
     @Path("/") // means: the relative url path is “/api/sensors/”
     public List<SensorDTO> getAllSensors() {
-        return SensorDTO.from(sensorBean.findAll());
+        List<SensorDTO> sensors =  SensorDTO.from(sensorBean.findAll());
+
+        for (SensorDTO sensor : sensors) {
+            var sensorValues = sensorValueBean.findAllSensorValuesById(sensor.getId());
+
+            List<SensorValueDTO> sensorValuesDTOs = new ArrayList<>();
+
+            for (SensorValue sensorValue : sensorValues) {
+                sensorValuesDTOs.add(SensorValueDTO.from(sensorValue));
+            }
+
+            sensor.setSensorValues(sensorValuesDTOs);
+        }
+
+        return sensors;
     }
 
     @GET

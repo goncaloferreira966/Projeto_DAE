@@ -4,6 +4,8 @@
 ### Get All sensors
 GET http://localhost:8080/wedelivery/api/sensors
 Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzM2NzAzMTg0LCJleHAiOjE3MzY3MDY3ODR9.pP3X2cpfWfp66mESyACOh6pzfjYA4F9Q36a3LkDkgKWuXRMwKOvtqqohfahm1Teg
+
 
 ### Get one sensor
 GET http://localhost:8080/wedelivery/api/sensors/8
