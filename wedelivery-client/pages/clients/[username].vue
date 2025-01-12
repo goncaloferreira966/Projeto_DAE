@@ -29,42 +29,44 @@
               <div class="card-header bg-secondary">
                 <ul class="nav nav-tabs card-header-tabs">
                   <li class="nav-item">
-                    <a class="nav-link active " aria-current="true" href="#">All</a>
+                    <a class="nav-link text-dark" :class="{ active: activeTab === 'All' }" href="#"
+                      @click.prevent="activeTab = 'All'">
+                      All
+                    </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Completed</a>
+                    <a class="nav-link text-dark" :class="{ active: activeTab === 'Pending' }" href="#"
+                      @click.prevent="activeTab = 'Pending'">
+                      Pending
+                    </a>
                   </li>
-                  <li class="nav-item ">
-                    <a class="nav-link text-white " href="#" tabindex="-1" aria-disabled="true">In Distribution</a>
+                  <li class="nav-item">
+                    <a class="nav-link text-dark" :class="{ active: activeTab === 'Shipped' }" href="#"
+                      @click.prevent="activeTab = 'Shipped'">
+                      Shipped
+                    </a>
                   </li>
-                  <li class="nav-item ">
-                    <a class="nav-link text-white " href="#" tabindex="-1" aria-disabled="true">Pending</a>
-                  </li>
-                  <li class="nav-item ">
-                    <a class="nav-link text-white " href="#" tabindex="-1" aria-disabled="true">Shipped</a>
+                  <li class="nav-item">
+                    <a class="nav-link text-dark" :class="{ active: activeTab === 'Delivered' }" href="#"
+                      @click.prevent="activeTab = 'Delivered'">
+                      Delivered
+                    </a>
                   </li>
                 </ul>
               </div>
               <div class="row" style="padding: 1%;">
-                <div v-for="(order) in client.orders" :key="order.code" class="col-md-6 mb-3">
+                <div v-for="(order) in filteredOrders" :key="order.code" class="col-md-6 mb-3">
                   <div class="card border-secondary">
                     <div class="card-header bg-secondary text-white">
                       <h6><strong>Order Code:</strong> {{ order.code }}</h6>
                     </div>
                     <div class="card-body">
-                      <p><strong>Purchase Date:</strong> {{ order.purchaseDate }}</p>
+                      <p><strong>Purchase Date:</strong> {{ formatDate(order.purchaseDate) }}</p>
                       <strong>State:</strong>
                       <span :class="getStateClass(order.state)" class="badge"
                         style="display: block; text-align: center;">
                         {{ order.state }}
                       </span>
-                      <br>
-                      <!-- <p><strong>Operator:</strong> {{ order.usernameOperator }}</p> -->
-                      <!-- <nuxt-link :to="`/clients/${client.username}/${order.code}`"
-                        class="btn btn-dark btn-block btn-sm">
-                        <i class="bi bi-eye-fill"></i> View Details
-                      </nuxt-link> -->
-                     <!-- <nuxt-link :to="`/manager/${order.code}`" class="btn btn-dark btn-block"><i class="bi bi-eye-fill"></i> View Details</nuxt-link>-->
                     </div>
                   </div>
                 </div>
@@ -101,9 +103,16 @@ const route = useRoute();
 const username = route.params.username;
 const config = useRuntimeConfig();
 const api = config.public.API_URL;
-
+const activeTab = ref("All");
 const messages = ref([]);  // Armazenar mensagens de erro
 const client = ref(null);  // Armazenar os detalhes do cliente
+
+const filteredOrders = computed(() => {
+  if (activeTab.value === "All") {
+    return client.value?.orders || [];
+  }
+  return client.value?.orders.filter(order => order.state === activeTab.value) || [];
+});
 
 // Função assíncrona para carregar os dados do cliente
 const loadClientData = async () => {
