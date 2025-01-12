@@ -3,9 +3,6 @@ import jakarta.annotation.PostConstruct;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Singleton;
 import jakarta.ejb.Startup;
-import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Sensor;
-
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.UUID;
 import java.util.logging.Logger;
@@ -56,19 +53,6 @@ public class ConfigBean {
             supplierBean.create("safari", "qwerty", "Safari, LDA", "safari@mail.com");
             supplierBean.create("liquid", "qwerty", "Liquid, LDA", "liquid@mail.com");
             supplierBean.create("drinkLFA", "qwerty", "DrinkLFA, LDA", "drinklfa@mail.com");
-
-         //   wait(1000);
-            // wait(1000);
-            //wait(1000);
-            //wait(1000);
-            //wait(1000);
-            //wait(1000);
-            //wait(1000);
-            //wait(1000);
-            //wait(1000);
-            //wait(1000);
-            //wait(1000);
-            //wait(1000);
 
             long id_1 = Math.abs(UUID.randomUUID().hashCode());
             orderBean.create(id_1, new Date(), new Date(), "Guilherme", "DinisRX", "In distribution");
