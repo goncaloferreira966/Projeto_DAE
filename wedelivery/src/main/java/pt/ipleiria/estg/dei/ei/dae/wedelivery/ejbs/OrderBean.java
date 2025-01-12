@@ -162,8 +162,7 @@ public class OrderBean {
         Order order = find(idOrder);
         var haveVolume = false;
         for (Product product : products){
-
-            if (findOrdersByVolumeId(idOrder).isEmpty()){
+            if (!haveVolume){
                 long newVolumeID = getNewID();
                 volumeBean.create(newVolumeID, "Pending",  new Date(), idOrder);
                 productBean.addProductInVolume(product.getId(), newVolumeID, product.getQuantity());
@@ -172,29 +171,35 @@ public class OrderBean {
                 var volumes = volumeBean.findVolumesByOrderId(idOrder);
                 for (Volume volume : volumes){
                     var productsInVolumes = productBean.findAllProductsByVolumeId(volume.getId());
-                    if (productsInVolumes.stream().noneMatch(productIn -> productIn.getId() == product.getId()) && productsInVolumes.stream().allMatch(productIn -> productIn.getWarehouse().getName().equals(productBean.findById(product.getId()).getWarehouse().getName()))) {
+                    if (productsInVolumes.get(0).getWarehouse().getName().equals(product.getWarehouse().getName())){
                         productBean.addProductInVolume(product.getId(), volume.getId(), product.getQuantity());
                         haveVolume = true;
+                        break;
+                    }else{
+                        haveVolume = false;
+
                     }
                 }
             }
-            if (!haveVolume) {
-                var newVolumeID = getNewID();
-                volumeBean.create(newVolumeID, "Pending", new Date(), idOrder);
+            if (!haveVolume){
+                long newVolumeID = getNewID();
+                volumeBean.create(newVolumeID, "Pending",  new Date(), idOrder);
                 productBean.addProductInVolume(product.getId(), newVolumeID, product.getQuantity());
-
+                haveVolume = true;
             }
+
         }
-        for (Volume volume : volumeBean.findVolumesByOrderId(idOrder)){
-            long id = volume.getId();
-            volumeBean.setSensoresToVolume(id);
-        }
+
         OrderDTO orderDTO = OrderDTO.from(order);
         List<Volume> volumes = volumeBean.findVolumesByOrderId(idOrder);
         List<VolumeDTO> volumeDTOS = VolumeDTO.from(volumes);
         for (VolumeDTO volumeDTO : volumeDTOS){
             volumeDTO.setProducts(ProductDTO.from(productBean.findAllProductsByVolumeId(volumeDTO.getId())));
             orderDTO.addVolume(volumeDTO);
+        }
+        for (Volume volume : volumeBean.findVolumesByOrderId(idOrder)){
+            long id = volume.getId();
+            volumeBean.setSensoresToVolume(id);
         }
         return orderDTO;
     }

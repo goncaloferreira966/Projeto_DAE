@@ -130,7 +130,7 @@ public class VolumeBean {
                     long newSensorID = getNewID();
                     try {
                         sensorBean.create(newSensorID, type, "0", true, false);
-                        addSensorToVolume(idVolume, newSensorID);
+                        addSensorToVolume(volume.getId(), newSensorID);
                     } catch (MyEntityNotFoundException | MyEntityExistsException | MyConstraintViolationException e) {
                         // Log the error and handle it appropriately
                         e.printStackTrace();

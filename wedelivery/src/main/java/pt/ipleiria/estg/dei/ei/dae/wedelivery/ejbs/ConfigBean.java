@@ -195,19 +195,19 @@ public class ConfigBean {
 
 
             productBean.create(1, "Coca-Cola", "Coca-Cola", 1.5, "coca-cola.jpg", 19, true, false, "Leiria", "safari");
-            productBean.create(2, "Pepsi", "Pepsi", 1.5, "pepsi.jpg", 2, true, false, "Leiria", "safari");
-            productBean.create(3, "Sprite", "Sprite", 1.5, "sprite.jpg", 100, true, false, "Lisboa", "safari");
-            productBean.create(4, "Fanta", "Fanta", 1.5, "fanta.jpg", 100, true, false, "Leiria", "safari");
+            productBean.create(2, "Pepsi", "Pepsi", 1.5, "pepsi.jpg", 102, true, false, "Lisboa", "safari");
+            productBean.create(3, "Sprite", "Sprite", 1.5, "sprite.jpg", 100, true, false, "Leiria", "safari");
+            productBean.create(4, "Fanta", "Fanta", 1.5, "fanta.jpg", 100, true, false, "Porto", "safari");
             productBean.create(5, "7up", "7up", 1.5, "7up.jpg", 100, true, false, "Porto", "safari");
-            productBean.create(6, "Sumol", "Sumol", 1.5, "sumol.jpg", 100, true, false, "Porto", "safari");
+            productBean.create(6, "Sumol", "Sumol", 1.5, "sumol.jpg", 100, true, false, "Leiria", "safari");
 
             restrictionBean.create(1, "Temperature", 20, 0);
             restrictionBean.create(10, "Humidity", 15,9);
-            restrictionBean.create(2, "Temperature", 15,9);
+            restrictionBean.create(4, "Temperature", 15,9);
             restrictionBean.create(5, "Temperature", 2, -2);
             restrictionBean.create(6, "Temperature", 0,-15);
             restrictionBean.create(3, "Humidity", 10,40);//optimal
-            restrictionBean.create(4,"Humidity",70,40);//too moist
+            restrictionBean.create(2,"Humidity",70,40);//too moist
             restrictionBean.create(7, "Humidity", 40, 0);//too dry
             restrictionBean.create(8, "Accelerometer", 0, 5);
             restrictionBean.create(9, "Accelerometer", 0, 10);
