@@ -6,8 +6,10 @@ GET http://localhost:8080/wedelivery/api/sensors
 Accept: application/json
 
 ### Get one sensor
-GET http://localhost:8080/wedelivery/api/sensors/1
+GET http://localhost:8080/wedelivery/api/sensors/8
 Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzM2NzAwODIwLCJleHAiOjE3MzY3MDQ0MjB9.k7h4e4DrVStSPkGPm2GJqlw7Z0S3ts_I-Es3_mVt2liR-lqLnifYYqMMbQ6Gn1Ek
+
 
 ### Get one sensor details
 GET http://localhost:8080/wedelivery/api/sensors/1/details
@@ -16,7 +18,8 @@ Accept: application/json
 ### Update Sensor Value
 PATCH http://localhost:8080/wedelivery/api/sensors/1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzM2NjA5MTA4LCJleHAiOjE3MzY2MTI3MDh9.JLdwDPvPkPeBz1q_y87SspobLHqAyDJaygvvAtFHLzOZW2fMJWhAMyT4F3JOQMuG
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJHb25jYWxvRjAwIiwiaWF0IjoxNzM2NzAwODIwLCJleHAiOjE3MzY3MDQ0MjB9.k7h4e4DrVStSPkGPm2GJqlw7Z0S3ts_I-Es3_mVt2liR-lqLnifYYqMMbQ6Gn1Ek
+
 
 
 {

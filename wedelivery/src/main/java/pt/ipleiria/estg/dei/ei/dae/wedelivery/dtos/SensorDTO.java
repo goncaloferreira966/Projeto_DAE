@@ -12,6 +12,7 @@ public class SensorDTO {
     boolean busy;
     boolean expedition;
     private VolumeDTO volume;
+    private List<SensorValueDTO> sensorValues;
 
     public SensorDTO() {
     }
