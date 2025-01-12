@@ -11,6 +11,14 @@ import java.util.List;
                 @NamedQuery(
                         name = "getAllRestrictions",
                         query = "SELECT r FROM Restriction r"
+                ),
+                @NamedQuery(
+                        name = "getRestrictionById",
+                        query = "SELECT r FROM Restriction r WHERE r.id = :id"
+                ),
+                @NamedQuery(
+                        name = "getAllRestrictionsByProduct",
+                        query = "SELECT r FROM Restriction r JOIN r.products p WHERE p.id = :id"
                 )
         }
 )

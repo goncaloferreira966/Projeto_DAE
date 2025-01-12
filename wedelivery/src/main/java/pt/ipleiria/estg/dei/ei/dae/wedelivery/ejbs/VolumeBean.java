@@ -117,32 +117,26 @@ public class VolumeBean {
 
     /*****************  Volume -> Sensonr  ***********************************/
     public void setSensoresToVolume(long idVolume) {
-        var volume = find(idVolume);
+        var volume = this.find(idVolume);
         for (Product product : volume.getProducts()) {
-            var type = restrictionBean.findWithProducts(product.getId()).getType();
-            if (volume.getSensors().isEmpty()){
-                long newSensorID = getNewID();
-                try {
-                    sensorBean.create(newSensorID, type, "0", true, false);
-                    addSensorToVolume(idVolume, newSensorID);
-                } catch (MyEntityNotFoundException | MyEntityExistsException | MyConstraintViolationException e) {
-                    e.printStackTrace();
-                }
 
-            } else {
-                for (Sensor sensor : volume.getSensors()) {
-                    if (!sensor.getType().equals(type)){
-                        long newSensorID = getNewID();
-                        try {
-                            sensorBean.create(newSensorID, type, "0", true, false);
-                            addSensorToVolume(idVolume, newSensorID);
-                        } catch (MyEntityNotFoundException | MyEntityExistsException | MyConstraintViolationException e) {
-                            e.printStackTrace();
-                        }
+            var restrictionsByProduct = restrictionBean.findRestrictionsByProductId(product.getId());
+            for (var restriction : restrictionsByProduct) {
+                var type = restriction.getType();
+                boolean sensorExists = volume.getSensors().stream()
+                        .anyMatch(sensor -> sensor.getType().equals(type));
+
+                if (!sensorExists) {
+                    long newSensorID = getNewID();
+                    try {
+                        sensorBean.create(newSensorID, type, "0", true, false);
+                        addSensorToVolume(idVolume, newSensorID);
+                    } catch (MyEntityNotFoundException | MyEntityExistsException | MyConstraintViolationException e) {
+                        // Log the error and handle it appropriately
+                        e.printStackTrace();
                     }
                 }
             }
-
         }
     }
 

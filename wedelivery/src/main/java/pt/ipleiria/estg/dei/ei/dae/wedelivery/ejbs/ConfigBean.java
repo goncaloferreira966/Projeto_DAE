@@ -202,6 +202,7 @@ public class ConfigBean {
             productBean.create(6, "Sumol", "Sumol", 1.5, "sumol.jpg", 100, true, false, "Porto", "safari");
 
             restrictionBean.create(1, "Temperature", 20, 0);
+            restrictionBean.create(10, "Humidity", 15,9);
             restrictionBean.create(2, "Temperature", 15,9);
             restrictionBean.create(5, "Temperature", 2, -2);
             restrictionBean.create(6, "Temperature", 0,-15);
@@ -218,6 +219,20 @@ public class ConfigBean {
             productBean.addProductInVolume(5, id_11,1);
             productBean.addProductInVolume(6, id_11,1);
 
+
+            productBean.addRestrictionToProduct(1,1);
+            productBean.addRestrictionToProduct(2,1);
+            productBean.addRestrictionToProduct(2,2);
+            productBean.addRestrictionToProduct(3,3);
+            productBean.addRestrictionToProduct(4,4);
+            productBean.addRestrictionToProduct(5,5);
+            productBean.addRestrictionToProduct(6,6);
+            productBean.addRestrictionToProduct(6,7);
+            productBean.addRestrictionToProduct(6,8);
+            productBean.addRestrictionToProduct(6,9);
+            productBean.addRestrictionToProduct(6,10);
+
+
             volumeBean.addSensorToVolume(id_9, 1);
             volumeBean.addSensorToVolume(id_9, 21);
             volumeBean.addSensorToVolume(id_10, 3);
@@ -228,11 +243,6 @@ public class ConfigBean {
             volumeBean.addSensorToVolume(id_12, 27);
             volumeBean.addSensorToVolume(id_13, 9);
             volumeBean.addSensorToVolume(id_13, 28);
-
-            productBean.addRestrictionToProduct(1,1);
-            productBean.addRestrictionToProduct(2,1);
-            productBean.addRestrictionToProduct(2,2);
-
 
         } catch (Exception e) {
             System.err.println("Some exception happened while creating objects");

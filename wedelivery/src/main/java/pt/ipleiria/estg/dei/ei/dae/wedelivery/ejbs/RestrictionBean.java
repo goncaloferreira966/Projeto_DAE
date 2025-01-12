@@ -70,4 +70,10 @@ public class RestrictionBean {
         Hibernate.initialize(restriction.getProducts());
         return restriction;
     }
+
+    public List<Restriction> findRestrictionsByProductId(long id) {
+        return entityManager.createNamedQuery("getAllRestrictionsByProduct", Restriction.class)
+                .setParameter("id", id)
+                .getResultList();
+    }
 }

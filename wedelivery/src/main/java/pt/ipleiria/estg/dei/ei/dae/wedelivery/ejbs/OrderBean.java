@@ -186,7 +186,8 @@ public class OrderBean {
             }
         }
         for (Volume volume : volumeBean.findVolumesByOrderId(idOrder)){
-            volumeBean.setSensoresToVolume(volume.getId());
+            long id = volume.getId();
+            volumeBean.setSensoresToVolume(id);
         }
         OrderDTO orderDTO = OrderDTO.from(order);
         List<Volume> volumes = volumeBean.findVolumesByOrderId(idOrder);
