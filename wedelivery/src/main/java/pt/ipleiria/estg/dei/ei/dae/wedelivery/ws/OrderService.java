@@ -121,7 +121,10 @@ public class OrderService {
 
             products.add(productBean.findById(productDTO.getId()));
         }
-        OrderDTO orderDTO = orderBean.makeNewOrder( products);
+        //Verifica se o utilizador pode ter acesso ou nao
+        var principal = securityContext.getUserPrincipal();
+
+        OrderDTO orderDTO = orderBean.makeNewOrder(products, principal.getName());
 
         emailBean.send(orderBean.find(orderDTO.getCode()).getClient().getEmail(), "Order " + orderDTO.getCode() + " created", "Order " + orderDTO.getCode() + " created successfully.");
 

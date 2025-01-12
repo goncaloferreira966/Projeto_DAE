@@ -154,9 +154,9 @@ public class OrderBean {
     }
     */
 
-    public OrderDTO makeNewOrder(List<Product> products) throws MyConstraintViolationException {
+    public OrderDTO makeNewOrder(List<Product> products, String username) throws MyConstraintViolationException {
         long idOrder = getNewID();
-        create(idOrder, new Date(), new Date(), "Goncalo", "DinisRX", "Pending");
+        create(idOrder, new Date(), new Date(), username, "DinisRX", "Pending");
         Order order = find(idOrder);
         var haveVolume = false;
         for (Product product : products){
