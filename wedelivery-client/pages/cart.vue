@@ -99,7 +99,7 @@
                                     <button type="submit" class="btn btn-info btn-block btn-lg">
                                         <div class="d-flex justify-content-between">
                                             <span>€{{ (totalPrice + 20).toFixed(2) }}</span>
-                                            <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
+                                            <span> Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
                                         </div>
                                     </button>
                                 </form>
