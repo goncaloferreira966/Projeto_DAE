@@ -24,6 +24,9 @@
               </div>
             </div>
             <button type="submit" class="btn btn-secondary w-100 btn-lg">Login</button>
+            <div v-if="errorMessage" class="alert alert-danger mb-3 mt-3">
+              {{ errorMessage }}
+            </div>
           </form>
         </div>
       </div>
@@ -42,7 +45,8 @@ export default {
   data() {
     return {
       username: '',
-      password: ''
+      password: '',
+      errorMessage: '', // Propriedade para armazenar a mensagem de erro
     };
   },
   methods: {
