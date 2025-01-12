@@ -19,16 +19,23 @@
                 <div class="card-body">
                   <h5 class="card-title">Sensor ID: {{ sensor.id }}</h5>
 
-                  <p v-if="sensor.type == 'Temperature'" class="card-text"><strong>Type:</strong> <i class="bi bi-thermometer-half"></i> {{ sensor.type }} (ºC)</p>
-                  <p v-else-if="sensor.type == 'Humidity'" class="card-text"><strong>Type:</strong> <i class="bi bi-droplet-fill"></i> {{ sensor.type }} (%)</p>
-                  <p v-else-if="sensor.type == 'GPS'" class="card-text"><strong>Type:</strong> <i class="bi bi-geo-alt-fill"></i> {{ sensor.type }} (°)</p>
-                  <p v-else-if="sensor.type == 'Accelerometer'" class="card-text"><strong>Type:</strong> <i class="bi bi-speedometer"></i> {{ sensor.type }} (m/s²)</p>
+                  <p v-if="sensor.type == 'Temperature'" class="card-text"><strong>Type:</strong> <i class="bi bi-thermometer-half"></i> {{ sensor.type }}</p>
+                  <p v-else-if="sensor.type == 'Humidity'" class="card-text"><strong>Type:</strong> <i class="bi bi-droplet-fill"></i> {{ sensor.type }}</p>
+                  <p v-else-if="sensor.type == 'GPS'" class="card-text"><strong>Type:</strong> <i class="bi bi-geo-alt-fill"></i> {{ sensor.type }}</p>
+                  <p v-else-if="sensor.type == 'Accelerometer'" class="card-text"><strong>Type:</strong> <i class="bi bi-speedometer"></i> {{ sensor.type }}</p>
 
-                  <p class="card-text"><strong>Current Value:</strong> {{ sensor.currentValue }}</p>
+                  <p v-if="sensor.type == 'Temperature'" class="card-text"><strong>Current Value:</strong> {{ sensor.currentValue }} ºC</p>
+                  <p v-else-if="sensor.type == 'Humidity'" class="card-text"><strong>Current Value:</strong> {{ sensor.currentValue }} %</p>
+                  <p v-else-if="sensor.type == 'GPS'" class="card-text"><strong>Current Value:</strong> {{ sensor.currentValue }} °</p>
+                  <p v-else-if="sensor.type == 'Accelerometer'" class="card-text"><strong>Current Value:</strong> {{ sensor.currentValue }} m/s²</p>
+                  
                   <buton @click="toggleHistory(sensor.id)" style="width: 100%;" class="btn btn-secondary"><i class="bi bi-eye-fill"></i> History </buton>
                  <!--Div que mostra o historico do sensor-->
                   <div v-show="showHistory[sensor.id]" class="history-div mt-3">
-                    <p v-for="(sensorValue, index) in sensor.sensorValues" class="card-text"><strong>{{ formatDate(sensorValue.date) }}:</strong> {{ sensorValue.value }}</p>
+                    <p v-if="sensor.type == 'Temperature'" v-for="(sensorValue, index) in sensor.sensorValues" class="card-text"><strong>{{ formatDate(sensorValue.date) }}:</strong> {{ sensorValue.value }} ºC</p>
+                    <p v-else-if="sensor.type == 'Humidity'" v-for="(sensorValue, index) in sensor.sensorValues" class="card-text"><strong>{{ formatDate(sensorValue.date) }}:</strong> {{ sensorValue.value }} %</p>
+                    <p v-if="sensor.type == 'GPS'" v-for="(sensorValue, index) in sensor.sensorValues" class="card-text"><strong>{{ formatDate(sensorValue.date) }}:</strong> {{ sensorValue.value }} °</p>
+                    <p v-if="sensor.type == 'Accelerometer'" v-for="(sensorValue, index) in sensor.sensorValues" class="card-text"><strong>{{ formatDate(sensorValue.date) }}:</strong> {{ sensorValue.value }} m/s²</p>
                   </div>
                 </div>
               </div>
