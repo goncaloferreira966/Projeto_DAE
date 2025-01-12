@@ -115,6 +115,9 @@
 <script setup>
 import { useCartStore } from '../stores/cart';
 import { computed } from 'vue';
+import { useRouter } from 'vue-router';
+const router = useRouter();
+
 const config = useRuntimeConfig();
 
 const cartStore = useCartStore();
@@ -145,6 +148,7 @@ const validateAndSend = async () => {
         }
     }
     await sendItems();
+    router.push('/orders');
 };
 const sendItems = async () => {
     try {

@@ -43,6 +43,8 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+const router = useRouter();
 
 const isLoggedIn = ref(false);
 const userRole = ref(false);
@@ -61,7 +63,7 @@ function handleLogout() {
     localStorage.removeItem('Username');
     isLoggedIn.value = false;
     // Redireciona para a página de login
-    window.location.href = '/';
+    router.push('/');
 }
 
 
