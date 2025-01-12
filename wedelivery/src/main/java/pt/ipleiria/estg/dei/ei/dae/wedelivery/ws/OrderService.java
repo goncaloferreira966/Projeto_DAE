@@ -12,6 +12,7 @@ import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.*;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Operator;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Order;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Product;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.SensorValue;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityNotFoundException;
@@ -43,6 +44,8 @@ public class OrderService {
     private EmailBean emailBean;
     @EJB
     private WarehouseBean warehouseBean;
+    @EJB
+    private SensorValueBean sensorValueBean;
 
     @GET // means: to call this endpoint, we need to use the HTTP GET method
     @Path("/") // means: the relative url path is “/api/clients/”
@@ -100,6 +103,19 @@ public class OrderService {
         var sensors = sensorBean.findAllSensorsByVolumeId(id);
         var sensorDTOs = SensorDTO.from(sensors);
         volumeDTO.addSensors(sensorDTOs);
+
+        //Buscar e adicionar Sensores Values aos sensores
+        for (SensorDTO sensor : sensorDTOs) {
+            var sensorValues = sensorValueBean.findAllSensorValuesById(sensor.getId());
+
+            List<SensorValueDTO> sensorValuesDTOs = new ArrayList<>();
+
+            for (SensorValue sensorValue : sensorValues) {
+                sensorValuesDTOs.add(SensorValueDTO.from(sensorValue));
+            }
+
+            sensor.setSensorValues(sensorValuesDTOs);
+        }
 
         // Buscar e adicionar produtos
         var products = productBean.findAllProductsByVolumeId(id);

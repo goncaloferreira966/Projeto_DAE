@@ -20,6 +20,7 @@
                   <h5 class="card-title">Sensor ID: {{ sensor.id }}</h5>
                   <p class="card-text"><strong>Type:</strong> {{ sensor.type }}</p>
                   <p class="card-text"><strong>Current Value:</strong> {{ sensor.currentValue }}</p>
+                  <p class="card-text"><strong>Current Value:</strong> {{ sensor.sensorValues }}</p>
                 </div>
               </div>
             </div>
