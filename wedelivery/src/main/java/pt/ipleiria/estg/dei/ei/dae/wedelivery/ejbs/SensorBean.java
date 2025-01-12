@@ -26,8 +26,7 @@ public class SensorBean {
     private VolumeBean volumeBean;
     //long id, String type, int currentValue, boolean busy, boolean expedition
     public void create(long id, String type, String currentValue, boolean busy, boolean expedition)
-            throws MyEntityNotFoundException, MyEntityExistsException,
-            MyConstraintViolationException
+            throws MyEntityNotFoundException, MyEntityExistsException, MyConstraintViolationException
     {
         try {
             if (exists(id)) {

@@ -17,11 +17,15 @@ import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityNotFoundExcepti
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Stateless
 public class VolumeBean {
     @PersistenceContext
     private EntityManager entityManager;
+
+    @EJB
+    private RestrictionBean restrictionBean;
 
     @EJB
     private OrderBean orderBean;
@@ -111,8 +115,40 @@ public class VolumeBean {
     }
 
 
+    /*****************  Volume -> Sensonr  ***********************************/
+    public void setSensoresToVolume(long idVolume) {
+        var volume = find(idVolume);
+        for (Product product : volume.getProducts()) {
+            var type = restrictionBean.findWithProducts(product.getId()).getType();
+            if (volume.getSensors().isEmpty()){
+                long newSensorID = getNewID();
+                try {
+                    sensorBean.create(newSensorID, type, "0", true, false);
+                    addSensorToVolume(idVolume, newSensorID);
+                } catch (MyEntityNotFoundException | MyEntityExistsException | MyConstraintViolationException e) {
+                    e.printStackTrace();
+                }
 
+            } else {
+                for (Sensor sensor : volume.getSensors()) {
+                    if (!sensor.getType().equals(type)){
+                        long newSensorID = getNewID();
+                        try {
+                            sensorBean.create(newSensorID, type, "0", true, false);
+                            addSensorToVolume(idVolume, newSensorID);
+                        } catch (MyEntityNotFoundException | MyEntityExistsException | MyConstraintViolationException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
 
+        }
+    }
+
+    private long getNewID(){
+        return Math.abs(UUID.randomUUID().hashCode());
+    }
     /******************************************************************/
     public boolean exists(long id) {
         Query query = entityManager.createQuery(
