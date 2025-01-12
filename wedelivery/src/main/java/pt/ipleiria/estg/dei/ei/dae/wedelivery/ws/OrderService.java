@@ -9,13 +9,14 @@ import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.SecurityContext;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.dtos.*;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.ejbs.*;
+import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Operator;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Order;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.entities.Product;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyConstraintViolationException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityNotFoundException;
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.security.Authenticated;
-
+import java.util.Random;
 import java.util.*;
 
 @Path("orders") // relative url web path for this service
@@ -124,7 +125,12 @@ public class OrderService {
         //Verifica se o utilizador pode ter acesso ou nao
         var principal = securityContext.getUserPrincipal();
 
-        OrderDTO orderDTO = orderBean.makeNewOrder(products, principal.getName());
+        List<Operator> operators = operatorBean.findAll();
+        Random random = new Random();
+        int randomIndex = random.nextInt(operators.size()); // Gera um número entre 0 e (count - 1)
+        Operator operator = operators.get(randomIndex);
+
+        OrderDTO orderDTO = orderBean.makeNewOrder(products, principal.getName(), operator.getUsername());
 
         emailBean.send(orderBean.find(orderDTO.getCode()).getClient().getEmail(), "Order " + orderDTO.getCode() + " created", "Order " + orderDTO.getCode() + " created successfully.");
 
