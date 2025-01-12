@@ -119,6 +119,8 @@ public class OrderBean {
     }
 
 
+
+
     /****************************** Orders Volume*************************************/
     public Order findWithVolumes(long code){
         var order = this.find(code);
@@ -182,6 +184,9 @@ public class OrderBean {
                 productBean.addProductInVolume(product.getId(), newVolumeID, product.getQuantity());
 
             }
+        }
+        for (Volume volume : volumeBean.findVolumesByOrderId(idOrder)){
+            volumeBean.setSensoresToVolume(volume.getId());
         }
         OrderDTO orderDTO = OrderDTO.from(order);
         List<Volume> volumes = volumeBean.findVolumesByOrderId(idOrder);
