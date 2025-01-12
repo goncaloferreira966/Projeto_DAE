@@ -80,7 +80,7 @@ export default {
         }
 
        this.$emit("login-success");
-       window.location.href = '/e-commerce';
+       window.location.href = '/';
 
       } catch (error) {
         this.errorMessage = "Credenciais Inválidas.";
