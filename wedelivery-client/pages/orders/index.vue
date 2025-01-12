@@ -49,10 +49,13 @@
                         class="bi bi-eye-fill"></i>
                       View Details</nuxt-link>
                   </div>
-                  <div class="col-md-6">
-
+                  <div v-if="role === 'Operator' || role === 'Manager'" class="col-md-6">
                     <button v-if="order.state === 'Pending'" @click="approveOrder(order)" style="width: 100%;"
                       class="btn btn-success btn-block"><i class="bi bi-eye-fill"></i> Approve Order</button>
+                  </div>
+                  <div v-if="role === 'Client'" class="col-md-6">
+                    <button v-if="order.state === 'Shipped'" @click="receiveOrder(order)" style="width: 100%;"
+                      class="btn btn-success btn-block"><i class="bi bi-eye-fill"></i> Received Order</button>
                   </div>
 
                 </div>
@@ -144,6 +147,21 @@ const approveOrder = async (order) => {
       }
     });
     order.state = "Shipped";
+};
+
+const receiveOrder = async (order) => {
+  // Faz uma requisição POST (ou PUT, dependendo da API) para guardar o novo valor
+  const { data, error } = await useFetch(`${api}/orders/${order.code}`, {
+      method: 'PATCH',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: {
+        state: "Delivered"
+      }
+    });
+    order.state = "Delivered";
 };
 
 </script>

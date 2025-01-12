@@ -132,8 +132,17 @@ public class OrderService {
 
     @PATCH
     @Path("{code}")
+    @RolesAllowed({"Client"})
     public Response updateState(@PathParam("code") long code, OrderDTO orderDTO) {
         Order order = orderBean.find(code);
+
+        //Verifica se o utilizador pode ter acesso ou nao
+        var principal = securityContext.getUserPrincipal();
+
+        //Verifica se esse user deve ou nao ver essa order(verifica se é owner)
+        if(securityContext.isUserInRole("Client") && !principal.getName().equals(order.getClient().getUsername())) {
+            return Response.status(Response.Status.FORBIDDEN).build();
+        }
 
         // Verifica se o order existe
         if (order == null) {
