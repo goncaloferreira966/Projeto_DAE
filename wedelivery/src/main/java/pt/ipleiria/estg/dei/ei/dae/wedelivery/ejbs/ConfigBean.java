@@ -81,7 +81,7 @@ public class ConfigBean {
             long id_5 = Math.abs(UUID.randomUUID().hashCode());
             orderBean.create(id_5, new Date(), new Date(), "Goncalo","Gui0000","In distribution");
             long id_6 = Math.abs(UUID.randomUUID().hashCode());
-            orderBean.create(id_6, new Date(), new Date(), "Goncalo","Gui0000","Pending");
+            orderBean.create(id_6, new Date(), new Date(), "Goncalo","Gui0000","Compromised");
             long id_7 = Math.abs(UUID.randomUUID().hashCode());
             orderBean.create(id_7, new Date(), new Date(), "Goncalo","Gui0000","Shipped");
             long id_8 = Math.abs(UUID.randomUUID().hashCode());

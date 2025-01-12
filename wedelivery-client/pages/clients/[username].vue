@@ -139,7 +139,7 @@ onMounted(() => {
   loadClientData();
 });
 
-// Função para obter a classe baseada no estado
+// Function to get class based on state
 const getStateClass = (state) => {
   switch (state) {
     case 'In distribution':
@@ -150,6 +150,8 @@ const getStateClass = (state) => {
       return 'badge bg-blue'; // Cor para "Shipped"
     case 'Delivered':
       return 'badge bg-success'; // Cor de sucesso para "Delivered"
+    case 'Compromised':
+      return 'badge bg-danger'; // Cor de sucesso para "Compromised"
     default:
       return 'badge bg-secondary'; // Default
   }
