@@ -29,9 +29,8 @@
 
           <div v-if="client" style="display: flex;" class="col-md-3">
             <div class="card">
-              <h5>Client Information</h5>
-              <img src="/img_avatar.png" alt="Avatar" style="width: 100%">
-              <div class="container">
+              <img src="/img_avatar.png" alt="Avatar" style="width: 100%;  border-top-left-radius: 5px;border-top-right-radius: 5px;">
+              <div class="container mt-3">
                 <div v-if="client">
                   <h4>{{ client.name }}</h4>
                   <p>{{ client.email }}</p>
@@ -53,20 +52,22 @@
                 <h4>Volume ID: {{ volume.id }}</h4>
                 <p><strong>State:</strong> {{ volume.state }}</p>
                 <p><strong>Creation Date:</strong> {{ volume.creationDate }}</p>
-                <button @click="showVolumeDetails(volume)" class="btn btn-dark btn-block"><i class="bi bi-eye-fill"></i> View Details</button>
+                <button style="width: 100%;" @click="showVolumeDetails(volume)" class="btn btn-dark btn-block"><i class="bi bi-eye-fill"></i>
+                  View Details</button>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Importando o componente do modal -->
-        
 
-        <VolumeDetailsModal :selectedVolume="selectedVolume" @close="closeModal" />
+
+        <VolumeDetailsModal :selectedVolume="selectedVolume" @close="closeModal"/>
 
       </div>
       <div class="card-footer text-center">
-        <button @click.prevent="refresh" class="btn btn-info ml-2"><i class="bi bi-arrow-clockwise"></i> Refresh Data</button>
+        <button @click.prevent="refresh" class="btn btn-info ml-2"><i class="bi bi-arrow-clockwise"></i> Refresh
+          Data</button>
       </div>
     </div>
 
@@ -84,7 +85,7 @@ import { useRoute, useRouter } from 'vue-router'
 import VolumeDetailsModal from '../components/VolumeDetailsModal.vue' // Importe o novo componente
 
 const route = useRoute()
-const router = useRouter() 
+const router = useRouter()
 const code = route.params.code
 const config = useRuntimeConfig()
 const api = config.public.API_URL
@@ -113,7 +114,7 @@ const loadOrderAndClient = async () => {
     order.value = orderData.value // Armazena o pedido
 
     const { data: clientData, error: clientError } = await useFetch(`${api}/clients/${order.value.username}`
-    , {
+      , {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -129,8 +130,8 @@ const loadOrderAndClient = async () => {
 }
 
 const formatDate = (timestamp) => {
-  if (!timestamp) return "N/A"; 
-  return new Date(timestamp).toLocaleString("pt-PT"); 
+  if (!timestamp) return "N/A";
+  return new Date(timestamp).toLocaleString("pt-PT");
 };
 
 const selectedVolume = ref(null); // Volume selecionado para exibir no modal
