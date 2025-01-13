@@ -146,7 +146,7 @@ public class OrderService {
         int randomIndex = random.nextInt(operators.size()); // Gera um número entre 0 e (count - 1)
         Operator operator = operators.get(randomIndex);
 
-        OrderDTO orderDTO = orderBean.makeNewOrder(products, principal.getName(), operator.getUsername());
+        OrderDTO orderDTO = orderBean.makeNewOrder(products, principal.getName(), operator.getUsername(), orderRequestDTO.getProductsDTOs());
 
         emailBean.send(orderBean.find(orderDTO.getCode()).getClient().getEmail(), "Order " + orderDTO.getCode() + " created", "Order " + orderDTO.getCode() + " created successfully.");
 

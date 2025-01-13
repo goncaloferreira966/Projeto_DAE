@@ -14,6 +14,7 @@ import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityExistsException
 import pt.ipleiria.estg.dei.ei.dae.wedelivery.exceptions.MyEntityNotFoundException;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 @Stateless
@@ -156,38 +157,65 @@ public class OrderBean {
     }
     */
 
-    public OrderDTO makeNewOrder(List<Product> products, String username, String operator) throws MyConstraintViolationException {
+    public OrderDTO makeNewOrder(List<Product> products, String username, String operator, List<ProductDTO> productsDTOS) throws MyConstraintViolationException {
         long idOrder = getNewID();
         create(idOrder, new Date(), new Date(), username, operator, "Pending");
         Order order = find(idOrder);
         var haveVolume = false;
-        for (Product product : products){
-            if (!haveVolume){
-                long newVolumeID = getNewID();
-                volumeBean.create(newVolumeID, "Pending",  new Date(), idOrder);
-                productBean.addProductInVolume(product.getId(), newVolumeID, product.getQuantity());
-                haveVolume = true;
-            } else {
-                var volumes = volumeBean.findVolumesByOrderId(idOrder);
-                for (Volume volume : volumes){
-                    var productsInVolumes = productBean.findAllProductsByVolumeId(volume.getId());
-                    if (productsInVolumes.get(0).getWarehouse().getName().equals(product.getWarehouse().getName())){
-                        productBean.addProductInVolume(product.getId(), volume.getId(), product.getQuantity());
-                        haveVolume = true;
-                        break;
-                    }else{
-                        haveVolume = false;
+        for (Product product : products) {
+            if (product.getHaveSensor()) {
+                for (var p : productsDTOS) {
+                    if (p.getId() == product.getId()) {
+                        for (int i = 0; i < p.getQuantity(); i++) {
+                            long newVolumeID = getNewID();
+                            volumeBean.create(newVolumeID, "Pending", new Date(), idOrder);
+                            productBean.addProductInVolume(product.getId(), newVolumeID, 1);
+                    }
+                }
+                }
 
+
+                // Produtos com sensor sempre recebem um novo volume
+
+            } else {
+                // Produtos sem sensor
+                if (!haveVolume) {
+                    // Se não existe volume, cria um novo
+                    long newVolumeID = getNewID();
+                    volumeBean.create(newVolumeID, "Pending", new Date(), idOrder);
+                    productBean.addProductInVolume(product.getId(), newVolumeID, product.getQuantity());
+                    haveVolume = true;
+                } else {
+                    // Procura volumes compatíveis
+                    boolean addedToExistingVolume = false;
+                    var volumes = volumeBean.findVolumesByOrderId(idOrder);
+
+                    for (Volume volume : volumes) {
+                        var productsInVolumes = productBean.findAllProductsByVolumeId(volume.getId());
+
+                        // Ignorar volumes vazios
+                        if (productsInVolumes.isEmpty()) continue;
+
+                        // Verifica se o armazém corresponde e não há sensores
+                        boolean warehouseMatches = productsInVolumes.get(0).getWarehouse().getName().equals(product.getWarehouse().getName());
+                        boolean hasNoSensors = productsInVolumes.stream().noneMatch(Product::getHaveSensor);
+
+                        if (warehouseMatches && hasNoSensors) {
+                            // Adiciona o produto ao volume existente
+                            productBean.addProductInVolume(product.getId(), volume.getId(), product.getQuantity());
+                            addedToExistingVolume = true;
+                            break;
+                        }
+                    }
+
+                    if (!addedToExistingVolume) {
+                        // Cria um novo volume se nenhum volume existente for compatível
+                        long newVolumeID = getNewID();
+                        volumeBean.create(newVolumeID, "Pending", new Date(), idOrder);
+                        productBean.addProductInVolume(product.getId(), newVolumeID, product.getQuantity());
                     }
                 }
             }
-            if (!haveVolume){
-                long newVolumeID = getNewID();
-                volumeBean.create(newVolumeID, "Pending",  new Date(), idOrder);
-                productBean.addProductInVolume(product.getId(), newVolumeID, product.getQuantity());
-                haveVolume = true;
-            }
-
         }
 
         OrderDTO orderDTO = OrderDTO.from(order);

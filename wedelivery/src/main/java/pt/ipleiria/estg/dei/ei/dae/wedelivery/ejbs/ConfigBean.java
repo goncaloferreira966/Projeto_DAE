@@ -200,6 +200,7 @@ public class ConfigBean {
             productBean.create(4, "Fanta", "Fanta", 1.5, "fanta.jpg", 100, true, false, "Porto", "safari");
             productBean.create(5, "7up", "7up", 1.5, "7up.jpg", 100, true, false, "Porto", "safari");
             productBean.create(6, "Sumol", "Sumol", 1.5, "sumol.jpg", 100, true, false, "Leiria", "safari");
+            productBean.create(7, "TV", "Television Samsung 55' ", 999, "tv.jpg", 50, true, true, "Leiria", "safari");
 
             restrictionBean.create(1, "Temperature", 20, 0);
             restrictionBean.create(10, "Humidity", 15,9);
