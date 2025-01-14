@@ -27,7 +27,7 @@
         </table>
         <div class="container" style="display: flex;">
 
-          <div v-if="client" style="display: flex;" class="col-md-3">
+          <div v-if="client" style="display: flex;" class="col-md-3 m-4">
             <div class="card">
               <img src="/img_avatar.png" alt="Avatar" style="width: 100%;  border-top-left-radius: 5px;border-top-right-radius: 5px;">
               <div class="container mt-3">
@@ -46,14 +46,16 @@
             </div>
           </div>
 
-          <div v-for="(volume, index) in order.volumes" :key="index" class="col-md-3" style="padding-left: 1%;">
-            <div class="card">
-              <div class="card-body">
-                <h4>Volume ID: {{ volume.id }}</h4>
-                <p><strong>State:</strong> {{ volume.state }}</p>
-                <p><strong>Creation Date:</strong> {{ volume.creationDate }}</p>
-                <button style="width: 100%;" @click="showVolumeDetails(volume)" class="btn btn-dark btn-block"><i class="bi bi-eye-fill"></i>
-                  View Details</button>
+          <div class="row" style="width: 100%;">
+            <div v-for="(volume, index) in order.volumes" :key="index" class="col-md-3 m-4" style="padding-left: 1%;">
+              <div class="card">
+                <div class="card-body">
+                  <h4>Volume ID: {{ volume.id }}</h4>
+                  <p><strong>State:</strong> {{ volume.state }}</p>
+                  <p><strong>Creation Date:</strong> {{ volume.creationDate }}</p>
+                  <button style="width: 100%;" @click="showVolumeDetails(volume)" class="btn btn-dark btn-block"><i class="bi bi-eye-fill"></i>
+                    View Details</button>
+                </div>
               </div>
             </div>
           </div>
