@@ -126,25 +126,44 @@ public class SensorService {
             }
         }
 
-        //Alterar o estado de um volume
+        //Alterar o estado de um volume sem deixar voltar para um estado inferior em termos de gravidade
         switch (counter) {
             case 0:
-                volume.setState("No damage");
+                if ("No damage".equals(volume.getState())) {
+                    volume.setState("No damage");
+                }
                 break;
             case 1:
-                volume.setState("Minor damage");
+                if ("No damage".equals(volume.getState()) || "Minor damage".equals(volume.getState())) {
+                    volume.setState("Minor damage");
+                }
                 break;
             case 2:
-                volume.setState("Moderate damage");
+                if ("No damage".equals(volume.getState()) || "Minor damage".equals(volume.getState()) || "Moderate damage".equals(volume.getState())) {
+                    volume.setState("Moderate damage");
+                }
                 break;
             case 3:
-                volume.setState("Significant damage");
+                if ("No damage".equals(volume.getState()) ||
+                        "Minor damage".equals(volume.getState()) ||
+                        "Moderate damage".equals(volume.getState()) ||
+                        "Significant damage".equals(volume.getState())) {
+                    volume.setState("Significant damage");
+                }
                 break;
             case 4:
-                volume.setState("Heavily damaged");
+                if ("No damage".equals(volume.getState()) ||
+                        "Minor damage".equals(volume.getState()) ||
+                        "Moderate damage".equals(volume.getState()) ||
+                        "Significant damage".equals(volume.getState()) ||
+                        "Heavily damaged".equals(volume.getState())) {
+                    volume.setState("Heavily damaged");
+                }
                 break;
             default:
-                volume.setState("Unusable");
+                if (!"Unusable".equals(volume.getState())) { // Qualquer estado pode se tornar "Unusable"
+                    volume.setState("Unusable");
+                }
                 break;
         }
 
