@@ -113,58 +113,60 @@ public class SensorService {
         //Verificar se estragou algum produto
         Volume volume = sensor.getVolume();
 
-        int counter = 0;
-        for(Product product : volume.getProducts() ) {
-            for(Restriction restriction : product.getRestrictions() ) {
-                if(sensor.getType().equals(restriction.getType())) {
-                    if(!sensor.getType().equals("GPS")){
-                        if((Double.parseDouble(sensorDTO.getCurrentValue()) < restriction.getMinValue()) ||  Double.parseDouble(sensorDTO.getCurrentValue()) > restriction.getMaxValue()){
-                            counter ++;
+        if(!volume.getOrder().getState().equals("Delivered")){
+            int counter = 0;
+            for(Product product : volume.getProducts() ) {
+                for(Restriction restriction : product.getRestrictions() ) {
+                    if(sensor.getType().equals(restriction.getType())) {
+                        if(!sensor.getType().equals("GPS")){
+                            if((Double.parseDouble(sensorDTO.getCurrentValue()) < restriction.getMinValue()) ||  Double.parseDouble(sensorDTO.getCurrentValue()) > restriction.getMaxValue()){
+                                counter ++;
+                            }
                         }
                     }
                 }
             }
-        }
 
-        //Alterar o estado de um volume sem deixar voltar para um estado inferior em termos de gravidade
-        switch (counter) {
-            case 0:
-                if ("No damage".equals(volume.getState())) {
-                    volume.setState("No damage");
-                }
-                break;
-            case 1:
-                if ("No damage".equals(volume.getState()) || "Minor damage".equals(volume.getState())) {
-                    volume.setState("Minor damage");
-                }
-                break;
-            case 2:
-                if ("No damage".equals(volume.getState()) || "Minor damage".equals(volume.getState()) || "Moderate damage".equals(volume.getState())) {
-                    volume.setState("Moderate damage");
-                }
-                break;
-            case 3:
-                if ("No damage".equals(volume.getState()) ||
-                        "Minor damage".equals(volume.getState()) ||
-                        "Moderate damage".equals(volume.getState()) ||
-                        "Significant damage".equals(volume.getState())) {
-                    volume.setState("Significant damage");
-                }
-                break;
-            case 4:
-                if ("No damage".equals(volume.getState()) ||
-                        "Minor damage".equals(volume.getState()) ||
-                        "Moderate damage".equals(volume.getState()) ||
-                        "Significant damage".equals(volume.getState()) ||
-                        "Heavily damaged".equals(volume.getState())) {
-                    volume.setState("Heavily damaged");
-                }
-                break;
-            default:
-                if (!"Unusable".equals(volume.getState())) { // Qualquer estado pode se tornar "Unusable"
-                    volume.setState("Unusable");
-                }
-                break;
+            //Alterar o estado de um volume sem deixar voltar para um estado inferior em termos de gravidade
+            switch (counter) {
+                case 0:
+                    if ("No damage".equals(volume.getState())) {
+                        volume.setState("No damage");
+                    }
+                    break;
+                case 1:
+                    if ("No damage".equals(volume.getState()) || "Minor damage".equals(volume.getState())) {
+                        volume.setState("Minor damage");
+                    }
+                    break;
+                case 2:
+                    if ("No damage".equals(volume.getState()) || "Minor damage".equals(volume.getState()) || "Moderate damage".equals(volume.getState())) {
+                        volume.setState("Moderate damage");
+                    }
+                    break;
+                case 3:
+                    if ("No damage".equals(volume.getState()) ||
+                            "Minor damage".equals(volume.getState()) ||
+                            "Moderate damage".equals(volume.getState()) ||
+                            "Significant damage".equals(volume.getState())) {
+                        volume.setState("Significant damage");
+                    }
+                    break;
+                case 4:
+                    if ("No damage".equals(volume.getState()) ||
+                            "Minor damage".equals(volume.getState()) ||
+                            "Moderate damage".equals(volume.getState()) ||
+                            "Significant damage".equals(volume.getState()) ||
+                            "Heavily damaged".equals(volume.getState())) {
+                        volume.setState("Heavily damaged");
+                    }
+                    break;
+                default:
+                    if (!"Unusable".equals(volume.getState())) { // Qualquer estado pode se tornar "Unusable"
+                        volume.setState("Unusable");
+                    }
+                    break;
+            }
         }
 
         return Response.ok(sensorDTOUpdated).build();
