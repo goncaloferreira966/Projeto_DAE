@@ -1,3 +1,0 @@
-Enviamos o nosso trabalho de espcificação da API em PDF, porém recomendamos a sua leitura no formato HTML, pois a especificação foi feita utilizando MARKDOWN.
-
-A pasta img e bd contêm imagens utilizadas no ficheiro html.
