@@ -1380,14 +1380,28 @@ Um Gestor consulta os sensores existentes.
         "currentValue": 20,
         "expedition": false,
         "id": 2,
-        "type": "Temperature"
+        "type": "Temperature",
+        "sensorValues": [
+          {
+            "id": 4,
+            "value": "31",
+            "date": 1737216084156
+          }
+        ]
     },
     {
         "busy": false,
         "currentValue": 20,
         "expedition": false,
         "id": 4,
-        "type": "Temperature"
+        "type": "Temperature",
+        "sensorValues": [
+          {
+            "id": 5,
+            "value": "10",
+            "date": 1737216084159
+          }
+        ]
     }
   ]
   ```
@@ -1414,7 +1428,14 @@ Um Gestor consulta um sensor em específico.
     "currentValue": 20,
     "expedition": false,
     "id": 2,
-    "type": "Temperature"
+    "type": "Temperature",
+    "sensorValues": [
+      {
+        "id": 2,
+        "value": "23",
+        "date": 1737216084151
+      }
+    ]
   }
   ```
 
@@ -1437,16 +1458,23 @@ informação do volume associado ao sensor especificado.
 
   ```json
   {
-    "busy": false,
-    "currentValue": 20,
-    "expedition": false,
-    "id": 1,
+    "id": 3,
     "type": "Temperature",
+    "currentValue": "30",
+    "busy": false,
+    "expedition": false,
     "volume": {
-        "creationDate": "2024-10-25 10:47:49.814",
-        "id": 662380363,
-        "state": "No damage"
-    }
+      "id": 741966499,
+      "state": "Minor damage",
+      "creationDate": "2025-01-18 16:01:24.133"
+    },
+    "sensorValues": [
+      {
+        "id": 3,
+        "value": "30",
+        "date": 1737216084154
+      }
+    ]
   }
   ```
 
